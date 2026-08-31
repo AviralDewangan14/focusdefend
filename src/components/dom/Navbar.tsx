@@ -29,9 +29,7 @@ export default function Navbar() {
         
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
-          <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-black text-xs">
-            FD
-          </div>
+          <img src="/logo.jpg" alt="FocusDefend Logo" className="w-8 h-8 rounded-full object-cover" />
           FocusDefend
         </div>
 

@@ -18,9 +18,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-6">
       <div 
-        className={`flex items-center justify-between px-6 py-3 w-full max-w-5xl rounded-full border transition-all duration-300 ${
+        className={`flex items-center justify-between px-4 md:px-6 py-2 md:py-3 w-full max-w-5xl rounded-full border transition-all duration-300 ${
           scrolled 
             ? "bg-background/70 backdrop-blur-md border-border shadow-lg" 
             : "bg-transparent border-transparent"
@@ -28,9 +28,9 @@ export default function Navbar() {
       >
         
         {/* Logo */}
-        <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
+        <div className="flex items-center gap-2 font-bold text-lg md:text-xl tracking-tight shrink-0">
           <img src="/logo.jpg" alt="FocusDefend Logo" className="w-8 h-8 rounded-full object-cover" />
-          FocusDefend
+          <span className="hidden sm:inline">FocusDefend</span>
         </div>
 
         {/* Links */}
@@ -52,8 +52,9 @@ export default function Navbar() {
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           )}
-          <a href="/FocusShield.apk" download className="relative group overflow-hidden bg-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:-translate-y-0.5 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] inline-block">
-            <span className="relative z-10">Download APK</span>
+          <a href="/FocusShield.apk" download className="relative group overflow-hidden bg-primary text-primary-foreground px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold hover:-translate-y-0.5 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] inline-block shrink-0">
+            <span className="relative z-10 hidden sm:inline">Download APK</span>
+            <span className="relative z-10 sm:hidden">Download</span>
             <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full -translate-x-full transition-transform duration-500 skew-x-12" />
           </a>
         </div>

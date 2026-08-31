@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* FocusDefend Design System Colors */
+  --color-brand-primary: #4F46E5;
+  --color-brand-blue: #3B82F6;
+  --color-brand-success: #22C55E;
+  --color-brand-warning: #F59E0B;
+  --color-brand-danger: #EF4444;
+
+  --color-brand-dark-bg: #050816;
+  --color-brand-dark-secondary: #0D1117;
+  --color-brand-dark-card: rgba(255, 255, 255, 0.06);
+  --color-brand-dark-border: rgba(255, 255, 255, 0.08);
+  --color-brand-dark-text: #FFFFFF;
+  --color-brand-dark-text-secondary: #B8C0CC;
+
+  --color-brand-light-bg: #F8FAFC;
+  --color-brand-light-card: #FFFFFF;
+  --color-brand-light-border: #E5E7EB;
+  --color-brand-light-text: #111827;
+  --color-brand-light-text-secondary: #6B7280;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Map standard Shadcn variables to the FocusDefend Design System (Light Mode) */
+  --background: #F8FAFC;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --primary: #4F46E5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #111827;
+  --muted: #F1F5F9;
+  --muted-foreground: #6B7280;
+  --accent: #3B82F6;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #4F46E5;
+  --radius: 1rem;
+}
+
+.dark {
+  /* Map standard Shadcn variables to the FocusDefend Design System (Dark Mode) */
+  --background: #050816;
+  --foreground: #FFFFFF;
+  --card: rgba(255, 255, 255, 0.06);
+  --card-foreground: #FFFFFF;
+  --popover: #0D1117;
+  --popover-foreground: #FFFFFF;
+  --primary: #4F46E5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0D1117;
+  --secondary-foreground: #FFFFFF;
+  --muted: #0D1117;
+  --muted-foreground: #B8C0CC;
+  --accent: #3B82F6;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #4F46E5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-500;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Lenis smooth scrolling requires html to not be smooth */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -18,9 +18,9 @@ const pricingTiers = [
   },
   {
     name: "Focus Pro",
-    price: "$199",
-    period: "/mo",
-    description: "Advanced AI learning and unlimited control. ($1,500/year)",
+    price: "$20",
+    period: "/year",
+    description: "Advanced AI learning and unlimited control. Best value for students.",
     features: [
       "Unlimited Restricted Apps",
       "Subjective Questions",

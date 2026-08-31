@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# FocusDefend Website
 
-## Getting Started
+This repository contains the landing page and marketing website for **FocusDefend**, an innovative parental control and educational platform.
+
+## About FocusDefend
+
+*Where Learning Unlocks Freedom.*
+
+FocusDefend is the only parental control platform where students earn access to their favorite apps by completing educational activities. Instead of just blocking screen time, FocusDefend transforms it into a powerful learning incentive.
+
+## Features
+
+- **Cinematic 3D Scroll:** Immersive landing page built with React Three Fiber and GSAP.
+- **Direct APK Downloads:** Host and distribute the Android app directly to users.
+- **Modern Tech Stack:** Built with Next.js, Tailwind CSS, and modern web standards.
+
+## Development
 
 First, run the development server:
 
-```bash
+\\\ash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
-```
+\\\
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This website is automatically deployed via Vercel. Pushing to the \master\ branch will trigger a production deployment.
 
-## Learn More
+## Downloads
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The latest Android APK release (\FocusShield.apk\) is tracked in the \public\ directory and automatically served to users via the "Download APK" buttons.

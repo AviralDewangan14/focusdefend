@@ -1,4 +1,6 @@
-﻿# FocusDefend Website
+# FocusDefend Website
+
+![FocusDefend Banner](public/banner.jpg)
 
 This repository contains the landing page and marketing website for **FocusDefend**, an innovative parental control and educational platform.
 

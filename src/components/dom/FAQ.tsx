@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, HelpCircle, Sparkles } from "lucide-react";
 
 const faqs = [
   {
@@ -14,11 +15,15 @@ const faqs = [
   },
   {
     question: "Does FocusDefend drain my child's battery?",
-    answer: "No. FocusDefend is built natively for Android using highly optimized background services. Our interception engine uses less than 2% of daily battery life."
+    answer: "No. FocusDefend is built natively for Android using highly optimized background services. Our native interception engine uses less than 2% of daily battery life."
   },
   {
     question: "What if there is an emergency and my child needs their phone?",
     answer: "FocusDefend only blocks specific entertainment and social media apps that you select. Core phone functions like calling, messaging, and emergency services are never blocked."
+  },
+  {
+    question: "How do Over-The-Air (OTA) updates work?",
+    answer: "FocusDefend connects directly to our secure edge CDN distribution network. When an update or patch is published, the app verifies package SHA-256 integrity and applies the update with zero loss of saved student progress."
   },
   {
     question: "How do I cancel my subscription?",
@@ -30,13 +35,17 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 px-6 md:px-12 max-w-3xl mx-auto relative z-20 pb-40">
+    <section id="faq" className="py-24 px-6 md:px-12 max-w-3xl mx-auto relative z-20 pb-40">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-          Frequently asked questions
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full skeuo-pill text-xs font-mono uppercase tracking-wider text-indigo-300 mb-4">
+          <HelpCircle size={14} className="text-indigo-400" />
+          Clear Answers
+        </div>
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+          Frequently Asked Questions
         </h2>
-        <p className="text-gray-400">
-          Everything you need to know about the product and billing.
+        <p className="text-gray-400 text-sm md:text-base">
+          Everything you need to know about the product, battery life, and OTA releases.
         </p>
       </div>
 
@@ -45,23 +54,29 @@ export default function FAQ() {
           const isOpen = openIndex === index;
 
           return (
-            <div 
-              key={index} 
-              className="border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm overflow-hidden transition-colors hover:bg-white/10"
+            <motion.div 
+              key={index}
+              initial={false}
+              className={`rounded-2xl skeuo-card overflow-hidden transition-all duration-300 ${
+                isOpen ? "border-indigo-500/40 shadow-[0_12px_32px_rgba(0,0,0,0.6)]" : "border-white/10"
+              }`}
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                className="w-full text-left px-6 py-5 flex items-center justify-between cursor-pointer focus:outline-none group"
               >
-                <span className="font-semibold text-white pr-8">{faq.question}</span>
-                <motion.span 
+                <span className="font-semibold text-white text-base md:text-lg pr-6 group-hover:text-indigo-200 transition-colors">
+                  {faq.question}
+                </span>
+                
+                {/* Tactile Circular Dial Indicator */}
+                <motion.div 
                   animate={{ rotate: isOpen ? 180 : 0 }}
-                  className="text-indigo-400 shrink-0"
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="w-8 h-8 rounded-full skeuo-btn-secondary flex items-center justify-center shrink-0 text-indigo-400"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </motion.span>
+                  <ChevronDown size={16} />
+                </motion.div>
               </button>
               
               <AnimatePresence initial={false}>
@@ -72,16 +87,19 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                      {faq.answer}
+                    <div className="px-6 pb-6 pt-1">
+                      <div className="skeuo-well p-4 rounded-xl text-gray-300 text-sm leading-relaxed border border-white/5">
+                        {faq.answer}
+                      </div>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           );
         })}
       </div>
     </section>
   );
 }
+

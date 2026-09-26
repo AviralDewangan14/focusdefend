@@ -8,9 +8,11 @@ import DOMCinematicScene from "@/components/dom/DOMCinematicScene";
 import Navbar from "@/components/dom/Navbar";
 import Footer from "@/components/dom/Footer";
 import SceneOverlays from "@/components/dom/SceneOverlays";
+import HeroOverlay from "@/components/dom/HeroOverlay";
 import Pricing from "@/components/dom/Pricing";
 import FAQ from "@/components/dom/FAQ";
 import Loader from "@/components/dom/Loader";
+import OTAUpdateModal from "@/components/dom/OTAUpdateModal";
 
 
 // Register ScrollTrigger
@@ -50,6 +52,7 @@ export default function Home() {
   return (
     <main id="main-container" ref={containerRef} className="relative min-h-[500vh] bg-background text-foreground">
       <Loader />
+      <OTAUpdateModal />
       
       {/* Floating Navbar */}
       <Navbar />
@@ -59,6 +62,7 @@ export default function Home() {
 
       {/* DOM Content Sections layered on top */}
       <div id="scene-overlays" className="relative z-10">
+        <HeroOverlay />
         <SceneOverlays />
       </div>
 

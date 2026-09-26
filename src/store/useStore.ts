@@ -13,6 +13,16 @@ interface StoreState {
   setPhoneRef: (ref: React.RefObject<HTMLDivElement | null>) => void;
   setCameraRigRef: (ref: React.RefObject<HTMLDivElement | null>) => void;
   setAiCoreRef: (ref: React.RefObject<HTMLDivElement | null>) => void;
+  
+  // OTA Update State
+  isOtaModalOpen: boolean;
+  setOtaModalOpen: (open: boolean) => void;
+  otaChannel: "stable" | "canary";
+  setOtaChannel: (channel: "stable" | "canary") => void;
+  otaDownloadProgress: number;
+  setOtaDownloadProgress: (progress: number) => void;
+  isOtaDownloading: boolean;
+  setIsOtaDownloading: (downloading: boolean) => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
@@ -24,4 +34,15 @@ export const useStore = create<StoreState>((set) => ({
   setPhoneRef: (ref) => set({ phoneRef: ref }),
   setCameraRigRef: (ref) => set({ cameraRigRef: ref }),
   setAiCoreRef: (ref) => set({ aiCoreRef: ref }),
+  
+  // OTA defaults
+  isOtaModalOpen: false,
+  setOtaModalOpen: (open) => set({ isOtaModalOpen: open }),
+  otaChannel: "stable",
+  setOtaChannel: (channel) => set({ otaChannel: channel }),
+  otaDownloadProgress: 0,
+  setOtaDownloadProgress: (progress) => set({ otaDownloadProgress: progress }),
+  isOtaDownloading: false,
+  setIsOtaDownloading: (downloading) => set({ isOtaDownloading: downloading }),
 }));
+

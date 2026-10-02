@@ -18,7 +18,12 @@ import {
   Lock, 
   Clock, 
   Star,
-  CheckCircle2
+  CheckCircle2,
+  Settings,
+  LogOut,
+  Sun,
+  Moon,
+  AlertTriangle
 } from "lucide-react";
 
 export default function MobileScreensShowcase() {
@@ -120,6 +125,14 @@ export default function MobileScreensShowcase() {
             }`}
           >
             9. YouTube Shield (Regain)
+          </button>
+          <button
+            onClick={() => setActiveTab("settings")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-all ${
+              activeTab === "settings" ? "skeuo-btn-primary text-white" : "skeuo-btn-secondary text-gray-300 hover:text-white"
+            }`}
+          >
+            10. Profile &amp; Settings
           </button>
         </div>
       </div>
@@ -224,6 +237,17 @@ export default function MobileScreensShowcase() {
               </div>
               <div className="w-[310px] h-[640px]">
                 <SinglePhoneScreen screenType="youtube" />
+              </div>
+            </div>
+
+            {/* Screen 10 */}
+            <div id="screen-settings-container" className="flex flex-col items-center space-y-3">
+              <div className="text-center mb-1">
+                <span className="text-[11px] font-mono text-amber-400 font-bold uppercase tracking-wider">Screen 10</span>
+                <h3 className="text-base font-bold text-white">Profile &amp; Settings</h3>
+              </div>
+              <div className="w-[310px] h-[640px]">
+                <SinglePhoneScreen screenType="settings" />
               </div>
             </div>
           </div>
@@ -876,6 +900,94 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
             </div>
           )}
+
+          {/* Screen 10: Profile & Settings */}
+          {screenType === "settings" && (
+            <div className="space-y-2.5 text-white">
+              <div className="flex justify-between items-center mb-1">
+                <div>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-amber-400 font-bold flex items-center gap-1">
+                    <Settings size={11} className="text-amber-400" />
+                    Device &amp; Account
+                  </span>
+                  <h2 className="text-[16px] font-extrabold text-white">Profile &amp; Settings</h2>
+                </div>
+                <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[8.5px] font-mono font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full skeuo-led-green animate-pulse" />
+                  KNOX
+                </div>
+              </div>
+
+              {/* Profile Card */}
+              <div className="skeuo-card rounded-2xl p-2.5 border border-white/10 shadow-md">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 flex items-center justify-center text-white font-extrabold text-xs shadow-md">
+                      MS
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-extrabold text-white">Mayank Sharma</h4>
+                      <div className="text-[9px] text-gray-400 font-mono">Grade 10 • CBSE</div>
+                    </div>
+                  </div>
+                  <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                    PRO TIER
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-1 pt-1.5 border-t border-white/10 text-[8.5px]">
+                  <div className="p-1 rounded bg-black/30">
+                    <span className="text-gray-400 block text-[7.5px] uppercase font-mono">Device Hardware</span>
+                    <span className="font-semibold text-gray-200">Samsung M34</span>
+                  </div>
+                  <div className="p-1 rounded bg-black/30">
+                    <span className="text-gray-400 block text-[7.5px] uppercase font-mono">Guardian Link</span>
+                    <span className="font-semibold text-emerald-400">Priya Sharma</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Theme Mode Rocker */}
+              <div className="skeuo-card rounded-2xl p-2.5 border border-white/10">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10.5px] font-bold text-white flex items-center gap-1">
+                    <Sparkles size={11} className="text-amber-400" />
+                    Display Theme
+                  </span>
+                  <span className="text-[8px] font-mono text-gray-400">Dark OLED</span>
+                </div>
+                <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-white/5">
+                  <div className="flex-1 py-1 rounded-lg text-[9px] font-bold flex items-center justify-center gap-1 bg-gradient-to-b from-[#2a344d] to-[#141b2c] text-white shadow-sm border border-[#3b4c6e]">
+                    <Moon size={10} className="text-indigo-400 fill-indigo-400/30" />
+                    Dark Mode
+                  </div>
+                  <div className="flex-1 py-1 rounded-lg text-[9px] font-bold flex items-center justify-center gap-1 text-gray-400">
+                    <Sun size={10} className="text-amber-500" />
+                    Light Mode
+                  </div>
+                </div>
+              </div>
+
+              {/* System Architecture */}
+              <div className="skeuo-well p-2 rounded-2xl border border-white/5 space-y-1 text-[8.5px]">
+                <div className="flex justify-between font-bold">
+                  <span className="text-gray-300">Restriction Daemon</span>
+                  <span className="text-emerald-400 font-mono">Special App Access</span>
+                </div>
+                <div className="flex justify-between text-gray-400">
+                  <span>YouTube Shield</span>
+                  <span className="text-indigo-400 font-mono">Regain Active</span>
+                </div>
+              </div>
+
+              {/* Sign Out Button */}
+              <div className="pt-1">
+                <div className="w-full py-2 rounded-xl skeuo-btn-rose text-white font-bold text-[10.5px] flex items-center justify-center gap-1.5 shadow-md">
+                  <LogOut size={12} />
+                  <span>Sign Out of Device</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Bottom Nav: Floating Skeuomorphic Dock */}
@@ -907,13 +1019,22 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
             <span className="text-[8px] mt-0.5 tracking-tight">Quiz</span>
           </div>
 
-          <div className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+          <div className={`flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition-all ${
             screenType === 'progress' 
               ? 'skeuo-dock-tab-active text-purple-400 font-bold scale-105' 
               : 'text-gray-400 hover:text-gray-200'
           }`}>
-            <BarChart3 size={15} className={screenType === 'progress' ? 'fill-purple-400/20 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]' : ''} />
-            <span className="text-[8px] mt-0.5 tracking-tight">Progress</span>
+            <BarChart3 size={14} className={screenType === 'progress' ? 'fill-purple-400/20 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]' : ''} />
+            <span className="text-[7.5px] mt-0.5 tracking-tight">Progress</span>
+          </div>
+
+          <div className={`flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition-all ${
+            screenType === 'settings' 
+              ? 'skeuo-dock-tab-active text-amber-400 font-bold scale-105' 
+              : 'text-gray-400 hover:text-gray-200'
+          }`}>
+            <Settings size={14} className={screenType === 'settings' ? 'fill-amber-400/20 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]' : ''} />
+            <span className="text-[7.5px] mt-0.5 tracking-tight">Settings</span>
           </div>
         </div>
       </div>

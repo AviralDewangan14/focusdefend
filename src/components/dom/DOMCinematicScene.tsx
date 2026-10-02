@@ -71,7 +71,7 @@ export default function DOMCinematicScene() {
             rotateY,
             scale
           }}
-          className="inline-block"
+          className="inline-block pointer-events-auto"
           transition={{ type: "spring", stiffness: 100, damping: 30 }}
         >
           <CSSPhoneModel />

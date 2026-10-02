@@ -25,8 +25,13 @@ import {
   Key,
   Shield,
   DownloadCloud,
-  X
+  X,
+  Settings,
+  LogOut,
+  Sun,
+  Moon
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useStore } from "@/store/useStore";
 
 const InstagramIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
@@ -44,7 +49,7 @@ const YouTubeIcon = ({ size = 18, className = "" }: { size?: number; className?:
   </svg>
 );
 
-export type MobileScreen = "dashboard" | "intercept" | "quiz" | "youtube" | "progress" | "study" | "wallet" | "protection" | "parent";
+export type MobileScreen = "dashboard" | "intercept" | "quiz" | "youtube" | "progress" | "study" | "wallet" | "protection" | "parent" | "settings";
 
 interface BottomNavProps {
   active: MobileScreen;
@@ -52,53 +57,65 @@ interface BottomNavProps {
 }
 
 const BottomNav = ({ active, onNavigate }: BottomNavProps) => (
-  <div className="absolute bottom-3.5 left-3.5 right-3.5 h-[58px] rounded-[24px] skeuo-floating-dock flex justify-between items-center px-2 z-40">
+  <div className="absolute bottom-3.5 left-3.5 right-3.5 h-[58px] rounded-[24px] skeuo-floating-dock flex justify-between items-center px-1.5 z-40">
     <button 
       onClick={() => onNavigate("dashboard")}
-      className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
         active === 'dashboard' 
           ? 'skeuo-dock-tab-active text-indigo-400 font-bold scale-105' 
           : 'text-gray-400 hover:text-gray-200'
       }`}
     >
-      <Home size={17} className={active === 'dashboard' ? 'fill-indigo-400/20 drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]' : ''} />
-      <span className="text-[9px] mt-0.5 tracking-tight">Home</span>
+      <Home size={16} className={active === 'dashboard' ? 'fill-indigo-400/20 drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]' : ''} />
+      <span className="text-[8.5px] mt-0.5 tracking-tight">Home</span>
     </button>
 
     <button 
       onClick={() => onNavigate("intercept")}
-      className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
         active === 'intercept' 
           ? 'skeuo-dock-tab-active text-rose-400 font-bold scale-105' 
           : 'text-gray-400 hover:text-gray-200'
       }`}
     >
-      <ShieldAlert size={17} className={active === 'intercept' ? 'fill-rose-400/20 drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]' : ''} />
-      <span className="text-[9px] mt-0.5 tracking-tight">Shield</span>
+      <ShieldAlert size={16} className={active === 'intercept' ? 'fill-rose-400/20 drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]' : ''} />
+      <span className="text-[8.5px] mt-0.5 tracking-tight">Shield</span>
     </button>
 
     <button 
       onClick={() => onNavigate("quiz")}
-      className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
         active === 'quiz' 
           ? 'skeuo-dock-tab-active text-emerald-400 font-bold scale-105' 
           : 'text-gray-400 hover:text-gray-200'
       }`}
     >
-      <Pencil size={17} className={active === 'quiz' ? 'fill-emerald-400/20 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''} />
-      <span className="text-[9px] mt-0.5 tracking-tight">Quiz</span>
+      <Pencil size={16} className={active === 'quiz' ? 'fill-emerald-400/20 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''} />
+      <span className="text-[8.5px] mt-0.5 tracking-tight">Quiz</span>
     </button>
 
     <button 
       onClick={() => onNavigate("progress")}
-      className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
         active === 'progress' 
           ? 'skeuo-dock-tab-active text-purple-400 font-bold scale-105' 
           : 'text-gray-400 hover:text-gray-200'
       }`}
     >
-      <BarChart3 size={17} className={active === 'progress' ? 'fill-purple-400/20 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]' : ''} />
-      <span className="text-[9px] mt-0.5 tracking-tight">Progress</span>
+      <BarChart3 size={16} className={active === 'progress' ? 'fill-purple-400/20 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]' : ''} />
+      <span className="text-[8.5px] mt-0.5 tracking-tight">Progress</span>
+    </button>
+
+    <button 
+      onClick={() => onNavigate("settings")}
+      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
+        active === 'settings' 
+          ? 'skeuo-dock-tab-active text-amber-400 font-bold scale-105' 
+          : 'text-gray-400 hover:text-gray-200'
+      }`}
+    >
+      <Settings size={16} className={active === 'settings' ? 'fill-amber-400/20 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]' : ''} />
+      <span className="text-[8.5px] mt-0.5 tracking-tight">Settings</span>
     </button>
   </div>
 );
@@ -120,9 +137,13 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
           <span className="text-[10px] font-mono uppercase tracking-widest text-indigo-400">FocusDefend Mobile</span>
           <h2 className="text-[19px] font-extrabold text-white">Student Dashboard</h2>
         </div>
-        <div className="w-8 h-8 rounded-full skeuo-btn-secondary flex items-center justify-center text-gray-300">
+        <button
+          onClick={() => onNavigate("settings")}
+          className="w-8 h-8 rounded-full skeuo-btn-secondary flex items-center justify-center text-gray-300 hover:text-white cursor-pointer transition-transform active:scale-95"
+          title="Student Profile & Settings"
+        >
           <User size={16} />
-        </div>
+        </button>
       </div>
 
       {/* Live OTA Notification Banner in Dashboard */}
@@ -1310,6 +1331,250 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
   </motion.div>
 );
 
+/* SCREEN 10: SETTINGS & STUDENT PROFILE */
+const SettingsScreen = ({ 
+  onNavigate 
+}: { 
+  onNavigate: (screen: MobileScreen) => void;
+}) => {
+  const { theme, setTheme } = useTheme();
+  const [localTheme, setLocalTheme] = useState<"dark" | "light">("dark");
+  const [showSignOutConfirm, setShowSignOutConfirm] = useState(false);
+  const [signedOut, setSignedOut] = useState(false);
+  const { setOtaModalOpen } = useStore();
+
+  useEffect(() => {
+    if (theme === "light" || theme === "dark") {
+      setLocalTheme(theme);
+    }
+  }, [theme]);
+
+  const handleToggleTheme = (mode: "dark" | "light") => {
+    setLocalTheme(mode);
+    if (setTheme) setTheme(mode);
+  };
+
+  const handleConfirmSignOut = () => {
+    setSignedOut(true);
+    setShowSignOutConfirm(false);
+  };
+
+  const handleRestoreSession = () => {
+    setSignedOut(false);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.25 }}
+      className={`absolute inset-0 flex flex-col pt-16 px-4 pb-24 overflow-y-auto transition-colors duration-200 ${
+        localTheme === "light" 
+          ? "bg-[#eef2f8] text-gray-900" 
+          : "bg-[#070a14] text-white"
+      }`}
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center mb-3">
+        <div>
+          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold flex items-center gap-1.5">
+            <Settings size={12} className="text-amber-400" />
+            Device &amp; Account
+          </span>
+          <h2 className={`text-[18px] font-extrabold ${localTheme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+            Profile &amp; Settings
+          </h2>
+        </div>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono font-bold">
+          <span className="w-1.5 h-1.5 rounded-full skeuo-led-green animate-pulse" />
+          KNOX ACTIVE
+        </div>
+      </div>
+
+      {signedOut ? (
+        /* Signed Out Lockdown State */
+        <div className="my-auto text-center p-5 rounded-2xl skeuo-card border border-rose-500/40 bg-rose-950/20 space-y-3">
+          <div className="w-14 h-14 mx-auto rounded-full bg-rose-600/20 border-2 border-rose-500/50 flex items-center justify-center text-rose-400 shadow-lg">
+            <Lock size={26} />
+          </div>
+          <h3 className="text-base font-extrabold text-white">Student Account Signed Out</h3>
+          <p className="text-xs text-gray-300 leading-relaxed max-w-xs mx-auto">
+            Device session terminated. All entertainment apps and background popups are frozen under Guardian Safe Mode.
+          </p>
+          <div className="pt-2">
+            <button
+              onClick={handleRestoreSession}
+              className="w-full py-2.5 rounded-xl skeuo-btn-primary text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer shadow-md"
+            >
+              <User size={14} />
+              Sign In as Mayank Sharma
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Student Profile Card (Machined Polycarbonate) */}
+          <div className={`p-3.5 rounded-2xl border mb-3 shadow-md ${
+            localTheme === 'light' 
+              ? 'bg-white border-gray-300 shadow-gray-200' 
+              : 'skeuo-card border-white/10'
+          }`}>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2.5">
+                <div className="relative">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 flex items-center justify-center text-white font-extrabold text-sm shadow-md">
+                    MS
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#070a14] flex items-center justify-center">
+                    <CheckCircle2 size={8} className="text-black" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className={`text-sm font-extrabold ${localTheme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+                    Mayank Sharma
+                  </h3>
+                  <div className="text-[10px] text-gray-400 font-mono">
+                    Grade 10 • CBSE Board
+                  </div>
+                </div>
+              </div>
+              <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                PRO TIER
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-1.5 pt-2 border-t border-white/10 text-[9.5px]">
+              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-black/30'}`}>
+                <span className="text-gray-400 block text-[8px] uppercase font-mono">Device Hardware</span>
+                <span className={`font-semibold truncate block ${localTheme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>Samsung M34 (#FD-9942)</span>
+              </div>
+              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-black/30'}`}>
+                <span className="text-gray-400 block text-[8px] uppercase font-mono">Guardian Sync</span>
+                <span className={`font-semibold truncate block ${localTheme === 'light' ? 'text-gray-800' : 'text-emerald-400'}`}>Priya Sharma (Parent)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Theme Selector: Tactile Dark or Light Mode Rocker */}
+          <div className={`p-3 rounded-2xl border mb-3 ${
+            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-card border-white/10'
+          }`}>
+            <div className="flex items-center justify-between mb-2">
+              <span className={`text-xs font-bold flex items-center gap-1.5 ${localTheme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+                <Sparkles size={12} className="text-amber-400" />
+                Theme &amp; Display Appearance
+              </span>
+              <span className="text-[9px] font-mono text-gray-400">
+                {localTheme === "dark" ? "Dark Mode" : "Light Mode"}
+              </span>
+            </div>
+            
+            {/* Skeuomorphic Two-Way Rocker Well */}
+            <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-white/5">
+              <button
+                onClick={() => handleToggleTheme("dark")}
+                className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
+                  localTheme === "dark"
+                    ? "bg-gradient-to-b from-[#2a344d] to-[#141b2c] text-white shadow-[0_3px_8px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.2)] border border-[#3b4c6e]"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <Moon size={12} className={localTheme === "dark" ? "text-indigo-400 fill-indigo-400/30" : ""} />
+                Dark Mode
+              </button>
+
+              <button
+                onClick={() => handleToggleTheme("light")}
+                className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
+                  localTheme === "light"
+                    ? "bg-gradient-to-b from-white to-gray-200 text-gray-900 shadow-[0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.9)] border border-gray-300"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <Sun size={12} className={localTheme === "light" ? "text-amber-500 fill-amber-500/30" : ""} />
+                Light Mode
+              </button>
+            </div>
+          </div>
+
+          {/* System & Architecture Summary */}
+          <div className={`p-2.5 rounded-2xl border mb-3 space-y-1.5 text-[9.5px] ${
+            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-well border-white/5'
+          }`}>
+            <div className="flex items-center justify-between font-bold">
+              <span className={localTheme === 'light' ? 'text-gray-800' : 'text-gray-300'}>Restriction Engine</span>
+              <span className="text-emerald-400 font-mono">Special App Access</span>
+            </div>
+            <div className="flex items-center justify-between text-gray-400">
+              <span>Accessibility Service</span>
+              <span className="text-gray-400 font-mono">Purged (0% Battery)</span>
+            </div>
+            <div className="flex items-center justify-between text-gray-400">
+              <span>YouTube Selective Shield</span>
+              <span className="text-indigo-400 font-mono">Shorts Blocked</span>
+            </div>
+            <div className="flex items-center justify-between text-gray-400 pt-1 border-t border-white/5">
+              <span>Firmware Version</span>
+              <button
+                onClick={() => setOtaModalOpen(true)}
+                className="text-emerald-400 font-mono font-bold hover:underline cursor-pointer"
+              >
+                v1.3.0-CORE (Check OTA)
+              </button>
+            </div>
+          </div>
+
+          {/* Sign Out Action Section */}
+          <div className="mt-auto pt-1 space-y-2">
+            {showSignOutConfirm ? (
+              <div className="p-3 rounded-2xl skeuo-card border border-rose-500/50 bg-rose-950/30 space-y-2 animate-in fade-in">
+                <div className="text-[10.5px] font-bold text-white flex items-center gap-1.5">
+                  <AlertTriangle size={13} className="text-rose-400" />
+                  Confirm Profile Sign Out?
+                </div>
+                <p className="text-[9px] text-gray-300 leading-snug">
+                  Signing out terminates session and locks restricted apps until guardian PIN is entered.
+                </p>
+                <div className="flex items-center gap-2 pt-0.5">
+                  <button
+                    onClick={() => setShowSignOutConfirm(false)}
+                    className="flex-1 py-1.5 rounded-xl skeuo-btn-secondary text-[9.5px] font-semibold text-gray-300 hover:text-white cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleConfirmSignOut}
+                    className="flex-1 py-1.5 rounded-xl skeuo-btn-rose text-[9.5px] font-bold text-white shadow-md cursor-pointer flex items-center justify-center gap-1"
+                  >
+                    <LogOut size={11} />
+                    Sign Out &amp; Lock
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowSignOutConfirm(true)}
+                className="w-full py-2.5 rounded-2xl skeuo-btn-rose text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:brightness-110 active:scale-98 transition-all"
+              >
+                <LogOut size={13} />
+                <span>Sign Out of Account</span>
+              </button>
+            )}
+
+            <button 
+              onClick={() => onNavigate("dashboard")}
+              className="w-full skeuo-btn-secondary text-gray-400 hover:text-white rounded-full py-2 font-medium text-[11px] cursor-pointer"
+            >
+              Return to Home
+            </button>
+          </div>
+        </>
+      )}
+    </motion.div>
+  );
+};
+
 export default function CSSPhoneModel() {
   const [screen, setScreen] = useState<MobileScreen>("dashboard");
   const [interceptMode, setInterceptMode] = useState<"instagram" | "shorts" | "channel">("instagram");
@@ -1325,7 +1590,7 @@ export default function CSSPhoneModel() {
   useEffect(() => {
     setMounted(true);
     // Cycle through screens every 9 seconds if idle
-    const screens: MobileScreen[] = ["dashboard", "intercept", "youtube", "quiz", "progress", "study", "wallet", "protection", "parent"];
+    const screens: MobileScreen[] = ["dashboard", "intercept", "youtube", "quiz", "progress", "study", "wallet", "protection", "parent", "settings"];
     let idx = 0;
     const interval = setInterval(() => {
       idx = (idx + 1) % screens.length;
@@ -1339,7 +1604,7 @@ export default function CSSPhoneModel() {
   }
 
   return (
-    <div className="relative w-[320px] h-[670px] md:w-[370px] md:h-[770px] mx-auto">
+    <div className="relative w-[320px] h-[670px] md:w-[370px] md:h-[770px] mx-auto pointer-events-auto">
       {/* Physical Hardware Volume & Power Rockers */}
       <div className="absolute -left-[14px] top-28 w-[4px] h-12 bg-[#2c3242] rounded-l-md shadow-inner" />
       <div className="absolute -left-[14px] top-44 w-[4px] h-12 bg-[#2c3242] rounded-l-md shadow-inner" />
@@ -1400,6 +1665,12 @@ export default function CSSPhoneModel() {
           className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'parent' ? 'bg-cyan-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
         >
           Parent
+        </button>
+        <button
+          onClick={() => setScreen("settings")}
+          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'settings' ? 'bg-amber-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
+        >
+          Settings
         </button>
       </div>
 
@@ -1498,12 +1769,13 @@ export default function CSSPhoneModel() {
               {screen === "wallet" && <WalletScreen key="wallet" onNavigate={setScreen} credits={credits} />}
               {screen === "protection" && <ProtectionScreen key="protection" onNavigate={setScreen} />}
               {screen === "parent" && <ParentDashboardScreen key="parent" onNavigate={setScreen} />}
+              {screen === "settings" && <SettingsScreen key="settings" onNavigate={setScreen} />}
             </AnimatePresence>
           </div>
           
           <BottomNav active={screen} onNavigate={setScreen} />
 
-          {/* Glare Glass Reflection */}
+          {/* Oleophobic Optical Surface Highlight */}
           <div className="absolute top-0 right-0 w-32 h-64 bg-gradient-to-bl from-white/10 to-transparent pointer-events-none z-50 rounded-tr-[36px]" />
         </div>
       </div>

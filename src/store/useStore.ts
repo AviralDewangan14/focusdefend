@@ -23,6 +23,11 @@ interface StoreState {
   setOtaDownloadProgress: (progress: number) => void;
   isOtaDownloading: boolean;
   setIsOtaDownloading: (downloading: boolean) => void;
+  hasOtaNotification: boolean;
+  setHasOtaNotification: (has: boolean) => void;
+  otaVersion: string;
+  dismissOtaNotification: () => void;
+  triggerOtaNotification: () => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
@@ -44,5 +49,10 @@ export const useStore = create<StoreState>((set) => ({
   setOtaDownloadProgress: (progress) => set({ otaDownloadProgress: progress }),
   isOtaDownloading: false,
   setIsOtaDownloading: (downloading) => set({ isOtaDownloading: downloading }),
+  hasOtaNotification: true, // Default to true so user immediately sees functional OTA notification
+  setHasOtaNotification: (has) => set({ hasOtaNotification: has }),
+  otaVersion: "v1.3.0-CORE",
+  dismissOtaNotification: () => set({ hasOtaNotification: false }),
+  triggerOtaNotification: () => set({ hasOtaNotification: true }),
 }));
 

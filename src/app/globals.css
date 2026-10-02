@@ -115,26 +115,107 @@
    WORLD-WIDE SKEUOMORPHIC DESIGN SYSTEM TOKENS & UTILITIES
    ========================================================================= */
 
-/* Tactile Physical Hardware Card */
+/* Tactile Physical Hardware Card - PURE OPAQUE SKEUOMORPHISM (NO GLASSMORPHISM) */
 .skeuo-card {
-  background: linear-gradient(150deg, rgba(28, 33, 50, 0.72) 0%, rgba(11, 14, 25, 0.88) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(175deg, #182032 0%, #0d1220 50%, #080b15 100%);
+  border: 1px solid #293854;
   box-shadow: 
-    0 24px 48px -12px rgba(0, 0, 0, 0.8),
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px);
+    0 16px 36px -8px rgba(0, 0, 0, 0.95),
+    0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.8);
 }
 
 .dark .skeuo-card {
-  background: linear-gradient(150deg, rgba(24, 28, 44, 0.8) 0%, rgba(8, 10, 19, 0.92) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(175deg, #151c2e 0%, #0c101c 50%, #070912 100%);
+  border: 1px solid #24324c;
   box-shadow: 
-    0 24px 50px -10px rgba(0, 0, 0, 0.9),
-    0 4px 16px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+    0 18px 40px -10px rgba(0, 0, 0, 0.95),
+    0 4px 12px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* 3D Physical Minted Focus Credit Coin */
+.skeuo-coin {
+  background: radial-gradient(circle at 35% 30%, #fef08a 0%, #f59e0b 60%, #b45309 100%);
+  border: 2px solid #fef3c7;
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(180, 83, 9, 0.8),
+    inset 0 2px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -3px 4px rgba(113, 44, 2, 0.8);
+}
+
+@keyframes coin-stamp {
+  0% {
+    transform: scale(0.4) translateY(-30px) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.18) translateY(4px) rotate(4deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.95) translateY(-2px) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes credit-glow-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.8), inset 0 0 0 0 rgba(245, 158, 11, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(245, 158, 11, 0), inset 0 0 14px rgba(245, 158, 11, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0), inset 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes quiz-start-pulse {
+  0% {
+    transform: scale(0.94);
+    opacity: 0;
+    filter: brightness(1.4);
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@keyframes ticker-bounce {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(-6px); }
+  70% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-coin-stamp {
+  animation: coin-stamp 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-credit-ring {
+  animation: credit-glow-ring 1.4s ease-out infinite;
+}
+
+.animate-quiz-start {
+  animation: quiz-start-pulse 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ticker {
+  animation: ticker-bounce 0.45s ease-out;
 }
 
 /* Debossed / Sunken Hardware Well */
@@ -282,6 +363,27 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 100%);
   pointer-events: none;
   border-radius: inherit;
+}
+
+/* Floating Skeuomorphic Bottom Nav Dock - PURE OPAQUE SKEUOMORPHISM (NO GLASSMORPHISM) */
+.skeuo-floating-dock {
+  background: linear-gradient(180deg, #1c2338 0%, #0e1322 60%, #070914 100%);
+  border: 1px solid #334360;
+  box-shadow: 
+    0 16px 32px -4px rgba(0, 0, 0, 0.95),
+    0 6px 14px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Active tab inside the floating dock */
+.skeuo-dock-tab-active {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Lenis smooth scrolling requires html to not be smooth */

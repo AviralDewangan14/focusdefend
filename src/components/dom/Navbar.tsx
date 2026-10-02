@@ -9,7 +9,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { setOtaModalOpen } = useStore();
+  const { setOtaModalOpen, hasOtaNotification } = useStore();
 
   useEffect(() => {
     setMounted(true);
@@ -23,8 +23,8 @@ export default function Navbar() {
       <div 
         className={`pointer-events-auto flex items-center justify-between px-4 md:px-6 py-2.5 md:py-3 w-full max-w-5xl rounded-full transition-all duration-300 ${
           scrolled 
-            ? "skeuo-card bg-[#0b0e1b]/85 backdrop-blur-xl border border-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)]" 
-            : "bg-[#0b0e1b]/40 backdrop-blur-md border border-white/10"
+            ? "skeuo-card bg-[#0c101d] border border-[#27324d] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_0_rgba(0,0,0,0.8)]" 
+            : "bg-[#0a0e1a] border border-[#1e273d] shadow-[0_10px_24px_rgba(0,0,0,0.75),inset_0_1px_0_rgba(255,255,255,0.08)]"
         }`}
       >
         {/* Brand / Logo */}
@@ -50,13 +50,19 @@ export default function Navbar() {
           {/* Over-The-Air (OTA) Status Pill */}
           <button
             onClick={() => setOtaModalOpen(true)}
-            className="skeuo-pill px-3 py-1.5 rounded-full text-xs font-semibold text-gray-200 hover:text-white flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 group"
+            className={`skeuo-pill px-3 py-1.5 rounded-full text-xs font-semibold text-gray-200 hover:text-white flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 group ${
+              hasOtaNotification ? "border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.3)]" : ""
+            }`}
             title="Open FocusDefend OTA System Update Center"
           >
-            <span className="w-2 h-2 rounded-full skeuo-led-green animate-pulse" />
-            <span className="hidden sm:inline text-[11px] font-mono">OTA v1.2.4</span>
-            <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.2 rounded-full">
-              Live
+            <span className={`w-2 h-2 rounded-full ${hasOtaNotification ? "skeuo-led-green animate-ping" : "skeuo-led-green animate-pulse"}`} />
+            <span className="hidden sm:inline text-[11px] font-mono">OTA v1.3.0</span>
+            <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full border ${
+              hasOtaNotification 
+                ? "bg-emerald-500/30 text-emerald-300 border-emerald-400 font-bold animate-pulse" 
+                : "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+            }`}>
+              {hasOtaNotification ? "Update Ready" : "Current"}
             </span>
           </button>
 

@@ -811,7 +811,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
             </div>
           )}
 
-          {/* Screen 9: Smart App Guardian (Google Play Protect Certified) */}
+          {/* Screen 9: Smart App Guardian & YouTube Channel Shield */}
           {screenType === "youtube" && (
             <div className="space-y-2.5 text-white">
               <div className="flex justify-between items-center mb-1">
@@ -841,6 +841,36 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 </p>
               </div>
 
+              {/* YouTube Distraction & Shorts Shield */}
+              <div className="skeuo-card rounded-2xl p-2.5 border border-red-500/30 bg-gradient-to-br from-red-950/20 to-[#0e1222] space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-lg bg-red-600 flex items-center justify-center text-white">
+                      <YouTubeIcon size={12} className="fill-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-[11px] font-bold text-white leading-none">YouTube Channel Shield</h4>
+                      <span className="text-[8px] text-gray-400">Curriculum Channel Whitelist</span>
+                    </div>
+                  </div>
+                  <span className="text-[7.5px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-1.5 py-0.2 rounded-full">ACTIVE</span>
+                </div>
+
+                <div className="skeuo-well p-1.5 rounded-xl border border-white/5 space-y-1 text-[8.5px]">
+                  <div className="flex justify-between items-center text-emerald-300 font-bold">
+                    <span className="flex items-center gap-1"><CheckCircle2 size={10} className="text-emerald-400" /> Whitelisted Study Channels:</span>
+                    <span className="text-[7.5px] font-mono text-emerald-400">UNLIMITED</span>
+                  </div>
+                  <p className="text-[8px] text-gray-400 leading-snug">Khan Academy, MIT OCW, CrashCourse, 3Blue1Brown, NCERT Solutions.</p>
+                  
+                  <div className="pt-0.5 border-t border-white/5 flex justify-between items-center text-rose-300 font-bold">
+                    <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> Distracting Channels &amp; Shorts:</span>
+                    <span className="text-[7.5px] font-mono text-rose-400">QUIZ GATED</span>
+                  </div>
+                  <p className="text-[8px] text-gray-400 leading-snug">Gaming, entertainment, and infinite Shorts feeds are auto-intercepted.</p>
+                </div>
+              </div>
+
               {/* Guarded Apps & Quotas */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-[9px] text-gray-400 font-mono">
@@ -863,12 +893,12 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
 
                 <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-lg bg-rose-600/30 border border-rose-500/40 flex items-center justify-center text-rose-400">
-                      <Lock size={11} />
+                    <div className="w-5 h-5 rounded-lg bg-red-600/30 border border-red-500/40 flex items-center justify-center text-red-400">
+                      <YouTubeIcon size={11} className="fill-red-400" />
                     </div>
                     <div>
-                      <div className="font-bold text-white leading-none">TikTok</div>
-                      <div className="text-[8px] text-gray-400">Video • 35m / 20m</div>
+                      <div className="font-bold text-white leading-none">YouTube</div>
+                      <div className="text-[8px] text-gray-400">Video &amp; Shorts • 54m / 30m</div>
                     </div>
                   </div>
                   <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
@@ -876,12 +906,12 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
 
                 <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-lg bg-purple-600/30 border border-purple-500/40 flex items-center justify-center text-purple-400">
+                    <div className="w-5 h-5 rounded-lg bg-rose-600/30 border border-rose-500/40 flex items-center justify-center text-rose-400">
                       <Lock size={11} />
                     </div>
                     <div>
-                      <div className="font-bold text-white leading-none">Snapchat</div>
-                      <div className="text-[8px] text-gray-400">Chat • 28m / 15m</div>
+                      <div className="font-bold text-white leading-none">TikTok</div>
+                      <div className="text-[8px] text-gray-400">Short Video • 35m / 20m</div>
                     </div>
                   </div>
                   <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>

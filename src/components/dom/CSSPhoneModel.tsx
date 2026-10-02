@@ -306,7 +306,7 @@ const RestrictedAppScreen = ({
       </div>
 
       {/* Target Selector Pills */}
-      <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/5 mb-4 text-[9.5px] font-mono">
+      <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/5 mb-4 text-[9px] font-mono">
         <button
           onClick={() => handleSelectMode("instagram")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
@@ -318,10 +318,10 @@ const RestrictedAppScreen = ({
         <button
           onClick={() => handleSelectMode("shorts")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
-            currentMode === "shorts" ? "bg-pink-600 text-white shadow-md" : "text-gray-400 hover:text-white"
+            currentMode === "shorts" ? "bg-red-600 text-white shadow-md" : "text-gray-400 hover:text-white"
           }`}
         >
-          TikTok
+          YT Shorts
         </button>
         <button
           onClick={() => handleSelectMode("channel")}
@@ -329,7 +329,7 @@ const RestrictedAppScreen = ({
             currentMode === "channel" ? "bg-amber-600 text-white shadow-md" : "text-gray-400 hover:text-white"
           }`}
         >
-          Snapchat
+          YT Channel
         </button>
       </div>
 
@@ -350,9 +350,9 @@ const RestrictedAppScreen = ({
           </div>
         )}
         {currentMode === "channel" && (
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-rose-600 p-0.5 shadow-[0_12px_30px_rgba(168,85,247,0.35)] flex items-center justify-center">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 via-red-600 to-rose-700 p-0.5 shadow-[0_12px_30px_rgba(245,158,11,0.35)] flex items-center justify-center">
             <div className="w-full h-full rounded-2xl bg-black/20 flex items-center justify-center">
-              <Lock size={30} className="text-white" />
+              <YouTubeIcon size={34} className="text-white fill-white" />
             </div>
           </div>
         )}
@@ -364,11 +364,13 @@ const RestrictedAppScreen = ({
       <div className="text-center mb-4">
         <h2 className="text-[19px] font-extrabold text-white mb-1">
           {currentMode === "instagram" && "Instagram is Paused"}
-          {currentMode === "shorts" && "TikTok is Paused"}
-          {currentMode === "channel" && "Snapchat is Paused"}
+          {currentMode === "shorts" && "YouTube Shorts is Paused"}
+          {currentMode === "channel" && "Distracting Channel Gated"}
         </h2>
         <p className="text-xs text-gray-400 max-w-xs mx-auto leading-relaxed">
-          Scheduled study session is active. Distracting social app paused via Google Play-compliant UsageStats monitoring. Zero background popups.
+          {currentMode === "instagram" && "Study session active. Distracting social app paused via Google Play-compliant UsageStats monitoring. Zero background popups."}
+          {currentMode === "shorts" && "Infinite short-form feed gated to protect retention. Whitelisted educational YouTube channels remain accessible."}
+          {currentMode === "channel" && "Entertainment channel is restricted during study hours. Khan Academy, MIT OCW, and NCERT channels are whitelisted."}
         </p>
       </div>
 
@@ -417,7 +419,7 @@ const RestrictedAppScreen = ({
   );
 };
 
-/* SCREEN 3: SMART APP GUARDIAN (GOOGLE PLAY PROTECT CERTIFIED) */
+/* SCREEN 3: SMART APP GUARDIAN & YOUTUBE CHANNEL SHIELD */
 const SmartAppGuardianScreen = ({ 
   onNavigate,
   onSelectInterceptMode
@@ -427,9 +429,9 @@ const SmartAppGuardianScreen = ({
 }) => {
   const [apps, setApps] = useState([
     { id: "instagram", name: "Instagram", category: "Social Media", timeUsed: "42m / 30m", blocked: true, color: "from-pink-600 to-rose-600" },
-    { id: "shorts", name: "TikTok", category: "Short Video", timeUsed: "35m / 20m", blocked: true, color: "from-red-600 to-rose-700" },
+    { id: "youtube", name: "YouTube", category: "Video & Shorts", timeUsed: "54m / 30m", blocked: true, color: "from-red-600 to-rose-700" },
+    { id: "shorts", name: "TikTok", category: "Short Video", timeUsed: "35m / 20m", blocked: true, color: "from-purple-600 to-pink-600" },
     { id: "channel", name: "Snapchat", category: "Instant Messaging", timeUsed: "28m / 15m", blocked: true, color: "from-amber-500 to-yellow-600" },
-    { id: "gaming", name: "Battle Royale (BGMI)", category: "Mobile Gaming", timeUsed: "0m / 0m", blocked: true, color: "from-purple-600 to-indigo-700" },
   ]);
 
   const toggleApp = (id: string) => {
@@ -470,6 +472,36 @@ const SmartAppGuardianScreen = ({
         <p className="text-[10.5px] text-gray-300 leading-snug">
           Zero Accessibility Service • Zero Background Popups (<code className="text-emerald-400">SYSTEM_ALERT_WINDOW</code> purged). Uses Google Play approved <strong>App Usage Access</strong> for screen time monitoring and clean activity gating.
         </p>
+      </div>
+
+      {/* YouTube Distraction & Shorts Shield Card */}
+      <div className="skeuo-card rounded-2xl p-3 border border-red-500/30 bg-gradient-to-br from-red-950/20 to-[#0e1222] mb-3 space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-lg bg-red-600 flex items-center justify-center text-white">
+              <YouTubeIcon size={14} className="fill-white" />
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-white leading-none">YouTube Channel Shield</h4>
+              <span className="text-[8.5px] text-gray-400">Curriculum Channel Whitelist</span>
+            </div>
+          </div>
+          <span className="text-[8px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">ACTIVE</span>
+        </div>
+
+        <div className="skeuo-well p-2 rounded-xl border border-white/5 space-y-1 text-[9.5px]">
+          <div className="flex justify-between items-center text-emerald-300 font-bold">
+            <span className="flex items-center gap-1"><CheckCircle2 size={11} className="text-emerald-400" /> Whitelisted Study Channels:</span>
+            <span className="text-[8px] font-mono text-emerald-400">UNLIMITED</span>
+          </div>
+          <p className="text-[8.5px] text-gray-400 leading-snug">Khan Academy, MIT OCW, CrashCourse, 3Blue1Brown, NCERT Solutions.</p>
+          
+          <div className="pt-1 border-t border-white/5 flex justify-between items-center text-rose-300 font-bold">
+            <span className="flex items-center gap-1"><Lock size={11} className="text-rose-400" /> Distracting Channels &amp; Shorts:</span>
+            <span className="text-[8px] font-mono text-rose-400">QUIZ GATED</span>
+          </div>
+          <p className="text-[8.5px] text-gray-400 leading-snug">Gaming, entertainment, and infinite Shorts feeds are auto-intercepted.</p>
+        </div>
       </div>
 
       {/* App Limits & Restriction List */}
@@ -515,18 +547,30 @@ const SmartAppGuardianScreen = ({
           <span className="text-[9px] font-mono text-emerald-400">0ms Overhead</span>
         </div>
         <p className="text-[10px] text-gray-400 leading-snug">
-          Simulate a student opening a restricted app. FocusDefend brings the quiz challenge directly to the foreground without any overlay popups.
+          Simulate a student opening a restricted app or distracting YouTube channel. FocusDefend brings the quiz challenge directly to the foreground without any overlay popups.
         </p>
-        <button
-          onClick={() => {
-            if (onSelectInterceptMode) onSelectInterceptMode("instagram");
-            onNavigate("intercept");
-          }}
-          className="w-full py-2.5 rounded-xl skeuo-btn-primary text-xs font-bold text-white flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
-        >
-          <Play size={12} className="fill-white" />
-          Simulate App Launch Intercept
-        </button>
+        <div className="grid grid-cols-2 gap-1.5">
+          <button
+            onClick={() => {
+              if (onSelectInterceptMode) onSelectInterceptMode("instagram");
+              onNavigate("intercept");
+            }}
+            className="py-2 rounded-xl skeuo-btn-primary text-[10px] font-bold text-white flex items-center justify-center gap-1 cursor-pointer shadow-md"
+          >
+            <Play size={11} className="fill-white" />
+            Instagram Test
+          </button>
+          <button
+            onClick={() => {
+              if (onSelectInterceptMode) onSelectInterceptMode("channel");
+              onNavigate("intercept");
+            }}
+            className="py-2 rounded-xl skeuo-btn-rose text-[10px] font-bold text-white flex items-center justify-center gap-1 cursor-pointer shadow-md"
+          >
+            <YouTubeIcon size={12} className="fill-white" />
+            YT Channel Test
+          </button>
+        </div>
       </div>
 
       {/* Return to Dashboard */}

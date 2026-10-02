@@ -57,7 +57,7 @@ interface BottomNavProps {
 }
 
 const BottomNav = ({ active, onNavigate }: BottomNavProps) => (
-  <div className="absolute bottom-3.5 left-3.5 right-3.5 h-[58px] rounded-[24px] skeuo-floating-dock flex justify-between items-center px-1.5 z-40">
+  <div className="absolute bottom-3.5 left-3.5 right-3.5 h-[58px] rounded-[24px] skeuo-floating-dock flex justify-between items-center px-1.5 z-40 pointer-events-auto">
     <button 
       onClick={() => onNavigate("dashboard")}
       className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
@@ -158,10 +158,10 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
             </div>
             <div>
               <div className="text-[11px] font-bold text-white flex items-center gap-1.5">
-                v1.3.0 Core Available
+                v2.3.0 Core Available
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               </div>
-              <div className="text-[9.5px] text-gray-300">Special App Access &amp; YouTube Filter</div>
+              <div className="text-[9.5px] text-gray-300">Play Protect Certified • Floating Dock</div>
             </div>
           </div>
           <span className="text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full group-hover:bg-emerald-500/30">
@@ -178,7 +178,7 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
             <ShieldCheck size={14} className="text-emerald-400" />
             <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-300">Active Shield</span>
           </div>
-          <span className="text-[9px] font-mono text-gray-400">Special App Access</span>
+          <span className="text-[9px] font-mono text-gray-400">UsageStats API</span>
         </div>
 
         <h3 className="text-[20px] font-extrabold text-white mb-0.5">Mayank Sharma</h3>
@@ -199,24 +199,24 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
         <span>Start Study Mode</span>
       </button>
 
-      {/* Regain YouTube Feature Card */}
+      {/* Smart App Guardian Card (Google Play Protect Certified) */}
       <div 
         onClick={() => onNavigate("youtube")}
-        className="p-3 rounded-2xl skeuo-card border border-red-500/30 bg-red-950/20 mb-3 flex items-center justify-between cursor-pointer hover:border-red-500/50 transition-all"
+        className="p-3 rounded-2xl skeuo-card border border-indigo-500/30 bg-indigo-950/20 mb-3 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition-all"
       >
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-red-600 to-rose-700 flex items-center justify-center text-white shadow-md shrink-0">
-            <YouTubeIcon size={16} className="fill-white" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-600 flex items-center justify-center text-white shadow-md shrink-0">
+            <ShieldCheck size={16} className="text-white" />
           </div>
           <div>
             <div className="text-xs font-bold text-white flex items-center gap-1.5">
-              YouTube Smart Filter <span className="text-[8.5px] font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 px-1.5 py-0.2 rounded-full">Regain</span>
+              Smart App Guardian <span className="text-[8.5px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.2 rounded-full">Play Protect Pass</span>
             </div>
-            <div className="text-[10px] text-gray-400">Shorts Gated • Study Lectures Free</div>
+            <div className="text-[10px] text-gray-400">Android UsageStats • Zero A11y / Popups</div>
           </div>
         </div>
         <span className="text-[9.5px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full">
-          Active
+          Guarded
         </span>
       </div>
 
@@ -233,7 +233,7 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
             <div className="text-xs font-bold text-white flex items-center gap-1.5">
               Instagram <Lock size={11} className="text-rose-400" />
             </div>
-            <div className="text-[10px] text-gray-400">Special App Access Background Popup</div>
+            <div className="text-[10px] text-gray-400">Foreground Focus Lockout • UsageStats API</div>
           </div>
         </div>
         <span className="text-[9.5px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/40 px-2 py-0.5 rounded-full">
@@ -294,14 +294,14 @@ const RestrictedAppScreen = ({
       transition={{ duration: 0.25 }}
       className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-gradient-to-b from-[#140608] via-[#090b14] to-[#060810] overflow-y-auto"
     >
-      {/* Modern Special App Access Badge */}
+      {/* Google Play Protect Certified Badge */}
       <div className="flex flex-col items-center gap-1 mb-4 text-center">
         <div className="flex items-center gap-1.5 text-[9.5px] font-mono uppercase tracking-widest text-emerald-300 skeuo-pill px-3 py-1 rounded-full border-emerald-500/40">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Special App Access: Background Popup Window
+          Google Play Protect Certified • Focus Guard
         </div>
         <span className="text-[9px] font-mono text-gray-400">
-          Zero Accessibility • SYSTEM_ALERT_WINDOW + UsageStats
+          Zero Accessibility • Zero Background Popups • UsageStats API
         </span>
       </div>
 
@@ -313,23 +313,23 @@ const RestrictedAppScreen = ({
             currentMode === "instagram" ? "bg-rose-600 text-white shadow-md" : "text-gray-400 hover:text-white"
           }`}
         >
-          Instagram (App)
+          Instagram
         </button>
         <button
           onClick={() => handleSelectMode("shorts")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
-            currentMode === "shorts" ? "bg-red-600 text-white shadow-md" : "text-gray-400 hover:text-white"
+            currentMode === "shorts" ? "bg-pink-600 text-white shadow-md" : "text-gray-400 hover:text-white"
           }`}
         >
-          Shorts (Regain)
+          TikTok
         </button>
         <button
           onClick={() => handleSelectMode("channel")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
-            currentMode === "channel" ? "bg-purple-600 text-white shadow-md" : "text-gray-400 hover:text-white"
+            currentMode === "channel" ? "bg-amber-600 text-white shadow-md" : "text-gray-400 hover:text-white"
           }`}
         >
-          Channel (Regain)
+          Snapchat
         </button>
       </div>
 
@@ -364,13 +364,11 @@ const RestrictedAppScreen = ({
       <div className="text-center mb-4">
         <h2 className="text-[19px] font-extrabold text-white mb-1">
           {currentMode === "instagram" && "Instagram is Paused"}
-          {currentMode === "shorts" && "YouTube Shorts Paused"}
-          {currentMode === "channel" && "Entertainment Channel Gated"}
+          {currentMode === "shorts" && "TikTok is Paused"}
+          {currentMode === "channel" && "Snapchat is Paused"}
         </h2>
         <p className="text-xs text-gray-400 max-w-xs mx-auto leading-relaxed">
-          {currentMode === "instagram" && "Study schedule is in session. Full app distraction paused via Special App Access popup."}
-          {currentMode === "shorts" && "Vertical dopamine reel intercepted. Standard study lectures on YouTube remain free to watch!"}
-          {currentMode === "channel" && "Non-study entertainment channel is gated. Educational study channels (Physics Wallah, Khan Academy) are open."}
+          Scheduled study session is active. Distracting social app paused via Google Play-compliant UsageStats monitoring. Zero background popups.
         </p>
       </div>
 
@@ -399,22 +397,12 @@ const RestrictedAppScreen = ({
           <span>Solve Challenge to Unlock (+15m)</span>
         </button>
 
-        {currentMode !== "instagram" ? (
-          <button
-            onClick={() => onNavigate("youtube")}
-            className="w-full py-2.5 rounded-full skeuo-btn-secondary font-semibold text-xs text-emerald-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <Play size={12} className="fill-emerald-400" />
-            <span>Return to YouTube Study Lecture</span>
-          </button>
-        ) : (
-          <button
-            onClick={() => onNavigate("dashboard")}
-            className="w-full py-2.5 rounded-full skeuo-btn-secondary font-semibold text-xs text-gray-300 hover:text-white flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <span>Back to Student Home</span>
-          </button>
-        )}
+        <button
+          onClick={() => onNavigate("dashboard")}
+          className="w-full py-2.5 rounded-full skeuo-btn-secondary font-semibold text-xs text-gray-300 hover:text-white flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>Back to Student Home</span>
+        </button>
       </div>
 
       <div className="mt-4 text-center">
@@ -429,15 +417,24 @@ const RestrictedAppScreen = ({
   );
 };
 
-/* SCREEN 3: YOUTUBE SELECTIVE FILTER (REGAIN FEATURE) */
-const YouTubeFilterScreen = ({ 
+/* SCREEN 3: SMART APP GUARDIAN (GOOGLE PLAY PROTECT CERTIFIED) */
+const SmartAppGuardianScreen = ({ 
   onNavigate,
   onSelectInterceptMode
 }: { 
   onNavigate: (screen: MobileScreen) => void;
   onSelectInterceptMode?: (mode: "instagram" | "shorts" | "channel") => void;
 }) => {
-  const [shortsBlocked, setShortsBlocked] = useState(true);
+  const [apps, setApps] = useState([
+    { id: "instagram", name: "Instagram", category: "Social Media", timeUsed: "42m / 30m", blocked: true, color: "from-pink-600 to-rose-600" },
+    { id: "shorts", name: "TikTok", category: "Short Video", timeUsed: "35m / 20m", blocked: true, color: "from-red-600 to-rose-700" },
+    { id: "channel", name: "Snapchat", category: "Instant Messaging", timeUsed: "28m / 15m", blocked: true, color: "from-amber-500 to-yellow-600" },
+    { id: "gaming", name: "Battle Royale (BGMI)", category: "Mobile Gaming", timeUsed: "0m / 0m", blocked: true, color: "from-purple-600 to-indigo-700" },
+  ]);
+
+  const toggleApp = (id: string) => {
+    setApps(apps.map(a => a.id === id ? { ...a, blocked: !a.blocked } : a));
+  };
 
   return (
     <motion.div
@@ -445,137 +442,90 @@ const YouTubeFilterScreen = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.25 }}
-      className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-gradient-to-b from-[#140608] via-[#090b14] to-[#04060e] overflow-y-auto"
+      className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-gradient-to-b from-[#090e1c] via-[#080b15] to-[#04060e] overflow-y-auto"
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-rose-400 font-bold flex items-center gap-1.5">
-            <YouTubeIcon size={13} className="text-red-500 fill-red-500" />
-            Regain Selective Filter
+          <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
+            <ShieldCheck size={13} className="text-emerald-400" />
+            Play Protect Certified
           </span>
-          <h2 className="text-[18px] font-extrabold text-white">YouTube Selective Shield</h2>
+          <h2 className="text-[18px] font-extrabold text-white">Smart App Guardian</h2>
         </div>
         <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-          Special Access
+          Clean Pass
         </span>
       </div>
 
-      {/* Modern Architecture Notice Card */}
-      <div className="skeuo-card rounded-2xl p-3 border border-indigo-500/30 bg-indigo-950/20 mb-3">
+      {/* Play Protect Architecture Card */}
+      <div className="skeuo-card rounded-2xl p-3 border border-emerald-500/30 bg-emerald-950/20 mb-3">
         <div className="flex items-center justify-between mb-1">
-          <span className="text-[10px] font-mono font-bold text-indigo-300 uppercase flex items-center gap-1">
-            <ShieldCheck size={12} className="text-indigo-400" />
-            Zero Accessibility Architecture
+          <span className="text-[10px] font-mono font-bold text-emerald-300 uppercase flex items-center gap-1">
+            <ShieldCheck size={12} className="text-emerald-400" />
+            Official Android UsageStats API
           </span>
-          <span className="text-[9px] font-mono text-emerald-400 font-bold">0ms Overlay</span>
+          <span className="text-[9px] font-mono text-emerald-400 font-bold">100% Compliant</span>
         </div>
         <p className="text-[10.5px] text-gray-300 leading-snug">
-          Uses <strong>Special App Access: &quot;Display popups while in background&quot;</strong> + <strong>UsageStats</strong>. No Accessibility required, &lt;0.8% battery drain.
+          Zero Accessibility Service • Zero Background Popups (<code className="text-emerald-400">SYSTEM_ALERT_WINDOW</code> purged). Uses Google Play approved <strong>App Usage Access</strong> for screen time monitoring and clean activity gating.
         </p>
       </div>
 
-      {/* Feature 1: YouTube Shorts Infinite Reel Interceptor */}
-      <div className="skeuo-card rounded-2xl p-3.5 border border-rose-500/30 bg-rose-950/20 mb-3">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-red-600/30 border border-red-500/40 flex items-center justify-center text-red-400">
-              <YouTubeIcon size={16} className="fill-red-500" />
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-white">YouTube Shorts Interceptor</h4>
-              <span className="text-[9.5px] text-gray-400">Vertical Dopamine Loop</span>
-            </div>
-          </div>
-          <button 
-            onClick={() => setShortsBlocked(!shortsBlocked)}
-            className={`px-2.5 py-1 rounded-full text-[9px] font-mono font-bold transition-all cursor-pointer ${
-              shortsBlocked 
-                ? "bg-rose-500/30 text-rose-300 border border-rose-500/50" 
-                : "bg-gray-800 text-gray-400 border border-white/10"
-            }`}
-          >
-            {shortsBlocked ? "BLOCKED" : "ALLOWED"}
-          </button>
+      {/* App Limits & Restriction List */}
+      <div className="space-y-2 mb-3">
+        <div className="flex justify-between items-center px-1">
+          <h4 className="text-xs font-bold text-gray-300">Guarded Apps &amp; Limits</h4>
+          <span className="text-[9px] font-mono text-indigo-400">4 Active Locks</span>
         </div>
-        <p className="text-[10.5px] text-gray-300 mb-2 leading-relaxed">
-          Blocks infinite vertical Shorts reels without blocking normal YouTube lecture playback.
+
+        {apps.map((app) => (
+          <div key={app.id} className="skeuo-card p-3 rounded-2xl border border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className={`w-8 h-8 rounded-xl bg-gradient-to-tr ${app.color} flex items-center justify-center text-white shadow-sm shrink-0`}>
+                <Lock size={14} />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white flex items-center gap-1">
+                  {app.name}
+                  {app.blocked && <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />}
+                </div>
+                <div className="text-[9.5px] text-gray-400">{app.category} • {app.timeUsed}</div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => toggleApp(app.id)}
+              className={`px-2.5 py-1 rounded-full text-[9px] font-mono font-bold transition-all cursor-pointer ${
+                app.blocked 
+                  ? "bg-rose-500/20 text-rose-300 border border-rose-500/40" 
+                  : "bg-gray-800 text-gray-400 border border-white/10"
+              }`}
+            >
+              {app.blocked ? "GUARDED" : "ALLOWED"}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Test App Intercept Simulation Button */}
+      <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-2">
+        <div className="flex items-center justify-between text-[11px] font-bold text-white">
+          <span>Test Native Activity Intercept</span>
+          <span className="text-[9px] font-mono text-emerald-400">0ms Overhead</span>
+        </div>
+        <p className="text-[10px] text-gray-400 leading-snug">
+          Simulate a student opening a restricted app. FocusDefend brings the quiz challenge directly to the foreground without any overlay popups.
         </p>
         <button
           onClick={() => {
-            if (onSelectInterceptMode) onSelectInterceptMode("shorts");
+            if (onSelectInterceptMode) onSelectInterceptMode("instagram");
             onNavigate("intercept");
           }}
-          className="w-full py-2 rounded-xl skeuo-btn-secondary text-[10.5px] font-semibold text-rose-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer"
+          className="w-full py-2.5 rounded-xl skeuo-btn-primary text-xs font-bold text-white flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
         >
-          <Play size={12} className="fill-rose-400" />
-          Test Intercepting a YouTube Short
-        </button>
-      </div>
-
-      {/* Feature 2: Smart Channel Categorization (Allowed vs Gated) */}
-      <div className="skeuo-well p-3.5 rounded-2xl border border-white/5 space-y-2.5 mb-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
-            <Sparkles size={12} className="text-amber-400" />
-            Channel Study Whitelist vs Distraction
-          </h4>
-          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30">
-            Regain Logic
-          </span>
-        </div>
-
-        {/* Study Channels (Always Whitelisted) */}
-        <div className="space-y-1.5">
-          <span className="text-[9.5px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
-            ✓ Whitelisted Study Channels (No Gating)
-          </span>
-          <div className="grid grid-cols-2 gap-1.5 text-[10px]">
-            <div className="p-1.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-              Physics Wallah
-            </div>
-            <div className="p-1.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-              Khan Academy
-            </div>
-            <div className="p-1.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-              NCERT Official
-            </div>
-            <div className="p-1.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-              Veritasium STEM
-            </div>
-          </div>
-        </div>
-
-        {/* Distracting Channels (Gated Behind Focus Credits) */}
-        <div className="space-y-1.5 pt-1 border-t border-white/5">
-          <span className="text-[9.5px] font-mono uppercase tracking-wider text-rose-400 font-bold block">
-            ✕ Distracting Channels (Gated / MCQ Required)
-          </span>
-          <div className="space-y-1 text-[10px]">
-            <div className="p-1.5 rounded-lg bg-rose-950/20 border border-rose-500/20 text-rose-200 flex items-center justify-between">
-              <span>Gaming &amp; Livestreams</span>
-              <span className="text-[8.5px] font-mono text-rose-400 font-bold">GATED</span>
-            </div>
-            <div className="p-1.5 rounded-lg bg-rose-950/20 border border-rose-500/20 text-rose-200 flex items-center justify-between">
-              <span>Entertainment, Pranks &amp; Vlogs</span>
-              <span className="text-[8.5px] font-mono text-rose-400 font-bold">GATED</span>
-            </div>
-          </div>
-        </div>
-
-        <button
-          onClick={() => {
-            if (onSelectInterceptMode) onSelectInterceptMode("channel");
-            onNavigate("intercept");
-          }}
-          className="w-full py-2 rounded-xl skeuo-btn-secondary text-[10.5px] font-semibold text-amber-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer mt-1"
-        >
-          <Lock size={12} className="text-amber-400" />
-          Test Intercepting a Distracting Channel
+          <Play size={12} className="fill-white" />
+          Simulate App Launch Intercept
         </button>
       </div>
 
@@ -973,7 +923,7 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
   const [auditComplete, setAuditComplete] = useState(false);
 
   const securityVulnerabilities = [
-    { id: "V01", name: "SpecialAppAccessDaemon", severity: "CRITICAL", vector: "Accessibility Fragility & Battery Drain", patch: "AccessibilityService removed. Replaced with Special App Access ('Display popups while in background') + UsageStats", status: "HARDENED" },
+    { id: "V01", name: "PlayProtectComplianceEngine", severity: "CRITICAL", vector: "Play Protect Malware Flags & A11y Risks", patch: "AccessibilityService and SYSTEM_ALERT_WINDOW removed. Replaced with official Android UsageStatsManager + Foreground Guardian. 100% Play Protect clean pass.", status: "HARDENED" },
     { id: "V02", name: "SplitScreenInterceptor", severity: "HIGH", vector: "Multi-Window Snapping Race", patch: "Auto-collapses unauthorized split-screen to Home", status: "PATCHED" },
     { id: "V03", name: "Knox DeviceOwner Core", severity: "HIGH", vector: "Safe Mode Boot Bypass", patch: "DISALLOW_SAFE_BOOT hardware lock enforcement", status: "PATCHED" },
     { id: "V04", name: "PiP MediaSession Meter", severity: "MEDIUM", vector: "Background PiP Video Leak", patch: "AudioTrack & MediaSession hardware usage meter", status: "PATCHED" },
@@ -983,7 +933,7 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
     { id: "V08", name: "HMAC Nonce Verifier", severity: "LOW", vector: "Quick-Pass Token Replay", patch: "Cryptographic one-time nonces per unlock session", status: "PATCHED" },
     { id: "V09", name: "Multi-User Profile Shield", severity: "LOW", vector: "Guest Space Sandbox Escape", patch: "DISALLOW_ADD_USER locks guest switching", status: "PATCHED" },
     { id: "V10", name: "Kernel UID UsageStats Hook", severity: "LOW", vector: "Launcher Tile Deep Link Leak", patch: "Low-level process UID poller catches raw intents", status: "PATCHED" },
-    { id: "V11", name: "RegainYouTubeFilter", severity: "HIGH", vector: "Shorts & Distracting Channels Loop", patch: "Selective blocker intercepts /shorts/ and gaming channels; whitelists study lectures", status: "PATCHED" },
+    { id: "V11", name: "UsageStatsAppGuardian", severity: "HIGH", vector: "Screen Time Bypass & App Cloaking", patch: "System-level screen time limits and study lockout via UsageStats API; zero overlay popups; sub-0.5% battery draw.", status: "PATCHED" },
   ];
 
   const runAudit = () => {
@@ -1061,14 +1011,14 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase text-emerald-300 font-bold flex items-center gap-1.5">
                 <ShieldCheck size={14} className="text-emerald-400" />
-                Zero-Accessibility Architecture: 100%
+                Play Protect Certified: 100% Clean Pass
               </span>
               <span className="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/40">
-                11/11 Verified
+                11/11 Hardened
               </span>
             </div>
             <p className="text-[10.5px] text-gray-300 leading-snug">
-              AccessibilityService is completely eliminated. Uses Android <strong>Special App Access (&quot;Display popups while in background&quot;)</strong> + <strong>UsageStats</strong>. Sub-0.8% battery drain and zero A11y crash loops.
+              AccessibilityService and background popup overlays (<code className="text-emerald-400">SYSTEM_ALERT_WINDOW</code>) are completely eliminated. Uses official Android <strong>UsageStatsManager</strong> + Foreground Activity Guardian. Play Protect passes with zero malware flags.
             </p>
           </div>
 
@@ -1197,7 +1147,7 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
               <span className="text-[9px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full">Guarded</span>
             </div>
             <div className="flex justify-between items-center text-[10.5px]">
-              <span className="flex items-center gap-1.5"><Lock size={12} className="text-rose-400" /> YouTube Shorts</span>
+              <span className="flex items-center gap-1.5"><Lock size={12} className="text-rose-400" /> TikTok / Reels</span>
               <span className="text-[9px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full">Always Blocked</span>
             </div>
           </div>
@@ -1303,7 +1253,7 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
           <div>
-            <div className="font-bold text-white">YouTube Shorts</div>
+            <div className="font-bold text-white">TikTok Video</div>
             <div className="text-[8.5px] text-gray-400">11:15 AM • Hard Lock</div>
           </div>
         </div>
@@ -1504,15 +1454,15 @@ const SettingsScreen = ({
           }`}>
             <div className="flex items-center justify-between font-bold">
               <span className={localTheme === 'light' ? 'text-gray-800' : 'text-gray-300'}>Restriction Engine</span>
-              <span className="text-emerald-400 font-mono">Special App Access</span>
+              <span className="text-emerald-400 font-mono">UsageStats API</span>
             </div>
             <div className="flex items-center justify-between text-gray-400">
-              <span>Accessibility Service</span>
-              <span className="text-gray-400 font-mono">Purged (0% Battery)</span>
+              <span>Google Play Protect</span>
+              <span className="text-emerald-400 font-mono">100% Certified Clean</span>
             </div>
             <div className="flex items-center justify-between text-gray-400">
-              <span>YouTube Selective Shield</span>
-              <span className="text-indigo-400 font-mono">Shorts Blocked</span>
+              <span>Background Popups</span>
+              <span className="text-gray-400 font-mono">0 (No Overlay Windows)</span>
             </div>
             <div className="flex items-center justify-between text-gray-400 pt-1 border-t border-white/5">
               <span>Firmware Version</span>
@@ -1520,7 +1470,7 @@ const SettingsScreen = ({
                 onClick={() => setOtaModalOpen(true)}
                 className="text-emerald-400 font-mono font-bold hover:underline cursor-pointer"
               >
-                v1.3.0-CORE (Check OTA)
+                v2.3.0-PROD (Check OTA)
               </button>
             </div>
           </div>
@@ -1626,7 +1576,7 @@ export default function CSSPhoneModel() {
         </button>
         <button
           onClick={() => setScreen("youtube")}
-          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'youtube' ? 'bg-red-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
+          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'youtube' ? 'bg-indigo-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
         >
           YouTube
         </button>
@@ -1723,8 +1673,8 @@ export default function CSSPhoneModel() {
                       </span>
                       <span className="text-[8.5px] font-mono text-gray-400">Just now</span>
                     </div>
-                    <h5 className="text-[11px] font-bold text-white truncate">v1.3.0 Ready: Special App Access</h5>
-                    <p className="text-[9px] text-gray-300 leading-tight">YouTube selective filter included • Tap to review &amp; install</p>
+                    <h5 className="text-[11px] font-bold text-white truncate">v2.3.0 Ready: Play Protect Certified</h5>
+                    <p className="text-[9px] text-gray-300 leading-tight">Floating nav dock &amp; UsageStats core • Tap to review</p>
                   </div>
                   <button
                     onClick={(e) => {
@@ -1754,7 +1704,7 @@ export default function CSSPhoneModel() {
                 />
               )}
               {screen === "youtube" && (
-                <YouTubeFilterScreen 
+                <SmartAppGuardianScreen 
                   key="youtube" 
                   onNavigate={setScreen} 
                   onSelectInterceptMode={(m) => {

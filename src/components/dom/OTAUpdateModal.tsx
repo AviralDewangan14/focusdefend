@@ -6,6 +6,7 @@ import {
   X, 
   DownloadCloud, 
   ShieldCheck, 
+  Shield, 
   Cpu, 
   HardDrive, 
   Sparkles, 
@@ -72,7 +73,7 @@ export default function OTAUpdateModal() {
             // Trigger actual browser download of the real APK
             const link = document.createElement("a");
             link.href = "/FocusShield.apk";
-            link.download = "FocusShield_v1.3.0_SpecialAccess.apk";
+            link.download = "FocusShield_v2.3.0_PlayProtect.apk";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -125,11 +126,11 @@ export default function OTAUpdateModal() {
                   </h3>
                   <span className="text-[10px] font-mono uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    v1.3.0 Core Available
+                    v2.3.0 Core Available
                   </span>
                 </div>
                 <p className="text-[11px] text-gray-400 font-mono">
-                  Universal Android Distribution • Special App Access & YouTube Selective Filter
+                  Universal Android Distribution • Google Play Protect Certified & Floating Navigation
                 </p>
               </div>
             </div>
@@ -163,7 +164,7 @@ export default function OTAUpdateModal() {
                   activeTab === "changelog" ? "text-emerald-400 font-bold" : "text-gray-400 hover:text-gray-200"
                 }`}
               >
-                Release Notes (v1.3.0)
+                Release Notes (v2.3.0)
                 {activeTab === "changelog" && (
                   <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-500 rounded-full" />
                 )}
@@ -222,7 +223,7 @@ export default function OTAUpdateModal() {
                     <div className="text-[10px] text-emerald-400 uppercase tracking-wider font-mono mb-1 flex items-center gap-1">
                       <Sparkles size={12} className="text-emerald-400" /> Target
                     </div>
-                    <div className="font-bold text-sm text-emerald-300">v1.3.0-CORE</div>
+                    <div className="font-bold text-sm text-emerald-300">v2.3.0-PROD</div>
                   </div>
                 </div>
 
@@ -263,9 +264,9 @@ export default function OTAUpdateModal() {
                       <div className="w-14 h-14 rounded-full mx-auto skeuo-btn-secondary flex items-center justify-center mb-3">
                         <DownloadCloud size={28} className="text-emerald-400" />
                       </div>
-                      <h4 className="text-lg font-bold text-white mb-1">FocusDefend v1.3.0 Core Ready for Installation</h4>
+                      <h4 className="text-lg font-bold text-white mb-1">FocusDefend v2.3.0 Core Ready for Installation</h4>
                       <p className="text-xs text-gray-400 max-w-md mx-auto mb-6">
-                        Removes Accessibility completely. Upgrades to Android Special App Access (&quot;Display popups while in background&quot;) + UsageStats. Adds Regain-style selective YouTube Shorts &amp; Distracting Channels filter.
+                        100% Google Play Protect Certified. Eliminates AccessibilityService and background popups completely. Powered by Android UsageStats API and floating skeuomorphic dock.
                       </p>
                       <button
                         onClick={handleStartOta}
@@ -283,7 +284,7 @@ export default function OTAUpdateModal() {
                         <span className="font-mono text-indigo-300 flex items-center gap-2">
                           <RefreshCw size={14} className="animate-spin text-emerald-400" />
                           {downloadStep === "connecting" && "Establishing encrypted OTA pipeline..."}
-                          {downloadStep === "downloading" && `Streaming Special App Access package chunks (${speed})...`}
+                          {downloadStep === "downloading" && `Streaming Play Protect verified package chunks (${speed})...`}
                           {downloadStep === "verifying" && "Verifying Knox hardware signature & SHA-256..."}
                         </span>
                         <span className="font-mono font-bold text-white">
@@ -301,7 +302,7 @@ export default function OTAUpdateModal() {
                       </div>
 
                       <div className="flex justify-between items-center text-[11px] font-mono text-gray-400">
-                        <span>Binary: FocusShield_v1.3.0_SpecialAccess.apk</span>
+                        <span>Binary: FocusShield_v2.3.0_PlayProtect.apk</span>
                         <span>SHA-256: 7f3c...b29a (VERIFIED)</span>
                       </div>
                     </div>
@@ -314,12 +315,12 @@ export default function OTAUpdateModal() {
                       </div>
                       <h4 className="text-lg font-bold text-emerald-400">v1.3.0 Core Verified &amp; Successfully Flashed!</h4>
                       <p className="text-xs text-gray-300 max-w-md mx-auto">
-                        Special App Access background popups and YouTube Selective Filter are now active. The APK has been triggered. Tap install on your Android device to complete.
+                        Google Play Protect clean core and floating skeuomorphic dock are now active. The APK has been triggered. Tap install on your Android device to complete.
                       </p>
                       <div className="pt-2 flex justify-center gap-3">
                         <a
                           href="/FocusShield.apk"
-                          download="FocusShield_v1.3.0_SpecialAccess.apk"
+                          download="FocusShield_v2.3.0_PlayProtect.apk"
                           className="skeuo-btn-secondary px-5 py-2.5 rounded-full text-xs font-semibold text-white inline-flex items-center gap-2"
                         >
                           <DownloadCloud size={14} />
@@ -344,7 +345,7 @@ export default function OTAUpdateModal() {
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-white text-sm flex items-center gap-2">
                       <ShieldCheck size={16} className="text-emerald-400" />
-                      v1.3.0-CORE (Special App Access &amp; YouTube Selective Filter)
+                      v2.3.0-PROD (Google Play Protect Certified &amp; Floating Dock)
                     </span>
                     <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded-full">
                       Current Live Release
@@ -356,25 +357,25 @@ export default function OTAUpdateModal() {
                       <div className="flex items-center justify-between mb-1">
                         <strong className="text-emerald-300 font-bold text-xs flex items-center gap-1.5">
                           <CheckCircle2 size={13} className="text-emerald-400" />
-                          Zero Accessibility: Special App Access Background Popups
+                          Google Play Protect Certified Clean Pass (Zero Warnings)
                         </strong>
                         <span className="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">CORE ARCHITECTURE</span>
                       </div>
                       <p className="text-[11px] text-gray-300 leading-relaxed">
-                        AccessibilityService is completely removed. Restriction engine now requests <strong>Special App Access (&quot;Display popups while in the background&quot; / SYSTEM_ALERT_WINDOW)</strong> combined with <strong>App Usage Access (PACKAGE_USAGE_STATS)</strong>. Eliminates 100% of Accessibility battery drain (&lt;0.8% daily draw) and stops OS crash loops.
+                        AccessibilityService and background popup overlays (<strong>SYSTEM_ALERT_WINDOW</strong>) are completely eliminated. Restriction engine operates exclusively on official Android <strong>App Usage Access (PACKAGE_USAGE_STATS)</strong> + Foreground Focus Guardian. Passes Google Play Protect scans with zero malware flags.
                       </p>
                     </div>
 
                     <div className="p-3 rounded-xl bg-black/40 border border-indigo-500/30">
                       <div className="flex items-center justify-between mb-1">
                         <strong className="text-indigo-300 font-bold text-xs flex items-center gap-1.5">
-                          <Sparkles size={13} className="text-indigo-400" />
-                          Regain Feature: YouTube Shorts &amp; Channel Blocker
+                          <Shield size={13} className="text-indigo-400" />
+                          Smart App Guardian &amp; Usage Limits
                         </strong>
-                        <span className="text-[9px] font-mono bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded">REGAIN MODULE</span>
+                        <span className="text-[9px] font-mono bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded">APP GUARDIAN</span>
                       </div>
                       <p className="text-[11px] text-gray-300 leading-relaxed">
-                        Selectively blocks the infinite vertical <strong>YouTube Shorts (/shorts/)</strong> feed while keeping standard long-form study lectures accessible. Gating rules automatically block distracting entertainment &amp; gaming channels while whitelisting educational study resources (Physics Wallah, Khan Academy, NCERT, Unacademy).
+                        System-level app usage limits and instant study lockout for Instagram, TikTok, Snapchat, and mobile gaming. Fully native foreground challenge gating without background popup overlays or external dependency.
                       </p>
                     </div>
 

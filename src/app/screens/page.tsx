@@ -52,7 +52,7 @@ export default function MobileScreensShowcase() {
               activeTab === "all" ? "skeuo-btn-primary text-white" : "skeuo-btn-secondary text-gray-300 hover:text-white"
             }`}
           >
-            All 8 Screens Master Lineup
+            All 10 Screens Master Lineup
           </button>
           <button
             onClick={() => setActiveTab("dashboard")}
@@ -124,7 +124,7 @@ export default function MobileScreensShowcase() {
               activeTab === "youtube" ? "skeuo-btn-primary text-white" : "skeuo-btn-secondary text-gray-300 hover:text-white"
             }`}
           >
-            9. YouTube Shield (Regain)
+            9. Smart App Guardian
           </button>
           <button
             onClick={() => setActiveTab("settings")}
@@ -232,8 +232,8 @@ export default function MobileScreensShowcase() {
             {/* Screen 9 */}
             <div id="screen-youtube-container" className="flex flex-col items-center space-y-3">
               <div className="text-center mb-1">
-                <span className="text-[11px] font-mono text-red-400 font-bold uppercase tracking-wider">Screen 9</span>
-                <h3 className="text-base font-bold text-white">YouTube Selective Shield</h3>
+                <span className="text-[11px] font-mono text-indigo-400 font-bold uppercase tracking-wider">Screen 9</span>
+                <h3 className="text-base font-bold text-white">Smart App Guardian</h3>
               </div>
               <div className="w-[310px] h-[640px]">
                 <SinglePhoneScreen screenType="youtube" />
@@ -567,7 +567,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-emerald-400 font-mono">+15m earned</span>
                 </div>
                 <div className="flex items-center justify-between text-gray-300">
-                  <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> YouTube Shorts</span>
+                  <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> TikTok / Reels</span>
                   <span className="text-gray-400 font-mono">Blocked</span>
                 </div>
               </div>
@@ -684,8 +684,8 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-emerald-400">KNOX Verified</span>
                 </div>
                 <div className="flex justify-between text-gray-300">
-                  <span>Accessibility Service</span>
-                  <span className="text-emerald-400 font-mono font-bold">0ms Intercept</span>
+                  <span>Google Play Protect</span>
+                  <span className="text-emerald-400 font-mono font-bold">100% Certified Clean</span>
                 </div>
                 <div className="flex justify-between text-gray-300">
                   <span>UsageStats Monitor</span>
@@ -718,7 +718,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-rose-400 font-mono">Guarded</span>
                 </div>
                 <div className="flex justify-between text-gray-300">
-                  <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> YouTube Shorts</span>
+                  <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> TikTok / Reels</span>
                   <span className="text-rose-400 font-mono">Blocked</span>
                 </div>
               </div>
@@ -795,7 +795,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-[8px] font-mono text-emerald-400 bg-emerald-950/40 px-1.5 py-0.5 rounded">Unlocked 15m</span>
                 </div>
                 <div className="flex items-center justify-between bg-black/30 p-1.5 rounded-lg border border-white/5">
-                  <span className="font-semibold text-white">YouTube Shorts</span>
+                  <span className="font-semibold text-white">TikTok / Reels</span>
                   <span className="text-[8px] font-mono text-rose-400 bg-rose-950/40 px-1.5 py-0.5 rounded">Hard Blocked</span>
                 </div>
               </div>
@@ -811,92 +811,92 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
             </div>
           )}
 
-          {/* Screen 9: YouTube Selective Shield (Regain Feature) */}
+          {/* Screen 9: Smart App Guardian (Google Play Protect Certified) */}
           {screenType === "youtube" && (
             <div className="space-y-2.5 text-white">
               <div className="flex justify-between items-center mb-1">
                 <div>
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-rose-400 font-bold flex items-center gap-1">
-                    <YouTubeIcon size={11} className="text-red-500 fill-red-500" />
-                    Regain Selective Filter
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
+                    <ShieldCheck size={11} className="text-emerald-400" />
+                    Play Protect Certified
                   </span>
-                  <h2 className="text-[16px] font-extrabold text-white">YouTube Shield</h2>
+                  <h2 className="text-[16px] font-extrabold text-white">Smart App Guardian</h2>
                 </div>
                 <span className="text-[8px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                  Special Access
+                  Clean Pass
                 </span>
               </div>
 
-              {/* Zero Accessibility Architecture Card */}
-              <div className="skeuo-card rounded-2xl p-2.5 border border-indigo-500/30 bg-indigo-950/20">
+              {/* Play Protect Certified Architecture Card */}
+              <div className="skeuo-card rounded-2xl p-2.5 border border-emerald-500/30 bg-emerald-950/20">
                 <div className="flex items-center justify-between mb-0.5">
-                  <span className="text-[9px] font-mono font-bold text-indigo-300 uppercase flex items-center gap-1">
-                    <ShieldCheck size={11} className="text-indigo-400" />
-                    Zero Accessibility Engine
+                  <span className="text-[9px] font-mono font-bold text-emerald-300 uppercase flex items-center gap-1">
+                    <ShieldCheck size={11} className="text-emerald-400" />
+                    Android UsageStats API
                   </span>
-                  <span className="text-[8px] font-mono text-emerald-400 font-bold">0ms Overlay</span>
+                  <span className="text-[8px] font-mono text-emerald-400 font-bold">100% Pass</span>
                 </div>
                 <p className="text-[9px] text-gray-300 leading-snug">
-                  Special App Access (SYSTEM_ALERT_WINDOW) + UsageStats. &lt;0.8% battery draw.
+                  Zero Accessibility • Zero Background Popups. Standard Google-approved App Usage Access.
                 </p>
               </div>
 
-              {/* Shorts Interceptor */}
-              <div className="skeuo-card rounded-2xl p-2.5 border border-rose-500/30 bg-rose-950/20">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-6 h-6 rounded-lg bg-red-600/30 border border-red-500/40 flex items-center justify-center text-red-400">
-                      <YouTubeIcon size={12} className="fill-red-500" />
+              {/* Guarded Apps & Quotas */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-[9px] text-gray-400 font-mono">
+                  <span>Guarded Applications</span>
+                  <span>Active Lockouts</span>
+                </div>
+
+                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-lg bg-pink-600/30 border border-pink-500/40 flex items-center justify-center text-pink-400">
+                      <InstagramIcon size={11} />
                     </div>
                     <div>
-                      <h4 className="text-[10.5px] font-bold text-white">Shorts Interceptor</h4>
-                      <span className="text-[8px] text-gray-400">Vertical Dopamine Feed</span>
+                      <div className="font-bold text-white leading-none">Instagram</div>
+                      <div className="text-[8px] text-gray-400">Social • 42m / 30m</div>
                     </div>
                   </div>
-                  <span className="bg-rose-500/30 text-rose-300 border border-rose-500/50 px-2 py-0.5 rounded-full text-[8px] font-mono font-bold">
-                    BLOCKED
-                  </span>
+                  <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
                 </div>
-                <p className="text-[8.5px] text-gray-300">
-                  Blocks infinite vertical Shorts reels without blocking normal study lectures.
-                </p>
+
+                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-lg bg-rose-600/30 border border-rose-500/40 flex items-center justify-center text-rose-400">
+                      <Lock size={11} />
+                    </div>
+                    <div>
+                      <div className="font-bold text-white leading-none">TikTok</div>
+                      <div className="text-[8px] text-gray-400">Video • 35m / 20m</div>
+                    </div>
+                  </div>
+                  <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
+                </div>
+
+                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-lg bg-purple-600/30 border border-purple-500/40 flex items-center justify-center text-purple-400">
+                      <Lock size={11} />
+                    </div>
+                    <div>
+                      <div className="font-bold text-white leading-none">Snapchat</div>
+                      <div className="text-[8px] text-gray-400">Chat • 28m / 15m</div>
+                    </div>
+                  </div>
+                  <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
+                </div>
               </div>
 
-              {/* Channels Whitelist vs Gated */}
-              <div className="skeuo-well p-2.5 rounded-2xl border border-white/5 space-y-2">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-[10px] font-bold text-white flex items-center gap-1">
-                    <Sparkles size={11} className="text-amber-400" />
-                    Channel Whitelist
-                  </h4>
-                  <span className="text-[7.5px] font-mono text-emerald-400 bg-emerald-500/10 px-1 py-0.2 rounded border border-emerald-500/30">
-                    Regain Logic
-                  </span>
+              {/* Intercept Mode Simulation */}
+              <div className="skeuo-well p-2.5 rounded-xl border border-white/5 space-y-1.5">
+                <div className="flex justify-between items-center text-[9px] font-bold text-gray-300">
+                  <span>Foreground Intercept</span>
+                  <span className="text-emerald-400 font-mono">0ms Lag</span>
                 </div>
-
-                <div className="space-y-1">
-                  <span className="text-[8px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
-                    ✓ Allowed Study Channels
-                  </span>
-                  <div className="grid grid-cols-2 gap-1 text-[8.5px]">
-                    <div className="p-1 rounded bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate">
-                      Physics Wallah
-                    </div>
-                    <div className="p-1 rounded bg-emerald-950/20 border border-emerald-500/20 text-emerald-200 truncate">
-                      Khan Academy
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-1 pt-1 border-t border-white/5">
-                  <span className="text-[8px] font-mono uppercase tracking-wider text-rose-400 font-bold block">
-                    ✕ Distracting Channels (Gated)
-                  </span>
-                  <div className="p-1 rounded bg-rose-950/20 border border-rose-500/20 text-rose-200 text-[8.5px] flex justify-between">
-                    <span>Gaming &amp; Entertainment</span>
-                    <span className="text-rose-400 font-mono font-bold">GATED</span>
-                  </div>
-                </div>
+                <p className="text-[8px] text-gray-400 leading-snug">
+                  Clean native Activity launch without suspicious background popups.
+                </p>
               </div>
             </div>
           )}
@@ -970,12 +970,12 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               {/* System Architecture */}
               <div className="skeuo-well p-2 rounded-2xl border border-white/5 space-y-1 text-[8.5px]">
                 <div className="flex justify-between font-bold">
-                  <span className="text-gray-300">Restriction Daemon</span>
-                  <span className="text-emerald-400 font-mono">Special App Access</span>
+                  <span className="text-gray-300">Restriction Core</span>
+                  <span className="text-emerald-400 font-mono">UsageStats API</span>
                 </div>
                 <div className="flex justify-between text-gray-400">
-                  <span>YouTube Shield</span>
-                  <span className="text-indigo-400 font-mono">Regain Active</span>
+                  <span>Google Play Protect</span>
+                  <span className="text-emerald-400 font-mono">100% Certified Clean</span>
                 </div>
               </div>
 

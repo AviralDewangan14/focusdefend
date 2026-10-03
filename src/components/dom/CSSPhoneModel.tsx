@@ -171,7 +171,7 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
       )}
       
       {/* Student Smartcard */}
-      <div className="skeuo-card rounded-[24px] p-4 mb-3.5 relative overflow-hidden border border-white/15 shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
+      <div className="skeuo-card rounded-[24px] p-4 mb-3.5 relative overflow-hidden border border-[#2a3854] shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
         <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1.5">
@@ -184,7 +184,7 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
         <h3 className="text-[20px] font-extrabold text-white mb-0.5">Mayank Sharma</h3>
         <p className="text-[10.5px] text-gray-400 mb-3">Grade 10 • Daily Goal: 45m</p>
         
-        <div className="inline-flex items-center gap-2 skeuo-well px-3 py-1 rounded-full border border-white/10">
+        <div className="inline-flex items-center gap-2 skeuo-well px-3 py-1 rounded-full border border-[#222e47]">
           <Star size={12} className="text-[#fbbf24] fill-[#fbbf24]" />
           <span className="text-xs font-bold text-amber-200">{credits} Focus Credits Earned</span>
         </div>
@@ -242,7 +242,7 @@ const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mob
       </div>
       
       {/* Weekly Activity Debossed Well */}
-      <div className="skeuo-well p-3 rounded-2xl border border-white/5">
+      <div className="skeuo-well p-3 rounded-2xl border border-[#182133]">
         <div className="flex items-center justify-between mb-1.5">
           <h4 className="text-[10.5px] font-bold text-gray-300">Weekly Study Minutes</h4>
           <span className="text-[9px] font-mono text-emerald-400">Target: 300m</span>
@@ -306,7 +306,7 @@ const RestrictedAppScreen = ({
       </div>
 
       {/* Target Selector Pills */}
-      <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/5 mb-4 text-[9px] font-mono">
+      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#04060d] border border-[#182133] mb-4 text-[9px] font-mono">
         <button
           onClick={() => handleSelectMode("instagram")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
@@ -337,21 +337,21 @@ const RestrictedAppScreen = ({
       <div className="relative mx-auto mb-3">
         {currentMode === "instagram" && (
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#f97316] via-[#ec4899] to-[#8b5cf6] p-0.5 shadow-[0_12px_30px_rgba(244,63,94,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-black/20 flex items-center justify-center">
+            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
               <InstagramIcon size={34} className="text-white" />
             </div>
           </div>
         )}
         {currentMode === "shorts" && (
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-600 via-rose-600 to-red-800 p-0.5 shadow-[0_12px_30px_rgba(239,68,68,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-black/20 flex items-center justify-center">
+            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
               <YouTubeIcon size={34} className="text-white fill-white" />
             </div>
           </div>
         )}
         {currentMode === "channel" && (
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 via-red-600 to-rose-700 p-0.5 shadow-[0_12px_30px_rgba(245,158,11,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-black/20 flex items-center justify-center">
+            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
               <YouTubeIcon size={34} className="text-white fill-white" />
             </div>
           </div>
@@ -489,14 +489,14 @@ const SmartAppGuardianScreen = ({
           <span className="text-[8px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">ACTIVE</span>
         </div>
 
-        <div className="skeuo-well p-2 rounded-xl border border-white/5 space-y-1 text-[9.5px]">
+        <div className="skeuo-well p-2 rounded-xl border border-[#182133] space-y-1 text-[9.5px]">
           <div className="flex justify-between items-center text-emerald-300 font-bold">
             <span className="flex items-center gap-1"><CheckCircle2 size={11} className="text-emerald-400" /> Whitelisted Study Channels:</span>
             <span className="text-[8px] font-mono text-emerald-400">UNLIMITED</span>
           </div>
           <p className="text-[8.5px] text-gray-400 leading-snug">Khan Academy, MIT OCW, CrashCourse, 3Blue1Brown, NCERT Solutions.</p>
           
-          <div className="pt-1 border-t border-white/5 flex justify-between items-center text-rose-300 font-bold">
+          <div className="pt-1 border-t border-[#182133] flex justify-between items-center text-rose-300 font-bold">
             <span className="flex items-center gap-1"><Lock size={11} className="text-rose-400" /> Distracting Channels &amp; Shorts:</span>
             <span className="text-[8px] font-mono text-rose-400">QUIZ GATED</span>
           </div>
@@ -512,7 +512,7 @@ const SmartAppGuardianScreen = ({
         </div>
 
         {apps.map((app) => (
-          <div key={app.id} className="skeuo-card p-3 rounded-2xl border border-white/10 flex items-center justify-between">
+          <div key={app.id} className="skeuo-card p-3 rounded-2xl border border-[#222e47] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className={`w-8 h-8 rounded-xl bg-gradient-to-tr ${app.color} flex items-center justify-center text-white shadow-sm shrink-0`}>
                 <Lock size={14} />
@@ -531,7 +531,7 @@ const SmartAppGuardianScreen = ({
               className={`px-2.5 py-1 rounded-full text-[9px] font-mono font-bold transition-all cursor-pointer ${
                 app.blocked 
                   ? "bg-rose-500/20 text-rose-300 border border-rose-500/40" 
-                  : "bg-gray-800 text-gray-400 border border-white/10"
+                  : "bg-gray-800 text-gray-400 border border-[#222e47]"
               }`}
             >
               {app.blocked ? "GUARDED" : "ALLOWED"}
@@ -541,7 +541,7 @@ const SmartAppGuardianScreen = ({
       </div>
 
       {/* Test App Intercept Simulation Button */}
-      <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-2">
+      <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-2">
         <div className="flex items-center justify-between text-[11px] font-bold text-white">
           <span>Test Native Activity Intercept</span>
           <span className="text-[9px] font-mono text-emerald-400">0ms Overhead</span>
@@ -652,13 +652,13 @@ const QuizScreen = ({
               className={`p-3 rounded-xl skeuo-card flex items-center justify-between cursor-pointer transition-all ${
                 isSelected 
                   ? "border-emerald-500/80 bg-[#0e1f18] shadow-[0_4px_16px_rgba(16,185,129,0.3)] translate-y-[1px]" 
-                  : "border-white/10 hover:border-white/20 active:translate-y-[1px]"
+                  : "border-[#222e47] hover:border-[#334466] active:translate-y-[1px]"
               }`}
             >
               <span className={`text-[12.5px] font-medium ${isSelected ? "text-emerald-300 font-bold" : "text-gray-200"}`}>
                 {option}
               </span>
-              <span className={`w-3.5 h-3.5 rounded-full ${isSelected ? "skeuo-led-green" : "border border-white/20"}`} />
+              <span className={`w-3.5 h-3.5 rounded-full ${isSelected ? "skeuo-led-green" : "border border-[#334466]"}`} />
             </div>
           );
         })}
@@ -682,7 +682,7 @@ const QuizScreen = ({
             <CheckCircle2 size={14} /> Correct Answer! +15 Mins Unlocked
           </div>
 
-          <div className="skeuo-well px-3 py-1.5 rounded-full text-[10.5px] font-mono text-gray-300 mb-3 border border-white/10 inline-flex items-center gap-2">
+          <div className="skeuo-well px-3 py-1.5 rounded-full text-[10.5px] font-mono text-gray-300 mb-3 border border-[#222e47] inline-flex items-center gap-2">
             <span>New Balance:</span>
             <span className="text-amber-300 font-bold font-mono">{currentCredits} Credits</span>
           </div>
@@ -756,7 +756,7 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
     </div>
 
     {/* Subject Mastery Console */}
-    <div className="skeuo-card p-4 rounded-2xl border border-white/10 mb-4 space-y-3">
+    <div className="skeuo-card p-4 rounded-2xl border border-[#222e47] mb-4 space-y-3">
       <div className="flex justify-between items-center">
         <h4 className="text-xs font-bold text-gray-200">Subject Mastery Accuracy</h4>
         <span className="text-[10px] font-mono text-indigo-400">Class 10 CBSE</span>
@@ -768,7 +768,7 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
             <span className="text-gray-300">Science (Physics & Bio)</span>
             <span className="font-mono text-emerald-400 font-bold">94%</span>
           </div>
-          <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden border border-white/5">
+          <div className="w-full h-1.5 bg-[#03050a] rounded-full overflow-hidden border border-[#182133]">
             <div className="h-full bg-emerald-400 rounded-full" style={{ width: "94%" }} />
           </div>
         </div>
@@ -778,7 +778,7 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
             <span className="text-gray-300">Mathematics</span>
             <span className="font-mono text-indigo-400 font-bold">88%</span>
           </div>
-          <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden border border-white/5">
+          <div className="w-full h-1.5 bg-[#03050a] rounded-full overflow-hidden border border-[#182133]">
             <div className="h-full bg-indigo-500 rounded-full" style={{ width: "88%" }} />
           </div>
         </div>
@@ -788,7 +788,7 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
             <span className="text-gray-300">English Literature</span>
             <span className="font-mono text-purple-400 font-bold">82%</span>
           </div>
-          <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden border border-white/5">
+          <div className="w-full h-1.5 bg-[#03050a] rounded-full overflow-hidden border border-[#182133]">
             <div className="h-full bg-purple-500 rounded-full" style={{ width: "82%" }} />
           </div>
         </div>
@@ -796,7 +796,7 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
     </div>
 
     {/* Quick Intercept Log */}
-    <div className="skeuo-well p-3.5 rounded-2xl border border-white/5">
+    <div className="skeuo-well p-3.5 rounded-2xl border border-[#182133]">
       <div className="flex justify-between items-center mb-2">
         <h4 className="text-[11px] font-bold text-gray-300">Recent Interceptions</h4>
         <span className="text-[9px] font-mono text-gray-400">Today</span>
@@ -839,13 +839,13 @@ const StudyScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => voi
       <p className="text-[11px] text-gray-400">Target Session: 45 Minutes</p>
 
       {/* Progress Bar */}
-      <div className="w-full h-2 bg-black/60 rounded-full mt-3 overflow-hidden border border-white/5">
+      <div className="w-full h-2 bg-[#020307] rounded-full mt-3 overflow-hidden border border-[#182133]">
         <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style={{ width: "72%" }} />
       </div>
     </div>
 
     {/* Subject & Topic */}
-    <div className="skeuo-well p-3.5 rounded-2xl mb-4 border border-white/5">
+    <div className="skeuo-well p-3.5 rounded-2xl mb-4 border border-[#182133]">
       <div className="flex items-center justify-between mb-1">
         <span className="text-[9.5px] font-mono uppercase text-gray-400">Current Focus</span>
         <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20">Physics</span>
@@ -855,7 +855,7 @@ const StudyScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => voi
     </div>
 
     {/* Distractions Gated Badge */}
-    <div className="p-3 rounded-2xl skeuo-card border border-white/10 bg-white/[0.02] flex items-center justify-between mb-4">
+    <div className="p-3 rounded-2xl skeuo-card border border-[#222e47] bg-[#0e1322] flex items-center justify-between mb-4">
       <div className="flex items-center gap-2.5">
         <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
           <ShieldCheck size={16} />
@@ -908,14 +908,14 @@ const WalletScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: Mobile
       <div className="text-[32px] font-extrabold text-white font-mono tracking-tight">{credits} <span className="text-sm font-sans font-normal text-amber-200">Focus Credits</span></div>
       <p className="text-[10px] text-gray-400 mt-1">1 Credit = 15 Minutes Unrestricted Access</p>
       
-      <div className="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-[10px]">
+      <div className="mt-4 pt-3 border-t border-[#222e47] flex justify-between items-center text-[10px]">
         <span className="text-gray-400">Screen Time Pool</span>
         <span className="text-emerald-400 font-bold font-mono">15m Active Right Now</span>
       </div>
     </div>
 
     {/* Earning / Redemption History */}
-    <div className="skeuo-well p-3.5 rounded-2xl mb-4 border border-white/5 space-y-2.5">
+    <div className="skeuo-well p-3.5 rounded-2xl mb-4 border border-[#182133] space-y-2.5">
       <div className="flex justify-between items-center">
         <h4 className="text-xs font-bold text-gray-200">Transaction History</h4>
         <span className="text-[9px] font-mono text-gray-400">CBSE Term 1</span>
@@ -1020,7 +1020,7 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex items-center gap-1.5 p-1 rounded-xl bg-black/40 border border-white/5 mb-3 text-[10px] font-mono">
+      <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#04060d] border border-[#182133] mb-3 text-[10px] font-mono">
         <button
           onClick={() => setActiveTab("shields")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
@@ -1067,9 +1067,9 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
           </div>
 
           {/* Shields Feed */}
-          <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-2 max-h-[300px] overflow-y-auto">
+          <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-2 max-h-[300px] overflow-y-auto">
             {securityVulnerabilities.map((v) => (
-              <div key={v.id} className="p-2.5 rounded-xl bg-black/40 border border-white/5 flex flex-col gap-1">
+              <div key={v.id} className="p-2.5 rounded-xl bg-[#04060d] border border-[#182133] flex flex-col gap-1">
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="font-bold text-white flex items-center gap-1.5">
                     <span className="font-mono text-[9px] text-gray-400">[{v.id}]</span>
@@ -1123,8 +1123,8 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
           </div>
 
           {/* Test Logs Console */}
-          <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-1.5 font-mono text-[10px] max-h-[240px] overflow-y-auto">
-            <div className="text-gray-400 text-[9px] pb-1 border-b border-white/5 flex justify-between items-center">
+          <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-1.5 font-mono text-[10px] max-h-[240px] overflow-y-auto">
+            <div className="text-gray-400 text-[9px] pb-1 border-b border-[#182133] flex justify-between items-center">
               <span>Security Terminal Log</span>
               <span>Kernel API 35</span>
             </div>
@@ -1168,20 +1168,20 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
       {activeTab === "curfew" && (
         <div className="space-y-3">
           {/* Family Agreement Curfew */}
-          <div className="skeuo-well p-3.5 rounded-2xl border border-white/5">
+          <div className="skeuo-well p-3.5 rounded-2xl border border-[#182133]">
             <div className="flex justify-between items-center mb-1.5">
               <h4 className="text-xs font-bold text-gray-200">Family Agreement Curfew</h4>
               <span className="text-[9px] font-mono text-amber-400">Night Lock</span>
             </div>
             <p className="text-[10px] text-gray-400 mb-2">Device curfew automatically enforces study / sleep block.</p>
-            <div className="flex justify-between items-center bg-black/40 p-2 rounded-xl text-[10px] font-mono">
+            <div className="flex justify-between items-center bg-[#04060d] p-2 rounded-xl text-[10px] font-mono">
               <span className="text-gray-300">Curfew Window:</span>
               <span className="text-white font-bold">21:30 — 06:00</span>
             </div>
           </div>
 
           {/* Guarded Apps */}
-          <div className="skeuo-well p-3.5 rounded-2xl border border-white/5 space-y-2">
+          <div className="skeuo-well p-3.5 rounded-2xl border border-[#182133] space-y-2">
             <div className="flex justify-between items-center mb-1">
               <h4 className="text-xs font-bold text-gray-200">Guarded Apps</h4>
               <span className="text-[9px] font-mono text-gray-400">38 Guarded</span>
@@ -1247,12 +1247,12 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
       </div>
 
       {/* Today Study vs Leisure Progress Bar */}
-      <div className="skeuo-well p-2.5 rounded-xl border border-white/5 mt-1.5">
+      <div className="skeuo-well p-2.5 rounded-xl border border-[#182133] mt-1.5">
         <div className="flex justify-between text-[10px] font-mono mb-1">
           <span className="text-indigo-300 font-bold">Focus: 45m</span>
           <span className="text-rose-300">Leisure: 15m / 60m</span>
         </div>
-        <div className="w-full h-2 bg-gray-800/80 rounded-full overflow-hidden flex border border-white/5">
+        <div className="w-full h-2 bg-gray-800/80 rounded-full overflow-hidden flex border border-[#182133]">
           <div className="h-full bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-l-full" style={{ width: "75%" }} />
           <div className="h-full bg-rose-500/80" style={{ width: "25%" }} />
         </div>
@@ -1276,13 +1276,13 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
     </div>
 
     {/* Live Interception Log Feed */}
-    <div className="skeuo-well p-3 rounded-2xl mb-3 border border-white/5 space-y-1.5">
+    <div className="skeuo-well p-3 rounded-2xl mb-3 border border-[#182133] space-y-1.5">
       <div className="flex justify-between items-center mb-0.5">
         <h4 className="text-xs font-bold text-gray-200">Real-Time Intercept Log</h4>
         <span className="text-[9px] font-mono text-gray-400">Today</span>
       </div>
       
-      <div className="flex items-center justify-between text-[9.5px] bg-black/30 p-2 rounded-xl border border-white/5">
+      <div className="flex items-center justify-between text-[9.5px] bg-[#060812] p-2 rounded-xl border border-[#182133]">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
           <div>
@@ -1293,7 +1293,7 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
         <span className="text-[8.5px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">Unlocked 15m</span>
       </div>
 
-      <div className="flex items-center justify-between text-[9.5px] bg-black/30 p-2 rounded-xl border border-white/5">
+      <div className="flex items-center justify-between text-[9.5px] bg-[#060812] p-2 rounded-xl border border-[#182133]">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
           <div>
@@ -1306,7 +1306,7 @@ const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScre
     </div>
 
     {/* Family Agreement Status */}
-    <div className="skeuo-card rounded-2xl p-2.5 border border-white/10 text-[9.5px] space-y-1 mb-3">
+    <div className="skeuo-card rounded-2xl p-2.5 border border-[#222e47] text-[9.5px] space-y-1 mb-3">
       <div className="flex justify-between font-bold text-gray-200">
         <span>Family Agreement Mode</span>
         <span className="text-emerald-400">Enforced</span>
@@ -1412,7 +1412,7 @@ const SettingsScreen = ({
           <div className={`p-3.5 rounded-2xl border mb-3 shadow-md ${
             localTheme === 'light' 
               ? 'bg-white border-gray-300 shadow-gray-200' 
-              : 'skeuo-card border-white/10'
+              : 'skeuo-card border-[#222e47]'
           }`}>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2.5">
@@ -1438,12 +1438,12 @@ const SettingsScreen = ({
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-1.5 pt-2 border-t border-white/10 text-[9.5px]">
-              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-black/30'}`}>
+            <div className="grid grid-cols-2 gap-1.5 pt-2 border-t border-[#222e47] text-[9.5px]">
+              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-[#060812]'}`}>
                 <span className="text-gray-400 block text-[8px] uppercase font-mono">Device Hardware</span>
                 <span className={`font-semibold truncate block ${localTheme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>Samsung M34 (#FD-9942)</span>
               </div>
-              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-black/30'}`}>
+              <div className={`p-2 rounded-xl ${localTheme === 'light' ? 'bg-gray-100' : 'bg-[#060812]'}`}>
                 <span className="text-gray-400 block text-[8px] uppercase font-mono">Guardian Sync</span>
                 <span className={`font-semibold truncate block ${localTheme === 'light' ? 'text-gray-800' : 'text-emerald-400'}`}>Priya Sharma (Parent)</span>
               </div>
@@ -1452,7 +1452,7 @@ const SettingsScreen = ({
 
           {/* Theme Selector: Tactile Dark or Light Mode Rocker */}
           <div className={`p-3 rounded-2xl border mb-3 ${
-            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-card border-white/10'
+            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-card border-[#222e47]'
           }`}>
             <div className="flex items-center justify-between mb-2">
               <span className={`text-xs font-bold flex items-center gap-1.5 ${localTheme === 'light' ? 'text-gray-900' : 'text-white'}`}>
@@ -1465,7 +1465,7 @@ const SettingsScreen = ({
             </div>
             
             {/* Skeuomorphic Two-Way Rocker Well */}
-            <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-white/5">
+            <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-[#182133]">
               <button
                 onClick={() => handleToggleTheme("dark")}
                 className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
@@ -1494,7 +1494,7 @@ const SettingsScreen = ({
 
           {/* System & Architecture Summary */}
           <div className={`p-2.5 rounded-2xl border mb-3 space-y-1.5 text-[9.5px] ${
-            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-well border-white/5'
+            localTheme === 'light' ? 'bg-white border-gray-300' : 'skeuo-well border-[#182133]'
           }`}>
             <div className="flex items-center justify-between font-bold">
               <span className={localTheme === 'light' ? 'text-gray-800' : 'text-gray-300'}>Restriction Engine</span>
@@ -1508,7 +1508,7 @@ const SettingsScreen = ({
               <span>Background Popups</span>
               <span className="text-gray-400 font-mono">0 (No Overlay Windows)</span>
             </div>
-            <div className="flex items-center justify-between text-gray-400 pt-1 border-t border-white/5">
+            <div className="flex items-center justify-between text-gray-400 pt-1 border-t border-[#182133]">
               <span>Firmware Version</span>
               <button
                 onClick={() => setOtaModalOpen(true)}

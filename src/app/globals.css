@@ -218,14 +218,14 @@
   animation: ticker-bounce 0.45s ease-out;
 }
 
-/* Debossed / Sunken Hardware Well */
+/* Debossed / Sunken Hardware Well - 100% OPAQUE SKEUOMORPHISM */
 .skeuo-well {
-  background: linear-gradient(180deg, rgba(4, 6, 14, 0.92) 0%, rgba(13, 17, 32, 0.75) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, #050811 0%, #0d1222 100%);
+  border: 1px solid #1c2538;
   box-shadow: 
-    inset 0 3px 8px rgba(0, 0, 0, 0.8),
-    inset 0 1px 2px rgba(0, 0, 0, 0.9),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
+    inset 0 3px 8px rgba(0, 0, 0, 0.95),
+    inset 0 1px 2px rgba(0, 0, 0, 0.95),
+    inset 0 -1px 1px #222c42,
     0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -285,42 +285,42 @@
     inset 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Tactile 3D Metallic / Secondary Button */
+/* Tactile 3D Metallic / Secondary Button - 100% OPAQUE SKEUOMORPHISM */
 .skeuo-btn-secondary {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #242d42 0%, #121826 100%);
+  border: 1px solid #3d4c6f;
   box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.4),
-    0 1px 2px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 #4f618d,
+    inset 0 -1px 0 #090d16;
   transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 .skeuo-btn-secondary:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: linear-gradient(180deg, #2d3852 0%, #182032 100%);
+  border-color: #556999;
   box-shadow: 
-    0 6px 16px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 6px 16px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 #6379ad;
   transform: translateY(-1px);
 }
 .skeuo-btn-secondary:active {
   transform: translateY(2px);
   box-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.4),
-    inset 0 2px 5px rgba(0, 0, 0, 0.6);
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    inset 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
-/* Tactile Pill Switch / Badge */
+/* Tactile Pill Switch / Badge - 100% OPAQUE SKEUOMORPHISM */
 .skeuo-pill {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, #1e2638 0%, #101524 100%);
+  border: 1px solid #2e3b54;
   box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 #405175,
+    inset 0 -1px 0 #080b14;
 }
 
 /* Physical Illuminated LED Indicator */
@@ -360,7 +360,7 @@
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
   pointer-events: none;
   border-radius: inherit;
 }
@@ -368,7 +368,7 @@
 /* Floating Skeuomorphic Bottom Nav Dock - PURE OPAQUE SKEUOMORPHISM (NO GLASSMORPHISM) */
 .skeuo-floating-dock {
   background: linear-gradient(180deg, #1c2338 0%, #0e1322 60%, #070914 100%);
-  border: 1px solid #334360;
+  border: 1.5px solid #334360;
   box-shadow: 
     0 16px 32px -4px rgba(0, 0, 0, 0.95),
     0 6px 14px rgba(0, 0, 0, 0.7),
@@ -376,14 +376,14 @@
     inset 0 -2px 4px 0 rgba(0, 0, 0, 0.8);
 }
 
-/* Active tab inside the floating dock */
+/* Active tab inside the floating dock - 100% OPAQUE SKEUOMORPHISM */
 .skeuo-dock-tab-active {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #2a3754 0%, #151e30 100%);
+  border: 1px solid #485c88;
   box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px #647fae,
+    inset 0 -1px 2px #070a12;
 }
 
 /* Lenis smooth scrolling requires html to not be smooth */

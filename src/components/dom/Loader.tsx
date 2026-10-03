@@ -48,7 +48,7 @@ export default function Loader() {
             </div>
 
             {/* Progress Bar Container */}
-            <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden relative">
+            <div className="w-64 h-1 bg-[#1a2336] border border-[#2b3954] rounded-full overflow-hidden relative">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-indigo-500"
                 initial={{ width: 0 }}

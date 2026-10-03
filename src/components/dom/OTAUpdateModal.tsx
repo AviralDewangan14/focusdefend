@@ -113,10 +113,10 @@ export default function OTAUpdateModal() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: "spring", stiffness: 350, damping: 28 }}
-          className="relative w-full max-w-2xl skeuo-card rounded-[28px] overflow-hidden z-10 border border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          className="relative w-full max-w-2xl skeuo-card rounded-[28px] overflow-hidden z-10 border border-[#334466] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
         >
           {/* Hardware Header Bar */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.03]">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[#222e47] bg-[#0f1424]">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full skeuo-led-green animate-pulse" />
               <div>
@@ -145,7 +145,7 @@ export default function OTAUpdateModal() {
           </div>
 
           {/* Navigation Sub-bar */}
-          <div className="flex items-center justify-between px-6 pt-4 border-b border-white/5 text-xs font-semibold">
+          <div className="flex items-center justify-between px-6 pt-4 border-b border-[#182133] text-xs font-semibold">
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveTab("update")}
@@ -233,7 +233,7 @@ export default function OTAUpdateModal() {
                     <div className="text-xs font-bold text-white">Distribution Channel</div>
                     <div className="text-[11px] text-gray-400">Select stability profile for OTA delivery</div>
                   </div>
-                  <div className="flex items-center gap-1 bg-black/40 p-1 rounded-full border border-white/10">
+                  <div className="flex items-center gap-1 bg-[#04060d] p-1 rounded-full border border-[#222e47]">
                     <button
                       onClick={() => setOtaChannel("stable")}
                       className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
@@ -293,7 +293,7 @@ export default function OTAUpdateModal() {
                       </div>
 
                       {/* Tactile Progress Bar */}
-                      <div className="w-full h-3 bg-black/60 rounded-full overflow-hidden p-0.5 border border-white/10 shadow-inner">
+                      <div className="w-full h-3 bg-[#020307] rounded-full overflow-hidden p-0.5 border border-[#222e47] shadow-inner">
                         <motion.div
                           className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.8)]"
                           style={{ width: `${otaDownloadProgress}%` }}
@@ -353,7 +353,7 @@ export default function OTAUpdateModal() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-2.5 text-xs text-gray-300">
-                    <div className="p-3 rounded-xl bg-black/40 border border-emerald-500/30">
+                    <div className="p-3 rounded-xl bg-[#04060d] border border-emerald-500/30">
                       <div className="flex items-center justify-between mb-1">
                         <strong className="text-emerald-300 font-bold text-xs flex items-center gap-1.5">
                           <CheckCircle2 size={13} className="text-emerald-400" />
@@ -366,7 +366,7 @@ export default function OTAUpdateModal() {
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-black/40 border border-indigo-500/30">
+                    <div className="p-3 rounded-xl bg-[#04060d] border border-indigo-500/30">
                       <div className="flex items-center justify-between mb-1">
                         <strong className="text-indigo-300 font-bold text-xs flex items-center gap-1.5">
                           <Shield size={13} className="text-indigo-400" />
@@ -379,7 +379,7 @@ export default function OTAUpdateModal() {
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-black/40 border border-purple-500/30">
+                    <div className="p-3 rounded-xl bg-[#04060d] border border-purple-500/30">
                       <div className="flex items-center justify-between mb-1">
                         <strong className="text-purple-300 font-bold text-xs flex items-center gap-1.5">
                           <DownloadCloud size={13} className="text-purple-400" />
@@ -392,7 +392,7 @@ export default function OTAUpdateModal() {
                       </p>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-black/30 border border-white/5 text-[10.5px] text-gray-400">
+                    <div className="p-2.5 rounded-xl bg-[#060812] border border-[#182133] text-[10.5px] text-gray-400">
                       <strong className="text-gray-300 block mb-0.5">Retained Anti-Tamper Mitigations:</strong>
                       Device Owner Safe Mode boot protection (DISALLOW_SAFE_BOOT), SQLCipher AES-256 Keystore encryption, monotonic TrueTime clock delta, and multi-user lockdown remain fully enforced.
                     </div>
@@ -427,7 +427,7 @@ export default function OTAUpdateModal() {
                       {copiedAdb ? "Copied" : "Copy ADB"}
                     </button>
                   </div>
-                  <div className="bg-black/80 p-3 rounded-xl border border-white/10 font-mono text-xs text-emerald-400 select-all">
+                  <div className="bg-[#020306] p-3 rounded-xl border border-[#222e47] font-mono text-xs text-emerald-400 select-all">
                     adb install -r FocusShield.apk
                   </div>
                   <p className="text-[11px] text-gray-400">
@@ -462,7 +462,7 @@ export default function OTAUpdateModal() {
           </div>
 
           {/* Hardware Footer */}
-          <div className="px-6 py-3.5 bg-black/40 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-gray-400">
+          <div className="px-6 py-3.5 bg-[#04060d] border-t border-[#222e47] flex items-center justify-between text-[11px] font-mono text-gray-400">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               OTA Server: Connected (Vercel Edge CDN)

@@ -333,7 +333,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Smartcard */}
-              <div className="skeuo-card rounded-[22px] p-4 relative overflow-hidden border border-white/15 shadow-md">
+              <div className="skeuo-card rounded-[22px] p-4 relative overflow-hidden border border-[#2a3854] shadow-md">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck size={14} className="text-emerald-400" />
@@ -343,7 +343,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 </div>
                 <h3 className="text-[18px] font-extrabold text-white">Mayank Sharma</h3>
                 <p className="text-[10px] text-gray-400 mb-3">Grade 10 • Daily Goal: 45m</p>
-                <div className="inline-flex items-center gap-1.5 skeuo-well px-2.5 py-1 rounded-full border border-white/10 text-[11px] font-bold text-amber-200">
+                <div className="inline-flex items-center gap-1.5 skeuo-well px-2.5 py-1 rounded-full border border-[#222e47] text-[11px] font-bold text-amber-200">
                   <Star size={12} className="text-amber-400 fill-amber-400" /> 5 Focus Credits
                 </div>
               </div>
@@ -371,7 +371,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Weekly Activity */}
-              <div className="skeuo-well p-3 rounded-2xl border border-white/5">
+              <div className="skeuo-well p-3 rounded-2xl border border-[#182133]">
                 <div className="flex items-center justify-between mb-1.5">
                   <h4 className="text-[10px] font-bold text-gray-300">Weekly Minutes</h4>
                   <span className="text-[9px] font-mono text-emerald-400">Target: 300m</span>
@@ -464,11 +464,11 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                       key={i}
                       onClick={() => setSelectedOpt(i)}
                       className={`p-2.5 rounded-xl skeuo-card flex items-center justify-between cursor-pointer transition-all ${
-                        isSel ? "border-emerald-500/60 bg-emerald-950/20 shadow-sm" : "border-white/10"
+                        isSel ? "border-emerald-500/60 bg-emerald-950/20 shadow-sm" : "border-[#222e47]"
                       }`}
                     >
                       <span className={`text-[11px] ${isSel ? "text-emerald-400 font-bold" : "text-gray-300"}`}>{opt}</span>
-                      <span className={`w-3.5 h-3.5 rounded-full ${isSel ? "skeuo-led-green" : "border border-white/20"}`} />
+                      <span className={`w-3.5 h-3.5 rounded-full ${isSel ? "skeuo-led-green" : "border border-[#334466]"}`} />
                     </div>
                   );
                 })}
@@ -521,7 +521,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 </div>
               </div>
 
-              <div className="skeuo-card p-3 rounded-2xl border border-white/10 space-y-2">
+              <div className="skeuo-card p-3 rounded-2xl border border-[#222e47] space-y-2">
                 <div className="flex justify-between items-center text-[10px] font-bold text-gray-200">
                   <span>Subject Mastery Accuracy</span>
                   <span className="font-mono text-indigo-400">CBSE 10th</span>
@@ -532,7 +532,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                       <span className="text-gray-300">Science (Physics & Bio)</span>
                       <span className="font-mono text-emerald-400 font-bold">94%</span>
                     </div>
-                    <div className="w-full h-1 bg-black/50 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-[#03050a] rounded-full overflow-hidden">
                       <div className="h-full bg-emerald-400 rounded-full" style={{ width: "94%" }} />
                     </div>
                   </div>
@@ -541,7 +541,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                       <span className="text-gray-300">Mathematics</span>
                       <span className="font-mono text-indigo-400 font-bold">88%</span>
                     </div>
-                    <div className="w-full h-1 bg-black/50 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-[#03050a] rounded-full overflow-hidden">
                       <div className="h-full bg-indigo-500 rounded-full" style={{ width: "88%" }} />
                     </div>
                   </div>
@@ -550,14 +550,14 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                       <span className="text-gray-300">English Literature</span>
                       <span className="font-mono text-purple-400 font-bold">82%</span>
                     </div>
-                    <div className="w-full h-1 bg-black/50 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-[#03050a] rounded-full overflow-hidden">
                       <div className="h-full bg-purple-500 rounded-full" style={{ width: "82%" }} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="skeuo-well p-2.5 rounded-xl border border-white/5 text-[9.5px] space-y-1.5">
+              <div className="skeuo-well p-2.5 rounded-xl border border-[#182133] text-[9.5px] space-y-1.5">
                 <div className="flex justify-between text-gray-400 font-bold">
                   <span>Recent Interceptions</span>
                   <span>Today</span>
@@ -589,12 +589,12 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-400">Deep Focus Timer</span>
                 <div className="text-[28px] font-extrabold text-white my-0.5 font-mono">32:45</div>
                 <p className="text-[10px] text-gray-400">Target Session: 45 Minutes</p>
-                <div className="w-full h-1.5 bg-black/60 rounded-full mt-2.5 overflow-hidden">
+                <div className="w-full h-1.5 bg-[#020307] rounded-full mt-2.5 overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style={{ width: "72%" }} />
                 </div>
               </div>
 
-              <div className="skeuo-well p-3 rounded-2xl border border-white/5">
+              <div className="skeuo-well p-3 rounded-2xl border border-[#182133]">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[9px] font-mono uppercase text-gray-400">Active Syllabus</span>
                   <span className="text-[8.5px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.2 rounded">Physics</span>
@@ -603,7 +603,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 <p className="text-[9.5px] text-gray-400 mt-0.5">NCERT Chapter 10 • 3 PYQs Completed</p>
               </div>
 
-              <div className="p-2.5 rounded-2xl skeuo-card border border-white/10 flex items-center justify-between">
+              <div className="p-2.5 rounded-2xl skeuo-card border border-[#222e47] flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-md bg-emerald-500/20 flex items-center justify-center text-emerald-400">
                     <ShieldCheck size={13} />
@@ -640,13 +640,13 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 </div>
                 <div className="text-[26px] font-extrabold text-white font-mono">5 <span className="text-xs font-sans text-amber-200">Credits</span></div>
                 <p className="text-[9.5px] text-gray-400 mt-0.5">1 Credit = 15m Leisure Time</p>
-                <div className="mt-2.5 pt-2 border-t border-white/10 flex justify-between text-[9px]">
+                <div className="mt-2.5 pt-2 border-t border-[#222e47] flex justify-between text-[9px]">
                   <span className="text-gray-400">Screen Time Pool</span>
                   <span className="text-emerald-400 font-bold font-mono">15m Active Right Now</span>
                 </div>
               </div>
 
-              <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-1.5 text-[9.5px]">
+              <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-1.5 text-[9.5px]">
                 <div className="flex justify-between font-bold text-gray-300">
                   <span>Transaction History</span>
                   <span className="text-gray-500">CBSE Term 1</span>
@@ -697,18 +697,18 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 </div>
               </div>
 
-              <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-1 text-[9.5px]">
+              <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-1 text-[9.5px]">
                 <div className="flex justify-between font-bold text-gray-300 mb-0.5">
                   <span>Curfew Window</span>
                   <span className="text-amber-400">Night Lock</span>
                 </div>
-                <div className="flex justify-between text-gray-300 bg-black/40 p-1.5 rounded-lg font-mono">
+                <div className="flex justify-between text-gray-300 bg-[#04060d] p-1.5 rounded-lg font-mono">
                   <span>Bedtime Lock:</span>
                   <span className="text-white font-bold">21:30 — 06:00</span>
                 </div>
               </div>
 
-              <div className="skeuo-well p-3 rounded-2xl border border-white/5 space-y-1.5 text-[9.5px]">
+              <div className="skeuo-well p-3 rounded-2xl border border-[#182133] space-y-1.5 text-[9.5px]">
                 <div className="flex justify-between font-bold text-gray-300">
                   <span>Guarded Apps</span>
                   <span className="text-gray-500">38 Total</span>
@@ -756,7 +756,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   </span>
                 </div>
 
-                <div className="skeuo-well p-2 rounded-xl border border-white/5">
+                <div className="skeuo-well p-2 rounded-xl border border-[#182133]">
                   <div className="flex justify-between text-[8.5px] font-mono mb-1">
                     <span className="text-indigo-300 font-bold">Focus: 45m</span>
                     <span className="text-rose-300">Leisure: 15m / 60m</span>
@@ -785,23 +785,23 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Intercept Feed */}
-              <div className="skeuo-well p-2.5 rounded-2xl border border-white/5 space-y-1 text-[9px]">
+              <div className="skeuo-well p-2.5 rounded-2xl border border-[#182133] space-y-1 text-[9px]">
                 <div className="flex justify-between items-center text-gray-300 font-bold text-[9px]">
                   <span>Live Activity Stream</span>
                   <span className="text-gray-500 font-mono text-[8px]">Today</span>
                 </div>
-                <div className="flex items-center justify-between bg-black/30 p-1.5 rounded-lg border border-white/5">
+                <div className="flex items-center justify-between bg-[#060812] p-1.5 rounded-lg border border-[#182133]">
                   <span className="font-semibold text-white">Instagram Gate</span>
                   <span className="text-[8px] font-mono text-emerald-400 bg-emerald-950/40 px-1.5 py-0.5 rounded">Unlocked 15m</span>
                 </div>
-                <div className="flex items-center justify-between bg-black/30 p-1.5 rounded-lg border border-white/5">
+                <div className="flex items-center justify-between bg-[#060812] p-1.5 rounded-lg border border-[#182133]">
                   <span className="font-semibold text-white">TikTok / Reels</span>
                   <span className="text-[8px] font-mono text-rose-400 bg-rose-950/40 px-1.5 py-0.5 rounded">Hard Blocked</span>
                 </div>
               </div>
 
               {/* Family Agreement */}
-              <div className="skeuo-card rounded-xl p-2 border border-white/10 text-[8.5px] text-gray-300">
+              <div className="skeuo-card rounded-xl p-2 border border-[#222e47] text-[8.5px] text-gray-300">
                 <div className="flex justify-between font-bold text-white mb-0.5">
                   <span>Family Agreement</span>
                   <span className="text-emerald-400 font-mono">Enforced</span>
@@ -856,14 +856,14 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-[7.5px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-1.5 py-0.2 rounded-full">ACTIVE</span>
                 </div>
 
-                <div className="skeuo-well p-1.5 rounded-xl border border-white/5 space-y-1 text-[8.5px]">
+                <div className="skeuo-well p-1.5 rounded-xl border border-[#182133] space-y-1 text-[8.5px]">
                   <div className="flex justify-between items-center text-emerald-300 font-bold">
                     <span className="flex items-center gap-1"><CheckCircle2 size={10} className="text-emerald-400" /> Whitelisted Study Channels:</span>
                     <span className="text-[7.5px] font-mono text-emerald-400">UNLIMITED</span>
                   </div>
                   <p className="text-[8px] text-gray-400 leading-snug">Khan Academy, MIT OCW, CrashCourse, 3Blue1Brown, NCERT Solutions.</p>
                   
-                  <div className="pt-0.5 border-t border-white/5 flex justify-between items-center text-rose-300 font-bold">
+                  <div className="pt-0.5 border-t border-[#182133] flex justify-between items-center text-rose-300 font-bold">
                     <span className="flex items-center gap-1"><Lock size={10} className="text-rose-400" /> Distracting Channels &amp; Shorts:</span>
                     <span className="text-[7.5px] font-mono text-rose-400">QUIZ GATED</span>
                   </div>
@@ -878,7 +878,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span>Active Lockouts</span>
                 </div>
 
-                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                <div className="skeuo-card p-2 rounded-xl border border-[#222e47] flex items-center justify-between text-[9.5px]">
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5 rounded-lg bg-pink-600/30 border border-pink-500/40 flex items-center justify-center text-pink-400">
                       <InstagramIcon size={11} />
@@ -891,7 +891,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
                 </div>
 
-                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                <div className="skeuo-card p-2 rounded-xl border border-[#222e47] flex items-center justify-between text-[9.5px]">
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5 rounded-lg bg-red-600/30 border border-red-500/40 flex items-center justify-center text-red-400">
                       <YouTubeIcon size={11} className="fill-red-400" />
@@ -904,7 +904,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   <span className="text-[8px] font-mono text-rose-300 bg-rose-950/40 border border-rose-500/30 px-1.5 py-0.5 rounded">GUARDED</span>
                 </div>
 
-                <div className="skeuo-card p-2 rounded-xl border border-white/10 flex items-center justify-between text-[9.5px]">
+                <div className="skeuo-card p-2 rounded-xl border border-[#222e47] flex items-center justify-between text-[9.5px]">
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5 rounded-lg bg-rose-600/30 border border-rose-500/40 flex items-center justify-center text-rose-400">
                       <Lock size={11} />
@@ -919,7 +919,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Intercept Mode Simulation */}
-              <div className="skeuo-well p-2.5 rounded-xl border border-white/5 space-y-1.5">
+              <div className="skeuo-well p-2.5 rounded-xl border border-[#182133] space-y-1.5">
                 <div className="flex justify-between items-center text-[9px] font-bold text-gray-300">
                   <span>Foreground Intercept</span>
                   <span className="text-emerald-400 font-mono">0ms Lag</span>
@@ -949,7 +949,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Profile Card */}
-              <div className="skeuo-card rounded-2xl p-2.5 border border-white/10 shadow-md">
+              <div className="skeuo-card rounded-2xl p-2.5 border border-[#222e47] shadow-md">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 flex items-center justify-center text-white font-extrabold text-xs shadow-md">
@@ -964,12 +964,12 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                     PRO TIER
                   </span>
                 </div>
-                <div className="grid grid-cols-2 gap-1 pt-1.5 border-t border-white/10 text-[8.5px]">
-                  <div className="p-1 rounded bg-black/30">
+                <div className="grid grid-cols-2 gap-1 pt-1.5 border-t border-[#222e47] text-[8.5px]">
+                  <div className="p-1 rounded bg-[#060812]">
                     <span className="text-gray-400 block text-[7.5px] uppercase font-mono">Device Hardware</span>
                     <span className="font-semibold text-gray-200">Samsung M34</span>
                   </div>
-                  <div className="p-1 rounded bg-black/30">
+                  <div className="p-1 rounded bg-[#060812]">
                     <span className="text-gray-400 block text-[7.5px] uppercase font-mono">Guardian Link</span>
                     <span className="font-semibold text-emerald-400">Priya Sharma</span>
                   </div>
@@ -977,7 +977,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* Theme Mode Rocker */}
-              <div className="skeuo-card rounded-2xl p-2.5 border border-white/10">
+              <div className="skeuo-card rounded-2xl p-2.5 border border-[#222e47]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10.5px] font-bold text-white flex items-center gap-1">
                     <Sparkles size={11} className="text-amber-400" />
@@ -985,7 +985,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                   </span>
                   <span className="text-[8px] font-mono text-gray-400">Dark OLED</span>
                 </div>
-                <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-white/5">
+                <div className="skeuo-well p-1 rounded-xl flex items-center gap-1 border border-[#182133]">
                   <div className="flex-1 py-1 rounded-lg text-[9px] font-bold flex items-center justify-center gap-1 bg-gradient-to-b from-[#2a344d] to-[#141b2c] text-white shadow-sm border border-[#3b4c6e]">
                     <Moon size={10} className="text-indigo-400 fill-indigo-400/30" />
                     Dark Mode
@@ -998,7 +998,7 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
               </div>
 
               {/* System Architecture */}
-              <div className="skeuo-well p-2 rounded-2xl border border-white/5 space-y-1 text-[8.5px]">
+              <div className="skeuo-well p-2 rounded-2xl border border-[#182133] space-y-1 text-[8.5px]">
                 <div className="flex justify-between font-bold">
                   <span className="text-gray-300">Restriction Core</span>
                   <span className="text-emerald-400 font-mono">UsageStats API</span>

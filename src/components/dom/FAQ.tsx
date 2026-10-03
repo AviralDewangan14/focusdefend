@@ -58,7 +58,7 @@ export default function FAQ() {
               key={index}
               initial={false}
               className={`rounded-2xl skeuo-card overflow-hidden transition-all duration-300 ${
-                isOpen ? "border-indigo-500/40 shadow-[0_12px_32px_rgba(0,0,0,0.6)]" : "border-white/10"
+                isOpen ? "border-indigo-500/40 shadow-[0_12px_32px_rgba(0,0,0,0.6)]" : "border-[#222e47]"
               }`}
             >
               <button
@@ -88,7 +88,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 pt-1">
-                      <div className="skeuo-well p-4 rounded-xl text-gray-300 text-sm leading-relaxed border border-white/5">
+                      <div className="skeuo-well p-4 rounded-xl text-gray-300 text-sm leading-relaxed border border-[#182133]">
                         {faq.answer}
                       </div>
                     </div>

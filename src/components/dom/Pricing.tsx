@@ -69,7 +69,7 @@ export default function Pricing() {
             className={`relative p-7 sm:p-9 rounded-[28px] skeuo-card flex flex-col h-full transition-all duration-300 ${
               tier.highlight 
                 ? "border-indigo-500/50 shadow-[0_25px_60px_-15px_rgba(79,70,229,0.3)] ring-1 ring-indigo-500/30" 
-                : "border-white/10"
+                : "border-[#222e47]"
             }`}
           >
             {/* Top Specular Accent */}

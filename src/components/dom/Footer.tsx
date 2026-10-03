@@ -7,7 +7,7 @@ export default function Footer() {
   const { setOtaModalOpen } = useStore();
 
   return (
-    <footer className="w-full bg-[#050814] border-t border-white/10 pt-16 pb-12 px-6 text-white z-20 relative">
+    <footer className="w-full bg-[#050814] border-t border-[#222e47] pt-16 pb-12 px-6 text-white z-20 relative">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12">
         <div className="md:w-5/12 space-y-4">
           <div className="flex items-center gap-2.5 font-bold text-xl tracking-tight">
@@ -22,7 +22,7 @@ export default function Footer() {
           </p>
 
           {/* Skeuomorphic System Telemetry Badge */}
-          <div className="skeuo-well p-3 rounded-2xl flex items-center justify-between max-w-xs border border-white/5">
+          <div className="skeuo-well p-3 rounded-2xl flex items-center justify-between max-w-xs border border-[#182133]">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full skeuo-led-green animate-pulse" />
               <span className="text-xs font-mono text-gray-300">OTA Server: v1.2.4 Online</span>
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
+      <div className="max-w-6xl mx-auto mt-14 pt-6 border-t border-[#222e47] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
         <p>&copy; {new Date().getFullYear()} FocusDefend. All rights reserved.</p>
         <p className="flex items-center gap-2">
           <span>Engineered for Android users worldwide</span>

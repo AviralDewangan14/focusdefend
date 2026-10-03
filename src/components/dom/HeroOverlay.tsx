@@ -3,7 +3,7 @@ import { Download, Sparkles, Smartphone } from "lucide-react";
 export default function HeroOverlay() {
   return (
     <section id="hero" className="min-h-[100dvh] w-full flex items-center justify-start px-6 sm:px-12 md:px-20 pointer-events-none relative pt-24 pb-12">
-      <div className="z-10 max-w-2xl pointer-events-auto p-7 sm:p-10 rounded-[32px] skeuo-card border border-white/15">
+      <div className="z-10 max-w-2xl pointer-events-auto p-7 sm:p-10 rounded-[32px] skeuo-card border border-[#2a3854]">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full skeuo-pill text-xs font-mono uppercase tracking-widest text-indigo-300 mb-5">
           <span className="w-2 h-2 rounded-full skeuo-led-green animate-pulse" />
           Native Android Architecture

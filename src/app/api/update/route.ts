@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   return NextResponse.json({
-    version_code: 11,
-    version_name: '1.4.6',
+    version_code: 12,
+    version_name: '1.4.7',
     download_url: 'https://focusdefend.vercel.app/FocusShield.apk',
-    sha256: 'E4757C2079ECACC3B104B67F05043D1D24D8689AB7783BB6CD691A3307E8ECA5',
-    size_bytes: 31278605,
-    release_notes: 'FocusShield Engine v1.4.6:\n• Focus Study Mode & Essential App Allowlist: Clean Focus Study Mode locking all distractions while preserving essential communication and utilities (Phone calls, SMS messages, Contacts, Clock, Calculator).\n• YouTube Study Mode Switch: Seamlessly toggle YouTube Study Mode within Focus Study sessions to access lectures while strictly filtering out distracting channels & Shorts.\n• Quiz Performance Fix & Scalability: Eliminated UI freezes and thread polling on quiz completion for buttery smooth 120Hz transitions.\n• Proactive OTA Notifications: Automatic system push updates alerting you immediately when new builds are published.\n• Full India DPDP Act 2023 & COPPA Compliance: Verifiable parental guard, zero minor tracking/ads, on-device data minimization, and official Grievance Officer desk.',
+    sha256: 'E1CFB7521AB45583E7B612D2CD19BD59EEBC1A41CA4505599B4294577F636E40',
+    size_bytes: 31278612,
+    release_notes: 'FocusShield Engine v1.4.7:\n• Today\'s Study Goal System: Interactive daily target manager (30m, 45m, 60m, 90m presets or custom). Directly editable with real-time progress syncing.\n• Live Study Goal Visualizer: Active study screen now displays real-time progress bar towards your daily study goal with achievement celebrations.\n• Tactile Micro-Interactions & End Session Dialog: Haptic feedback, smooth animated switches, and confirmation wrap-up modal that records focused minutes directly into your goal.\n• Focus Study Mode & YouTube Switch: Clean distraction lock with essential apps allowed (Phone, SMS, Contacts, Clock, Calculator) and YouTube Lecture mode toggle.',
     is_mandatory: true,
     created_at: new Date().toISOString()
   });

@@ -1,0 +1,8 @@
+_local_builds/
+preview_slides/
+assets_deck/
+*.py
+*.ps1
+*.jks
+AndroidManifest.axml
+test_*.png

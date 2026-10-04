@@ -1,0 +1,10 @@
+{
+  "version_code": 9,
+  "version_name": "1.4.4",
+  "download_url": "https://focusdefend.vercel.app/FocusShield.apk",
+  "sha256": "CD79999A0202B37C2158FD9832C15BCF8F6969335133C26D763FC3C0CF0D6046",
+  "size_bytes": 31262233,
+  "release_notes": "FocusShield Engine v1.4.4:\n• YouTube Selective Interception: Blocks distracting YouTube channels (gaming, roasting, entertainment) and YouTube Shorts in real-time while preserving full access to educational study lectures (Physics Wallah, NCERT, Khan Academy, Vedantu).\n• Strict OEM Pop-up Protection: Added active AppOps verification (OP_BACKGROUND_START_ACTIVITY 10021) for Xiaomi/HyperOS, Vivo/FuntouchOS, and ColorOS to guarantee instant foreground activity starts.\n• 0ms Instant Slate Visual Trampoline over restricted apps before gate launch.\n• High-craft tactile YouTube restriction screen with quick switch to Universal Study Mode.",
+  "is_mandatory": true,
+  "created_at": "2026-10-04T17:40:00Z"
+}

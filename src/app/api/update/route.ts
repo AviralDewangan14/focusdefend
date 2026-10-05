@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   return NextResponse.json({
-    version_code: 12,
-    version_name: '1.4.7',
+    version_code: 13,
+    version_name: '1.4.8',
     download_url: 'https://focusdefend.vercel.app/FocusShield.apk',
-    sha256: 'E1CFB7521AB45583E7B612D2CD19BD59EEBC1A41CA4505599B4294577F636E40',
-    size_bytes: 31278612,
-    release_notes: 'FocusShield Engine v1.4.7:\n• Today\'s Study Goal System: Interactive daily target manager (30m, 45m, 60m, 90m presets or custom). Directly editable with real-time progress syncing.\n• Live Study Goal Visualizer: Active study screen now displays real-time progress bar towards your daily study goal with achievement celebrations.\n• Tactile Micro-Interactions & End Session Dialog: Haptic feedback, smooth animated switches, and confirmation wrap-up modal that records focused minutes directly into your goal.\n• Focus Study Mode & YouTube Switch: Clean distraction lock with essential apps allowed (Phone, SMS, Contacts, Clock, Calculator) and YouTube Lecture mode toggle.',
+    sha256: 'ABFAF5718D0210CA8FB7B49A16971550B204A8DEAD14952531DA0579BE4AB6A7',
+    size_bytes: 31278604,
+    release_notes: 'FocusShield Engine v1.4.8:\n• Complete Micro-Interactions & Transitions: Physical 3D spring mechanical depression (2.5dp displacement) on buttons, touch compression on gauge cards, smooth color fades on YouTube toggle, and spring entrance transitions.\n• Today\'s Study Goal System: Interactive daily target manager (30m, 45m, 60m, 90m presets or custom). Directly editable with real-time progress syncing.\n• Live Study Goal Visualizer: Active study screen displays real-time progress bar towards your daily study goal with achievement celebrations.\n• Tactile Wrap-up Dialog: Haptic confirmation modal when ending study sessions that automatically records focused minutes into your daily goal.\n• Focus Study Mode & YouTube Switch: Clean distraction lock with essential apps allowed (Phone, SMS, Contacts, Clock, Calculator) and YouTube Lecture mode toggle.',
     is_mandatory: true,
     created_at: new Date().toISOString()
   });

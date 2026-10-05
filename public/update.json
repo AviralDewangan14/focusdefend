@@ -1,10 +1,10 @@
 {
-  "version_code": 14,
-  "version_name": "1.4.9",
+  "version_code": 15,
+  "version_name": "1.5.0",
   "download_url": "https://focusdefend.vercel.app/FocusShield.apk",
-  "sha256": "A1B442EA50E6522570F41D94CE22FADA424DCDA80B914F4DC402A6DE54EA1E4C",
-  "size_bytes": 31294997,
-  "release_notes": "FocusShield v1.4.9 — Redesigned Restricted App Experience:\n• Dynamic App Identity: Intercepted screen now fetches and displays the authentic target app icon (Instagram, YouTube, Snapchat, etc.) within a specular tactile frame.\n• Cyber-Shield Intercept Badge: Pinned hardware lock emblem and live jewel LED status capsule (FOCUS DEFENSE ACTIVE / DAILY LIMIT ENFORCED).\n• Hardware Bento Telemetry Panel: Inset debossed wells tracking your live Focus Credit balance and session unlock duration.\n• 3-Way Tactical Action Hub: Instant session unlock with available credits via physical 3D gloss button, academic 2-minute quiz challenge (+20 Credits), and 1-tap parent Quick Pass.\n• Interactive Quick Pass Modal: Clean preset reason chips (School Work, Urgent Chat, Family) and duration selector (15m, 30m, 45m).\n• Redesigned Study Hours Gate: Cohesive tactile console showing exact schedule end time and direct Return to Focus action.",
+  "sha256": "D64AB2E2FF1E601F49C5A85351FF13C844A6BEE2F210F57FFB32215E4BB19CD2",
+  "size_bytes": 31295025,
+  "release_notes": "FocusShield v1.5.0 — Anti-Slop System Polish & Permission Optimization:\n• Zero Setup Lag: Eliminated heavy polling loops on the setup/permissions overlay for buttery-smooth 60fps interaction.\n• Background Pop-up Permission Flow: Direct OEM redirection (Xiaomi/HyperOS, Vivo, Oppo, Realme) paired with an intuitive step-by-step visual tutorial dialog.\n• Welcoming Onboarding: Removed the false 5-minute parent escalation warning during initial setup.\n• Clean Anti-Slop UI: Completely eliminated artificial screw rivets from all containers and console panels, elevating the design with sleek obsidian glass and crisp typography.",
   "is_mandatory": true,
-  "created_at": "2026-10-05T17:35:00Z"
+  "created_at": "2026-10-05T18:40:00Z"
 }

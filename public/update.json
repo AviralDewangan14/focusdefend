@@ -1,10 +1,10 @@
 {
-  "version_code": 15,
-  "version_name": "1.5.0",
+  "version_code": 16,
+  "version_name": "1.5.1",
   "download_url": "https://focusdefend.vercel.app/FocusShield.apk",
-  "sha256": "D64AB2E2FF1E601F49C5A85351FF13C844A6BEE2F210F57FFB32215E4BB19CD2",
-  "size_bytes": 31295025,
-  "release_notes": "FocusShield v1.5.0 — Anti-Slop System Polish & Permission Optimization:\n• Zero Setup Lag: Eliminated heavy polling loops on the setup/permissions overlay for buttery-smooth 60fps interaction.\n• Background Pop-up Permission Flow: Direct OEM redirection (Xiaomi/HyperOS, Vivo, Oppo, Realme) paired with an intuitive step-by-step visual tutorial dialog.\n• Welcoming Onboarding: Removed the false 5-minute parent escalation warning during initial setup.\n• Clean Anti-Slop UI: Completely eliminated artificial screw rivets from all containers and console panels, elevating the design with sleek obsidian glass and crisp typography.",
+  "sha256": "C7F4221A8389135714576F6E9AB337F99DBB5DABF537DED87AE0D9ADEA38298E",
+  "size_bytes": 31295017,
+  "release_notes": "FocusShield v1.5.1 — Solid App Interception & Unlock Flow Upgrade:\n• Bulletproof App Lockdown: Fixed interception race condition; restricted apps now stay strictly locked behind the opaque security gate.\n• Expiration State Integrity: Prevented stale DB sessions from prematurely unlocking apps.\n• Clear Insufficient Credits Guidance: Session timer accurately shows 0 min with an Insufficient Credits banner.\n• Direct Unlock Actions: Prominent 'Take 2-Min Quiz (+20 Credits)' and 'Request Quick Pass from Parent' options ensure clear next steps when credits are low.",
   "is_mandatory": true,
-  "created_at": "2026-10-05T18:40:00Z"
+  "created_at": "2026-10-05T19:45:00Z"
 }

@@ -1,10 +1,10 @@
 {
-  "version_code": 42,
-  "version_name": "1.7.7",
+  "version_code": 43,
+  "version_name": "1.8.0",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "9AFC82178B6C54F4EA5708042CCDD507AC93A6D4C82870F966FF2877E40B4C44",
-  "size_bytes": 31426471,
-  "release_notes": "FocusDefend v1.7.7 Security & Precision Polish Update:\n• Hardware-Backed Cryptographic Encryption: Sensitive credentials including SMTP passwords and tokens are now encrypted using Android KeyStore AES-256-GCM authenticated cipher.\n• Salted PBKDF2 PIN Protection: Parental authentication PINs are hashed using salted PBKDF2-HMAC-SHA256 (10,000 rounds) with per-device cryptographic salts, guarding against rainbow table brute-force attacks.\n• Tactile Keypad Refinement: Completely eliminated horizontal reflection line cuts across keypad buttons and the guardian security medallion. Digits are smoothly contoured with continuous radial gradients.\n• High-Definition Vector Backspace: Replaced unrendered font glyph with native vector backspace rendering across all Android device versions.\n• Background Zero-Touch OTA Auto-Update: FocusForegroundService checks for releases silently in the background with one-tap notification updater.",
+  "sha256": "C929DC3BAD0CB5E90F43BC61231D3D89049263B547B4B9EB455358B59BD816A0",
+  "size_bytes": 48512592,
+  "release_notes": "FocusDefend v1.8.0 — AI Digital Wellbeing & Habit Intelligence Update:\n• AI Digital Wellbeing Intelligence: Local-first device-usage tracking, mathematical DoD/WoW pattern detection (Recreational Surges, Study Leakage, Sleep Curfew Alerts, Focus Streaks), and LLaMA-powered supportive habit coaching.\n• Strict Privacy Guard: Zero messages, keystrokes, passwords, or personal chats are accessed. Aggregations happen entirely on-device.\n• Seamless Background OTA Auto-Update: FocusForegroundService checks and delivers updates silently without disrupting active sessions.\n• High-Craft Fluid Glass UI: Refined interactive weekly charts, habit balance meters, and goal management.",
   "is_mandatory": false,
-  "created_at": "2026-10-16T06:22:00Z"
+  "created_at": "2026-10-16T09:35:00Z"
 }

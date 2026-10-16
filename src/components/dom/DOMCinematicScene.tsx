@@ -8,11 +8,18 @@ import HTMLParticleEngine from "./HTMLParticleEngine";
 export default function DOMCinematicScene() {
   const { scrollYProgress } = useScroll();
   const [mounted, setMounted] = useState(false);
+  const [isSceneActive, setIsSceneActive] = useState(true);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (latest) => {
+      setIsSceneActive(latest < 0.82);
+    });
+  }, [scrollYProgress]);
 
   // Map scroll progress (0 to 1) across the 8 scenes
   // Scene 1: 0.00 - 0.12 (Center)
@@ -73,7 +80,7 @@ export default function DOMCinematicScene() {
       style={{ opacity, display }}
       className="fixed inset-0 z-0 pointer-events-none items-center justify-center overflow-hidden bg-gradient-to-b from-[#02040a] via-[#050816] to-[#0a0f25] transform-gpu will-change-transform"
     >
-      <HTMLParticleEngine />
+      <HTMLParticleEngine active={isSceneActive} />
       
       {/* 3D Perspective Container */}
       <div style={{ perspective: "1200px" }} className="w-full h-full flex items-center justify-center">

@@ -2,9 +2,9 @@
   "version_code": 42,
   "version_name": "1.7.7",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "F9408BD677FD7A083BBA3D009A57FDAF0BDA1AFD985F6E0743D9EB1D1967D628",
-  "size_bytes": 31426463,
-  "release_notes": "FocusDefend v1.7.7 — Background Zero-Touch OTA Auto-Update Engine:\n• Continuous Background Auto-Update Monitor: FocusForegroundService checks for new releases every 15 minutes in the background without needing to open Settings or click check.\n• One-Tap Quick Update Action: High-priority heads-up notification with a direct [UPDATE NOW] button that downloads and launches the installer seamlessly.\n• Smart Multi-Tier Network Discovery: Auto-probes local Wi-Fi dev server (192.168.29.239 / gateway) with ultra-fast transfer speeds before falling back to cloud Vercel/Supabase.\n• Sideload Installer Safety: REQUEST_INSTALL_PACKAGES permission and unknown sources handler integrated.",
+  "sha256": "9AFC82178B6C54F4EA5708042CCDD507AC93A6D4C82870F966FF2877E40B4C44",
+  "size_bytes": 31426471,
+  "release_notes": "FocusDefend v1.7.7 Security & Precision Polish Update:\n• Hardware-Backed Cryptographic Encryption: Sensitive credentials including SMTP passwords and tokens are now encrypted using Android KeyStore AES-256-GCM authenticated cipher.\n• Salted PBKDF2 PIN Protection: Parental authentication PINs are hashed using salted PBKDF2-HMAC-SHA256 (10,000 rounds) with per-device cryptographic salts, guarding against rainbow table brute-force attacks.\n• Tactile Keypad Refinement: Completely eliminated horizontal reflection line cuts across keypad buttons and the guardian security medallion. Digits are smoothly contoured with continuous radial gradients.\n• High-Definition Vector Backspace: Replaced unrendered font glyph with native vector backspace rendering across all Android device versions.\n• Background Zero-Touch OTA Auto-Update: FocusForegroundService checks for releases silently in the background with one-tap notification updater.",
   "is_mandatory": false,
-  "created_at": "2026-10-16T05:20:00Z"
+  "created_at": "2026-10-16T06:22:00Z"
 }

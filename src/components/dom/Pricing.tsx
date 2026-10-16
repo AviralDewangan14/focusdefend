@@ -64,9 +64,9 @@ export default function Pricing() {
             key={tier.name}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: index * 0.12 }}
-            className={`relative p-7 sm:p-9 rounded-[28px] skeuo-card flex flex-col h-full transition-all duration-300 ${
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className={`relative p-7 sm:p-9 rounded-[28px] skeuo-card flex flex-col h-full transform-gpu will-change-transform ${
               tier.highlight 
                 ? "border-indigo-500/50 shadow-[0_25px_60px_-15px_rgba(79,70,229,0.3)] ring-1 ring-indigo-500/30" 
                 : "border-[#222e47]"
@@ -115,9 +115,9 @@ export default function Pricing() {
 
             {/* Concentric Skeuomorphic Button */}
             <a
-              href="/FocusShield.apk"
-              download="FocusShield.apk"
-              className={`w-full py-4 rounded-2xl font-bold text-center text-sm md:text-base tracking-wide transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              href="/FocusDefend.apk"
+              download="FocusDefend.apk"
+              className={`w-full py-4 rounded-2xl font-bold text-center text-sm md:text-base tracking-wide transition-colors cursor-pointer flex items-center justify-center gap-2 ${
                 tier.highlight
                   ? "skeuo-btn-primary text-white"
                   : "skeuo-btn-secondary text-white"
@@ -132,7 +132,7 @@ export default function Pricing() {
                   onClick={() => setOtaModalOpen(true)}
                   className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-mono cursor-pointer"
                 >
-                  Or check OTA build updates (v1.2.4)
+                  Or check OTA build updates (v1.7.7)
                 </button>
               </div>
             )}

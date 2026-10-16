@@ -9,7 +9,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { setOtaModalOpen, hasOtaNotification } = useStore();
+  const { setOtaModalOpen, hasOtaNotification, otaVersion } = useStore();
 
   useEffect(() => {
     setMounted(true);
@@ -56,7 +56,7 @@ export default function Navbar() {
             title="Open FocusDefend OTA System Update Center"
           >
             <span className={`w-2 h-2 rounded-full ${hasOtaNotification ? "skeuo-led-green animate-ping" : "skeuo-led-green animate-pulse"}`} />
-            <span className="hidden sm:inline text-[11px] font-mono">OTA v1.3.0</span>
+            <span className="hidden sm:inline text-[11px] font-mono">OTA {otaVersion}</span>
             <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full border ${
               hasOtaNotification 
                 ? "bg-emerald-500/30 text-emerald-300 border-emerald-400 font-bold animate-pulse" 
@@ -79,8 +79,8 @@ export default function Navbar() {
 
           {/* Tactile Download APK Button */}
           <a 
-            href="/FocusShield.apk" 
-            download="FocusShield.apk" 
+            href="/FocusDefend.apk" 
+            download="FocusDefend.apk" 
             className="skeuo-btn-primary px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs md:text-sm font-semibold text-white inline-flex items-center gap-2 shrink-0 cursor-pointer shadow-lg"
           >
             <Download size={14} className="shrink-0" />

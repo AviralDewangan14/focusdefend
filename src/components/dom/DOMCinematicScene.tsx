@@ -55,10 +55,24 @@ export default function DOMCinematicScene() {
   );
 
 
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.80, 0.86],
+    [1, 1, 0]
+  );
+
+  const display = useTransform(
+    scrollYProgress,
+    (v) => (v >= 0.86 ? "none" : "flex")
+  );
+
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#02040a] via-[#050816] to-[#0a0f25]">
+    <motion.div 
+      style={{ opacity, display }}
+      className="fixed inset-0 z-0 pointer-events-none items-center justify-center overflow-hidden bg-gradient-to-b from-[#02040a] via-[#050816] to-[#0a0f25] transform-gpu will-change-transform"
+    >
       <HTMLParticleEngine />
       
       {/* 3D Perspective Container */}
@@ -71,8 +85,7 @@ export default function DOMCinematicScene() {
             rotateY,
             scale
           }}
-          className="inline-block pointer-events-auto"
-          transition={{ type: "spring", stiffness: 100, damping: 30 }}
+          className="inline-block pointer-events-auto transform-gpu"
         >
           <CSSPhoneModel />
         </motion.div>
@@ -80,6 +93,6 @@ export default function DOMCinematicScene() {
 
       {/* Cinematic Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
-    </div>
+    </motion.div>
   );
 }

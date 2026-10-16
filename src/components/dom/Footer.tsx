@@ -54,12 +54,12 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <h4 className="text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold mb-1">Downloads</h4>
             <a 
-              href="/FocusShield.apk" 
-              download="FocusShield.apk" 
+              href="/FocusDefend.apk" 
+              download="FocusDefend.apk" 
               className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5"
             >
               <Download size={13} />
-              <span>Download FocusShield.apk</span>
+              <span>Download FocusDefend.apk</span>
             </a>
             <a href="https://focusdefend.vercel.app" className="text-sm text-gray-300 hover:text-white transition-colors">Production Web App</a>
             <span className="text-xs font-mono text-gray-500">Target: Android 10-15 (ARM64)</span>

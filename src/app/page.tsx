@@ -67,7 +67,7 @@ export default function Home() {
       </div>
 
       {/* Standard DOM sections at the bottom */}
-      <div className="relative z-20 bg-[#070a14] border-t border-[#1c2438] shadow-[0_-20px_50px_rgba(0,0,0,0.85)]">
+      <div className="relative z-20 bg-[#070a14] border-t border-[#1c2438] shadow-[0_-20px_50px_rgba(0,0,0,0.85)] transform-gpu will-change-transform">
         <Pricing />
         <FAQ />
       </div>

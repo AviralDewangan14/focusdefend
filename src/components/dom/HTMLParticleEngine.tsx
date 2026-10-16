@@ -32,22 +32,24 @@ export default function HTMLParticleEngine() {
     let animationFrameId: number;
 
     const render = () => {
-      ctx.clearRect(0, 0, w, h);
-      
-      particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
+      if (canvas.offsetParent !== null) {
+        ctx.clearRect(0, 0, w, h);
+        
+        particles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
 
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h;
-        if (p.y > h) p.y = 0;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
 
       animationFrameId = requestAnimationFrame(render);
     };

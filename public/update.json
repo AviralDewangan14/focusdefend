@@ -1,10 +1,10 @@
 {
-  "version_code": 16,
-  "version_name": "1.5.1",
-  "download_url": "https://focusdefend.vercel.app/FocusShield.apk",
-  "sha256": "C7F4221A8389135714576F6E9AB337F99DBB5DABF537DED87AE0D9ADEA38298E",
-  "size_bytes": 31295017,
-  "release_notes": "FocusShield v1.5.1 — Solid App Interception & Unlock Flow Upgrade:\n• Bulletproof App Lockdown: Fixed interception race condition; restricted apps now stay strictly locked behind the opaque security gate.\n• Expiration State Integrity: Prevented stale DB sessions from prematurely unlocking apps.\n• Clear Insufficient Credits Guidance: Session timer accurately shows 0 min with an Insufficient Credits banner.\n• Direct Unlock Actions: Prominent 'Take 2-Min Quiz (+20 Credits)' and 'Request Quick Pass from Parent' options ensure clear next steps when credits are low.",
-  "is_mandatory": true,
-  "created_at": "2026-10-05T19:45:00Z"
+  "version_code": 42,
+  "version_name": "1.7.7",
+  "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "sha256": "F9408BD677FD7A083BBA3D009A57FDAF0BDA1AFD985F6E0743D9EB1D1967D628",
+  "size_bytes": 31426463,
+  "release_notes": "FocusDefend v1.7.7 — Background Zero-Touch OTA Auto-Update Engine:\n• Continuous Background Auto-Update Monitor: FocusForegroundService checks for new releases every 15 minutes in the background without needing to open Settings or click check.\n• One-Tap Quick Update Action: High-priority heads-up notification with a direct [UPDATE NOW] button that downloads and launches the installer seamlessly.\n• Smart Multi-Tier Network Discovery: Auto-probes local Wi-Fi dev server (192.168.29.239 / gateway) with ultra-fast transfer speeds before falling back to cloud Vercel/Supabase.\n• Sideload Installer Safety: REQUEST_INSTALL_PACKAGES permission and unknown sources handler integrated.",
+  "is_mandatory": false,
+  "created_at": "2026-10-16T05:20:00Z"
 }

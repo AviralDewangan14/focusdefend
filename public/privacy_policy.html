@@ -213,26 +213,23 @@
         </ul>
 
         <h2>2. Prominent Disclosure on Android Permissions</h2>
-        <p>In accordance with Google Play Developer Program Policies, FocusDefend provides explicit disclosures regarding sensitive Android permissions:</p>
+        <p>In accordance with Google Play Developer Program Policies, FocusDefend provides explicit disclosures regarding Android permissions:</p>
 
         <div class="highlight-box warning">
-            <h4>🔑 Accessibility Service (AccessibilityService API)</h4>
-            <p>FocusDefend uses the Accessibility API solely to detect when a restricted application enters the foreground during an active study session or when Focus Credits are exhausted.</p>
+            <h4>📊 Usage Access (PACKAGE_USAGE_STATS)</h4>
+            <p>FocusDefend uses Android's official UsageStatsManager API to detect when selected restricted apps enter the foreground during study hours and to track active screen time against user-configured daily limits.</p>
             <ul>
+                <li><strong>No Accessibility API:</strong> FocusDefend does NOT use the Accessibility API, does NOT inspect UI node trees, and does NOT record window contents.</li>
                 <li><strong>Zero Keystroke Logging:</strong> We never log or record typed text or passwords.</li>
-                <li><strong>Zero Screen Reading:</strong> We do not read personal chats, emails, or multimedia content.</li>
-                <li><strong>Local Real-Time Processing:</strong> Foreground package detection is executed in real-time memory and immediately discarded.</li>
+                <li><strong>Local Real-Time Processing:</strong> Foreground app detection is evaluated strictly on-device in real-time memory and is never transmitted to external servers.</li>
             </ul>
         </div>
 
-        <h3>Usage Access Permission (PACKAGE_USAGE_STATS)</h3>
-        <p>Used to verify active screen time and manage countdown timers when apps are temporarily unlocked with Focus Credits.</p>
-
         <h3>Display Over Other Apps (SYSTEM_ALERT_WINDOW)</h3>
-        <p>Used to display focus lockout shields, quiz challenge portals, and the Dynamic Island focus capsule.</p>
+        <p>Used to display the curriculum challenge barrier, focus countdowns, and the interactive study gate over apps designated for focus protection.</p>
 
         <h3>Battery Optimization Exemption</h3>
-        <p>Ensures scheduled study blocks and timers are not interrupted by OS task killers.</p>
+        <p>Ensures scheduled study blocks and timers are not interrupted by aggressive OEM task killers.</p>
 
         <h2>3. How We Use Information</h2>
         <ul>

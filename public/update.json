@@ -1,10 +1,10 @@
 {
-  "version_code": 43,
-  "version_name": "1.8.0",
+  "version_code": 44,
+  "version_name": "1.8.1",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "C929DC3BAD0CB5E90F43BC61231D3D89049263B547B4B9EB455358B59BD816A0",
-  "size_bytes": 48512592,
-  "release_notes": "FocusDefend v1.8.0 — AI Digital Wellbeing & Habit Intelligence Update:\n• AI Digital Wellbeing Intelligence: Local-first device-usage tracking, mathematical DoD/WoW pattern detection (Recreational Surges, Study Leakage, Sleep Curfew Alerts, Focus Streaks), and LLaMA-powered supportive habit coaching.\n• Strict Privacy Guard: Zero messages, keystrokes, passwords, or personal chats are accessed. Aggregations happen entirely on-device.\n• Seamless Background OTA Auto-Update: FocusForegroundService checks and delivers updates silently without disrupting active sessions.\n• High-Craft Fluid Glass UI: Refined interactive weekly charts, habit balance meters, and goal management.",
+  "sha256": "BCBE8C9522B41E04A3E9E3B68548325C417A509D25E81E5B7AB5D4F2E46DD9AF",
+  "size_bytes": 48561764,
+  "release_notes": "FocusDefend v1.8.1 — Mandatory Permissions Setup & Glitch Fixes:\n• Login Permission Gate: Fixed glitch where users could log in without granting necessary system permissions. Users are now seamlessly guided through the dedicated Permissions Setup Screen.\n• Real-Time Permission Sync: Lifecycle-aware permission tracking dynamically activates core shields (Usage Access, Display Over Other Apps, Focus Notifications) when returning from Android Settings.\n• AI Digital Wellbeing Intelligence: Local-first device-usage tracking, mathematical pattern detection, and supportive AI coaching.\n• Strict Privacy Guard: Zero message contents, keystrokes, passwords, or personal chats collected. Aggregations happen entirely on-device.\n• Seamless Background OTA Auto-Update: FocusForegroundService checks and delivers updates silently without disrupting active sessions.",
   "is_mandatory": false,
-  "created_at": "2026-10-16T09:35:00Z"
+  "created_at": "2026-10-16T10:55:00Z"
 }

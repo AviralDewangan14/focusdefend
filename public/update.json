@@ -1,10 +1,10 @@
 {
-  "version_code": 45,
-  "version_name": "1.8.2",
+  "version_code": 50,
+  "version_name": "1.8.7",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "D367D50EF5A45D8CAF58E2275A0CD7BEBF1A4156E1B677B7FCD46673696713B1",
-  "size_bytes": 31492065,
-  "release_notes": "FocusDefend v1.8.2 Production Release — Unbypassable Restriction Shield & AI Wellbeing:\n• High-Priority Instant Blocking: Synchronous full-screen WindowManager overlay (#F5090E17 dark backdrop) immediately shields restricted apps in normal mode and study mode with zero delay.\n• Auto-Perimeter Detection: Expanded DefaultAppsInitializer automatically scans device launcher apps to classify and restrict Social Media, Streaming, and Gaming apps without requiring manual setup.\n• YouTube Interception Fix: Fixed normal-mode YouTube restriction bypass logic so that distracting entertainment is guarded while educational study sessions remain protected.\n• Strict Session Verification: Room DAO query hardened to strictly check remainingTimeMs > 0, preventing expired sessions from granting app access.\n• Thread-Safe UI Dispatch: Main Looper enforcement across overlay lifecycle methods guarantees seamless screen updates without worker-thread dropping.",
+  "sha256": "F2FC59CD3C11B55ABC2252D2495606248926B1118936E52487E9D443E8310446",
+  "size_bytes": 33242088,
+  "release_notes": "FocusDefend v1.8.7 Release — OEM Security Fix & Session Persistence:\n• OEM Security Warning Elimination: Stripped MODE_BACKGROUND_ACTIVITY_START_ALLOWED and alarm-priority full screen intents that triggered Xiaomi MIUI/HyperOS and Samsung Knox high-risk operation alerts.\n• Zero Auto-Close/Open Jitter: Replaced concurrent Home-kill and background activity collisions with instantaneous WindowManager card overlays, stopping restricted apps smoothly without continuous vibration loops.\n• Persistent Unlock Sessions: Fixed premature session cancellation where pressing Back or switching apps wiped active credit sessions. Sessions now automatically pause and seamlessly resume with your remaining time preserved intact.\n• Interactive In-Overlay Unlocking: Added direct credit unlock, 2-minute quiz challenges, quick pass requests, and Return to Home buttons directly on the overlay.",
   "is_mandatory": false,
-  "created_at": "2026-10-17T04:49:00Z"
+  "created_at": "2026-10-17T18:32:00Z"
 }

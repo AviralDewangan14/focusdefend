@@ -1,10 +1,10 @@
 {
-  "version_code": 44,
-  "version_name": "1.8.1",
+  "version_code": 45,
+  "version_name": "1.8.2",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "33E33A004D3FCF4FCAA0F7D138EE69C33FB7A9E83E3F4973B71BC7B27160F30D",
-  "size_bytes": 31492045,
-  "release_notes": "FocusDefend v1.8.1 Production Release — AI Digital Wellbeing & Permission Protection:\n• Production Optimized: R8 ProGuard minification & resource shrinking applied (reduced package size from 48.5MB to 31.4MB).\n• Mandatory Login Permission Gate: Fixed glitch where users could log in without granting necessary system permissions. Users are seamlessly guided through the dedicated Permissions Setup Screen.\n• Real-Time Permission Sync: Lifecycle-aware permission tracking dynamically activates core shields (Usage Access, Display Over Other Apps, Focus Notifications) when returning from Android Settings.\n• AI Digital Wellbeing Intelligence: Local-first device-usage tracking, mathematical pattern detection (Recreational Surges, Study Leakage, Sleep Curfew Alerts, Focus Streaks), and LLaMA-powered supportive habit coaching.\n• Strict Privacy Guard: Zero message contents, keystrokes, passwords, or personal chats collected. Aggregations happen entirely on-device.\n• Seamless Background OTA Auto-Update: FocusForegroundService checks and delivers updates silently without disrupting active sessions.",
+  "sha256": "D367D50EF5A45D8CAF58E2275A0CD7BEBF1A4156E1B677B7FCD46673696713B1",
+  "size_bytes": 31492065,
+  "release_notes": "FocusDefend v1.8.2 Production Release — Unbypassable Restriction Shield & AI Wellbeing:\n• High-Priority Instant Blocking: Synchronous full-screen WindowManager overlay (#F5090E17 dark backdrop) immediately shields restricted apps in normal mode and study mode with zero delay.\n• Auto-Perimeter Detection: Expanded DefaultAppsInitializer automatically scans device launcher apps to classify and restrict Social Media, Streaming, and Gaming apps without requiring manual setup.\n• YouTube Interception Fix: Fixed normal-mode YouTube restriction bypass logic so that distracting entertainment is guarded while educational study sessions remain protected.\n• Strict Session Verification: Room DAO query hardened to strictly check remainingTimeMs > 0, preventing expired sessions from granting app access.\n• Thread-Safe UI Dispatch: Main Looper enforcement across overlay lifecycle methods guarantees seamless screen updates without worker-thread dropping.",
   "is_mandatory": false,
-  "created_at": "2026-10-16T13:15:00Z"
+  "created_at": "2026-10-17T04:49:00Z"
 }

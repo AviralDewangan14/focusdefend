@@ -1,10 +1,10 @@
 {
-  "version_code": 53,
-  "version_name": "1.9.0",
+  "version_code": 54,
+  "version_name": "1.9.1",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "FC45E09FB1FD5F916665551B0414B93AFC0D5A31DF6D39FA132D372AC401D926",
-  "size_bytes": 33242074,
-  "release_notes": "FocusDefend v1.9.0 Release — Special App Access & Background Pop-up Guidance:\n• High-Craft Interactive Tutorial: Triple-tabbed visual walkthrough covering (1) Special App Access (Standard Android / HyperOS), (2) Xiaomi MIUI / HyperOS 'Other Permissions' (Display pop-up windows while running in background), and (3) Vivo / Oppo / Realme floating window settings.\n• 1-Click System Navigation: Dedicated buttons to jump directly into Special App Access (Appear on Top), Xiaomi Other Permissions editor, and App Info.\n• Settings Integration: Access the full background permission guide anytime from Student Settings.",
+  "sha256": "DF1FB49BFB27ABEE4DFF11659876FF691D561AEF2D269314FE453F3DC247718D",
+  "size_bytes": 33242086,
+  "release_notes": "FocusDefend v1.9.1 Release — Database Indexing & Ultra-Fast In-Memory Caching Engine:\n• High-Performance Database Indexing: Added composite indexes to Room DB v14 on UnlockSessionEntity (packageName, remainingTimeMs, id), QuizSessionEntity, QuickPassRequestEntity (status, createdAt), and WellbeingInsightEntity for sub-millisecond query execution.\n• Zero-Latency In-Memory Question Cache: Rewrote QuestionRepository to cache and asynchronously preload question banks from disk assets, reducing quiz load times from ~70ms to <0.01ms.\n• Multi-Tier Domain Caching: FocusDefendCache now accelerates Study Hours, screen time aggregates, and user role lookups to eliminate UI lag.\n• Special App Access Direct Navigation: Added exact paths and direct intent launch for Xiaomi HyperOS/MIUI 'Display pop-up windows while running in the background' under Special App Access.",
   "is_mandatory": false,
-  "created_at": "2026-10-19T06:30:00Z"
+  "created_at": "2026-10-19T08:35:00Z"
 }

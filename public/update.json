@@ -1,10 +1,10 @@
 {
-  "version_code": 52,
-  "version_name": "1.8.9",
+  "version_code": 53,
+  "version_name": "1.9.0",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "30DEB86665C7F734AB198A81AC1C6C404E3E233F7CAB320262A22D6EBD5788F6",
-  "size_bytes": 33242088,
-  "release_notes": "FocusDefend v1.8.9 Release — YouTube Shorts Interception & Redirection Engine Overhaul:\n• Regain-Class Detection Architecture: Replaced shallow tree recursion with native C++ view ID lookups across all known YouTube Shorts player components (reel_recycler, reel_watch_fragment_root, shorts_container, sound_pivot_button, etc.).\n• Fail-Safe Escape Navigation: Fires immediate deep-link intent (https://www.youtube.com/) forcing YouTube out of Shorts and back to the Home lecture screen, alongside Home tab simulation and back-gestures.\n• Dual-Layer Feedback: Dispatches haptic warnings, immediate toast notifications, and sleek full-screen overlays so students stay protected even on aggressive OEM skins (Xiaomi HyperOS, Vivo, Oppo).",
+  "sha256": "FC45E09FB1FD5F916665551B0414B93AFC0D5A31DF6D39FA132D372AC401D926",
+  "size_bytes": 33242074,
+  "release_notes": "FocusDefend v1.9.0 Release — Special App Access & Background Pop-up Guidance:\n• High-Craft Interactive Tutorial: Triple-tabbed visual walkthrough covering (1) Special App Access (Standard Android / HyperOS), (2) Xiaomi MIUI / HyperOS 'Other Permissions' (Display pop-up windows while running in background), and (3) Vivo / Oppo / Realme floating window settings.\n• 1-Click System Navigation: Dedicated buttons to jump directly into Special App Access (Appear on Top), Xiaomi Other Permissions editor, and App Info.\n• Settings Integration: Access the full background permission guide anytime from Student Settings.",
   "is_mandatory": false,
-  "created_at": "2026-10-18T14:26:00Z"
+  "created_at": "2026-10-19T06:30:00Z"
 }

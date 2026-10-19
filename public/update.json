@@ -1,10 +1,10 @@
 {
-  "version_code": 55,
-  "version_name": "1.9.2",
+  "version_code": 56,
+  "version_name": "1.9.3",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "6E790054FA5E70CC0ED515FFA9B111658F42A870F1B2F9EAA171B1D57B019452",
-  "size_bytes": 33242080,
-  "release_notes": "FocusDefend v1.9.2 Release — YouTube Selective Channel Blocker & Zero-Tolerance 0-Minute Shield:\n• Real-Time Distracting Channel Interception: Automatically inspects YouTube video metadata in real-time. Entertainment, gaming, roasts, and memes (CarryMinati, Total Gaming, Mythpat, Techno Gamerz, etc.) are blocked with an instant ejection and tactical overlay.\n• Educational Whitelist Passthrough: Academic lecture channels (Physics Wallah, Khan Academy, NCERT, Vedantu, Unacademy, Mohit Tyagi, Aman Dhattarwal, etc.) stream with 100% zero interference.\n• Automated 0-Minute Enforcement: One-tap toggle inside FocusDefend automatically enforces a 0-minute allowance for Shorts and distracting channels without needing to manually configure YouTube or Digital Wellbeing settings.",
+  "sha256": "0E3383CA8729680358EFD3F878B11B5F38F178D8DF1FD3A36C0930DC556D1991",
+  "size_bytes": 33242079,
+  "release_notes": "FocusDefend v1.9.3 Release — Bulletproof YouTube Shorts Blocker & Zero-Permission Interception:\n• Pure Accessibility Interception: Completely eliminated background startActivity() calls. Zero 'High-risk operation' security warnings on Xiaomi/HyperOS, and no special background pop-up permission needed to intercept Shorts.\n• Native Bottom Tab Switching: When the Shorts pivot tab is tapped, FocusDefend automatically simulates a click on the Home tab via AccessibilityNodeInfo (pivot_bar index 0) across all languages and YouTube versions.\n• Native Reel Player Back Ejection: When a Short is opened from a shelf or carousel, GLOBAL_ACTION_BACK pops the player instantly in 0ms without closing the YouTube app.\n• Standalone 24/7 Toggle: Added dedicated 'Block YouTube Shorts' setting in Student Settings so Shorts can be blocked continuously without requiring an active study session.",
   "is_mandatory": false,
-  "created_at": "2026-10-19T09:55:00Z"
+  "created_at": "2026-10-19T11:55:00Z"
 }

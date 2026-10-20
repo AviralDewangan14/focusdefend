@@ -1,10 +1,10 @@
 {
-  "version_code": 56,
-  "version_name": "1.9.3",
+  "version_code": 57,
+  "version_name": "1.9.4",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "0E3383CA8729680358EFD3F878B11B5F38F178D8DF1FD3A36C0930DC556D1991",
-  "size_bytes": 33242079,
-  "release_notes": "FocusDefend v1.9.3 Release — Bulletproof YouTube Shorts Blocker & Zero-Permission Interception:\n• Pure Accessibility Interception: Completely eliminated background startActivity() calls. Zero 'High-risk operation' security warnings on Xiaomi/HyperOS, and no special background pop-up permission needed to intercept Shorts.\n• Native Bottom Tab Switching: When the Shorts pivot tab is tapped, FocusDefend automatically simulates a click on the Home tab via AccessibilityNodeInfo (pivot_bar index 0) across all languages and YouTube versions.\n• Native Reel Player Back Ejection: When a Short is opened from a shelf or carousel, GLOBAL_ACTION_BACK pops the player instantly in 0ms without closing the YouTube app.\n• Standalone 24/7 Toggle: Added dedicated 'Block YouTube Shorts' setting in Student Settings so Shorts can be blocked continuously without requiring an active study session.",
+  "sha256": "3D9C2ADBF161F6D38D5BD5F89A3C111309B6B1ADB1601366BD388FE90646F4E7",
+  "size_bytes": 33242098,
+  "release_notes": "FocusDefend v1.9.4 Release — Perfected Zero-Popup YouTube Shorts & Channel Blocker:\n• Eliminated WindowManager Overlays: Completely removed TYPE_ACCESSIBILITY_OVERLAY for YouTube Shorts and channels. Zero Xiaomi/HyperOS 'Display pop-up windows in background' or 'High-risk operation' security warnings.\n• Synchronous Tab Click Fix: Fixed asynchronous node recycling race condition. When the Shorts bottom tab is tapped, FocusDefend synchronously clicks the Home tab (pivot_bar index 0) before recycling the node tree.\n• Instant Reel Ejection: Full-screen Shorts reels opened from feed or search are ejected within 0ms via GLOBAL_ACTION_BACK without closing YouTube.\n• Smart Channel Header & Subscribe Button Extraction: Distracting channels are now caught via Subscribe button and Avatar content descriptions.\n• Auto 0-Minute Enforcement: Activating YouTube Study Mode automatically enforces 0 minutes for Shorts.",
   "is_mandatory": false,
-  "created_at": "2026-10-19T11:55:00Z"
+  "created_at": "2026-10-20T14:55:00Z"
 }

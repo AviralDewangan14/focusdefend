@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-
 import fs from 'fs';
 import path from 'path';
 
@@ -24,13 +23,13 @@ export async function GET() {
   }
 
   return NextResponse.json({
-    version_code: 24,
-    version_name: '1.5.9',
-    download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    sha256: '9CF92E188B6D23CEC5B6D4EBE67859CC47586C61AFB20B5E65D3F65474C0AED6',
-    size_bytes: 31359534,
-    release_notes: 'FocusDefend v1.5.9 — Zero 3-Dots & Zero Restricted Settings Release:\n• Completely removed SYSTEM_ALERT_WINDOW from manifest: Android will NEVER flag or grey out settings for FocusDefend.\n• Single-Tap Onboarding: Only standard Usage Access and Focus Notifications are prompted, which Android grants cleanly without touching the 3 dots.\n• Reliable Study Gates: Uses Android 14/15 native PendingIntent background start and full-screen intents with zero accessibility or overlay friction.',
-    is_mandatory: true,
+    version_code: 12,
+    version_name: '3.0.0',
+    download_url: '/FocusDefend-v3.0.apk',
+    sha256: 'BF23F4FFE9265305C8A786F631322CA30E5F4763BD1C32C79C428BCCA9850B89',
+    size_bytes: 50713674,
+    release_notes: 'FocusDefend v3.0.0 — Science Exhibition & Production Master Release:\n• Resolved route resolution conflict: added explicit initialRouteName=\'index\' to root Stack to guarantee clean boot directly to landing screen.\n• Eliminated update-depth loop and blank screen placeholders in student/parent/teacher/admin layouts with declarative Redirect and branded ActivityIndicator.\n• Added global JS error protector (ErrorUtils) preventing unhandled async rejections from terminating the process.\n• Full dual-architecture support (arm64-v8a + armeabi-v7a) with official keystore signing (v2/v3 schemes).',
+    is_mandatory: false,
     created_at: new Date().toISOString()
   }, {
     headers: {

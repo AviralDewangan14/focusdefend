@@ -1,10 +1,10 @@
 {
-  "version_code": 58,
-  "version_name": "1.9.5",
-  "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "B014423F4DFF12246724DC779BF8DF1CD36C11E6616D33631B9821B174D7D85B",
-  "size_bytes": 33258480,
-  "release_notes": "FocusDefend v1.9.5 Release — Ultra-Resilient BFS YouTube Shorts & Distracting Channel Engine:\n• Single-Pass BFS Node Scanner: YouTube's dynamic Jetpack Compose views and obfuscated view IDs are now bypassed using a 120-node deep BFS scanner that inspects active reel toolbars, Remix buttons, Sound Pivot icons, and Subscribe headers directly.\n• Unconditional 0ms Ejection: Opening any Short reel from carousels, feeds, or links immediately triggers GLOBAL_ACTION_BACK to dismiss the reel player instantly.\n• Dedicated 'Block Distracting Channels' Setting: Added independent setting in Student Settings (enabled 24/7 by default) that filters non-educational entertainment/gaming channels while permitting verified lectures (PW, Khan Academy, NCERT, Vedantu, Unacademy, etc.).\n• Zero-Popup Xiaomi Immunity: Completely clean of WindowManager overlays. Native Android Toasts and firm haptic cues replace screen-freezing popups.",
+  "version_code": 12,
+  "version_name": "3.0.0",
+  "download_url": "/FocusDefend-v3.0.apk",
+  "sha256": "BF23F4FFE9265305C8A786F631322CA30E5F4763BD1C32C79C428BCCA9850B89",
+  "size_bytes": 50713674,
+  "release_notes": "FocusDefend v3.0.0 — Science Exhibition & Production Master Release:\n• Resolved route resolution conflict: added explicit initialRouteName='index' to root Stack to guarantee clean boot directly to landing screen.\n• Eliminated update-depth loop and blank screen placeholders in student/parent/teacher/admin layouts with declarative Redirect and branded ActivityIndicator.\n• Added global JS error protector (ErrorUtils) preventing unhandled async rejections from terminating the process.\n• Full dual-architecture support (arm64-v8a + armeabi-v7a) with official keystore signing (v2/v3 schemes).",
   "is_mandatory": false,
-  "created_at": "2026-10-21T13:15:00Z"
+  "created_at": "2026-11-01T19:03:00Z"
 }

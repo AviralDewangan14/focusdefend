@@ -1,20 +1,40 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enables Gzip and Brotli compression
   compress: true,
   
-  // Set aggressive Edge caching headers
+  async rewrites() {
+    return [
+      { source: '/FocusDefend.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/FocusDefend-Release.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/FocusShield.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/FocusDefend-Clean.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/app-release.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/focusdefend-latest.apk', destination: '/FocusDefend-v3.0.apk' },
+      { source: '/FocusDefend-v2.9.apk', destination: '/FocusDefend-v3.0.apk' },
+    ];
+  },
+
   async headers() {
     return [
       {
-        // Apply these headers to all routes
-        source: "/(.*)",
+        source: "/(api/update|.*\\.apk|update\\.json)",
         headers: [
           {
             key: "Cache-Control",
-            // Cache at Edge (s-maxage) for 1 year (31536000 seconds)
-            // Allow stale content to be served while revalidating in background
+            value: "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
+          },
+          {
+            key: "Pragma",
+            value: "no-cache",
+          },
+        ],
+      },
+      {
+        source: "/((?!api/update|.*\\.apk|update\\.json).*)",
+        headers: [
+          {
+            key: "Cache-Control",
             value: "public, max-age=0, s-maxage=31536000, stale-while-revalidate=86400",
           },
         ],

@@ -1,10 +1,10 @@
 {
-  "version_code": 24,
-  "version_name": "3.3.0",
+  "version_code": 25,
+  "version_name": "3.3.1",
   "download_url": "/FocusDefend.apk",
-  "sha256": "C6033B5F4BF035827D8A3BC6AABDF67177D99063012591EAF145E0DC39E42ABD",
-  "size_bytes": 81195153,
-  "release_notes": "FocusDefend v3.3.0 — Comprehensive Production Update:\n• Restriction Engine Overhaul: Hardware-accelerated modal barrier prevents pass-through over Instagram, YouTube & Games.\n• Tactile On-Screen Parent PIN Pad: Direct 4-digit PIN override directly on screen with zero keyboard pop-up dependency.\n• Protected Apps Hub: Live countdown timers, 15m/30m credit unlock & parent override.\n• Real Data Sync: Unified persistent focus credits wallet, real earned quiz credits, zero mock data.\n• Google Gemini AI Academic Mentor: Curriculum-tailored evaluation with Indian CBSE/ICSE context.\n• High-Craft Skeuomorphic UI: Ultra-rounded squircles, dual-rim lighting, zero Bitcoin icons.",
+  "sha256": "464546EB2D5B5989A7500B26F30B05A560D3F63CCFE21D65E29C9CAB198ACA90",
+  "size_bytes": 81229345,
+  "release_notes": "FocusDefend v3.3.1 — Production Release:\n• Hardened Restriction Engine: Instant Home-minimize and foreground FocusDefend interception stops pass-through.\n• Service Resiliency: AlarmManager resurrection prevents termination on swipe from Recents.\n• Interactive Deep Study Mode: +2 focus points per minute, ambient glow pulse timer, subject selector, pause/skip freedom.\n• Regain Flexible Study Schedule: Morning, Afternoon, Evening focus blocks with skip flexibility.\n• 1,500+ CBSE/ICSE Question Integration: Curriculum questions loaded with formulas and explanations.\n• Parent-Child Connection with Invite Code: Instant pairing, live wellbeing telemetry & 7-Week Wellbeing Reports.\n• AI Digital Wellbeing Engine: Auto-shuffles app priority and dynamically modifies credit costs during study hours.\n• Apple Squircle UI: Concentric 32px squircles, dual-rim specular highlights, zero Bitcoin logos.",
   "is_mandatory": false,
-  "created_at": "2026-11-02T23:00:00Z"
+  "created_at": "2026-11-02T23:40:00Z"
 }

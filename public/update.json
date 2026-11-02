@@ -1,10 +1,10 @@
 {
-  "version_code": 13,
-  "version_name": "3.1.0",
-  "download_url": "/FocusDefend-v3.1.apk",
-  "sha256": "CFDF805F82F15352BEDC1629AFCFF928D3629F4B81CC4DCE402B38C06123342F",
-  "size_bytes": 50731196,
-  "release_notes": "FocusDefend v3.1.0 — Science Exhibition & Final Production Master:\n• Resolved route collision: converted role layouts (student, parent, teacher, admin) to explicit /login fallback redirect, eliminating infinite loop on unauthenticated boot.\n• Removed NativeWind CSS transitions without Reanimated dependency, ensuring pure native stability across all Android devices.\n• Added 1-tap 'Instant Exhibition Demo ⚡' directly on Landing Screen for immediate offline presentation to judges/investors without logging in.\n• Protected MainActivity super.onCreate with robust exception fallback.\n• Signed with official keystore (v2/v3 schemes), Target SDK 34, 100% Google Play Protect compliant.",
+  "version_code": 24,
+  "version_name": "3.3.0",
+  "download_url": "/FocusDefend.apk",
+  "sha256": "C6033B5F4BF035827D8A3BC6AABDF67177D99063012591EAF145E0DC39E42ABD",
+  "size_bytes": 81195153,
+  "release_notes": "FocusDefend v3.3.0 — Comprehensive Production Update:\n• Restriction Engine Overhaul: Hardware-accelerated modal barrier prevents pass-through over Instagram, YouTube & Games.\n• Tactile On-Screen Parent PIN Pad: Direct 4-digit PIN override directly on screen with zero keyboard pop-up dependency.\n• Protected Apps Hub: Live countdown timers, 15m/30m credit unlock & parent override.\n• Real Data Sync: Unified persistent focus credits wallet, real earned quiz credits, zero mock data.\n• Google Gemini AI Academic Mentor: Curriculum-tailored evaluation with Indian CBSE/ICSE context.\n• High-Craft Skeuomorphic UI: Ultra-rounded squircles, dual-rim lighting, zero Bitcoin icons.",
   "is_mandatory": false,
-  "created_at": "2026-11-01T21:05:00Z"
+  "created_at": "2026-11-02T23:00:00Z"
 }

@@ -1,10 +1,10 @@
 {
-  "version_code": 30,
-  "version_name": "3.3.6",
+  "version_code": 31,
+  "version_name": "3.3.7",
   "download_url": "/FocusDefend.apk",
-  "sha256": "013EBFBF522846266B01B02772D723B3208C67BB5516F4F10B64C80DB812D9DE",
-  "size_bytes": 80652510,
-  "release_notes": "FocusDefend v3.3.6 — Luxury Apple Squircle Release:\n• Solved Android Autofill Yellow Highlight: Transparent background inheritance and native styles.xml transparent autofill highlight ensure email inputs never display yellow background artifacts.\n• Zero Crypto / Bitcoin Emblems: All Bitcoin badges and icons replaced with concentric squircle Sparkles, Trophy, and Award badges across the wallet and navigation tab bar.\n• Accurate App Block Title: Displays '{AppName} Blocked' (e.g. Instagram Blocked, YouTube Blocked) instead of 'android Paused'.\n• 100% Authentic NCERT MCQs: Completely eliminated 6,150 synthetic placeholder questions ('Variant 39' / 'Option B'); replaced with 2,480 verified curriculum questions across 124 syllabus topics.\n• 3-Question Focus Sprint Enforced: Answering 1 question is no longer sufficient; students must complete a 3-question streak (3/3) to earn unlock access.\n• 3-Step Guided Onboarding: Apple-grade parent PIN setup, invite code pairing, and student academic syllabus configuration.\n• Preloaded High-Speed AI: Integrated Groq Qwen/Gemini engines with zero API key configuration prompts.\n• Permanent JWT Session Persistence: Never get logged out on app reload.",
+  "sha256": "DDDEBB2D1DF3F5B0602D92B251DC0D7A483AC11DD2ABA5FE9F1F1F9925E3B616",
+  "size_bytes": 80655766,
+  "release_notes": "FocusDefend v3.3.7 — Production Release:\n• Zero Mock Data Guarantee: Hardcoded profile and student mock records completely eliminated. Real Supabase sync and local persistence enabled.\n• Solved Android Autofill Yellow Highlight: Transparent background inheritance and native styles.xml transparent autofill highlight ensure email inputs never display yellow background artifacts.\n• Zero Crypto / Bitcoin Emblems: All Bitcoin badges and icons replaced with concentric squircle Sparkles, Trophy, and Award badges across the wallet and navigation tab bar.\n• Accurate App Block Title: Displays '{AppName} Blocked' (e.g. Instagram Blocked, YouTube Blocked) instead of 'android Paused'.\n• 100% Authentic NCERT MCQs: Completely eliminated 6,150 synthetic placeholder questions ('Variant 39' / 'Option B'); replaced with 2,480 verified curriculum questions across 124 syllabus topics.\n• 3-Question Focus Sprint Enforced: Answering 1 question is no longer sufficient; students must complete a 3-question streak (3/3) to earn unlock access.\n• 3-Step Guided Onboarding: Apple-grade parent PIN setup, invite code pairing, and student academic syllabus configuration.\n• Preloaded High-Speed AI: Integrated Groq Qwen/Gemini engines with zero API key configuration prompts.\n• Permanent JWT Session Persistence: Never get logged out on app reload.",
   "is_mandatory": false,
-  "created_at": "2026-11-03T16:47:00Z"
+  "created_at": "2026-11-03T16:58:00Z"
 }

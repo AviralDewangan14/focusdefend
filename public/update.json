@@ -1,10 +1,10 @@
 {
-  "version_code": 25,
-  "version_name": "3.3.1",
+  "version_code": 30,
+  "version_name": "3.3.6",
   "download_url": "/FocusDefend.apk",
-  "sha256": "464546EB2D5B5989A7500B26F30B05A560D3F63CCFE21D65E29C9CAB198ACA90",
-  "size_bytes": 81229345,
-  "release_notes": "FocusDefend v3.3.1 — Production Release:\n• Hardened Restriction Engine: Instant Home-minimize and foreground FocusDefend interception stops pass-through.\n• Service Resiliency: AlarmManager resurrection prevents termination on swipe from Recents.\n• Interactive Deep Study Mode: +2 focus points per minute, ambient glow pulse timer, subject selector, pause/skip freedom.\n• Regain Flexible Study Schedule: Morning, Afternoon, Evening focus blocks with skip flexibility.\n• 1,500+ CBSE/ICSE Question Integration: Curriculum questions loaded with formulas and explanations.\n• Parent-Child Connection with Invite Code: Instant pairing, live wellbeing telemetry & 7-Week Wellbeing Reports.\n• AI Digital Wellbeing Engine: Auto-shuffles app priority and dynamically modifies credit costs during study hours.\n• Apple Squircle UI: Concentric 32px squircles, dual-rim specular highlights, zero Bitcoin logos.",
+  "sha256": "013EBFBF522846266B01B02772D723B3208C67BB5516F4F10B64C80DB812D9DE",
+  "size_bytes": 80652510,
+  "release_notes": "FocusDefend v3.3.6 — Luxury Apple Squircle Release:\n• Solved Android Autofill Yellow Highlight: Transparent background inheritance and native styles.xml transparent autofill highlight ensure email inputs never display yellow background artifacts.\n• Zero Crypto / Bitcoin Emblems: All Bitcoin badges and icons replaced with concentric squircle Sparkles, Trophy, and Award badges across the wallet and navigation tab bar.\n• Accurate App Block Title: Displays '{AppName} Blocked' (e.g. Instagram Blocked, YouTube Blocked) instead of 'android Paused'.\n• 100% Authentic NCERT MCQs: Completely eliminated 6,150 synthetic placeholder questions ('Variant 39' / 'Option B'); replaced with 2,480 verified curriculum questions across 124 syllabus topics.\n• 3-Question Focus Sprint Enforced: Answering 1 question is no longer sufficient; students must complete a 3-question streak (3/3) to earn unlock access.\n• 3-Step Guided Onboarding: Apple-grade parent PIN setup, invite code pairing, and student academic syllabus configuration.\n• Preloaded High-Speed AI: Integrated Groq Qwen/Gemini engines with zero API key configuration prompts.\n• Permanent JWT Session Persistence: Never get logged out on app reload.",
   "is_mandatory": false,
-  "created_at": "2026-11-02T23:40:00Z"
+  "created_at": "2026-11-03T16:47:00Z"
 }

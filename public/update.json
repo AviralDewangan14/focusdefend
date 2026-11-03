@@ -1,10 +1,10 @@
 {
-  "version_code": 34,
-  "version_name": "3.4.0",
+  "version_code": 35,
+  "version_name": "3.4.1",
   "download_url": "/FocusDefend.apk",
-  "sha256": "DC1556A33B58C382B90815266B1BE027A40CF768D1DB798F3BAAC84118284787",
-  "size_bytes": 80681382,
-  "release_notes": "FocusDefend v3.4.0 — Study Mode DND & Notification Architecture Upgrade:\n• Dedicated Student Notification Center: Added full notification center screen (All, Study, Rewards, Guardian) with unread indicator badge on the student home header.\n• Distraction-Free Study Mode: Automatic Android Do Not Disturb (DND) integration (INTERRUPTION_FILTER_PRIORITY) mutes distracting phone notifications at OS level, preserving only emergency Phone Calls and SMS.\n• Hardware-Level Non-Essential App Shield: During active study sprints, any non-essential app opened is intercepted immediately with a return-to-study challenge overlay.\n• Eliminated Floating Nav Bar Button Overlaps: Hidden subroutes (study-mode, quiz, tasks, unlock, notifications) suppress the floating tab bar completely, and main tab scroll views feature safe 140px bottom padding.\n• Authentic Student Name Resolution: Completely replaced generic 'Hello, Student' with the student's real name (e.g. 'Hello, Aviral') derived from user profile, email username parsing, and onboarding identity.\n• Real Curriculum Data Sync: Live synchronization with Supabase and local syllabus assignments tailored to student's actual class and focus subjects.",
+  "sha256": "F64638C70228EAF573409F503D662260A635749B3C3D0E09855358072778C153",
+  "size_bytes": 80687952,
+  "release_notes": "FocusDefend v3.4.1 — Billion-Dollar UI Craft & Authenticity Architecture:\n• Symmetrical Apple Squircle Medallion: Replaced oblong rectangle letterbox frame on Welcome screen with a 1:1 concentric squircle medallion with specular edge highlights.\n• Anti-AI Slop Messaging: Purged AI generator buzzwords. Upgraded brand slogan to 'Learn • Play • Prove • Unlock' and 'Transform screen time into genuine academic mastery'.\n• Direct Vercel Legal Integration: Added live Terms of Service & Privacy Policy deep links to https://focusdefend.vercel.app/terms and https://focusdefend.vercel.app/privacy across Welcome, Student Profile, and Parent Security screens.\n• Curated Curriculum MCQ Protection: Strictly filtered out all placeholder/template variant questions; guaranteed 100% authentic curriculum questions with genuine options.\n• Native App Name Resolution: Fixed 'android Paused' display glitch to query PackageManager and resolve authentic human-readable app names (Instagram, YouTube, Chrome, etc.).\n• Android Autofill Visual Cleanliness: Eliminated ugly yellow background autofill highlight on email/password input wells.\n• Purged Crypto Slop: Restored authentic educational focus credits across rewards wallet and navigation tabs.",
   "is_mandatory": false,
-  "created_at": "2026-11-03T17:40:00Z"
+  "created_at": "2026-11-03T18:30:00Z"
 }

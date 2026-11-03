@@ -29,7 +29,15 @@ import {
   Settings,
   LogOut,
   Sun,
-  Moon
+  Moon,
+  Check,
+  Send,
+  Calendar,
+  Zap,
+  MessageSquare,
+  TrendingUp,
+  ArrowUpRight,
+  Sliders
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useStore } from "@/store/useStore";
@@ -276,6 +284,12 @@ const RestrictedAppScreen = ({
   onModeChange?: (mode: "instagram" | "shorts" | "channel") => void;
 }) => {
   const [currentMode, setCurrentMode] = useState<"instagram" | "shorts" | "channel">(mode);
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [requestMinutes, setRequestMinutes] = useState(15);
+  const [requestReason, setRequestReason] = useState("Need to check physics class project group notes with classmate");
+  const [requestSent, setRequestSent] = useState(false);
+
+  const { activeGrants, requestParentAccess, revokeGrant } = useStore();
 
   useEffect(() => {
     setCurrentMode(mode);
@@ -284,6 +298,26 @@ const RestrictedAppScreen = ({
   const handleSelectMode = (newMode: "instagram" | "shorts" | "channel") => {
     setCurrentMode(newMode);
     if (onModeChange) onModeChange(newMode);
+  };
+
+  const appKey = currentMode === "instagram" ? "Instagram" : currentMode === "shorts" ? "YouTube Shorts" : "YouTube";
+  const appIconKey: "instagram" | "youtube" | "shorts" | "snapchat" = currentMode === "instagram" ? "instagram" : "youtube";
+
+  // Check if an active time-limited grant exists for this app
+  const activeGrant = activeGrants.find(g => 
+    g.status === "active" && (
+      (currentMode === "instagram" && g.appName.toLowerCase().includes("instagram")) ||
+      ((currentMode === "shorts" || currentMode === "channel") && g.appName.toLowerCase().includes("youtube"))
+    )
+  );
+
+  const handleSendRequest = () => {
+    requestParentAccess(appKey, appIconKey, requestMinutes, requestReason);
+    setRequestSent(true);
+    setTimeout(() => {
+      setShowRequestModal(false);
+      setRequestSent(false);
+    }, 2000);
   };
 
   return (
@@ -295,7 +329,7 @@ const RestrictedAppScreen = ({
       className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-gradient-to-b from-[#140608] via-[#090b14] to-[#060810] overflow-y-auto"
     >
       {/* Google Play Protect Certified Badge */}
-      <div className="flex flex-col items-center gap-1 mb-4 text-center">
+      <div className="flex flex-col items-center gap-1 mb-3 text-center">
         <div className="flex items-center gap-1.5 text-[9.5px] font-mono uppercase tracking-widest text-emerald-300 skeuo-pill px-3 py-1 rounded-full border-emerald-500/40">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           Google Play Protect Certified • Focus Guard
@@ -306,7 +340,7 @@ const RestrictedAppScreen = ({
       </div>
 
       {/* Target Selector Pills */}
-      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#04060d] border border-[#182133] mb-4 text-[9px] font-mono">
+      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#04060d] border border-[#182133] mb-3 text-[9px] font-mono">
         <button
           onClick={() => handleSelectMode("instagram")}
           className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
@@ -333,88 +367,257 @@ const RestrictedAppScreen = ({
         </button>
       </div>
 
-      {/* App Icon with Lock */}
-      <div className="relative mx-auto mb-3">
-        {currentMode === "instagram" && (
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#f97316] via-[#ec4899] to-[#8b5cf6] p-0.5 shadow-[0_12px_30px_rgba(244,63,94,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
-              <InstagramIcon size={34} className="text-white" />
+      {/* ACTIVE TIME-LIMITED GRANT VIEW */}
+      {activeGrant ? (
+        <div className="flex-1 flex flex-col items-center justify-center py-1">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-indigo-600 p-0.5 shadow-[0_12px_30px_rgba(16,185,129,0.4)] flex items-center justify-center mb-3 relative">
+            <div className="w-full h-full rounded-2xl bg-[#040912] flex items-center justify-center">
+              {currentMode === "instagram" ? <InstagramIcon size={34} className="text-emerald-400" /> : <YouTubeIcon size={34} className="text-emerald-400 fill-emerald-400" />}
+            </div>
+            <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-emerald-500 border-2 border-[#090b14] flex items-center justify-center text-white shadow-lg">
+              <Check size={12} strokeWidth={3} />
             </div>
           </div>
-        )}
-        {currentMode === "shorts" && (
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-600 via-rose-600 to-red-800 p-0.5 shadow-[0_12px_30px_rgba(239,68,68,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
-              <YouTubeIcon size={34} className="text-white fill-white" />
+
+          <span className="text-[9.5px] font-mono uppercase tracking-widest text-emerald-400 font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-1">
+            Parent Pass Active
+          </span>
+          <h2 className="text-[18px] font-extrabold text-white mb-1">
+            {activeGrant.appName} is Unlocked
+          </h2>
+          <p className="text-[10.5px] text-gray-300 text-center max-w-xs mb-3">
+            Secure, time-limited pass approved by Parent Dashboard. FocusDefend automatically restores the restriction when time expires.
+          </p>
+
+          {/* Countdown Clock Display */}
+          <div className="w-full skeuo-card p-3.5 rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-emerald-950/30 to-[#071318] text-center mb-3 shadow-[0_16px_36px_rgba(0,0,0,0.8)]">
+            <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-300">Grant Expires In</span>
+            <div className="text-[36px] font-mono font-extrabold text-white tracking-tight my-0.5">
+              {Math.floor(activeGrant.remainingSeconds / 60)}:{String(activeGrant.remainingSeconds % 60).padStart(2, "0")}
+            </div>
+            {/* Live Progress Bar */}
+            <div className="w-full h-1.5 bg-[#02070c] rounded-full overflow-hidden border border-[#163028] mt-2 mb-1">
+              <div 
+                className="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full transition-all duration-1000"
+                style={{ width: `${Math.min(100, Math.max(0, (activeGrant.remainingSeconds / (activeGrant.durationMinutes * 60)) * 100))}%` }}
+              />
+            </div>
+            <div className="flex justify-between items-center text-[8.5px] font-mono text-gray-400 mt-1">
+              <span>Authorized: {activeGrant.durationMinutes}m Pass</span>
+              <span className="text-emerald-400">Knox Monitored</span>
             </div>
           </div>
-        )}
-        {currentMode === "channel" && (
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 via-red-600 to-rose-700 p-0.5 shadow-[0_12px_30px_rgba(245,158,11,0.35)] flex items-center justify-center">
-            <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
-              <YouTubeIcon size={34} className="text-white fill-white" />
+
+          <div className="w-full space-y-2 mt-auto">
+            <button
+              onClick={() => alert(`Launching ${activeGrant.appName}. FocusDefend will automatically re-lock at 00:00.`)}
+              className="w-full py-2.5 rounded-full skeuo-btn-primary font-bold text-xs text-white flex items-center justify-center gap-2 cursor-pointer shadow-xl"
+            >
+              <Play size={14} className="fill-white" />
+              <span>Launch {activeGrant.appName}</span>
+            </button>
+            <button
+              onClick={() => revokeGrant(activeGrant.id)}
+              className="w-full py-2 rounded-full skeuo-btn-rose font-semibold text-[11px] text-rose-200 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <Lock size={12} />
+              <span>Relock &amp; Restore Restriction Early</span>
+            </button>
+          </div>
+        </div>
+      ) : (
+        /* NORMAL GATED INTERCEPTION VIEW */
+        <>
+          {/* App Icon with Lock */}
+          <div className="relative mx-auto mb-2">
+            {currentMode === "instagram" && (
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#f97316] via-[#ec4899] to-[#8b5cf6] p-0.5 shadow-[0_12px_30px_rgba(244,63,94,0.35)] flex items-center justify-center">
+                <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
+                  <InstagramIcon size={34} className="text-white" />
+                </div>
+              </div>
+            )}
+            {currentMode === "shorts" && (
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-600 via-rose-600 to-red-800 p-0.5 shadow-[0_12px_30px_rgba(239,68,68,0.35)] flex items-center justify-center">
+                <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
+                  <YouTubeIcon size={34} className="text-white fill-white" />
+                </div>
+              </div>
+            )}
+            {currentMode === "channel" && (
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 via-red-600 to-rose-700 p-0.5 shadow-[0_12px_30px_rgba(245,158,11,0.35)] flex items-center justify-center">
+                <div className="w-full h-full rounded-2xl bg-[#05070e] flex items-center justify-center">
+                  <YouTubeIcon size={34} className="text-white fill-white" />
+                </div>
+              </div>
+            )}
+            <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-rose-600 border-2 border-[#090b14] flex items-center justify-center text-white shadow-lg">
+              <Lock size={12} />
             </div>
           </div>
+
+          <div className="text-center mb-3">
+            <h2 className="text-[18px] font-extrabold text-white mb-0.5">
+              {currentMode === "instagram" && "Instagram is Paused"}
+              {currentMode === "shorts" && "YouTube Shorts is Paused"}
+              {currentMode === "channel" && "Distracting Channel Gated"}
+            </h2>
+            <p className="text-[11px] text-gray-400 max-w-xs mx-auto leading-relaxed">
+              {currentMode === "instagram" && "Study session active. Distracting social app paused via Google Play-compliant UsageStats monitoring. Zero background popups."}
+              {currentMode === "shorts" && "Infinite short-form feed gated to protect retention. Whitelisted educational YouTube channels remain accessible."}
+              {currentMode === "channel" && "Entertainment channel is restricted during study hours. Khan Academy, MIT OCW, and NCERT channels are whitelisted."}
+            </p>
+          </div>
+
+          {/* Opportunity Box */}
+          <div className="skeuo-card p-3 rounded-2xl border border-indigo-500/40 bg-indigo-950/20 mb-3 relative overflow-hidden">
+            <div className="flex items-center gap-2 mb-1 text-indigo-300 font-bold text-xs">
+              <Sparkles size={14} className="text-indigo-400" />
+              Turn Friction into Learning
+            </div>
+            <p className="text-[10.5px] text-gray-300 leading-relaxed mb-2">
+              Answer 1 curriculum challenge correctly to earn <strong className="text-white">15 minutes</strong> of unrestricted leisure access.
+            </p>
+            <div className="flex items-center gap-3 text-[9.5px] font-mono text-gray-400">
+              <span className="flex items-center gap-1"><Clock size={11} className="text-emerald-400" /> 15m Screen Time</span>
+              <span className="flex items-center gap-1"><Star size={11} className="text-amber-400" /> +1 Focus Credit</span>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="space-y-2">
+            <button
+              onClick={() => onNavigate("quiz")}
+              className="w-full py-2.5 rounded-full skeuo-btn-primary font-bold text-xs text-white flex items-center justify-center gap-2 cursor-pointer shadow-xl"
+            >
+              <Sparkles size={14} />
+              <span>Solve Challenge to Unlock (+15m)</span>
+            </button>
+
+            {/* REQUEST PARENT APPROVAL BUTTON */}
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="w-full py-2.5 rounded-full skeuo-btn-indigo font-bold text-xs text-indigo-200 hover:text-white flex items-center justify-center gap-2 cursor-pointer border border-indigo-500/40 bg-indigo-950/40 shadow-md"
+            >
+              <Key size={13} className="text-indigo-300" />
+              <span>Ask Parent for Quick Pass</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate("dashboard")}
+              className="w-full py-2 rounded-full skeuo-btn-secondary font-semibold text-xs text-gray-400 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <span>Back to Student Home</span>
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* STUDENT PARENT PASS REQUEST MODAL SHEET */}
+      <AnimatePresence>
+        {showRequestModal && (
+          <motion.div
+            initial={{ opacity: 0, y: 120 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 120 }}
+            className="absolute inset-x-3 bottom-3 p-4 rounded-3xl skeuo-card border border-indigo-500/50 bg-[#090e1c] shadow-[0_24px_50px_rgba(0,0,0,0.95)] z-50 text-white"
+          >
+            <div className="flex justify-between items-center mb-2.5">
+              <div className="flex items-center gap-1.5 text-indigo-300 font-bold text-xs">
+                <Send size={13} className="text-indigo-400" />
+                <span>Request Parent Quick Pass</span>
+              </div>
+              <button 
+                onClick={() => setShowRequestModal(false)}
+                className="text-gray-400 hover:text-white p-1 cursor-pointer"
+              >
+                <X size={14} />
+              </button>
+            </div>
+
+            {requestSent ? (
+              <div className="text-center py-4 space-y-2">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/40 mx-auto flex items-center justify-center text-emerald-400">
+                  <Check size={20} />
+                </div>
+                <h4 className="text-sm font-bold text-white">Alert Sent to Parent!</h4>
+                <p className="text-[10px] text-gray-300 max-w-xs mx-auto">
+                  Notification delivered to Parent Dashboard. Switch to the <strong>Parent</strong> screen above to approve.
+                </p>
+              </div>
+            ) : (
+              <>
+                <p className="text-[10px] text-gray-300 mb-2.5">
+                  Request temporary access to <strong className="text-white">{appKey}</strong>. Parent will receive an instant approval prompt.
+                </p>
+
+                {/* Duration Picker */}
+                <div className="mb-2.5">
+                  <span className="text-[9px] font-mono text-gray-400 block mb-1">Select Time Window:</span>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    {[15, 30, 45].map((m) => (
+                      <button
+                        key={m}
+                        type="button"
+                        onClick={() => setRequestMinutes(m)}
+                        className={`py-1.5 rounded-xl text-[10px] font-bold font-mono transition-all cursor-pointer ${
+                          requestMinutes === m 
+                            ? "bg-indigo-600 text-white shadow-md border border-indigo-400/50" 
+                            : "bg-[#060812] text-gray-400 border border-[#1b253b] hover:text-white"
+                        }`}
+                      >
+                        +{m} min
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Reason Input */}
+                <div className="mb-3">
+                  <span className="text-[9px] font-mono text-gray-400 block mb-1">Reason for Access:</span>
+                  <input
+                    type="text"
+                    value={requestReason}
+                    onChange={(e) => setRequestReason(e.target.value)}
+                    className="w-full px-2.5 py-1.5 rounded-xl bg-[#050711] border border-[#1f2b45] text-white text-[10.5px] focus:outline-none focus:border-indigo-400"
+                    placeholder="E.g., Need physics project notes with classmate"
+                  />
+                  <div className="flex gap-1 mt-1.5 flex-wrap">
+                    {["Physics notes", "Homework doubt", "Class announcement"].map((chip) => (
+                      <button
+                        key={chip}
+                        type="button"
+                        onClick={() => setRequestReason(chip === "Physics notes" ? "Need to check physics class project group notes with classmate" : chip === "Homework doubt" ? "Clarifying NCERT math exercise question with teacher" : "Reading urgent school class club announcement")}
+                        className="text-[8.5px] font-mono px-2 py-0.5 rounded-md bg-[#101728] text-gray-400 hover:text-indigo-300 border border-[#18233a] cursor-pointer"
+                      >
+                        {chip}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleSendRequest}
+                    className="flex-1 py-2.5 rounded-xl skeuo-btn-primary font-bold text-xs text-white flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
+                  >
+                    <Send size={12} />
+                    <span>Send Request to Parent</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowRequestModal(false)}
+                    className="py-2.5 px-3 rounded-xl skeuo-btn-secondary text-gray-400 hover:text-white text-xs cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </motion.div>
         )}
-        <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-rose-600 border-2 border-[#090b14] flex items-center justify-center text-white shadow-lg">
-          <Lock size={12} />
-        </div>
-      </div>
-
-      <div className="text-center mb-4">
-        <h2 className="text-[19px] font-extrabold text-white mb-1">
-          {currentMode === "instagram" && "Instagram is Paused"}
-          {currentMode === "shorts" && "YouTube Shorts is Paused"}
-          {currentMode === "channel" && "Distracting Channel Gated"}
-        </h2>
-        <p className="text-xs text-gray-400 max-w-xs mx-auto leading-relaxed">
-          {currentMode === "instagram" && "Study session active. Distracting social app paused via Google Play-compliant UsageStats monitoring. Zero background popups."}
-          {currentMode === "shorts" && "Infinite short-form feed gated to protect retention. Whitelisted educational YouTube channels remain accessible."}
-          {currentMode === "channel" && "Entertainment channel is restricted during study hours. Khan Academy, MIT OCW, and NCERT channels are whitelisted."}
-        </p>
-      </div>
-
-      {/* Opportunity Box */}
-      <div className="skeuo-card p-3.5 rounded-2xl border border-indigo-500/40 bg-indigo-950/20 mb-4 relative overflow-hidden">
-        <div className="flex items-center gap-2 mb-1.5 text-indigo-300 font-bold text-xs">
-          <Sparkles size={14} className="text-indigo-400" />
-          Turn Friction into Learning
-        </div>
-        <p className="text-[11px] text-gray-300 leading-relaxed mb-2.5">
-          Answer 1 curriculum challenge correctly to earn <strong className="text-white">15 minutes</strong> of unrestricted leisure access.
-        </p>
-        <div className="flex items-center gap-3 text-[10px] font-mono text-gray-400">
-          <span className="flex items-center gap-1"><Clock size={12} className="text-emerald-400" /> 15m Screen Time</span>
-          <span className="flex items-center gap-1"><Star size={12} className="text-amber-400" /> +1 Focus Credit</span>
-        </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="space-y-2">
-        <button
-          onClick={() => onNavigate("quiz")}
-          className="w-full py-3 rounded-full skeuo-btn-primary font-bold text-xs sm:text-sm text-white flex items-center justify-center gap-2 cursor-pointer shadow-xl"
-        >
-          <Sparkles size={14} />
-          <span>Solve Challenge to Unlock (+15m)</span>
-        </button>
-
-        <button
-          onClick={() => onNavigate("dashboard")}
-          className="w-full py-2.5 rounded-full skeuo-btn-secondary font-semibold text-xs text-gray-300 hover:text-white flex items-center justify-center gap-2 cursor-pointer"
-        >
-          <span>Back to Student Home</span>
-        </button>
-      </div>
-
-      <div className="mt-4 text-center">
-        <button 
-          onClick={() => onNavigate("dashboard")}
-          className="text-[10px] font-mono text-gray-500 hover:text-gray-400 underline cursor-pointer"
-        >
-          Emergency Access / Parent Passcode
-        </button>
-      </div>
+      </AnimatePresence>
     </motion.div>
   );
 };
@@ -815,70 +1018,332 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
   </motion.div>
 );
 
-/* SCREEN 5: UNIVERSAL STUDY MODE */
-const StudyScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => void }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.98 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.98 }}
-    transition={{ duration: 0.25 }}
-    className="absolute inset-0 flex flex-col pt-16 px-5 pb-24 text-white bg-gradient-to-b from-[#081512] via-[#060b14] to-[#04060e] overflow-y-auto"
-  >
-    <div className="flex items-center justify-between mb-4">
-      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full skeuo-pill text-[10px] font-mono text-emerald-300 border-emerald-500/30">
-        <span className="w-2 h-2 rounded-full skeuo-led-green animate-pulse" />
-        STUDY SESSION ACTIVE
-      </div>
-      <span className="text-[10px] font-mono text-gray-400">Class 10 CBSE</span>
-    </div>
+/* SCREEN 5: UNIVERSAL STUDY MODE & AI ADAPTIVE SCHEDULE ENGINE */
+const StudyScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => void }) => {
+  const [studyTab, setStudyTab] = useState<"session" | "optimizer">("session");
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editStartTime, setEditStartTime] = useState("06:30 AM");
+  const [editEndTime, setEditEndTime] = useState("08:00 AM");
+  const [editSubject, setEditSubject] = useState("Physics (Light NCERT)");
 
-    {/* Timer Wheel Display */}
-    <div className="skeuo-card rounded-[28px] p-5 mb-4 text-center relative overflow-hidden border border-emerald-500/20 shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
-      <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">Deep Focus Timer</span>
-      <div className="text-[36px] font-extrabold text-white my-1 font-mono tracking-tight">32:45</div>
-      <p className="text-[11px] text-gray-400">Target Session: 45 Minutes</p>
+  const { 
+    studySuggestions, 
+    activeSchedule, 
+    acceptStudySuggestion, 
+    editStudySuggestion, 
+    dismissStudySuggestion,
+    resetStudySuggestions
+  } = useStore();
 
-      {/* Progress Bar */}
-      <div className="w-full h-2 bg-[#020307] rounded-full mt-3 overflow-hidden border border-[#182133]">
-        <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style={{ width: "72%" }} />
-      </div>
-    </div>
+  const handleOpenEdit = (sug: any) => {
+    setEditingId(sug.id);
+    setEditSubject(sug.subject);
+  };
 
-    {/* Subject & Topic */}
-    <div className="skeuo-well p-3.5 rounded-2xl mb-4 border border-[#182133]">
-      <div className="flex items-center justify-between mb-1">
-        <span className="text-[9.5px] font-mono uppercase text-gray-400">Current Focus</span>
-        <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20">Physics</span>
-      </div>
-      <h3 className="text-sm font-bold text-white">Light: Reflection & Refraction</h3>
-      <p className="text-[10.5px] text-gray-400 mt-0.5">NCERT Chapter 10 • 3 PYQs Completed</p>
-    </div>
+  const handleSaveEdit = (id: string) => {
+    editStudySuggestion(id, editStartTime, editEndTime, editSubject);
+    setEditingId(null);
+  };
 
-    {/* Distractions Gated Badge */}
-    <div className="p-3 rounded-2xl skeuo-card border border-[#222e47] bg-[#0e1322] flex items-center justify-between mb-4">
-      <div className="flex items-center gap-2.5">
-        <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <ShieldCheck size={16} />
-        </div>
-        <div>
-          <div className="text-xs font-bold text-white">38 Distractions Gated</div>
-          <div className="text-[9.5px] text-gray-400">Instagram, YouTube, Discord muted</div>
-        </div>
-      </div>
-      <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-        Enforced
-      </span>
-    </div>
-
-    {/* End Session Button */}
-    <button 
-      onClick={() => onNavigate("dashboard")}
-      className="w-full skeuo-btn-secondary text-gray-300 hover:text-white rounded-full py-3 font-semibold text-xs cursor-pointer mt-auto"
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.25 }}
+      className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-gradient-to-b from-[#081512] via-[#060b14] to-[#04060e] overflow-y-auto"
     >
-      Pause / End Study Session
-    </button>
-  </motion.div>
-);
+      {/* Top Header & Mode Toggle Rocker */}
+      <div className="flex items-center justify-between mb-2.5">
+        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full skeuo-pill text-[9.5px] font-mono text-emerald-300 border-emerald-500/30">
+          <span className="w-1.5 h-1.5 rounded-full skeuo-led-green animate-pulse" />
+          STUDY ENGINE
+        </div>
+        <span className="text-[9.5px] font-mono text-gray-400">Class 10 CBSE</span>
+      </div>
+
+      {/* Segmented View Switcher */}
+      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#040810] border border-[#182635] mb-3 text-[9.5px] font-mono">
+        <button
+          type="button"
+          onClick={() => setStudyTab("session")}
+          className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all ${
+            studyTab === "session" ? "bg-teal-600 text-white shadow-md" : "text-gray-400 hover:text-white"
+          }`}
+        >
+          Active Focus Session
+        </button>
+        <button
+          type="button"
+          onClick={() => setStudyTab("optimizer")}
+          className={`flex-1 py-1 rounded-lg text-center font-bold cursor-pointer transition-all flex items-center justify-center gap-1 ${
+            studyTab === "optimizer" ? "bg-indigo-600 text-white shadow-md" : "text-gray-400 hover:text-white"
+          }`}
+        >
+          <Zap size={11} className={studyTab === "optimizer" ? "text-amber-300" : ""} />
+          <span>AI Scheduler</span>
+          <span className="w-3.5 h-3.5 rounded-full bg-amber-500/30 text-amber-300 text-[8px] flex items-center justify-center">
+            {studySuggestions.filter(s => s.status === "pending").length}
+          </span>
+        </button>
+      </div>
+
+      {studyTab === "session" ? (
+        /* ACTIVE FOCUS SESSION TAB */
+        <>
+          {/* Timer Wheel Display */}
+          <div className="skeuo-card rounded-[24px] p-4 mb-3 text-center relative overflow-hidden border border-emerald-500/20 shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
+            <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-400">Deep Focus Timer</span>
+            <div className="text-[34px] font-extrabold text-white my-0.5 font-mono tracking-tight">32:45</div>
+            <p className="text-[10px] text-gray-400">Target Session: 45 Minutes</p>
+
+            {/* Progress Bar */}
+            <div className="w-full h-1.5 bg-[#020307] rounded-full mt-2.5 overflow-hidden border border-[#182133]">
+              <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style={{ width: "72%" }} />
+            </div>
+          </div>
+
+          {/* Subject & Topic */}
+          <div className="skeuo-well p-3 rounded-2xl mb-3 border border-[#182133]">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[9px] font-mono uppercase text-gray-400">Current Focus</span>
+              <span className="text-[8.5px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20">Physics</span>
+            </div>
+            <h3 className="text-xs font-bold text-white">Light: Reflection &amp; Refraction</h3>
+            <p className="text-[10px] text-gray-400 mt-0.5">NCERT Chapter 10 • 3 PYQs Completed</p>
+          </div>
+
+          {/* Distractions Gated Badge */}
+          <div className="p-2.5 rounded-2xl skeuo-card border border-[#222e47] bg-[#0e1322] flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <ShieldCheck size={14} />
+              </div>
+              <div>
+                <div className="text-[11px] font-bold text-white">38 Distractions Gated</div>
+                <div className="text-[8.5px] text-gray-400">Instagram, Shorts, WhatsApp silenced</div>
+              </div>
+            </div>
+            <span className="text-[8.5px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-full border border-emerald-500/20">
+              Knox Guard
+            </span>
+          </div>
+
+          {/* Current Authorized Schedule Blocks */}
+          <div className="skeuo-card p-2.5 rounded-2xl border border-[#1b263b] mb-3">
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-gray-400">Today&apos;s FocusDefend Blocks</span>
+              <span className="text-[8.5px] font-mono text-emerald-400">Enforced</span>
+            </div>
+            <div className="space-y-1.5">
+              {activeSchedule.map((block) => (
+                <div key={block.id} className="flex justify-between items-center text-[9.5px] bg-[#050813] p-1.5 rounded-xl border border-[#172236]">
+                  <div>
+                    <span className="font-bold text-white block truncate">{block.subject}</span>
+                    <span className="text-[8.5px] font-mono text-gray-400">{block.timeSlot}</span>
+                  </div>
+                  <span className={`text-[8px] font-mono px-1.5 py-0.5 rounded ${
+                    block.status === "active" ? "bg-teal-500/20 text-teal-300 border border-teal-500/30 animate-pulse" :
+                    block.status === "optimized" ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" :
+                    "bg-gray-800 text-gray-400"
+                  }`}>
+                    {block.status === "active" ? "ACTIVE" : block.status === "optimized" ? "AI SYNCED" : "SCHEDULED"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button 
+            onClick={() => onNavigate("dashboard")}
+            className="w-full skeuo-btn-secondary text-gray-300 hover:text-white rounded-full py-2.5 font-semibold text-xs cursor-pointer mt-auto"
+          >
+            Pause / End Study Session
+          </button>
+        </>
+      ) : (
+        /* AI STUDY SCHEDULE OPTIMIZER TAB */
+        <div className="space-y-3">
+          {/* Identified Repeated Usage / Friction Alert */}
+          <div className="skeuo-card p-3 rounded-2xl border border-rose-500/40 bg-gradient-to-br from-rose-950/25 to-[#0d0711] relative overflow-hidden">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[9px] font-mono text-rose-300 font-bold uppercase flex items-center gap-1">
+                <AlertTriangle size={11} className="text-rose-400" /> Repeated Usage Identified
+              </span>
+              <span className="text-[8px] font-mono text-gray-400">UsageStats Log</span>
+            </div>
+            <h4 className="text-[11.5px] font-bold text-white mb-0.5">
+              18 Instagram Launches During 3:00 PM – 4:30 PM Study Period
+            </h4>
+            <p className="text-[9.5px] text-gray-300 leading-tight mb-2">
+              Repeated distraction attempts detected during afternoon scheduled block. Focus ratio plummeted to 42% with heavy willpower friction.
+            </p>
+            <div className="grid grid-cols-2 gap-1.5 text-[9px] font-mono">
+              <div className="bg-[#04060d] p-1.5 rounded-lg border border-rose-900/30">
+                <span className="text-gray-400 block text-[8px]">Afternoon Session Retention</span>
+                <span className="text-rose-400 font-bold text-[11px]">42% Completed</span>
+              </div>
+              <div className="bg-[#04060d] p-1.5 rounded-lg border border-emerald-900/30">
+                <span className="text-gray-400 block text-[8px]">Morning Session Retention</span>
+                <span className="text-emerald-400 font-bold text-[11px]">94% Completed</span>
+              </div>
+            </div>
+          </div>
+
+          {/* AI Suggestions Header */}
+          <div className="flex justify-between items-center px-0.5">
+            <h4 className="text-xs font-bold text-white flex items-center gap-1">
+              <Sparkles size={12} className="text-indigo-400" />
+              <span>Optimized Schedule Suggestions</span>
+            </h4>
+            <button 
+              onClick={resetStudySuggestions}
+              className="text-[8.5px] font-mono text-gray-400 hover:text-white underline cursor-pointer"
+            >
+              Reset
+            </button>
+          </div>
+
+          {/* Suggestion Cards */}
+          {studySuggestions.map((sug) => (
+            <div 
+              key={sug.id} 
+              className={`p-3 rounded-2xl skeuo-card border transition-all ${
+                sug.status === "accepted" ? "border-emerald-500/50 bg-emerald-950/20" :
+                sug.status === "edited" ? "border-indigo-500/50 bg-indigo-950/20" :
+                sug.status === "dismissed" ? "border-gray-800 bg-[#060812] opacity-50" :
+                "border-[#24314c] bg-[#0c1220]"
+              }`}
+            >
+              <div className="flex justify-between items-start gap-2 mb-1.5">
+                <div>
+                  <h5 className="text-[11px] font-bold text-white leading-tight">{sug.title}</h5>
+                  <span className="text-[8.5px] font-mono text-indigo-300 block mt-0.5">
+                    {sug.suggestedSlot}
+                  </span>
+                </div>
+                {sug.status === "accepted" && (
+                  <span className="text-[8px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full shrink-0">
+                    ✓ Applied
+                  </span>
+                )}
+                {sug.status === "edited" && (
+                  <span className="text-[8px] font-mono text-indigo-300 bg-indigo-950/60 border border-indigo-500/30 px-2 py-0.5 rounded-full shrink-0">
+                    ✓ Custom
+                  </span>
+                )}
+                {sug.status === "dismissed" && (
+                  <span className="text-[8px] font-mono text-gray-500 bg-gray-900 border border-gray-800 px-2 py-0.5 rounded-full shrink-0">
+                    Dismissed
+                  </span>
+                )}
+              </div>
+
+              {/* Rationale */}
+              <p className="text-[9.5px] text-gray-300 leading-tight mb-2">
+                {sug.rationale}
+              </p>
+
+              {/* Statistical Proof Grid */}
+              <div className="grid grid-cols-3 gap-1 bg-[#050812] p-1.5 rounded-xl border border-[#162035] mb-2.5 text-[8.5px] font-mono">
+                <div className="text-center">
+                  <span className="text-gray-400 block text-[7.5px]">Completion</span>
+                  <span className="text-emerald-400 font-bold">{sug.statistics.completionRate}</span>
+                </div>
+                <div className="text-center border-x border-[#162035]">
+                  <span className="text-gray-400 block text-[7.5px]">Distraction Drop</span>
+                  <span className="text-indigo-300 font-bold">{sug.statistics.distractionDrop}</span>
+                </div>
+                <div className="text-center">
+                  <span className="text-gray-400 block text-[7.5px]">Quiz Gain</span>
+                  <span className="text-amber-400 font-bold">{sug.statistics.quizAccuracy}</span>
+                </div>
+              </div>
+
+              {/* Interactive Student Actions: Accept, Edit, Dismiss */}
+              {sug.status === "pending" && (
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => acceptStudySuggestion(sug.id)}
+                    className="flex-1 py-1.5 rounded-xl skeuo-btn-primary font-bold text-[10px] text-white flex items-center justify-center gap-1 shadow-md cursor-pointer"
+                  >
+                    <Check size={11} strokeWidth={3} />
+                    <span>Accept Schedule</span>
+                  </button>
+                  <button
+                    onClick={() => handleOpenEdit(sug)}
+                    className="py-1.5 px-2.5 rounded-xl skeuo-btn-secondary text-gray-300 hover:text-white font-mono text-[9.5px] flex items-center gap-1 cursor-pointer border border-[#23314d]"
+                  >
+                    <Sliders size={11} />
+                    <span>Edit</span>
+                  </button>
+                  <button
+                    onClick={() => dismissStudySuggestion(sug.id)}
+                    className="py-1.5 px-2 rounded-xl text-gray-500 hover:text-gray-300 text-[9.5px] cursor-pointer"
+                    title="Dismiss suggestion"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              )}
+
+              {/* Edit Popover Inline */}
+              {editingId === sug.id && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-2 p-2.5 rounded-xl bg-[#070b16] border border-indigo-500/40 text-[9.5px]"
+                >
+                  <span className="text-[9px] font-mono text-indigo-300 font-bold block mb-1">Customize Time &amp; Subject:</span>
+                  <div className="grid grid-cols-2 gap-1 mb-1.5">
+                    <div>
+                      <span className="text-gray-400 text-[8px] block">Start:</span>
+                      <input 
+                        type="text" 
+                        value={editStartTime}
+                        onChange={(e) => setEditStartTime(e.target.value)}
+                        className="w-full px-1.5 py-0.5 rounded bg-[#03050c] border border-[#1b263b] text-white font-mono text-[9px]"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-gray-400 text-[8px] block">End:</span>
+                      <input 
+                        type="text" 
+                        value={editEndTime}
+                        onChange={(e) => setEditEndTime(e.target.value)}
+                        className="w-full px-1.5 py-0.5 rounded bg-[#03050c] border border-[#1b263b] text-white font-mono text-[9px]"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-1.5">
+                    <button
+                      onClick={() => handleSaveEdit(sug.id)}
+                      className="flex-1 py-1 rounded-lg skeuo-btn-primary font-bold text-[9px] text-white cursor-pointer"
+                    >
+                      Save &amp; Apply Restriction
+                    </button>
+                    <button
+                      onClick={() => setEditingId(null)}
+                      className="py-1 px-2 rounded-lg skeuo-btn-secondary text-gray-400 text-[9px] cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          ))}
+
+          {/* Authorized Settings Footnote */}
+          <div className="p-2.5 rounded-xl bg-[#04060d] border border-[#182133] text-[8.5px] text-gray-400 leading-tight">
+            <span className="font-bold text-gray-300 block mb-0.5">Existing Authorized Settings Guarantee:</span>
+            Schedule adaptations sync exclusively through pre-authorized FocusDefend Knox / UsageStats settings. Zero overlay popups or invasive permissions.
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
+};
 
 /* SCREEN 6: REWARDS WALLET */
 const WalletScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: MobileScreen) => void; credits?: number }) => (
@@ -1209,121 +1674,233 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
   );
 };
 
-/* SCREEN 8: PARENT DASHBOARD & GUARDIAN CONSOLE */
-const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => void }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.98 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.98 }}
-    transition={{ duration: 0.25 }}
-    className="absolute inset-0 flex flex-col pt-16 px-5 pb-24 text-white bg-[#070a14] overflow-y-auto"
-  >
-    <div className="flex justify-between items-center mb-3">
-      <div>
-        <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">FocusDefend Guardian</span>
-        <h2 className="text-[19px] font-extrabold text-white">Parent Dashboard</h2>
-      </div>
-      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold">
-        <span className="w-2 h-2 rounded-full skeuo-led-green animate-pulse" />
-        LIVE SYNC
-      </div>
-    </div>
+/* SCREEN 8: PARENT DASHBOARD & QUICK APPROVAL CONSOLE */
+const ParentDashboardScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => void }) => {
+  const { 
+    parentRequests, 
+    activeGrants, 
+    approveParentRequest, 
+    rejectParentRequest, 
+    revokeGrant,
+    requestParentAccess 
+  } = useStore();
 
-    {/* Monitored Ward Smartcard */}
-    <div className="skeuo-card rounded-[22px] p-3.5 mb-3 border border-indigo-500/20 bg-gradient-to-br from-indigo-950/30 to-[#0e1222]">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center font-bold text-indigo-300 text-xs">
-            MS
-          </div>
-          <div>
-            <h4 className="text-sm font-extrabold text-white">Mayank Sharma</h4>
-            <span className="text-[10px] text-gray-400 font-mono">Galaxy M34 • Grade 10</span>
-          </div>
-        </div>
-        <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-          Knox Active
-        </span>
-      </div>
+  const pendingRequests = parentRequests.filter(r => r.status === "pending");
 
-      {/* Today Study vs Leisure Progress Bar */}
-      <div className="skeuo-well p-2.5 rounded-xl border border-[#182133] mt-1.5">
-        <div className="flex justify-between text-[10px] font-mono mb-1">
-          <span className="text-indigo-300 font-bold">Focus: 45m</span>
-          <span className="text-rose-300">Leisure: 15m / 60m</span>
-        </div>
-        <div className="w-full h-2 bg-gray-800/80 rounded-full overflow-hidden flex border border-[#182133]">
-          <div className="h-full bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-l-full" style={{ width: "75%" }} />
-          <div className="h-full bg-rose-500/80" style={{ width: "25%" }} />
-        </div>
-        <div className="flex justify-between text-[9px] text-gray-400 font-mono mt-1">
-          <span>75% Productive Ratio</span>
-          <span className="text-emerald-400 font-semibold">+5 Credits Earned</span>
-        </div>
-      </div>
-    </div>
-
-    {/* Quick Parent Guardian Actions */}
-    <div className="grid grid-cols-2 gap-2 mb-3">
-      <button className="skeuo-btn-primary py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 text-[10.5px] font-bold text-white shadow-md">
-        <Clock size={12} className="text-indigo-300" />
-        <span>+30m Study Pass</span>
-      </button>
-      <button className="skeuo-btn-rose py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 text-[10.5px] font-bold text-white shadow-md">
-        <Lock size={12} className="text-rose-200" />
-        <span>Instant Guard</span>
-      </button>
-    </div>
-
-    {/* Live Interception Log Feed */}
-    <div className="skeuo-well p-3 rounded-2xl mb-3 border border-[#182133] space-y-1.5">
-      <div className="flex justify-between items-center mb-0.5">
-        <h4 className="text-xs font-bold text-gray-200">Real-Time Intercept Log</h4>
-        <span className="text-[9px] font-mono text-gray-400">Today</span>
-      </div>
-      
-      <div className="flex items-center justify-between text-[9.5px] bg-[#060812] p-2 rounded-xl border border-[#182133]">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-          <div>
-            <div className="font-bold text-white">Instagram Gate</div>
-            <div className="text-[8.5px] text-gray-400">12:42 PM • Question Solved</div>
-          </div>
-        </div>
-        <span className="text-[8.5px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">Unlocked 15m</span>
-      </div>
-
-      <div className="flex items-center justify-between text-[9.5px] bg-[#060812] p-2 rounded-xl border border-[#182133]">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-          <div>
-            <div className="font-bold text-white">TikTok Video</div>
-            <div className="text-[8.5px] text-gray-400">11:15 AM • Hard Lock</div>
-          </div>
-        </div>
-        <span className="text-[8.5px] font-mono text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-500/20">Gate Blocked</span>
-      </div>
-    </div>
-
-    {/* Family Agreement Status */}
-    <div className="skeuo-card rounded-2xl p-2.5 border border-[#222e47] text-[9.5px] space-y-1 mb-3">
-      <div className="flex justify-between font-bold text-gray-200">
-        <span>Family Agreement Mode</span>
-        <span className="text-emerald-400">Enforced</span>
-      </div>
-      <p className="text-[9px] text-gray-400">
-        PIN requirement enabled for settings modifications and app uninstallation attempts.
-      </p>
-    </div>
-
-    <button 
-      onClick={() => onNavigate("dashboard")}
-      className="w-full skeuo-btn-secondary text-gray-300 hover:text-white rounded-full py-2.5 font-semibold text-xs cursor-pointer mt-auto"
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.25 }}
+      className="absolute inset-0 flex flex-col pt-16 px-4 pb-24 text-white bg-[#070a14] overflow-y-auto"
     >
-      Return to Dashboard
-    </button>
-  </motion.div>
-);
+      <div className="flex justify-between items-center mb-2.5">
+        <div>
+          <span className="text-[9.5px] font-mono uppercase tracking-widest text-emerald-400 font-bold">FocusDefend Guardian</span>
+          <h2 className="text-[18px] font-extrabold text-white">Parent Dashboard</h2>
+        </div>
+        <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono font-bold">
+          <span className="w-1.5 h-1.5 rounded-full skeuo-led-green animate-pulse" />
+          LIVE SYNC
+        </div>
+      </div>
+
+      {/* QUICK APPROVAL QUEUE (FEATURE 2) */}
+      <div className="mb-3">
+        <div className="flex justify-between items-center mb-1 px-0.5">
+          <div className="flex items-center gap-1.5">
+            <Key size={12} className="text-amber-400" />
+            <h4 className="text-xs font-bold text-white">Quick Approval Queue</h4>
+          </div>
+          {pendingRequests.length > 0 ? (
+            <span className="text-[8.5px] font-mono text-amber-300 bg-amber-500/20 border border-amber-500/30 px-1.5 py-0.2 rounded-full animate-pulse">
+              {pendingRequests.length} Pending
+            </span>
+          ) : (
+            <span className="text-[8.5px] font-mono text-gray-400">All Clear</span>
+          )}
+        </div>
+
+        {pendingRequests.length > 0 ? (
+          <div className="space-y-2">
+            {pendingRequests.map((req) => (
+              <div 
+                key={req.id} 
+                className="skeuo-card p-3 rounded-2xl border border-amber-500/40 bg-gradient-to-br from-amber-950/20 to-[#0e1220] shadow-[0_12px_28px_rgba(0,0,0,0.8)]"
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-400/30 flex items-center justify-center font-bold text-amber-300 text-[10px]">
+                      MS
+                    </div>
+                    <div>
+                      <h5 className="text-[11px] font-bold text-white">{req.studentName}</h5>
+                      <span className="text-[8.5px] text-gray-400 font-mono">Requests +{req.requestedMinutes}m on {req.appName}</span>
+                    </div>
+                  </div>
+                  <span className="text-[8px] font-mono text-gray-400">{req.timestamp}</span>
+                </div>
+
+                <div className="bg-[#050711] p-2 rounded-xl border border-[#1b253b] mb-2 text-[9.5px]">
+                  <span className="text-gray-400 block text-[8px] font-mono">Student Note:</span>
+                  <p className="text-gray-200 italic mt-0.5">&ldquo;{req.reason}&rdquo;</p>
+                </div>
+
+                {/* Instant Parent Actions: Approve 15m, 30m, Reject */}
+                <div className="grid grid-cols-3 gap-1.5">
+                  <button
+                    onClick={() => approveParentRequest(req.id, 15)}
+                    className="py-1.5 rounded-xl skeuo-btn-primary font-bold text-[9.5px] text-white flex items-center justify-center gap-1 shadow-md cursor-pointer"
+                  >
+                    <Check size={11} strokeWidth={3} />
+                    <span>Approve 15m</span>
+                  </button>
+                  <button
+                    onClick={() => approveParentRequest(req.id, 30)}
+                    className="py-1.5 rounded-xl skeuo-btn-indigo font-bold text-[9.5px] text-white flex items-center justify-center gap-1 shadow-md cursor-pointer border border-indigo-500/40"
+                  >
+                    <span>+30m Pass</span>
+                  </button>
+                  <button
+                    onClick={() => rejectParentRequest(req.id)}
+                    className="py-1.5 rounded-xl skeuo-btn-rose font-bold text-[9.5px] text-rose-200 hover:text-white flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    <X size={11} />
+                    <span>Decline</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="skeuo-well p-2.5 rounded-xl border border-[#162132] text-center">
+            <span className="text-[9.5px] text-gray-400 block mb-1">Zero pending requests. Ward device is strictly protected.</span>
+            <button
+              onClick={() => requestParentAccess("Instagram", "instagram", 15, "Need to check physics class project group notes with classmate")}
+              className="text-[8.5px] font-mono text-indigo-400 hover:text-indigo-300 underline cursor-pointer"
+            >
+              + Simulate Student Request (+15m Instagram)
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* ACTIVE TIME-LIMITED GRANTS WITH REAL-TIME COUNTDOWN */}
+      {activeGrants.length > 0 && (
+        <div className="mb-3">
+          <div className="flex justify-between items-center mb-1 px-0.5">
+            <div className="flex items-center gap-1.5">
+              <Clock size={12} className="text-emerald-400" />
+              <h4 className="text-xs font-bold text-white">Active Time-Limited Grants</h4>
+            </div>
+            <span className="text-[8.5px] font-mono text-emerald-400 bg-emerald-500/20 px-1.5 py-0.2 rounded-full border border-emerald-500/30">
+              Live
+            </span>
+          </div>
+
+          <div className="space-y-1.5">
+            {activeGrants.map((grant) => (
+              <div 
+                key={grant.id} 
+                className="skeuo-card p-2.5 rounded-2xl border border-emerald-500/40 bg-[#071317] flex items-center justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    <span className="text-[11px] font-bold text-white">{grant.appName}</span>
+                    <span className="text-[8.5px] font-mono text-gray-400">• Granted {grant.durationMinutes}m</span>
+                  </div>
+                  <div className="text-[14px] font-mono font-extrabold text-emerald-300 mt-0.5">
+                    {Math.floor(grant.remainingSeconds / 60)}:{String(grant.remainingSeconds % 60).padStart(2, "0")} remaining
+                  </div>
+                  <span className="text-[8px] font-mono text-gray-400">Restores restriction automatically at 00:00</span>
+                </div>
+                <button
+                  onClick={() => revokeGrant(grant.id)}
+                  className="py-1 px-2.5 rounded-xl skeuo-btn-rose font-bold text-[9px] text-rose-200 hover:text-white cursor-pointer"
+                >
+                  Revoke Now
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Monitored Ward Smartcard */}
+      <div className="skeuo-card rounded-[20px] p-3 mb-2.5 border border-indigo-500/20 bg-gradient-to-br from-indigo-950/30 to-[#0e1222]">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center font-bold text-indigo-300 text-[10px]">
+              MS
+            </div>
+            <div>
+              <h4 className="text-xs font-extrabold text-white">Mayank Sharma</h4>
+              <span className="text-[9px] text-gray-400 font-mono">Galaxy M34 • Grade 10</span>
+            </div>
+          </div>
+          <span className="text-[8px] font-mono font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
+            Knox Active
+          </span>
+        </div>
+
+        {/* Today Study vs Leisure Progress Bar */}
+        <div className="skeuo-well p-2 rounded-xl border border-[#182133] mt-1">
+          <div className="flex justify-between text-[9px] font-mono mb-1">
+            <span className="text-indigo-300 font-bold">Focus: 45m</span>
+            <span className="text-rose-300">Leisure: 15m / 60m</span>
+          </div>
+          <div className="w-full h-1.5 bg-gray-800/80 rounded-full overflow-hidden flex border border-[#182133]">
+            <div className="h-full bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-l-full" style={{ width: "75%" }} />
+            <div className="h-full bg-rose-500/80" style={{ width: "25%" }} />
+          </div>
+          <div className="flex justify-between text-[8px] text-gray-400 font-mono mt-1">
+            <span>75% Productive Ratio</span>
+            <span className="text-emerald-400 font-semibold">+5 Credits Earned</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Live Interception Log Feed */}
+      <div className="skeuo-well p-2.5 rounded-2xl mb-2.5 border border-[#182133] space-y-1">
+        <div className="flex justify-between items-center mb-0.5">
+          <h4 className="text-[11px] font-bold text-gray-200">Real-Time Guardian Audit</h4>
+          <span className="text-[8.5px] font-mono text-gray-400">Today</span>
+        </div>
+        
+        <div className="flex items-center justify-between text-[9px] bg-[#060812] p-1.5 rounded-xl border border-[#182133]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <div>
+              <div className="font-bold text-white">Parent Pass Issued</div>
+              <div className="text-[8px] text-gray-400">Time-limited grant • Auto-restore active</div>
+            </div>
+          </div>
+          <span className="text-[8px] font-mono text-emerald-400 bg-emerald-950/40 px-1.5 py-0.5 rounded border border-emerald-500/20">Authorized</span>
+        </div>
+
+        <div className="flex items-center justify-between text-[9px] bg-[#060812] p-1.5 rounded-xl border border-[#182133]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+            <div>
+              <div className="font-bold text-white">Instagram Gate Intercept</div>
+              <div className="text-[8px] text-gray-400">12:42 PM • UsageStats Intercept</div>
+            </div>
+          </div>
+          <span className="text-[8px] font-mono text-rose-400 bg-rose-950/40 px-1.5 py-0.5 rounded border border-rose-500/20">Gated</span>
+        </div>
+      </div>
+
+      <button 
+        onClick={() => onNavigate("dashboard")}
+        className="w-full skeuo-btn-secondary text-gray-300 hover:text-white rounded-full py-2 font-semibold text-xs cursor-pointer mt-auto"
+      >
+        Return to Dashboard
+      </button>
+    </motion.div>
+  );
+};
 
 /* SCREEN 10: SETTINGS & STUDENT PROFILE */
 const SettingsScreen = ({ 
@@ -1575,7 +2152,23 @@ export default function CSSPhoneModel() {
   const [credits, setCredits] = useState<number>(5);
   const [mounted, setMounted] = useState(false);
 
-  const { hasOtaNotification, dismissOtaNotification, setOtaModalOpen } = useStore();
+  const { 
+    hasOtaNotification, 
+    dismissOtaNotification, 
+    setOtaModalOpen,
+    inAppNotification,
+    dismissInAppToast,
+    tickGrants,
+    parentRequests,
+    activeGrants
+  } = useStore();
+
+  useEffect(() => {
+    const grantInterval = setInterval(() => {
+      tickGrants();
+    }, 1000);
+    return () => clearInterval(grantInterval);
+  }, [tickGrants]);
 
   const handleEarnCredits = (amount: number) => {
     setCredits((prev) => prev + amount);
@@ -1614,9 +2207,12 @@ export default function CSSPhoneModel() {
         </button>
         <button
           onClick={() => setScreen("intercept")}
-          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'intercept' ? 'bg-rose-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
+          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all flex items-center gap-1 ${screen === 'intercept' ? 'bg-rose-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
         >
-          Intercept
+          <span>Intercept</span>
+          {activeGrants.some(g => g.status === "active") && (
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          )}
         </button>
         <button
           onClick={() => setScreen("youtube")}
@@ -1656,9 +2252,12 @@ export default function CSSPhoneModel() {
         </button>
         <button
           onClick={() => setScreen("parent")}
-          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all ${screen === 'parent' ? 'bg-cyan-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
+          className={`px-2 py-0.5 rounded-full cursor-pointer transition-all flex items-center gap-1 ${screen === 'parent' ? 'bg-cyan-600 text-white font-bold' : 'text-gray-400 hover:text-white'}`}
         >
-          Parent
+          <span>Parent</span>
+          {parentRequests.some(r => r.status === "pending") && (
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+          )}
         </button>
         <button
           onClick={() => setScreen("settings")}
@@ -1696,7 +2295,79 @@ export default function CSSPhoneModel() {
 
           {/* Android Heads-Up In-Phone Push Notification Banner */}
           <AnimatePresence>
-            {hasOtaNotification && (
+            {inAppNotification && (
+              <motion.div
+                key={inAppNotification.id}
+                initial={{ y: -80, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -80, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 380, damping: 26 }}
+                onClick={() => {
+                  if (inAppNotification.targetScreen) {
+                    setScreen(inAppNotification.targetScreen);
+                  }
+                  dismissInAppToast();
+                }}
+                className={`absolute top-10 left-3 right-3 z-50 p-2.5 rounded-2xl skeuo-card border shadow-[0_16px_36px_rgba(0,0,0,0.9)] cursor-pointer transition-all group ${
+                  inAppNotification.type === "parent_request"
+                    ? "border-amber-500/70 bg-[#161108]/95 hover:border-amber-400"
+                    : inAppNotification.type === "grant_approved"
+                    ? "border-emerald-500/70 bg-[#071510]/95 hover:border-emerald-400"
+                    : inAppNotification.type === "grant_expired"
+                    ? "border-rose-500/70 bg-[#19090b]/95 hover:border-rose-400"
+                    : "border-indigo-500/70 bg-[#091124]/95 hover:border-indigo-400"
+                }`}
+              >
+                <div className="flex items-start gap-2.5">
+                  <div className={`w-7 h-7 rounded-xl flex items-center justify-center text-white shrink-0 shadow-md ${
+                    inAppNotification.type === "parent_request"
+                      ? "bg-gradient-to-tr from-amber-500 to-yellow-400"
+                      : inAppNotification.type === "grant_approved"
+                      ? "bg-gradient-to-tr from-emerald-500 to-teal-400"
+                      : inAppNotification.type === "grant_expired"
+                      ? "bg-gradient-to-tr from-rose-600 to-red-500"
+                      : "bg-gradient-to-tr from-indigo-600 to-purple-500"
+                  }`}>
+                    {inAppNotification.type === "parent_request" && <Key size={14} className="animate-pulse" />}
+                    {inAppNotification.type === "grant_approved" && <Check size={14} />}
+                    {inAppNotification.type === "grant_expired" && <Lock size={14} />}
+                    {inAppNotification.type === "schedule_updated" && <Calendar size={14} />}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className={`text-[9px] font-mono font-bold flex items-center gap-1 ${
+                        inAppNotification.type === "parent_request" ? "text-amber-300" :
+                        inAppNotification.type === "grant_approved" ? "text-emerald-300" :
+                        inAppNotification.type === "grant_expired" ? "text-rose-300" : "text-indigo-300"
+                      }`}>
+                        <span className="w-1.5 h-1.5 rounded-full bg-current animate-ping" />
+                        {inAppNotification.type === "parent_request" ? "Parent Action Required" :
+                         inAppNotification.type === "grant_approved" ? "Access Approved" :
+                         inAppNotification.type === "grant_expired" ? "Restriction Restored" : "Focus Schedule"}
+                      </span>
+                      <span className="text-[8px] font-mono text-gray-400">{inAppNotification.timestamp}</span>
+                    </div>
+                    <h5 className="text-[11px] font-bold text-white truncate">{inAppNotification.title}</h5>
+                    <p className="text-[9px] text-gray-300 leading-tight">{inAppNotification.message}</p>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      dismissInAppToast();
+                    }}
+                    className="text-gray-400 hover:text-white p-1 cursor-pointer transition-colors"
+                    title="Dismiss notification"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Android Heads-Up In-Phone Push Notification Banner */}
+          <AnimatePresence>
+            {hasOtaNotification && !inAppNotification && (
               <motion.div
                 initial={{ y: -80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

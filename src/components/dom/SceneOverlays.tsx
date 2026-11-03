@@ -137,12 +137,12 @@ export default function SceneOverlays() {
           
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="/FocusShield.apk"
-              download="FocusShield.apk"
+              href="/FocusDefend.apk"
+              download="FocusDefend.apk"
               className="skeuo-btn-primary px-8 py-4 rounded-full font-bold text-base sm:text-lg text-white inline-flex items-center gap-3 cursor-pointer shadow-xl"
             >
               <Download size={20} />
-              Download FocusShield APK
+              Download FocusDefend APK
             </a>
             <button
               onClick={() => setOtaModalOpen(true)}

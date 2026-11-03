@@ -53,7 +53,7 @@ export default function OTAUpdateModal() {
   const [remoteUpdate, setRemoteUpdate] = useState<UpdateData>({
     version_code: 17,
     version_name: "1.5.2",
-    download_url: "/FocusShield.apk",
+    download_url: "/FocusDefend-Release.apk",
     sha256: "6CDCA23115226B92B7D9428481228C3192746345DEFF37C8C338FA532994535C",
     size_bytes: 31360551,
     release_notes: "• 100% Play Protect Compliant: Full signature schemes v1-v4, cleaned non-invasive permissions, zero install-time security alerts.\n• Persistent Security Overlay: Restricting apps cannot be bypassed; full touch shield blocks unauthorized app access.\n• Direct Foreground Quiz & Credits Unlock: Clear challenge button with 1-tap quiz launch and quick pass request.\n• Instant Gate Activation: Seamless transition from accessibility blocker to Compose challenge screen."
@@ -105,8 +105,8 @@ export default function OTAUpdateModal() {
             
             // Trigger actual browser download of the real APK
             const link = document.createElement("a");
-            link.href = "/FocusShield.apk";
-            link.download = "FocusShield.apk";
+            link.href = "/FocusDefend-Release.apk";
+            link.download = "FocusDefend-Release.apk";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -121,13 +121,13 @@ export default function OTAUpdateModal() {
   };
 
   const copyAdbCommand = () => {
-    navigator.clipboard.writeText("adb install -r FocusShield.apk");
+    navigator.clipboard.writeText("adb install -r FocusDefend-Release.apk");
     setCopiedAdb(true);
     setTimeout(() => setCopiedAdb(false), 2000);
   };
 
   const copyLanUrl = () => {
-    navigator.clipboard.writeText("http://192.168.29.239:8080/FocusShield.apk");
+    navigator.clipboard.writeText("http://192.168.29.239:8080/FocusDefend-Release.apk");
     setCopiedLan(true);
     setTimeout(() => setCopiedLan(false), 2000);
   };
@@ -304,7 +304,7 @@ export default function OTAUpdateModal() {
                       <div className="w-14 h-14 rounded-full mx-auto skeuo-btn-secondary flex items-center justify-center mb-3">
                         <DownloadCloud size={28} className="text-emerald-400" />
                       </div>
-                      <h4 className="text-lg font-bold text-white mb-1">FocusShield v{remoteUpdate.version_name} Core Ready for Installation</h4>
+                      <h4 className="text-lg font-bold text-white mb-1">FocusDefend v{remoteUpdate.version_name} Core Ready for Installation</h4>
                       <p className="text-xs text-gray-400 max-w-md mx-auto mb-6">
                         100% Google Play Protect Compliant. Un-bypassable touch overlay blocking and seamless Compose challenge gate.
                       </p>
@@ -342,7 +342,7 @@ export default function OTAUpdateModal() {
                       </div>
 
                       <div className="flex justify-between items-center text-[11px] font-mono text-gray-400">
-                        <span>Binary: FocusShield.apk</span>
+                        <span>Binary: FocusDefend-Release.apk</span>
                         <span>SHA-256: {shortSha} (VERIFIED)</span>
                       </div>
                     </div>
@@ -359,8 +359,8 @@ export default function OTAUpdateModal() {
                       </p>
                       <div className="pt-2 flex justify-center gap-3">
                         <a
-                          href="/FocusShield.apk"
-                          download="FocusShield.apk"
+                          href="/FocusDefend-Release.apk"
+                          download="FocusDefend-Release.apk"
                           className="skeuo-btn-secondary px-5 py-2.5 rounded-full text-xs font-semibold text-white inline-flex items-center gap-2"
                         >
                           <DownloadCloud size={14} />
@@ -454,7 +454,7 @@ export default function OTAUpdateModal() {
                     </button>
                   </div>
                   <div className="bg-[#020306] p-3 rounded-xl border border-emerald-500/40 font-mono text-xs text-emerald-300 select-all">
-                    http://192.168.29.239:8080/FocusShield.apk
+                    http://192.168.29.239:8080/FocusDefend-Release.apk
                   </div>
                   <p className="text-[11px] text-gray-400">
                     Open this URL directly in Chrome or your browser on your phone connected to the same Wi-Fi.
@@ -477,7 +477,7 @@ export default function OTAUpdateModal() {
                     </button>
                   </div>
                   <div className="bg-[#020306] p-3 rounded-xl border border-[#222e47] font-mono text-xs text-indigo-300 select-all">
-                    adb install -r FocusShield.apk
+                    adb install -r FocusDefend-Release.apk
                   </div>
                   <p className="text-[11px] text-gray-400">
                     Connect your phone via USB with USB Debugging enabled in Developer Options.
@@ -495,12 +495,12 @@ export default function OTAUpdateModal() {
                       Live global CDN URL:
                     </div>
                     <div className="text-xs font-mono text-indigo-300">
-                      https://focusdefend.vercel.app/FocusShield.apk
+                      https://focusdefend.vercel.app/FocusDefend-Release.apk
                     </div>
                   </div>
                   <a
-                    href="/FocusShield.apk"
-                    download="FocusShield.apk"
+                    href="/FocusDefend-Release.apk"
+                    download="FocusDefend-Release.apk"
                     className="skeuo-btn-secondary px-4 py-2 rounded-full text-xs font-semibold text-white inline-flex items-center gap-1.5"
                   >
                     <DownloadCloud size={14} />
@@ -517,7 +517,7 @@ export default function OTAUpdateModal() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               OTA Server: Connected (Vercel Edge CDN &amp; Local LAN :8080)
             </span>
-            <span>FocusShield-v{remoteUpdate.version_name}.apk</span>
+            <span>FocusDefend-v{remoteUpdate.version_name}.apk</span>
           </div>
         </motion.div>
       </div>

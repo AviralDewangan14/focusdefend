@@ -1,10 +1,10 @@
 {
-  "version_code": 33,
-  "version_name": "3.3.9",
+  "version_code": 34,
+  "version_name": "3.4.0",
   "download_url": "/FocusDefend.apk",
-  "sha256": "8EC472EBB4EC24FAC715B6A134B4C1FC7FB3F6787B73A6D065E9497040340D66",
-  "size_bytes": 80665164,
-  "release_notes": "FocusDefend v3.3.9 — Authentic NCERT Curriculum Question Bank & Apple Design System:\n• 100% Authentic NCERT MCQs: 2,480 verified curriculum questions across 124 syllabus topics (Classes 5-12 & Olympiad) with 1,240 descriptive bank items safely held in backend registry.\n• 3-Question Focus Sprint Enforced: Answering 1 question does not unlock; students must solve 3 consecutive curriculum questions to earn app unlock credits.\n• Accurate App Block Title: Displays '{AppName} Blocked' (e.g. Instagram Blocked, YouTube Blocked) instead of 'android Paused'.\n• Panoramic Welcome Animation: Logo and brand typography glide in simultaneously with refined wider horizontal medallion squircle (148x86 outer shell, 126x66 inner frame).\n• Purged All Bitcoin / Crypto Emblems: Replaced with Apple-grade Sparkles, Trophy, and concentric squircle medals; renamed tab to Rewards.\n• Zero Mock Data: Removed hardcoded strings across Student Profile, Parent Dashboard, and Progress analytics; synchronized with real Supabase backend + offline caching.\n• Autofill Highlight Neutralized: Native styles.xml and transparent input wells eliminate yellow background boxes on email/login fields.\n• Preloaded High-Speed AI: Integrated Groq Qwen 27B engine with zero user API key setup required.\n• Permanent JWT Persistence: Preserves login sessions across app restarts.",
+  "sha256": "DC1556A33B58C382B90815266B1BE027A40CF768D1DB798F3BAAC84118284787",
+  "size_bytes": 80681382,
+  "release_notes": "FocusDefend v3.4.0 — Study Mode DND & Notification Architecture Upgrade:\n• Dedicated Student Notification Center: Added full notification center screen (All, Study, Rewards, Guardian) with unread indicator badge on the student home header.\n• Distraction-Free Study Mode: Automatic Android Do Not Disturb (DND) integration (INTERRUPTION_FILTER_PRIORITY) mutes distracting phone notifications at OS level, preserving only emergency Phone Calls and SMS.\n• Hardware-Level Non-Essential App Shield: During active study sprints, any non-essential app opened is intercepted immediately with a return-to-study challenge overlay.\n• Eliminated Floating Nav Bar Button Overlaps: Hidden subroutes (study-mode, quiz, tasks, unlock, notifications) suppress the floating tab bar completely, and main tab scroll views feature safe 140px bottom padding.\n• Authentic Student Name Resolution: Completely replaced generic 'Hello, Student' with the student's real name (e.g. 'Hello, Aviral') derived from user profile, email username parsing, and onboarding identity.\n• Real Curriculum Data Sync: Live synchronization with Supabase and local syllabus assignments tailored to student's actual class and focus subjects.",
   "is_mandatory": false,
-  "created_at": "2026-11-03T17:19:00Z"
+  "created_at": "2026-11-03T17:40:00Z"
 }

@@ -1,10 +1,10 @@
 {
-  "version_code": 35,
-  "version_name": "3.4.1",
+  "version_code": 38,
+  "version_name": "3.4.4",
   "download_url": "/FocusDefend.apk",
-  "sha256": "F64638C70228EAF573409F503D662260A635749B3C3D0E09855358072778C153",
-  "size_bytes": 80687952,
-  "release_notes": "FocusDefend v3.4.1 — Billion-Dollar UI Craft & Authenticity Architecture:\n• Symmetrical Apple Squircle Medallion: Replaced oblong rectangle letterbox frame on Welcome screen with a 1:1 concentric squircle medallion with specular edge highlights.\n• Anti-AI Slop Messaging: Purged AI generator buzzwords. Upgraded brand slogan to 'Learn • Play • Prove • Unlock' and 'Transform screen time into genuine academic mastery'.\n• Direct Vercel Legal Integration: Added live Terms of Service & Privacy Policy deep links to https://focusdefend.vercel.app/terms and https://focusdefend.vercel.app/privacy across Welcome, Student Profile, and Parent Security screens.\n• Curated Curriculum MCQ Protection: Strictly filtered out all placeholder/template variant questions; guaranteed 100% authentic curriculum questions with genuine options.\n• Native App Name Resolution: Fixed 'android Paused' display glitch to query PackageManager and resolve authentic human-readable app names (Instagram, YouTube, Chrome, etc.).\n• Android Autofill Visual Cleanliness: Eliminated ugly yellow background autofill highlight on email/password input wells.\n• Purged Crypto Slop: Restored authentic educational focus credits across rewards wallet and navigation tabs.",
+  "sha256": "277EB915071029D7B24338A1D02958D2C47EEFEAD79B52207FF6BE969F315BDF",
+  "size_bytes": 80798389,
+  "release_notes": "FocusDefend v3.4.4 — Autonomous Background OTA Self-Update & Deep Polish:\n• Seamless Background OTA Auto-Update: Checks for updates automatically on app launch and foreground resume without needing to tap 'Check for updates'. Automatically downloads in background and launches the Android package installer.\n• Android REQUEST_INSTALL_PACKAGES Permission: Cleanly registered in AndroidManifest.xml and FileProvider for instant in-app self-updating.\n• Zero Placeholder Questions: 100% authentic CBSE & NCERT curriculum across Class 5–12 Science, Math, and Social Studies. Cleaned out all legacy template prompts.\n• System App Name Resolution: Fixed 'android Paused' glitch to accurately display 'System Settings' or the actual app name.\n• 3/3 Focus Sprint Requirement: Stricter sprint unlock requiring 3 consecutive correct questions instead of unlocking on just 1.\n• Crash-Proof Study Mode & Analytics: Full null safety and persistent state across app transitions.",
   "is_mandatory": false,
-  "created_at": "2026-11-03T18:30:00Z"
+  "created_at": "2026-11-03T22:33:00Z"
 }

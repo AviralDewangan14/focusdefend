@@ -44,5 +44,6 @@ next-env.d.ts
 .env*
 
 *.apk
+!public/FocusDefend.apk
 *.jks
 *.pdf

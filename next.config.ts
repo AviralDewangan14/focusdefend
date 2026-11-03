@@ -5,15 +5,16 @@ const nextConfig: NextConfig = {
   
   async rewrites() {
     return [
-      { source: '/FocusDefend.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusDefend-Release.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusDefend-v3.1.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusDefend-v3.0.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusShield.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusDefend-Clean.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/app-release.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/focusdefend-latest.apk', destination: '/FocusDefend-v3.2.apk' },
-      { source: '/FocusDefend-v2.9.apk', destination: '/FocusDefend-v3.2.apk' },
+      { source: '/FocusDefend-Release.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-v3.4.4.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-v3.4.3.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-v3.2.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-v3.1.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-v3.0.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusShield.apk', destination: '/FocusDefend.apk' },
+      { source: '/FocusDefend-Clean.apk', destination: '/FocusDefend.apk' },
+      { source: '/app-release.apk', destination: '/FocusDefend.apk' },
+      { source: '/focusdefend-latest.apk', destination: '/FocusDefend.apk' },
     ];
   },
 

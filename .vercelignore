@@ -10,6 +10,4 @@ __pycache__/
 *.jks
 AndroidManifest.axml
 test_*.png
-public/*.apk
-*.apk
 *.pdf

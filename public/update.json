@@ -1,10 +1,10 @@
 {
-  "version_code": 39,
-  "version_name": "3.4.5",
+  "version_code": 40,
+  "version_name": "3.4.6",
   "download_url": "/FocusDefend.apk",
-  "sha256": "416FE8F640D5F35978715D2D274A11BC40B0B418AA1D9787E2B6A3BF4E758A73",
-  "size_bytes": 80819900,
-  "release_notes": "FocusDefend v3.4.5 — Tactile Skeuomorphic Redesign & Guardian Engine:\n• Redesigned Study Guardian Active Overlay: High-craft circular halo emblem with concentric glow, live floating '● FOCUS GUARDIAN ACTIVE' status pill, and 3D tactile skeuomorphic buttons.\n• Fixed Redirection Bug: Native overlay barrier strictly stays active until student explicitly taps 'Solve Quick MCQ to Unlock' or parent enters PIN — eliminates unintended auto-navigation.\n• 0 Credit Starting Balance: Default initial balance is now strictly 0 pts. Students must earn credits through focused study sessions and NCERT curriculum drills.\n• Student Guarded Apps Screen: Dedicated view for students to review guarded apps, live unlock statuses, and parent PIN authorizations.\n• Parent App Restrictions Suite: Added quick batch 'Guard All' / 'Unguard All' toggles and an 'Add App' modal supporting popular distractors (Roblox, Discord, Twitter/X, Telegram, Pinterest, Twitch, Netflix, Prime Video, Clash of Clans) with instant native service synchronization.\n• Tactile Skeuomorphic Component System: Apple HIG specular hairlines, physical 3D button shelves, and ambient multi-colored glow on all cards and interactive components.",
+  "sha256": "BB0B9B14A45570F750AE14E0DA09CF4DBDB44C1073D73FF7DFDD732887E6012C",
+  "size_bytes": 80830846,
+  "release_notes": "FocusDefend v3.4.6 — Tactile Skeuomorphic Redesign, Real-time Parent Log & Fixed Redirection:\n• Fixed Auto-Redirect Bug: Opening a restricted app displays the tactile obsidian Study Guardian overlay and stays permanently locked until the student explicitly taps 'Solve Quick MCQ to Unlock' or parent inputs PIN.\n• Native Skeuomorphic Redesign: Overhauled OverlayBlocker with concentric halo rings, live floating '● FOCUS GUARDIAN ACTIVE' pill, physical 3D button shelves, and tactile calculator keypad with glowing cyan capsules.\n• 0 Credit Default Balance: Starting balance is strictly 0 credits across all accounts with automated legacy balance migration.\n• Real-time Parent Activity Log: In-app 0ms event dispatcher and Supabase Realtime channel stream all app blocks, quiz solves, study modes, and PIN overrides.\n• Dedicated Student Guarded Apps Screen: View all restricted apps, remaining unlock windows, and parent authorizations.\n• Parent App Restriction Suite: Toggle individual apps, 'Guard All' / 'Unguard All' in batch, and add custom apps or top presets (Roblox, Discord, Twitter, Netflix, etc.).\n• Synchronized Focus Score: Guaranteed 1:1 mathematical parity between Student Dashboard and Analytics views.\n• App-Wide Tactile Skeuomorphism: 3D button shelves, dual bevels, Apple-grade specular hairlines, and ambient box shadows.",
   "is_mandatory": false,
-  "created_at": "2026-11-04T16:53:00Z"
+  "created_at": "2026-11-04T17:26:00Z"
 }

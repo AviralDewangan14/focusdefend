@@ -1,10 +1,10 @@
 {
-  "version_code": 46,
-  "version_name": "3.5.2",
+  "version_code": 47,
+  "version_name": "3.5.3",
   "download_url": "/FocusDefend.apk",
-  "sha256": "1955DBEF9ADD2F0931AEEB85FB4E11043D5F108AD5A5A3FDC4D0C17744FF8613",
-  "size_bytes": 96795054,
-  "release_notes": "FocusDefend v3.5.2 \u2014 Zero-Contamination Question Bank, Purged Legacy Files & Parent Reporting Suite:\n\u2022 100% NCERT Rationalized Question Bank: Strictly 30,000 deduplicated, authentic curriculum questions (Classes 6-12) with zero legacy remnants, zero placeholder slop, and zero arithmetic trivia.\n\u2022 Absolute Class Question Isolation: Hardcoded question queries strictly bound to student's exact class with zero cross-class fallbacks.\n\u2022 Complete Legacy Purge: All legacy question JSON files permanently removed from codebase and asset bundles.\n\u2022 Parent Study & Wellbeing Reporting Suite: Interactive period filters (Today, 7 Days, 7 Weeks), real-time digital wellbeing analytics, AI cognitive behavioral diagnoses, and one-tap dossier export via WhatsApp/Email.\n\u2022 Skeuomorphic Obsidian Safe Vault Keypad: 3D physical tactile keycaps with glowing cyan capsule LEDs and biometric override.",
+  "sha256": "4D15C01CBFDEF80DDC72DB6E33C2CE0E16850465109A3BE5E1E8A841C65E52B1",
+  "size_bytes": 96802718,
+  "release_notes": "FocusDefend v3.5.3 \u2014 Play Protect Fix & Welcome Flow Stability:\n\u2022 Play Protect Warning Resolved: Completely removed high-risk NotificationListenerService, restoring trusted clean permission signature.\n\u2022 Welcome Page Routing Guard: Prevented cold-launch redirection to quiz page. Users stay on welcome/onboarding until authentic study action begins.\n\u2022 In-Foreground Guardian Protection: Guardian service now respects FocusDefend in-app foreground activity, completely eliminating false interceptions while using the app.\n\u2022 100% NCERT Rationalized Question Engine: 30,000 verified curriculum questions with strict class isolation.\n\u2022 Streaming HTTP Distribution: Multi-threaded server with full byte-range resumable download support.",
   "is_mandatory": false,
-  "created_at": "2026-11-04T16:57:34.633519+00:00"
+  "created_at": "2026-11-04T17:17:07.923655+00:00"
 }

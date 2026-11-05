@@ -5,29 +5,47 @@ import { useSearchParams } from "next/navigation";
 
 interface InviteClientProps {
   initialCode?: string;
-  initialName?: string;
+  initialSenderName?: string;
+  initialRecipientName?: string;
   initialRole?: string;
 }
 
 export default function InviteClient({
   initialCode,
-  initialName,
+  initialSenderName,
+  initialRecipientName,
   initialRole,
 }: InviteClientProps) {
   const searchParams = useSearchParams();
 
   const code = searchParams.get("code") || initialCode || "FSH-INVITE";
-  const name = searchParams.get("name") || initialName || "Student";
-  const role = searchParams.get("role") || initialRole || "";
+  const rawRole = searchParams.get("role") || searchParams.get("fromRole") || initialRole || "";
+  const isParentSender =
+    rawRole.toLowerCase() === "parent" || code.toUpperCase().startsWith("PAR-");
+
+  const senderName =
+    searchParams.get("from") ||
+    searchParams.get("name") ||
+    initialSenderName ||
+    (isParentSender ? "Parent Guardian" : "Student");
+
+  const recipientName =
+    searchParams.get("to") ||
+    initialRecipientName ||
+    (isParentSender ? "Student" : "Parent Guardian");
 
   const [copied, setCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
 
-  const isParent =
-    role.toLowerCase() === "parent" || code.toUpperCase().startsWith("PAR-");
+  const deepLink = `focusdefend://invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(
+    senderName
+  )}&to=${encodeURIComponent(recipientName)}&role=${isParentSender ? "parent" : "student"}`;
 
-  const deepLink = `focusdefend://invite?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}`;
-  const qrTargetUrl = `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}`;
+  const qrTargetUrl = `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(
+    code
+  )}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(
+    recipientName
+  )}&role=${isParentSender ? "parent" : "student"}`;
 
   useEffect(() => {
     // Attempt automatic app launch on mobile devices
@@ -52,68 +70,100 @@ export default function InviteClient({
 
   return (
     <div className="relative z-10 w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-neutral-900/90 border border-cyan-500/30 backdrop-blur-2xl shadow-2xl shadow-cyan-500/10 text-center transition-all duration-300">
-      {/* Halo Emblem Header */}
-      <div className="mx-auto w-20 h-20 rounded-3xl bg-cyan-500/10 border-2 border-cyan-400/50 flex items-center justify-center mb-5 shadow-inner shadow-cyan-500/20 group hover:scale-105 transition-transform">
-        <svg
-          className="w-10 h-10 text-cyan-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          {isParent ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-            />
-          )}
-        </svg>
+      {/* Dual Persona Header Banner */}
+      <div className="mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-4">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          FocusDefend Family Connection
+        </div>
+
+        {/* Dual Name Exchange Box */}
+        <div className="p-4 rounded-2xl bg-black/60 border border-white/10 flex items-center justify-between gap-3 shadow-inner">
+          {/* Sender Column */}
+          <div className="flex-1 text-center">
+            <div className="w-10 h-10 mx-auto mb-1.5 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg">
+              {isParentSender ? "🛡️" : "🎓"}
+            </div>
+            <span className="text-xs uppercase font-extrabold text-cyan-400 block tracking-wider">
+              From (Sender)
+            </span>
+            <span className="text-sm font-black text-white truncate block">
+              {senderName}
+            </span>
+            <span className="text-[10px] text-neutral-400 font-medium">
+              {isParentSender ? "Parent Guardian" : "Student Device"}
+            </span>
+          </div>
+
+          {/* Connection Bridge Arrow */}
+          <div className="flex flex-col items-center justify-center px-1">
+            <svg
+              className="w-6 h-6 text-cyan-400 animate-pulse"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+            <span className="text-[9px] uppercase font-black text-neutral-500 tracking-widest mt-0.5">
+              PAIRED
+            </span>
+          </div>
+
+          {/* Recipient Column */}
+          <div className="flex-1 text-center">
+            <div className="w-10 h-10 mx-auto mb-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-lg">
+              {isParentSender ? "🎓" : "🛡️"}
+            </div>
+            <span className="text-xs uppercase font-extrabold text-emerald-400 block tracking-wider">
+              To (Invited)
+            </span>
+            <span className="text-sm font-black text-white truncate block">
+              {recipientName}
+            </span>
+            <span className="text-[10px] text-neutral-400 font-medium">
+              {isParentSender ? "Student Device" : "Parent Guardian"}
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Persona Badge */}
-      <div
-        className={`inline-flex items-center gap-1.5 px-3.5 py-1 mb-3.5 rounded-full text-xs font-bold tracking-wider uppercase ${
-          isParent
-            ? "bg-cyan-500/15 border border-cyan-500/30 text-cyan-400"
-            : "bg-emerald-500/15 border border-emerald-500/30 text-emerald-400"
-        }`}
-      >
-        <span
-          className={`w-2 h-2 rounded-full animate-pulse ${
-            isParent ? "bg-cyan-400" : "bg-emerald-400"
-          }`}
-        />
-        {isParent ? "Parent Guardian Pairing" : "Child Device Pairing"}
-      </div>
-
-      {/* Headline */}
+      {/* Main Headline */}
       <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2.5">
-        {isParent ? "Connect with Guardian" : `Connect with ${name}`}
+        Connect {senderName} & {recipientName}
       </h1>
 
       {/* Subtitle / Explanation */}
-      <p className="text-sm text-neutral-400 mb-6 leading-relaxed px-2">
-        {isParent
-          ? "Your parent has invited you to pair devices on FocusDefend. Linking enables study progress syncing, instant unlocks upon quiz completion, and study rewards."
-          : `${name} has invited you to connect their device on FocusDefend to supervise screen time, manage study schedules, and unlock study rewards.`}
+      <p className="text-sm text-neutral-300 mb-6 leading-relaxed px-2">
+        {isParentSender ? (
+          <>
+            <strong className="text-cyan-300">{senderName} (Parent Guardian)</strong> has invited{" "}
+            <strong className="text-emerald-300">{recipientName}</strong> to link devices on FocusDefend. Linking enables study progress tracking, instant challenge unlocks, and rewards.
+          </>
+        ) : (
+          <>
+            <strong className="text-emerald-300">{senderName} (Student)</strong> has invited{" "}
+            <strong className="text-cyan-300">{recipientName}</strong> to connect as their supervising Guardian to monitor digital wellbeing and approve unlocks.
+          </>
+        )}
       </p>
 
       {/* Code Display Capsule */}
-      <div className="p-4 mb-6 rounded-2xl bg-black/70 border border-white/10 flex flex-col items-center justify-center relative overflow-hidden group">
+      <div className="p-4 mb-6 rounded-2xl bg-black/75 border border-white/10 flex flex-col items-center justify-center relative overflow-hidden group">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-cyan-500/5 pointer-events-none" />
         <span className="text-[11px] uppercase font-bold text-neutral-400 tracking-widest mb-1.5">
-          {isParent ? "Parent Guardian Code" : "Student Device Code"}
+          {isParentSender ? "Parent Guardian Pairing Code" : "Student Device Pairing Code"}
         </span>
         <span className="text-3xl sm:text-4xl font-black tracking-widest text-cyan-400 font-mono select-all">
           {code}
+        </span>
+        <span className="text-[11px] text-neutral-400 mt-1">
+          Valid for: <strong className="text-white">{senderName}</strong> ➔ <strong className="text-white">{recipientName}</strong>
         </span>
       </div>
 
@@ -185,7 +235,7 @@ export default function InviteClient({
           )}
         </button>
 
-        {/* Toggle QR Code for Desktop / Laptop viewers */}
+        {/* Toggle QR Code for Desktop viewers */}
         <button
           onClick={() => setShowQR(!showQR)}
           type="button"
@@ -209,7 +259,6 @@ export default function InviteClient({
 
         {showQR && (
           <div className="p-4 rounded-2xl bg-neutral-950 border border-cyan-500/20 flex flex-col items-center justify-center animate-fadeIn">
-            {/* Styled QR Code */}
             <div className="p-2.5 bg-neutral-900 rounded-xl border border-white/10 shadow-lg mb-2">
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=22d3ee&bgcolor=0a0a0a&data=${encodeURIComponent(
@@ -220,7 +269,7 @@ export default function InviteClient({
               />
             </div>
             <p className="text-[11px] text-neutral-400">
-              Scan with your phone&apos;s camera to connect instantly
+              Scan with your phone&apos;s camera to connect {senderName} and {recipientName}
             </p>
           </div>
         )}
@@ -244,7 +293,7 @@ export default function InviteClient({
               d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
             />
           </svg>
-          Don&apos;t have FocusDefend yet? Download APK (v3.5.6)
+          Don&apos;t have FocusDefend yet? Download APK
         </a>
       </div>
 
@@ -252,32 +301,32 @@ export default function InviteClient({
       <div className="mt-6 pt-5 border-t border-white/10 text-left">
         <h3 className="text-xs uppercase font-extrabold text-neutral-300 tracking-wider mb-2.5 flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-          Quick Pairing Instructions:
+          Instructions for {recipientName}:
         </h3>
         <ol className="text-xs text-neutral-400 space-y-1.5 pl-4 list-decimal leading-relaxed">
-          {isParent ? (
+          {isParentSender ? (
             <>
-              <li>Install and open FocusDefend on the student device.</li>
+              <li>Open FocusDefend on <strong className="text-neutral-200">{recipientName}&apos;s</strong> student device.</li>
               <li>
-                Navigate to the <strong className="text-neutral-200">Profile / Settings</strong> screen.
+                Navigate to <strong className="text-neutral-200">Profile / Settings</strong> screen.
               </li>
               <li>
                 Under <strong className="text-cyan-400">Link Parent Guardian Code</strong>, paste or enter{" "}
                 <span className="font-mono text-cyan-300 font-bold">{code}</span>.
               </li>
-              <li>Tap <strong className="text-neutral-200">Link Guardian</strong> to complete pairing!</li>
+              <li>Tap <strong className="text-neutral-200">Link Guardian</strong> to link with <strong className="text-cyan-300">{senderName}</strong>!</li>
             </>
           ) : (
             <>
-              <li>Install and open FocusDefend on the parent device.</li>
+              <li>Open FocusDefend on <strong className="text-neutral-200">{recipientName}&apos;s</strong> parent device.</li>
               <li>
                 Go to the <strong className="text-neutral-200">Children</strong> management screen.
               </li>
               <li>
-                In the invite box, enter student code{" "}
+                In the invite box, enter code{" "}
                 <span className="font-mono text-cyan-300 font-bold">{code}</span>.
               </li>
-              <li>Tap <strong className="text-neutral-200">Link Child</strong> to supervise progress!</li>
+              <li>Tap <strong className="text-neutral-200">Link Child</strong> to supervise <strong className="text-emerald-300">{senderName}</strong>!</li>
             </>
           )}
         </ol>

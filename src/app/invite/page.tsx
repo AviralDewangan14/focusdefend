@@ -13,20 +13,23 @@ export async function generateMetadata(
   const resolved = await searchParams;
   const rawCode = resolved?.code;
   const code = (Array.isArray(rawCode) ? rawCode[0] : rawCode) || 'FSH-INVITE';
+
   const rawName = resolved?.name;
-  const name = (Array.isArray(rawName) ? rawName[0] : rawName) || 'Student';
-  const rawRole = resolved?.role;
+  const rawFrom = resolved?.from || rawName;
+  const rawTo = resolved?.to;
+  const rawRole = resolved?.role || resolved?.fromRole;
+
   const role = ((Array.isArray(rawRole) ? rawRole[0] : rawRole) || '').toLowerCase();
+  const isParentSender = role === 'parent' || code.toUpperCase().startsWith('PAR-');
 
-  const isParent = role === 'parent' || code.toUpperCase().startsWith('PAR-');
+  const senderName = (Array.isArray(rawFrom) ? rawFrom[0] : rawFrom) || (isParentSender ? 'Parent Guardian' : 'Student');
+  const recipientName = (Array.isArray(rawTo) ? rawTo[0] : rawTo) || (isParentSender ? 'Student' : 'Parent Guardian');
 
-  const title = isParent
-    ? `🛡️ FocusDefend Guardian Invitation (${code})`
-    : `🛡️ Connect with ${name} on FocusDefend (${code})`;
+  const senderLabel = isParentSender ? 'Parent Guardian' : 'Student';
+  const recipientLabel = isParentSender ? 'Student' : 'Parent Guardian';
 
-  const description = isParent
-    ? `Your parent guardian has invited you to connect on FocusDefend. Link devices to sync study progress, balance screen time, and unlock study rewards!`
-    : `${name} has invited you to supervise focus sessions, balance screen time, and unlock study rewards on FocusDefend.`;
+  const title = `🛡️ Connect ${senderName} & ${recipientName} on FocusDefend (${code})`;
+  const description = `${senderName} (${senderLabel}) has invited ${recipientName} (${recipientLabel}) to pair devices on FocusDefend. Link accounts to sync study progress, supervise screen time, and unlock study rewards.`;
 
   return {
     title,
@@ -34,14 +37,14 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      url: `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}`,
+      url: `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(recipientName)}&role=${encodeURIComponent(role)}`,
       siteName: 'FocusDefend',
       images: [
         {
           url: 'https://focusdefend.vercel.app/banner.jpg',
           width: 1200,
           height: 630,
-          alt: 'FocusDefend Study Guardian & Digital Wellbeing',
+          alt: 'FocusDefend Family Device Pairing & Digital Wellbeing',
         },
       ],
       type: 'website',
@@ -59,9 +62,14 @@ export default async function InvitePage({ searchParams }: PageProps) {
   const resolved = await searchParams;
   const rawCode = resolved?.code;
   const code = (Array.isArray(rawCode) ? rawCode[0] : rawCode) || undefined;
+
   const rawName = resolved?.name;
-  const name = (Array.isArray(rawName) ? rawName[0] : rawName) || undefined;
-  const rawRole = resolved?.role;
+  const rawFrom = resolved?.from || rawName;
+  const rawTo = resolved?.to;
+  const rawRole = resolved?.role || resolved?.fromRole;
+
+  const senderName = (Array.isArray(rawFrom) ? rawFrom[0] : rawFrom) || undefined;
+  const recipientName = (Array.isArray(rawTo) ? rawTo[0] : rawTo) || undefined;
   const role = (Array.isArray(rawRole) ? rawRole[0] : rawRole) || undefined;
 
   return (
@@ -74,11 +82,16 @@ export default async function InvitePage({ searchParams }: PageProps) {
         fallback={
           <div className="p-8 rounded-3xl bg-neutral-900/80 border border-cyan-500/20 text-cyan-400 font-bold flex items-center gap-3">
             <span className="w-4 h-4 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
-            <span>Loading FocusDefend Invitation...</span>
+            <span>Loading FocusDefend Family Link...</span>
           </div>
         }
       >
-        <InviteClient initialCode={code} initialName={name} initialRole={role} />
+        <InviteClient
+          initialCode={code}
+          initialSenderName={senderName}
+          initialRecipientName={recipientName}
+          initialRole={role}
+        />
       </Suspense>
     </main>
   );

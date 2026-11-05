@@ -7,7 +7,17 @@ interface InviteResponse {
   success: boolean;
   code: string;
   role: 'student' | 'parent';
-  name: string;
+  sender: {
+    name: string;
+    role: 'student' | 'parent';
+    label: string;
+  };
+  recipient: {
+    name: string;
+    role: 'student' | 'parent';
+    label: string;
+  };
+  connectionTitle: string;
   grade?: string;
   deepLink: string;
   webUrl: string;
@@ -23,22 +33,26 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const rawCode = (searchParams.get('code') || '').trim();
   const rawName = (searchParams.get('name') || '').trim();
-  const rawRole = (searchParams.get('role') || '').trim().toLowerCase();
+  const rawFrom = (searchParams.get('from') || rawName || '').trim();
+  const rawTo = (searchParams.get('to') || '').trim();
+  const rawRole = (searchParams.get('role') || searchParams.get('fromRole') || '').trim().toLowerCase();
 
   const code = rawCode || 'FSH-INVITE';
-  const isParent = rawRole === 'parent' || code.toUpperCase().startsWith('PAR-');
-  const role: 'student' | 'parent' = isParent ? 'parent' : 'student';
-  let displayName = rawName || (isParent ? 'Guardian' : 'Student');
+  const isParentSender = rawRole === 'parent' || code.toUpperCase().startsWith('PAR-');
+  const senderRole: 'student' | 'parent' = isParentSender ? 'parent' : 'student';
+  const recipientRole: 'student' | 'parent' = isParentSender ? 'student' : 'parent';
+
+  let senderName = rawFrom || (isParentSender ? 'Parent Guardian' : 'Student');
+  let recipientName = rawTo || (isParentSender ? 'Student' : 'Parent Guardian');
   let studentGrade: string | undefined = undefined;
 
-  // Attempt Supabase query if credentials are present
+  // Attempt Supabase lookup to resolve registered profile names
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (supabaseUrl && supabaseAnonKey && rawCode) {
     try {
       const trimmedCode = rawCode.toUpperCase();
-      // Look up by invite_code or partial ID in profiles
       const profileRes = await fetch(
         `${supabaseUrl}/rest/v1/profiles?invite_code=eq.${encodeURIComponent(trimmedCode)}&select=id,name,role,students(grade)&limit=1`,
         {
@@ -55,34 +69,45 @@ export async function GET(request: NextRequest) {
         const rows = await profileRes.json();
         if (Array.isArray(rows) && rows.length > 0) {
           const profile = rows[0];
-          if (profile.name) displayName = profile.name;
+          if (profile.name) {
+            senderName = profile.name;
+          }
           if (profile.students && Array.isArray(profile.students) && profile.students.length > 0) {
             studentGrade = profile.students[0]?.grade;
           }
         }
       }
     } catch (err) {
-      console.warn('[Invite API] Supabase fetch lookup note:', err);
+      console.warn('[Invite API] Supabase fetch lookup notice:', err);
     }
   }
 
-  const deepLink = `focusdefend://invite?code=${encodeURIComponent(code)}&name=${encodeURIComponent(displayName)}&role=${encodeURIComponent(role)}`;
-  const webUrl = `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(code)}&name=${encodeURIComponent(displayName)}&role=${encodeURIComponent(role)}`;
+  const senderLabel = senderRole === 'parent' ? 'Parent Guardian' : 'Student Device';
+  const recipientLabel = recipientRole === 'parent' ? 'Parent Guardian' : 'Student Device';
+  const connectionTitle = `${senderName} (${senderLabel}) ↔ ${recipientName} (${recipientLabel})`;
+
+  const deepLink = `focusdefend://invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(recipientName)}&role=${encodeURIComponent(senderRole)}`;
+  const webUrl = `https://focusdefend.vercel.app/invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(recipientName)}&role=${encodeURIComponent(senderRole)}`;
   const downloadUrl = `https://focusdefend.vercel.app/FocusDefend.apk`;
 
-  const metaTitle = isParent
-    ? `🛡️ FocusDefend Guardian Invitation (${code})`
-    : `🛡️ Connect with ${displayName} on FocusDefend (${code})`;
-
-  const metaDescription = isParent
-    ? `Your parent guardian has invited you to pair devices on FocusDefend. Complete study sessions, balance screen time, and unlock rewards.`
-    : `${displayName} has invited you to connect on FocusDefend to supervise focus sessions, balance digital screen time, and unlock study rewards.`;
+  const metaTitle = `🛡️ Connect ${senderName} & ${recipientName} on FocusDefend (${code})`;
+  const metaDescription = `${senderName} (${senderLabel}) has invited ${recipientName} (${recipientLabel}) to pair devices on FocusDefend. Sync study blocks, monitor focus analytics, and unlock study rewards.`;
 
   const payload: InviteResponse = {
     success: true,
     code,
-    role,
-    name: displayName,
+    role: senderRole,
+    sender: {
+      name: senderName,
+      role: senderRole,
+      label: senderLabel,
+    },
+    recipient: {
+      name: recipientName,
+      role: recipientRole,
+      label: recipientLabel,
+    },
+    connectionTitle,
     grade: studentGrade,
     deepLink,
     webUrl,
@@ -110,8 +135,9 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => ({}));
     const code = (body.code || '').trim();
-    const role = (body.role || '').trim().toLowerCase();
-    const name = (body.name || '').trim();
+    const role = (body.role || body.fromRole || '').trim().toLowerCase();
+    const from = (body.from || body.name || '').trim();
+    const to = (body.to || '').trim();
 
     if (!code) {
       return NextResponse.json(
@@ -121,15 +147,18 @@ export async function POST(request: NextRequest) {
     }
 
     const isParent = role === 'parent' || code.toUpperCase().startsWith('PAR-');
-    const detectedRole = isParent ? 'parent' : 'student';
+    const senderRole = isParent ? 'parent' : 'student';
+    const recipientRole = isParent ? 'student' : 'parent';
+    const senderName = from || (isParent ? 'Parent Guardian' : 'Student');
+    const recipientName = to || (isParent ? 'Student' : 'Parent Guardian');
 
     return NextResponse.json({
       success: true,
-      message: `Verified invitation code ${code} for role ${detectedRole}`,
+      message: `Verified pairing invitation for ${senderName} ↔ ${recipientName}`,
       code,
-      role: detectedRole,
-      name: name || (isParent ? 'Guardian' : 'Student'),
-      deepLink: `focusdefend://invite?code=${encodeURIComponent(code)}&role=${detectedRole}`,
+      sender: { name: senderName, role: senderRole },
+      recipient: { name: recipientName, role: recipientRole },
+      deepLink: `focusdefend://invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(recipientName)}`,
       downloadUrl: `https://focusdefend.vercel.app/FocusDefend.apk`,
     });
   } catch (error: any) {

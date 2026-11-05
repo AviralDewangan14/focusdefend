@@ -1,15 +1,9 @@
 {
-  "version_code": 52,
-  "version_name": "3.5.8",
-  "download_url": "/FocusDefend.apk",
-  "sha256": "5b797d1c2390ac15a1cae6fc224d6650cd39684b48eabc2cbed0fbf57dfb6f0b",
-  "size_bytes": 96044366,
-  "release_notes": [
-    "Student self-control: students can now voluntarily add apps to guard list",
-    "Parent PIN enforcement: removing apps or unguarding strictly requires 4-digit Parent PIN",
-    "Parents can add and remove apps with master security PIN verification",
-    "Real-time activity logs & authentic brand emblems on barriers"
-  ],
-  "is_mandatory": false,
-  "file_size": 96080231
+  "version_code": 54,
+  "version_name": "3.6.0",
+  "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "apk_size_bytes": 96103940,
+  "sha256": "ce5b0a0fc13eab32393f12033dd64a140492b4042d4a16a5617ef758d6e19295",
+  "mandatory": true,
+  "release_notes": "FocusDefend v3.6.0: Fixed 7-Week Reports screen crash, enforced restricted app bypass when logged in as parent or logged out, and added student permission revocation watchdog with real-time parent push notifications."
 }

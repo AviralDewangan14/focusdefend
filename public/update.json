@@ -1,14 +1,15 @@
 {
-  "version_code": 51,
-  "version_name": "3.5.7",
+  "version_code": 52,
+  "version_name": "3.5.8",
   "download_url": "/FocusDefend.apk",
-  "sha256": "fb7146ba690881921eac20d81030794321d28e94ab6f409a26e22792e72aaf0b",
+  "sha256": "5b797d1c2390ac15a1cae6fc224d6650cd39684b48eabc2cbed0fbf57dfb6f0b",
   "size_bytes": 96044366,
   "release_notes": [
-    "Real-time parent activity log with Supabase cross-device feed and in-app telemetry",
-    "Dual-identity invitations showing both parent and student names with rich OpenGraph cards",
-    "Authentic app brand color styling and icons on barrier overlay and focus sprint challenges"
+    "Student self-control: students can now voluntarily add apps to guard list",
+    "Parent PIN enforcement: removing apps or unguarding strictly requires 4-digit Parent PIN",
+    "Parents can add and remove apps with master security PIN verification",
+    "Real-time activity logs & authentic brand emblems on barriers"
   ],
   "is_mandatory": false,
-  "file_size": 96057621
+  "file_size": 96080231
 }

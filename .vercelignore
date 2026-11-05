@@ -1,3 +1,5 @@
+.next/
+.vercel/
 _local_builds/
 _archive_apks/
 preview_slides/

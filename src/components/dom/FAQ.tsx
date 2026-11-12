@@ -63,7 +63,9 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full text-left px-6 py-5 flex items-center justify-between cursor-pointer focus:outline-none group"
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${index}`}
+                className="w-full text-left px-6 py-5 flex items-center justify-between cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 group"
               >
                 <span className="font-semibold text-white text-base md:text-lg pr-6 group-hover:text-indigo-200 transition-colors">
                   {faq.question}

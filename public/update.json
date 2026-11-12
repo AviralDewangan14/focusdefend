@@ -1,9 +1,9 @@
 {
-  "version_code": 54,
-  "version_name": "3.6.0",
+  "version_code": 59,
+  "version_name": "3.6.5",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96103940,
-  "sha256": "ce5b0a0fc13eab32393f12033dd64a140492b4042d4a16a5617ef758d6e19295",
+  "apk_size_bytes": 96118767,
+  "sha256": "3d7d10c6ef912927a299c3e7bcd4080e66eb06c85e346739c48cb788b0e983e9",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.6.0: Fixed 7-Week Reports screen crash, enforced restricted app bypass when logged in as parent or logged out, and added student permission revocation watchdog with real-time parent push notifications."
+  "release_notes": "FocusDefend v3.6.5: Comprehensive Code Review & Polish. Fixed Parent Analytics Dossier Hermes crash with bulletproof date parsing & crash boundary; auto-healed Student Credits & study sessions sync; resolved OS-level push notification permissions & native dispatch; end-to-end theme & UI optimization."
 }

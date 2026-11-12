@@ -70,10 +70,10 @@ export default function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-8 h-8 rounded-full flex items-center justify-center skeuo-btn-secondary text-gray-300 hover:text-white transition-all cursor-pointer"
-              aria-label="Toggle theme"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center skeuo-btn-secondary text-gray-300 hover:text-white transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-cyan-400"
+              aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             >
-              {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
+              {theme === "dark" ? <Sun size={17} aria-hidden="true" /> : <Moon size={17} aria-hidden="true" />}
             </button>
           )}
 

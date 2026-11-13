@@ -1,9 +1,9 @@
 {
-  "version_code": 62,
-  "version_name": "3.6.8",
+  "version_code": 63,
+  "version_name": "3.7.0",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96131984,
-  "sha256": "c3cee3542ce867afc4c6701ab841b465ce40165769d0822b14c804aeccae02e7",
+  "apk_size_bytes": 96128820,
+  "sha256": "647613138388b6b038d598e57e45b32819933e6eaf8468981790a1270e82383a",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.6.8: Production Health & Cloud Ledger Master. Realtime Supabase cloud replication for student focus credits & transaction ledger; diagnostic runtime crash boundary persistence; production demo authentication hardening; 8000ms AbortController timeout protection on AI wellbeing queries; and multi-tier live streaming distribution."
+  "release_notes": "FocusDefend v3.7.0: Comprehensive Design System Unslopping & UI/UX Elevation.\n\u2022 Complete unslopping across all 49 mobile screens & components (Student, Parent, Auth, Onboarding, Admin).\n\u2022 Standardized 4px/8px modular rhythm, eliminated neon glow halos and rainbow borders.\n\u2022 Clamped typography to weight 600 max, enforced tabular figures on all numbers, timers, and scores.\n\u2022 Replaced decorative emojis with crisp Lucide vector icons.\n\u2022 Strict 1px hairline borders and mathematical nesting radius (inner_radius = outer_radius - padding)."
 }

@@ -1,9 +1,9 @@
 {
-  "version_code": 60,
-  "version_name": "3.6.6",
+  "version_code": 62,
+  "version_name": "3.6.8",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96127969,
-  "sha256": "14ef6c75b307a914dc68ceb524af311d7e97888766380fa7bebee3a29026d8a2",
+  "apk_size_bytes": 96131984,
+  "sha256": "c3cee3542ce867afc4c6701ab841b465ce40165769d0822b14c804aeccae02e7",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.6.6: Implicit State Machine Universal Remediation. Added async lock serialization for student credits; biometrically/PIN-protected guardian unlinking; authentic invite code database pairing; robust wall-clock study session persistence across app restarts; anti-cheat sprint completion guards; and realtime database schema consistency."
+  "release_notes": "FocusDefend v3.6.8: Production Health & Cloud Ledger Master. Realtime Supabase cloud replication for student focus credits & transaction ledger; diagnostic runtime crash boundary persistence; production demo authentication hardening; 8000ms AbortController timeout protection on AI wellbeing queries; and multi-tier live streaming distribution."
 }

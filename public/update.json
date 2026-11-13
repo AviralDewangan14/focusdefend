@@ -1,9 +1,9 @@
 {
-  "version_code": 59,
-  "version_name": "3.6.5",
+  "version_code": 60,
+  "version_name": "3.6.6",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96118767,
-  "sha256": "3d7d10c6ef912927a299c3e7bcd4080e66eb06c85e346739c48cb788b0e983e9",
+  "apk_size_bytes": 96127969,
+  "sha256": "14ef6c75b307a914dc68ceb524af311d7e97888766380fa7bebee3a29026d8a2",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.6.5: Comprehensive Code Review & Polish. Fixed Parent Analytics Dossier Hermes crash with bulletproof date parsing & crash boundary; auto-healed Student Credits & study sessions sync; resolved OS-level push notification permissions & native dispatch; end-to-end theme & UI optimization."
+  "release_notes": "FocusDefend v3.6.6: Implicit State Machine Universal Remediation. Added async lock serialization for student credits; biometrically/PIN-protected guardian unlinking; authentic invite code database pairing; robust wall-clock study session persistence across app restarts; anti-cheat sprint completion guards; and realtime database schema consistency."
 }

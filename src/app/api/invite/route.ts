@@ -53,29 +53,69 @@ export async function GET(request: NextRequest) {
   if (supabaseUrl && supabaseAnonKey && rawCode) {
     try {
       const trimmedCode = rawCode.toUpperCase();
-      const profileRes = await fetch(
-        `${supabaseUrl}/rest/v1/profiles?invite_code=eq.${encodeURIComponent(trimmedCode)}&select=id,name,role,students(grade)&limit=1`,
-        {
-          headers: {
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`,
-            'Content-Type': 'application/json',
-          },
-          cache: 'no-store',
+      
+      // 1. Look up code in invite_codes table
+      let targetUserId: string | null = null;
+      try {
+        const inviteRes = await fetch(
+          `${supabaseUrl}/rest/v1/invite_codes?code=eq.${encodeURIComponent(trimmedCode)}&select=id,code,role,created_by&limit=1`,
+          {
+            headers: {
+              'apikey': supabaseAnonKey,
+              'Authorization': `Bearer ${supabaseAnonKey}`,
+              'Content-Type': 'application/json',
+            },
+            cache: 'no-store',
+          }
+        );
+        if (inviteRes.ok) {
+          const inviteRows = await inviteRes.json();
+          if (Array.isArray(inviteRows) && inviteRows.length > 0) {
+            targetUserId = inviteRows[0].created_by;
+          }
         }
-      );
+      } catch (_) {}
 
-      if (profileRes.ok) {
-        const rows = await profileRes.json();
-        if (Array.isArray(rows) && rows.length > 0) {
-          const profile = rows[0];
-          if (profile.name) {
-            senderName = profile.name;
+      // 2. Fetch associated user profile and academic class
+      const uidToQuery = targetUserId || (trimmedCode.length === 36 ? trimmedCode : null);
+      if (uidToQuery) {
+        try {
+          const profRes = await fetch(
+            `${supabaseUrl}/rest/v1/profiles?id=eq.${encodeURIComponent(uidToQuery)}&select=id,name,role&limit=1`,
+            {
+              headers: {
+                'apikey': supabaseAnonKey,
+                'Authorization': `Bearer ${supabaseAnonKey}`,
+                'Content-Type': 'application/json',
+              },
+              cache: 'no-store',
+            }
+          );
+          if (profRes.ok) {
+            const profRows = await profRes.json();
+            if (Array.isArray(profRows) && profRows.length > 0 && profRows[0].name) {
+              senderName = profRows[0].name;
+            }
           }
-          if (profile.students && Array.isArray(profile.students) && profile.students.length > 0) {
-            studentGrade = profile.students[0]?.grade;
+
+          const studentRes = await fetch(
+            `${supabaseUrl}/rest/v1/student_profiles?user_id=eq.${encodeURIComponent(uidToQuery)}&select=class&limit=1`,
+            {
+              headers: {
+                'apikey': supabaseAnonKey,
+                'Authorization': `Bearer ${supabaseAnonKey}`,
+                'Content-Type': 'application/json',
+              },
+              cache: 'no-store',
+            }
+          );
+          if (studentRes.ok) {
+            const studentRows = await studentRes.json();
+            if (Array.isArray(studentRows) && studentRows.length > 0 && studentRows[0].class) {
+              studentGrade = `Class ${studentRows[0].class}`;
+            }
           }
-        }
+        } catch (_) {}
       }
     } catch (err) {
       console.warn('[Invite API] Supabase fetch lookup notice:', err);

@@ -1480,7 +1480,7 @@ const ProtectionScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) =
         </div>
         <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono font-bold">
           <span className="w-1.5 h-1.5 rounded-full skeuo-led-green animate-pulse" />
-          v1.3.0 CORE
+          v3.6.8 CORE
         </div>
       </div>
 

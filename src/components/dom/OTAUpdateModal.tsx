@@ -51,12 +51,12 @@ export default function OTAUpdateModal() {
   const [copiedLan, setCopiedLan] = useState(false);
   
   const [remoteUpdate, setRemoteUpdate] = useState<UpdateData>({
-    version_code: 17,
-    version_name: "1.5.2",
-    download_url: "/FocusDefend-Release.apk",
-    sha256: "6CDCA23115226B92B7D9428481228C3192746345DEFF37C8C338FA532994535C",
-    size_bytes: 31360551,
-    release_notes: "• 100% Play Protect Compliant: Full signature schemes v1-v4, cleaned non-invasive permissions, zero install-time security alerts.\n• Persistent Security Overlay: Restricting apps cannot be bypassed; full touch shield blocks unauthorized app access.\n• Direct Foreground Quiz & Credits Unlock: Clear challenge button with 1-tap quiz launch and quick pass request.\n• Instant Gate Activation: Seamless transition from accessibility blocker to Compose challenge screen."
+    version_code: 62,
+    version_name: "3.6.8",
+    download_url: "/FocusDefend.apk",
+    sha256: "c3cee3542ce867afc4c6701ab841b465ce40165769d0822b14c804aeccae02e7",
+    size_bytes: 96131984,
+    release_notes: "• Production Health & Cloud Ledger Master: Realtime Supabase replication for focus credits.\n• Runtime Crash Boundary Dossier Logging with complete error stack capture.\n• Native BootReceiver for 100% reboot survivability.\n• Cryptographically scoped multi-tenant family realtime channels.\n• Synchronous overlay destruction eliminating rapid app-switch race conditions."
   });
 
   // Fetch live update info
@@ -257,7 +257,7 @@ export default function OTAUpdateModal() {
                     <div className="text-[10px] text-gray-400 uppercase tracking-wider font-mono mb-1 flex items-center gap-1">
                       <ShieldCheck size={12} className="text-blue-400" /> Current
                     </div>
-                    <div className="font-bold text-sm text-gray-300">v1.5.1</div>
+                    <div className="font-bold text-sm text-gray-300">v3.6.7</div>
                   </div>
                   <div className="skeuo-well p-3.5 rounded-2xl border-emerald-500/30">
                     <div className="text-[10px] text-emerald-400 uppercase tracking-wider font-mono mb-1 flex items-center gap-1">

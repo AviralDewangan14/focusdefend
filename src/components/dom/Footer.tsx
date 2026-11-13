@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="skeuo-well p-3 rounded-2xl flex items-center justify-between max-w-xs border border-[#182133]">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full skeuo-led-green animate-pulse" />
-              <span className="text-xs font-mono text-gray-300">OTA Server: v1.2.4 Online</span>
+              <span className="text-xs font-mono text-gray-300">OTA Server: v3.6.8 Online</span>
             </div>
             <button
               onClick={() => setOtaModalOpen(true)}

@@ -126,7 +126,7 @@ export default function SceneOverlays() {
         <div className="max-w-3xl z-10 pointer-events-auto p-8 sm:p-12 rounded-[32px] skeuo-card">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full skeuo-pill text-xs font-mono uppercase tracking-widest text-indigo-300 mb-6">
             <Smartphone size={14} className="text-indigo-400" />
-            Production Release v1.2.4
+            Production Release v3.6.8
           </div>
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white leading-none">
             Insights that empower families.

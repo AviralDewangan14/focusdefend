@@ -132,7 +132,7 @@ export default function Pricing() {
                   onClick={() => setOtaModalOpen(true)}
                   className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-mono cursor-pointer"
                 >
-                  Or check OTA build updates (v1.7.7)
+                  Or check OTA build updates (v3.6.8)
                 </button>
               </div>
             )}

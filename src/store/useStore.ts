@@ -204,7 +204,7 @@ export const useStore = create<StoreState>((set, get) => ({
   setIsOtaDownloading: (downloading) => set({ isOtaDownloading: downloading }),
   hasOtaNotification: true,
   setHasOtaNotification: (has) => set({ hasOtaNotification: has }),
-  otaVersion: "v1.5.2",
+  otaVersion: "v3.6.8",
   dismissOtaNotification: () => set({ hasOtaNotification: false }),
   triggerOtaNotification: () => set({ hasOtaNotification: true }),
 

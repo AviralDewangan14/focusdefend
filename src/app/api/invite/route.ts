@@ -29,7 +29,126 @@ interface InviteResponse {
   error?: string;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Admission Control: In-Memory Sliding-Window IP Rate Limiter
+// ─────────────────────────────────────────────────────────────────────────────
+interface RateLimitBucket {
+  count: number;
+  resetAt: number;
+}
+
+const ipBuckets = new Map<string, RateLimitBucket>();
+const MAX_REQUESTS_PER_WINDOW = 60; // 60 requests
+const WINDOW_DURATION_MS = 60 * 1000; // 1 minute
+let lastCleanup = Date.now();
+
+function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
+  const now = Date.now();
+
+  // Periodic eviction of expired buckets to prevent memory leakage
+  if (now - lastCleanup > WINDOW_DURATION_MS) {
+    lastCleanup = now;
+    for (const [key, bucket] of ipBuckets.entries()) {
+      if (now > bucket.resetAt) {
+        ipBuckets.delete(key);
+      }
+    }
+  }
+
+  const bucket = ipBuckets.get(ip);
+  if (!bucket || now > bucket.resetAt) {
+    ipBuckets.set(ip, { count: 1, resetAt: now + WINDOW_DURATION_MS });
+    return { allowed: true };
+  }
+
+  if (bucket.count >= MAX_REQUESTS_PER_WINDOW) {
+    const retryAfter = Math.ceil((bucket.resetAt - now) / 1000);
+    return { allowed: false, retryAfter: Math.max(1, retryAfter) };
+  }
+
+  bucket.count += 1;
+  return { allowed: true };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Micro-Cache: Resolved Invite Code Lookups (Max 100 entries, 60s TTL)
+// ─────────────────────────────────────────────────────────────────────────────
+interface CachedInviteLookup {
+  senderName: string;
+  studentGrade?: string;
+  expiresAt: number;
+}
+
+const inviteCodeCache = new Map<string, CachedInviteLookup>();
+const MAX_CACHE_ENTRIES = 100;
+const LOOKUP_TTL_MS = 60 * 1000;
+
+function getCachedLookup(code: string): CachedInviteLookup | null {
+  const entry = inviteCodeCache.get(code);
+  if (entry && Date.now() < entry.expiresAt) {
+    return entry;
+  }
+  if (entry) {
+    inviteCodeCache.delete(code);
+  }
+  return null;
+}
+
+function setCachedLookup(code: string, lookup: { senderName: string; studentGrade?: string }) {
+  if (inviteCodeCache.size >= MAX_CACHE_ENTRIES) {
+    const oldestKey = inviteCodeCache.keys().next().value;
+    if (oldestKey) inviteCodeCache.delete(oldestKey);
+  }
+  inviteCodeCache.set(code, { ...lookup, expiresAt: Date.now() + LOOKUP_TTL_MS });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Timeout-Bounded Downstream Fetch (3500ms AbortController Deadline)
+// ─────────────────────────────────────────────────────────────────────────────
+async function fetchWithDeadline(url: string, headers: Record<string, string>, timeoutMs = 3500): Promise<any | null> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(url, {
+      headers,
+      signal: controller.signal,
+      cache: 'no-store',
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+    return null;
+  } catch (err: any) {
+    if (err?.name === 'AbortError') {
+      console.warn(`[Invite API] Downstream query timed out after ${timeoutMs}ms for ${url.split('?')[0]}`);
+    }
+    return null;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 export async function GET(request: NextRequest) {
+  // 1. Admission Control / Rate Limit Check
+  const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+                   request.headers.get('x-real-ip') ||
+                   '127.0.0.1';
+
+  const rateCheck = checkRateLimit(clientIp);
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too Many Requests. Please slow down.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rateCheck.retryAfter || 60),
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const rawCode = (searchParams.get('code') || '').trim();
   const rawName = (searchParams.get('name') || '').trim();
@@ -46,79 +165,62 @@ export async function GET(request: NextRequest) {
   let recipientName = rawTo || (isParentSender ? 'Student' : 'Parent Guardian');
   let studentGrade: string | undefined = undefined;
 
-  // Attempt Supabase lookup to resolve registered profile names
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  // 2. Micro-cache Check
+  const cached = getCachedLookup(code.toUpperCase());
+  if (cached) {
+    senderName = cached.senderName || senderName;
+    studentGrade = cached.studentGrade || studentGrade;
+  } else {
+    // 3. Timeout-Bounded Supabase lookup
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (supabaseUrl && supabaseAnonKey && rawCode) {
-    try {
-      const trimmedCode = rawCode.toUpperCase();
-      
-      // 1. Look up code in invite_codes table
-      let targetUserId: string | null = null;
+    if (supabaseUrl && supabaseAnonKey && rawCode) {
       try {
-        const inviteRes = await fetch(
+        const trimmedCode = rawCode.toUpperCase();
+        const headers = {
+          'apikey': supabaseAnonKey,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
+          'Content-Type': 'application/json',
+        };
+
+        // Query 1: Lookup code in invite_codes table (3500ms timeout)
+        let targetUserId: string | null = null;
+        const inviteRows = await fetchWithDeadline(
           `${supabaseUrl}/rest/v1/invite_codes?code=eq.${encodeURIComponent(trimmedCode)}&select=id,code,role,created_by&limit=1`,
-          {
-            headers: {
-              'apikey': supabaseAnonKey,
-              'Authorization': `Bearer ${supabaseAnonKey}`,
-              'Content-Type': 'application/json',
-            },
-            cache: 'no-store',
-          }
+          headers
         );
-        if (inviteRes.ok) {
-          const inviteRows = await inviteRes.json();
-          if (Array.isArray(inviteRows) && inviteRows.length > 0) {
-            targetUserId = inviteRows[0].created_by;
-          }
+        if (Array.isArray(inviteRows) && inviteRows.length > 0) {
+          targetUserId = inviteRows[0].created_by;
         }
-      } catch (_) {}
 
-      // 2. Fetch associated user profile and academic class
-      const uidToQuery = targetUserId || (trimmedCode.length === 36 ? trimmedCode : null);
-      if (uidToQuery) {
-        try {
-          const profRes = await fetch(
-            `${supabaseUrl}/rest/v1/profiles?id=eq.${encodeURIComponent(uidToQuery)}&select=id,name,role&limit=1`,
-            {
-              headers: {
-                'apikey': supabaseAnonKey,
-                'Authorization': `Bearer ${supabaseAnonKey}`,
-                'Content-Type': 'application/json',
-              },
-              cache: 'no-store',
-            }
-          );
-          if (profRes.ok) {
-            const profRows = await profRes.json();
-            if (Array.isArray(profRows) && profRows.length > 0 && profRows[0].name) {
-              senderName = profRows[0].name;
-            }
+        // Query 2 & 3: Resolve associated profile and academic class (3500ms timeout)
+        const uidToQuery = targetUserId || (trimmedCode.length === 36 ? trimmedCode : null);
+        if (uidToQuery) {
+          const [profRows, studentRows] = await Promise.all([
+            fetchWithDeadline(
+              `${supabaseUrl}/rest/v1/profiles?id=eq.${encodeURIComponent(uidToQuery)}&select=id,name,role&limit=1`,
+              headers
+            ),
+            fetchWithDeadline(
+              `${supabaseUrl}/rest/v1/student_profiles?user_id=eq.${encodeURIComponent(uidToQuery)}&select=class&limit=1`,
+              headers
+            ),
+          ]);
+
+          if (Array.isArray(profRows) && profRows.length > 0 && profRows[0].name) {
+            senderName = profRows[0].name;
+          }
+          if (Array.isArray(studentRows) && studentRows.length > 0 && studentRows[0].class) {
+            studentGrade = `Class ${studentRows[0].class}`;
           }
 
-          const studentRes = await fetch(
-            `${supabaseUrl}/rest/v1/student_profiles?user_id=eq.${encodeURIComponent(uidToQuery)}&select=class&limit=1`,
-            {
-              headers: {
-                'apikey': supabaseAnonKey,
-                'Authorization': `Bearer ${supabaseAnonKey}`,
-                'Content-Type': 'application/json',
-              },
-              cache: 'no-store',
-            }
-          );
-          if (studentRes.ok) {
-            const studentRows = await studentRes.json();
-            if (Array.isArray(studentRows) && studentRows.length > 0 && studentRows[0].class) {
-              studentGrade = `Class ${studentRows[0].class}`;
-            }
-          }
-        } catch (_) {}
+          // Cache resolved identity
+          setCachedLookup(trimmedCode, { senderName, studentGrade });
+        }
+      } catch (err) {
+        console.warn('[Invite API] Supabase lookup notice:', err);
       }
-    } catch (err) {
-      console.warn('[Invite API] Supabase fetch lookup notice:', err);
     }
   }
 
@@ -172,12 +274,31 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  // 1. Admission Control / Rate Limit Check
+  const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+                   request.headers.get('x-real-ip') ||
+                   '127.0.0.1';
+
+  const rateCheck = checkRateLimit(clientIp);
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too Many Requests. Please slow down.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rateCheck.retryAfter || 60),
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
   try {
     const body = await request.json().catch(() => ({}));
-    const code = (body.code || '').trim();
-    const role = (body.role || body.fromRole || '').trim().toLowerCase();
-    const from = (body.from || body.name || '').trim();
-    const to = (body.to || '').trim();
+    const code = typeof body.code === 'string' ? body.code.trim().slice(0, 100) : '';
+    const role = typeof body.role === 'string' ? body.role.trim().toLowerCase() : '';
+    const from = typeof body.from === 'string' ? body.from.trim().slice(0, 100) : '';
+    const to = typeof body.to === 'string' ? body.to.trim().slice(0, 100) : '';
 
     if (!code) {
       return NextResponse.json(

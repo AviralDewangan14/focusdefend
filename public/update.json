@@ -1,9 +1,9 @@
 {
-  "version_code": 63,
-  "version_name": "3.7.0",
+  "version_code": 65,
+  "version_name": "3.7.2",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96128820,
-  "sha256": "647613138388b6b038d598e57e45b32819933e6eaf8468981790a1270e82383a",
+  "apk_size_bytes": 96145636,
+  "sha256": "5f6eca82e938ff41da4e7af828c4fd758361f5d2abaa5ffc578004c2d86cff7e",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.0: Comprehensive Design System Unslopping & UI/UX Elevation.\n\u2022 Complete unslopping across all 49 mobile screens & components (Student, Parent, Auth, Onboarding, Admin).\n\u2022 Standardized 4px/8px modular rhythm, eliminated neon glow halos and rainbow borders.\n\u2022 Clamped typography to weight 600 max, enforced tabular figures on all numbers, timers, and scores.\n\u2022 Replaced decorative emojis with crisp Lucide vector icons.\n\u2022 Strict 1px hairline borders and mathematical nesting radius (inner_radius = outer_radius - padding)."
+  "release_notes": "FocusDefend v3.7.2: Obsidian Minimalist Bento Grid Architecture & Mobile Engine Hardening.\n• Complete App-Wide Unslopping: Standardized all 32 student and parent screens onto high-contrast Obsidian Minimalist Bento Grid design system.\n• Sensory Feedback: Integrated centralized tactile haptics engine across all gestures, slider limits, toggles, and modal interactions.\n• Type-Safe Deep Routing: Hardened notification routing engine with runtime destination validation and tap deduplication.\n• Non-blocking Guardian Confirmations & Accessible Touch Targets: Expanded touch bounds to 44dp minimum and eliminated blocking modal alerts."
 }

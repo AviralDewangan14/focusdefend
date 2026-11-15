@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { 
   Home, 
+  BookOpen,
+  Trophy,
   Pencil, 
   ShieldAlert, 
   BarChart3, 
@@ -64,69 +66,81 @@ interface BottomNavProps {
   onNavigate: (screen: MobileScreen) => void;
 }
 
-const BottomNav = ({ active, onNavigate }: BottomNavProps) => (
-  <div className="absolute bottom-3.5 left-3.5 right-3.5 h-[58px] rounded-[24px] skeuo-floating-dock flex justify-between items-center px-1.5 z-40 pointer-events-auto">
-    <button 
-      onClick={() => onNavigate("dashboard")}
-      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
-        active === 'dashboard' 
-          ? 'skeuo-dock-tab-active text-indigo-400 font-bold scale-105' 
-          : 'text-gray-400 hover:text-gray-200'
-      }`}
-    >
-      <Home size={16} className={active === 'dashboard' ? 'fill-indigo-400/20 drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]' : ''} />
-      <span className="text-[8.5px] mt-0.5 tracking-tight">Home</span>
-    </button>
+const BottomNav = ({ active, onNavigate }: BottomNavProps) => {
+  const getActiveTabKey = (): string => {
+    if (active === 'dashboard') return 'today';
+    if (active === 'study' || active === 'quiz') return 'study';
+    if (active === 'progress') return 'analytics';
+    if (active === 'wallet') return 'rewards';
+    if (active === 'settings' || active === 'parent' || active === 'protection') return 'profile';
+    return '';
+  };
 
-    <button 
-      onClick={() => onNavigate("intercept")}
-      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
-        active === 'intercept' 
-          ? 'skeuo-dock-tab-active text-rose-400 font-bold scale-105' 
-          : 'text-gray-400 hover:text-gray-200'
-      }`}
-    >
-      <ShieldAlert size={16} className={active === 'intercept' ? 'fill-rose-400/20 drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]' : ''} />
-      <span className="text-[8.5px] mt-0.5 tracking-tight">Shield</span>
-    </button>
+  const activeTabKey = getActiveTabKey();
 
-    <button 
-      onClick={() => onNavigate("quiz")}
-      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
-        active === 'quiz' 
-          ? 'skeuo-dock-tab-active text-emerald-400 font-bold scale-105' 
-          : 'text-gray-400 hover:text-gray-200'
-      }`}
-    >
-      <Pencil size={16} className={active === 'quiz' ? 'fill-emerald-400/20 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''} />
-      <span className="text-[8.5px] mt-0.5 tracking-tight">Quiz</span>
-    </button>
+  const tabs = [
+    { key: 'today', label: 'Today', icon: Home, target: 'dashboard' as MobileScreen },
+    { key: 'study', label: 'Study', icon: BookOpen, target: 'study' as MobileScreen },
+    { key: 'analytics', label: 'Analytics', icon: BarChart3, target: 'progress' as MobileScreen },
+    { key: 'rewards', label: 'Rewards', icon: Trophy, target: 'wallet' as MobileScreen, badge: 1 },
+    { key: 'profile', label: 'Profile', icon: User, target: 'settings' as MobileScreen },
+  ];
 
-    <button 
-      onClick={() => onNavigate("progress")}
-      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
-        active === 'progress' 
-          ? 'skeuo-dock-tab-active text-purple-400 font-bold scale-105' 
-          : 'text-gray-400 hover:text-gray-200'
-      }`}
-    >
-      <BarChart3 size={16} className={active === 'progress' ? 'fill-purple-400/20 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]' : ''} />
-      <span className="text-[8.5px] mt-0.5 tracking-tight">Progress</span>
-    </button>
+  return (
+    <div className="absolute bottom-3 left-3 right-3 h-[56px] rounded-full bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md border border-black/[0.08] dark:border-white/[0.12] shadow-[0_10px_25px_-5px_rgba(0,0,0,0.12),0_8px_10px_-6px_rgba(0,0,0,0.08)] flex items-center justify-between p-1 z-40 pointer-events-auto">
+      {tabs.map((tab) => {
+        const isSelected = activeTabKey === tab.key;
+        const Icon = tab.icon;
 
-    <button 
-      onClick={() => onNavigate("settings")}
-      className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-2xl cursor-pointer transition-all duration-200 ${
-        active === 'settings' 
-          ? 'skeuo-dock-tab-active text-amber-400 font-bold scale-105' 
-          : 'text-gray-400 hover:text-gray-200'
-      }`}
-    >
-      <Settings size={16} className={active === 'settings' ? 'fill-amber-400/20 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]' : ''} />
-      <span className="text-[8.5px] mt-0.5 tracking-tight">Settings</span>
-    </button>
-  </div>
-);
+        return (
+          <button
+            key={tab.key}
+            type="button"
+            onClick={() => onNavigate(tab.target)}
+            aria-label={`${tab.label} tab`}
+            className="relative flex-1 h-full flex flex-col items-center justify-center cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full"
+          >
+            {/* Sliding spring pill highlight */}
+            {isSelected && (
+              <motion.div
+                layoutId="floating-tab-pill"
+                transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                className="absolute inset-y-0.5 inset-x-0.5 rounded-full bg-[#eaedf2] dark:bg-white/[0.12] -z-10 shadow-sm"
+              />
+            )}
+
+            <div className="relative flex items-center justify-center">
+              <Icon
+                size={17}
+                className={
+                  isSelected
+                    ? "text-[#1a56db] dark:text-[#60a5fa] stroke-[2.2px] fill-[#1a56db]/20 dark:fill-[#60a5fa]/20 transition-transform duration-150 scale-105"
+                    : "text-slate-600 dark:text-slate-400 stroke-[1.8px] transition-colors"
+                }
+              />
+              {/* Red circular badge on Rewards tab matching screenshot */}
+              {tab.badge && (
+                <span className="absolute -top-1 -right-2 min-w-[14px] h-[14px] px-0.5 rounded-full bg-[#ef4444] text-white text-[8px] font-bold flex items-center justify-center border-[1.5px] border-white dark:border-[#0f172a] shadow-xs">
+                  {tab.badge}
+                </span>
+              )}
+            </div>
+
+            <span
+              className={`text-[8.5px] mt-0.5 tracking-tight transition-colors ${
+                isSelected
+                  ? "text-[#1a56db] dark:text-[#60a5fa] font-bold"
+                  : "text-slate-600 dark:text-slate-400 font-medium"
+              }`}
+            >
+              {tab.label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 /* SCREEN 1: DASHBOARD */
 const DashboardScreen = ({ onNavigate, credits = 5 }: { onNavigate: (screen: MobileScreen) => void; credits?: number }) => {

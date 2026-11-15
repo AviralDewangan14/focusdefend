@@ -1,9 +1,9 @@
 {
-  "version_code": 67,
-  "version_name": "3.7.4",
+  "version_code": 68,
+  "version_name": "3.7.5",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96178511,
-  "sha256": "ecf46a51aa5adfc13cdf81e8fa95ab828111f78602b09a07ac167bb061e7d384",
+  "apk_size_bytes": 96167053,
+  "sha256": "4b7035fd1d092bda15a70cc347eff6755533238fda68fe40abcc6f9a61599295",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.4 (Build 67): Animated Sliding Capsule Navigation & Native Motion Transitions.\n• Sliding Pill Navigation: Smooth horizontal spring indicator gliding across tabs on switch, with tactile micro-bounce icon scaling.\n• FocusDefend Branding & Curated Tabs: Today (Dashboard), Study (Sprints), Analytics (Deep Insights), Rewards (Token Shop), Profile (Family Link).\n• Live Real-Time Integration: Instant database synchronizations across student and parent portals."
+  "release_notes": "FocusDefend v3.7.5 (Build 68): Push Notifications System, Decommissioned Biometrics, Hardened Security, and Human Professional UX.\n\u2022 Real Push Notifications: Full cross-device remote push notification engine powered by Expo Push Gateway and Supabase Realtime\u2014delivers instant native heads-up alerts to parents when restricted apps are launched, PINs are used, or permissions are changed, and to students when study goals or app passes are updated.\n\u2022 Biometric & Face ID Unlock Decommissioned: Removed all biometric unlock vectors to prevent child fingerprint bypass\u2014ensures parental PIN or curriculum MCQs are strictly required to unguard apps.\n\u2022 Clean Legal & Compliance Layout: Fixed squished text hierarchy on profile and settings screens.\n\u2022 Human Professional Tone: Removed all robotic AI buzzwords (\"calibration\", \"telemetry\", \"dossier\", \"cognitive diagnosis\") across every student, parent, and admin screen.\n\u2022 Production Security Hardening: Enforced role verification on Admin/Parent routes, eliminated fallback default PIN bypass, and removed client-exposed credentials."
 }

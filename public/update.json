@@ -1,9 +1,9 @@
 {
-  "version_code": 66,
-  "version_name": "3.7.3",
+  "version_code": 67,
+  "version_name": "3.7.4",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96176541,
-  "sha256": "bf1755f8a71868bfc03b4a51bd063d7d755a2fc87c1409941d8f4b3445198d9f",
+  "apk_size_bytes": 96178511,
+  "sha256": "ecf46a51aa5adfc13cdf81e8fa95ab828111f78602b09a07ac167bb061e7d384",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.3 (Build 66): Modern Floating Capsule Bottom Navigation Bar & Mobile Engine Hardening.\n• Floating Capsule Navigation: Floating stadium pill navigation bar with active grey pill selection capsule, filled cobalt blue active icons, outline dark slate inactive tabs, and notification badge cutout ring.\n• Real-Time Data Synchronization: Full live backend integration without mock datasets across student, parent, and admin consoles.\n• Fluid Screen Transitions: Centralized tactile animations and smooth skeleton loading screens app-wide."
+  "release_notes": "FocusDefend v3.7.4 (Build 67): Animated Sliding Capsule Navigation & Native Motion Transitions.\n• Sliding Pill Navigation: Smooth horizontal spring indicator gliding across tabs on switch, with tactile micro-bounce icon scaling.\n• FocusDefend Branding & Curated Tabs: Today (Dashboard), Study (Sprints), Analytics (Deep Insights), Rewards (Token Shop), Profile (Family Link).\n• Live Real-Time Integration: Instant database synchronizations across student and parent portals."
 }

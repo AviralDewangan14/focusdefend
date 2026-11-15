@@ -48,16 +48,16 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 66,
-    version_name: '3.7.3',
+    version_code: 67,
+    version_name: '3.7.4',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 96176541,
-    size_bytes: 96176541,
-    sha256: 'bf1755f8a71868bfc03b4a51bd063d7d755a2fc87c1409941d8f4b3445198d9f',
+    apk_size_bytes: 96178511,
+    size_bytes: 96178511,
+    sha256: 'ecf46a51aa5adfc13cdf81e8fa95ab828111f78602b09a07ac167bb061e7d384',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.7.3: Modern Floating Capsule Bottom Navigation Bar & Mobile Engine Hardening.\n• Floating Capsule Navigation with active grey pill and cutout notification badge\n• Real-Time Data Synchronization across all consoles\n• Centralized tactile haptics and fluid screen transitions.',
+    release_notes: 'FocusDefend v3.7.4: Animated Sliding Capsule Navigation & Native Motion Transitions.\n• Sliding capsule indicator with spring translation physics\n• FocusDefend domain tabs: Today, Study, Analytics, Rewards, Profile\n• Real-Time Data Synchronization & Tactile feedback.',
     created_at: new Date().toISOString(),
   };
 

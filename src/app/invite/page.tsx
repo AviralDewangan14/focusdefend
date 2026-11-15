@@ -82,7 +82,7 @@ export default async function InvitePage({ searchParams }: PageProps) {
         fallback={
           <div className="p-8 rounded-3xl bg-neutral-900/80 border border-cyan-500/20 text-cyan-400 font-bold flex items-center gap-3">
             <span className="w-4 h-4 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
-            <span>Loading FocusDefend Family Link...</span>
+            <span>Loading FocusDefend Family Link…</span>
           </div>
         }
       >

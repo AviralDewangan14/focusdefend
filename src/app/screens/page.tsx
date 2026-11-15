@@ -460,34 +460,36 @@ function SinglePhoneScreen({ screenType }: { screenType: MobileScreen }) {
                 ].map((opt, i) => {
                   const isSel = selectedOpt === i;
                   return (
-                    <div
+                    <button
                       key={i}
+                      type="button"
                       onClick={() => setSelectedOpt(i)}
-                      className={`p-2.5 rounded-xl skeuo-card flex items-center justify-between cursor-pointer transition-all ${
+                      className={`w-full p-2.5 rounded-xl skeuo-card flex items-center justify-between cursor-pointer transition-colors ${
                         isSel ? "border-emerald-500/60 bg-emerald-950/20 shadow-sm" : "border-[#222e47]"
                       }`}
                     >
                       <span className={`text-[11px] ${isSel ? "text-emerald-400 font-bold" : "text-gray-300"}`}>{opt}</span>
                       <span className={`w-3.5 h-3.5 rounded-full ${isSel ? "skeuo-led-green" : "border border-[#334466]"}`} />
-                    </div>
+                    </button>
                   );
                 })}
               </div>
 
               {submittedQuiz ? (
-                <div className="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/50 text-center">
+                <div className="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/50 text-center" aria-live="polite">
                   <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-400">
-                    <CheckCircle2 size={13} /> Correct! +15 mins Unlocked
+                    <CheckCircle2 size={13} aria-hidden="true" /> Correct! +15 mins Unlocked
                   </div>
                 </div>
               ) : (
-                <div 
+                <button 
+                  type="button"
                   onClick={() => setSubmittedQuiz(true)}
                   className="w-full py-3 rounded-full skeuo-btn-emerald font-bold text-xs text-white flex items-center justify-center gap-1.5 shadow-md cursor-pointer mt-2"
                 >
-                  <span>Submit & Claim Screen Time</span>
-                  <ArrowRight size={13} />
-                </div>
+                  <span>Submit &amp; Claim Screen Time</span>
+                  <ArrowRight size={13} aria-hidden="true" />
+                </button>
               )}
 
               <div className="flex items-center justify-center gap-1 text-[9px] font-mono text-gray-400 pt-1">

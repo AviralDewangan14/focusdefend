@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="md:w-5/12 space-y-4">
           <div className="flex items-center gap-2.5 font-bold text-xl tracking-tight">
             <div className="relative w-8 h-8 rounded-full overflow-hidden p-[1.5px] bg-gradient-to-tr from-indigo-500 via-purple-500 to-emerald-400 shadow-[0_0_12px_rgba(79,70,229,0.5)]">
-              <img src="/logo.jpg" alt="FocusDefend Logo" className="w-full h-full rounded-full object-cover" />
+              <img src="/logo.jpg" alt="FocusDefend Logo" width={32} height={32} className="w-full h-full rounded-full object-cover" />
             </div>
             <span>FocusDefend</span>
           </div>
@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="skeuo-well p-3 rounded-2xl flex items-center justify-between max-w-xs border border-[#182133]">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full skeuo-led-green animate-pulse" />
-              <span className="text-xs font-mono text-gray-300">OTA Server: v3.6.8 Online</span>
+              <span className="text-xs font-mono text-gray-300">OTA Server: v3.7.4 Online</span>
             </div>
             <button
               onClick={() => setOtaModalOpen(true)}

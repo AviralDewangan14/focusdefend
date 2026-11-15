@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Brand / Logo */}
         <a href="#" className="flex items-center gap-2.5 font-bold text-base md:text-lg tracking-tight shrink-0 text-white group">
           <div className="relative w-8 h-8 rounded-full overflow-hidden p-[1.5px] bg-gradient-to-tr from-indigo-500 via-purple-500 to-emerald-400 shadow-[0_0_12px_rgba(79,70,229,0.5)]">
-            <img src="/logo.jpg" alt="FocusDefend Logo" className="w-full h-full rounded-full object-cover" />
+            <img src="/logo.jpg" alt="FocusDefend Logo" width={32} height={32} className="w-full h-full rounded-full object-cover" />
           </div>
           <span className="hidden sm:inline bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             FocusDefend
@@ -50,6 +50,7 @@ export default function Navbar() {
           {/* Over-The-Air (OTA) Status Pill */}
           <button
             onClick={() => setOtaModalOpen(true)}
+            aria-label="Open FocusDefend OTA System Update Center"
             className={`skeuo-pill px-3 py-1.5 rounded-full text-xs font-semibold text-gray-200 hover:text-white flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 group ${
               hasOtaNotification ? "border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.3)]" : ""
             }`}
@@ -83,7 +84,7 @@ export default function Navbar() {
             download="FocusDefend.apk" 
             className="skeuo-btn-primary px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs md:text-sm font-semibold text-white inline-flex items-center gap-2 shrink-0 cursor-pointer shadow-lg"
           >
-            <Download size={14} className="shrink-0" />
+            <Download size={14} className="shrink-0" aria-hidden="true" />
             <span className="hidden sm:inline">Download APK</span>
             <span className="sm:hidden font-mono">APK</span>
           </a>

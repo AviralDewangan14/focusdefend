@@ -51,12 +51,12 @@ export default function OTAUpdateModal() {
   const [copiedLan, setCopiedLan] = useState(false);
   
   const [remoteUpdate, setRemoteUpdate] = useState<UpdateData>({
-    version_code: 62,
-    version_name: "3.6.8",
+    version_code: 67,
+    version_name: "3.7.4",
     download_url: "/FocusDefend.apk",
-    sha256: "c3cee3542ce867afc4c6701ab841b465ce40165769d0822b14c804aeccae02e7",
-    size_bytes: 96131984,
-    release_notes: "• Production Health & Cloud Ledger Master: Realtime Supabase replication for focus credits.\n• Runtime Crash Boundary Dossier Logging with complete error stack capture.\n• Native BootReceiver for 100% reboot survivability.\n• Cryptographically scoped multi-tenant family realtime channels.\n• Synchronous overlay destruction eliminating rapid app-switch race conditions."
+    sha256: "ecf46a51aa5adfc13cdf81e8fa95ab828111f78602b09a07ac167bb061e7d384",
+    size_bytes: 96178511,
+    release_notes: "• Animated Sliding Capsule Navigation with native spring translation and icon micro-bounce.\n• Curated FocusDefend Tabs: Today, Study, Analytics, Rewards, Profile.\n• Realtime Supabase Replication for study sprints and focus credits.\n• Runtime Crash Boundary Dossier Logging with complete error stack capture.\n• Universal Android Distribution with Google Play Protect compliance."
   });
 
   // Fetch live update info
@@ -105,8 +105,8 @@ export default function OTAUpdateModal() {
             
             // Trigger actual browser download of the real APK
             const link = document.createElement("a");
-            link.href = "/FocusDefend-Release.apk";
-            link.download = "FocusDefend-Release.apk";
+            link.href = "/FocusDefend.apk";
+            link.download = "FocusDefend.apk";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -121,13 +121,13 @@ export default function OTAUpdateModal() {
   };
 
   const copyAdbCommand = () => {
-    navigator.clipboard.writeText("adb install -r FocusDefend-Release.apk");
+    navigator.clipboard.writeText("adb install -r FocusDefend.apk");
     setCopiedAdb(true);
     setTimeout(() => setCopiedAdb(false), 2000);
   };
 
   const copyLanUrl = () => {
-    navigator.clipboard.writeText("http://192.168.29.239:8080/FocusDefend-Release.apk");
+    navigator.clipboard.writeText("http://192.168.29.239:8000/FocusDefend.apk");
     setCopiedLan(true);
     setTimeout(() => setCopiedLan(false), 2000);
   };
@@ -342,7 +342,7 @@ export default function OTAUpdateModal() {
                       </div>
 
                       <div className="flex justify-between items-center text-[11px] font-mono text-gray-400">
-                        <span>Binary: FocusDefend-Release.apk</span>
+                        <span>Binary: FocusDefend.apk</span>
                         <span>SHA-256: {shortSha} (VERIFIED)</span>
                       </div>
                     </div>
@@ -359,8 +359,8 @@ export default function OTAUpdateModal() {
                       </p>
                       <div className="pt-2 flex justify-center gap-3">
                         <a
-                          href="/FocusDefend-Release.apk"
-                          download="FocusDefend-Release.apk"
+                          href="/FocusDefend.apk"
+                          download="FocusDefend.apk"
                           className="skeuo-btn-secondary px-5 py-2.5 rounded-full text-xs font-semibold text-white inline-flex items-center gap-2"
                         >
                           <DownloadCloud size={14} />
@@ -454,7 +454,7 @@ export default function OTAUpdateModal() {
                     </button>
                   </div>
                   <div className="bg-[#020306] p-3 rounded-xl border border-emerald-500/40 font-mono text-xs text-emerald-300 select-all">
-                    http://192.168.29.239:8080/FocusDefend-Release.apk
+                    http://192.168.29.239:8000/FocusDefend.apk
                   </div>
                   <p className="text-[11px] text-gray-400">
                     Open this URL directly in Chrome or your browser on your phone connected to the same Wi-Fi.
@@ -477,7 +477,7 @@ export default function OTAUpdateModal() {
                     </button>
                   </div>
                   <div className="bg-[#020306] p-3 rounded-xl border border-[#222e47] font-mono text-xs text-indigo-300 select-all">
-                    adb install -r FocusDefend-Release.apk
+                    adb install -r FocusDefend.apk
                   </div>
                   <p className="text-[11px] text-gray-400">
                     Connect your phone via USB with USB Debugging enabled in Developer Options.
@@ -495,12 +495,12 @@ export default function OTAUpdateModal() {
                       Live global CDN URL:
                     </div>
                     <div className="text-xs font-mono text-indigo-300">
-                      https://focusdefend.vercel.app/FocusDefend-Release.apk
+                      https://focusdefend.vercel.app/FocusDefend.apk
                     </div>
                   </div>
                   <a
-                    href="/FocusDefend-Release.apk"
-                    download="FocusDefend-Release.apk"
+                    href="/FocusDefend.apk"
+                    download="FocusDefend.apk"
                     className="skeuo-btn-secondary px-4 py-2 rounded-full text-xs font-semibold text-white inline-flex items-center gap-1.5"
                   >
                     <DownloadCloud size={14} />

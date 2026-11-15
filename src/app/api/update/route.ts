@@ -48,16 +48,16 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 65,
-    version_name: '3.7.2',
+    version_code: 66,
+    version_name: '3.7.3',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 96145636,
-    size_bytes: 96145636,
-    sha256: '5f6eca82e938ff41da4e7af828c4fd758361f5d2abaa5ffc578004c2d86cff7e',
+    apk_size_bytes: 96176541,
+    size_bytes: 96176541,
+    sha256: 'bf1755f8a71868bfc03b4a51bd063d7d755a2fc87c1409941d8f4b3445198d9f',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.7.2: Obsidian Minimalist Bento Grid Architecture & Mobile Engine Hardening.\n• Complete App-Wide Unslopping\n• Centralized tactile haptics engine\n• Type-safe deep notification routing\n• Non-blocking guardian confirmations & accessible touch targets.',
+    release_notes: 'FocusDefend v3.7.3: Modern Floating Capsule Bottom Navigation Bar & Mobile Engine Hardening.\n• Floating Capsule Navigation with active grey pill and cutout notification badge\n• Real-Time Data Synchronization across all consoles\n• Centralized tactile haptics and fluid screen transitions.',
     created_at: new Date().toISOString(),
   };
 

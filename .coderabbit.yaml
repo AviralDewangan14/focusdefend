@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# ==============================================================================
+# CodeRabbit Configuration for FocusDefend
+# Repository: https://github.com/AviralDewangan14/focusdefend
+# ==============================================================================
+
+language: "en-US"
+early_access: false
+
+tone_instructions: >-
+  Be direct, concise, and constructive. Prioritize modern Next.js 16/React 19
+  App Router conventions, zero hydration mismatches, strict TypeScript safety,
+  high-craft visual design standards, and robust security across both web
+  and Android companion integrations.
+
+knowledge_base:
+  opt_out: false
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "README.md"
+  issues:
+    scope: "auto"
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  auto_title_placeholder: "@coderabbitai"
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "master"
+      - "main"
+
+  tools:
+    eslint:
+      enabled: true
+    ast-grep:
+      enabled: true
+    shellcheck:
+      enabled: true
+    markdownlint:
+      enabled: true
+
+  path_filters:
+    - "!node_modules/**"
+    - "!.next/**"
+    - "!.vercel/**"
+    - "!_local_builds/**"
+    - "!assets_deck/**"
+    - "!preview_slides/**"
+    - "!scratch/**"
+    - "!__pycache__/**"
+    - "!**/*.pyc"
+    - "!**/*.apk"
+    - "!**/*.aab"
+    - "!**/*.idsig"
+    - "!**/*.jks"
+    - "!**/*.pdf"
+    - "!**/*.pptx"
+    - "!**/*.png"
+    - "!**/*.jpg"
+    - "!**/*.jpeg"
+    - "!**/*.webp"
+    - "!**/*.svg"
+    - "!**/*.ico"
+    - "!package-lock.json"
+    - "!tsconfig.tsbuildinfo"
+    - "!skills-lock.json"
+
+  path_instructions:
+    - path: "src/app/**"
+      instructions: |
+        - Next.js 16 Breaking Changes: Respect AGENTS.md rules. Never rely on legacy Next.js 13/14 conventions without verifying against current Next.js 16 APIs.
+        - Server vs Client Components: Keep components Server Components by default; only add 'use client' when using browser APIs, state, hooks, or event listeners.
+        - Hydration Safety: Never read `window`, `localStorage`, or `document` directly during initial render. Always use `useEffect` or safe mounted guards.
+        - SEO & Metadata: Ensure dynamic metadata adheres to Next.js 16 App Router `Metadata` specifications.
+
+    - path: "src/app/api/**"
+      instructions: |
+        - Route Handlers: Ensure proper export of HTTP methods (GET, POST, etc.) returning `NextResponse`.
+        - Caching & Freshness: For live status endpoints (e.g., OTA updates, version checks), ensure dynamic rendering (`export const dynamic = 'force-dynamic'`, `export const revalidate = 0`) and proper `Cache-Control` headers.
+        - Validation & Error Handling: Always sanitize and validate incoming request payloads and query params. Wrap filesystem and external API calls in try/catch blocks with sanitized error responses.
+
+    - path: "src/components/**"
+      instructions: |
+        - Visual & Interaction Craft: Adhere to high-end visual design standards. Ensure proper contrast, smooth dark mode support (`next-themes`), and responsive mobile layouts.
+        - Animation & Performance: Ensure GSAP timelines, Framer Motion animations, Lenis scroll listeners, or particle engines clean up properly on component unmount to prevent memory leaks and frame drops.
+        - Accessibility: Include ARIA labels, semantic interactive elements (`<button>`, `<a>`), and keyboard navigation support across modals, docks, and drawers.
+        - Anti-Patterns: Avoid cards-inside-cards nesting, generic low-effort UI placeholders, or hardcoded magic numbers in layout styling.
+
+    - path: "src/store/**"
+      instructions: |
+        - State Management: Ensure Zustand state updates are strictly immutable.
+        - Selector Optimization: Encourage fine-grained selectors when consuming state to prevent unnecessary component re-renders.
+        - Hydration & Persistence: Ensure persisted state hydrates safely without SSR mismatch.
+
+    - path: "**/*.py"
+      instructions: |
+        - Windows Console UTF-8: Ensure Python scripts running on Windows configure UTF-8 output streams (`sys.stdout.reconfigure(encoding='utf-8')`) to avoid `cp1252` encoding exceptions.
+        - Subprocess Safety: Avoid raw shell string concatenations with external inputs; use structured list arguments with explicit error handling.
+        - File IO: Explicitly specify `encoding='utf-8'` when reading or writing text files.
+
+    - path: "**"
+      instructions: |
+        - Secret & Keystore Protection: Strictly flag any exposed passwords, `.jks` keystores, private keys, API secrets, or credentials committed into the repository.
+        - Codebase Integrity: Preserve existing docstrings, types, and architectural patterns.
+
+chat:
+  auto_reply: true

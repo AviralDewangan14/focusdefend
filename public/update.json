@@ -1,9 +1,9 @@
 {
-  "version_code": 68,
-  "version_name": "3.7.5",
+  "version_code": 69,
+  "version_name": "3.7.6",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96167053,
-  "sha256": "4b7035fd1d092bda15a70cc347eff6755533238fda68fe40abcc6f9a61599295",
+  "apk_size_bytes": 96187851,
+  "sha256": "4caebfac7801d513a92026c9cec09b34616ce8cd398dde6bf2ac5a3d2e5be587",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.5 (Build 68): Push Notifications System, Decommissioned Biometrics, Hardened Security, and Human Professional UX.\n\u2022 Real Push Notifications: Full cross-device remote push notification engine powered by Expo Push Gateway and Supabase Realtime\u2014delivers instant native heads-up alerts to parents when restricted apps are launched, PINs are used, or permissions are changed, and to students when study goals or app passes are updated.\n\u2022 Biometric & Face ID Unlock Decommissioned: Removed all biometric unlock vectors to prevent child fingerprint bypass\u2014ensures parental PIN or curriculum MCQs are strictly required to unguard apps.\n\u2022 Clean Legal & Compliance Layout: Fixed squished text hierarchy on profile and settings screens.\n\u2022 Human Professional Tone: Removed all robotic AI buzzwords (\"calibration\", \"telemetry\", \"dossier\", \"cognitive diagnosis\") across every student, parent, and admin screen.\n\u2022 Production Security Hardening: Enforced role verification on Admin/Parent routes, eliminated fallback default PIN bypass, and removed client-exposed credentials."
+  "release_notes": "FocusDefend v3.7.6 (Build 69): UI Layout Polish, Cloudflare Security Audit Hardening & Autonomous OTA Integrity Verification.\n• Refined Legal & Compliance Layout: Fixed squished text on Terms of Service and Privacy Policy cards with clean vertical hierarchy and elegant spacing.\n• Native PIN Brute-Force Defense: Progressive lockout (5 failed attempts = 5 min cooldown; 10 failed attempts = 30 min lockout + immediate parent push alert).\n• Autonomous OTA Integrity Verification: Cryptographic SHA-256 verification and origin restriction before triggering APK install.\n• Security Hardening: Closed unlinked profile exposure, hardened app restriction RLS, secured invite pairing RPC, and removed unverified optimistic Pro deep links.\n• Secure System Config: Disabled ADB backups (android:allowBackup=false) and decommissioned legacy biometric permissions."
 }

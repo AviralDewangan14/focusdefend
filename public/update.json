@@ -2,8 +2,8 @@
   "version_code": 71,
   "version_name": "3.7.8",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96172203,
-  "sha256": "e9192399fc5bccdcff48ee68cdd6e87747d96b6079680640d1a57dea146aaee1",
+  "apk_size_bytes": 96168212,
+  "sha256": "5e5717f4a53ae601f48695ff6967306e24061158dbec4bb3647305183bcae66f",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.8 (Build 71): Impeccable Craft & Frontend Polish Update.\n• Legal & Compliance Polish: Resolved text collision between label and web links with clean stacked hierarchy and external link icons.\n• Material 3 Touch Targets: Expanded all header icons, back buttons, and auth visibility toggles to the 48x48dp accessibility standard.\n• Android System Back Defense: Hardware back button now gracefully prompts or steps back to topic selection during active exams instead of abruptly exiting the app.\n• Focus Trapping: Enabled accessibilityViewIsModal on Master PIN, Emergency Vault, and Guardian Disconnect dialogs to isolate screen reader focus.\n• Performance Polish: Added tabular numerals across timer counters and score badges to eliminate live ticking jitter."
+  "release_notes": "FocusDefend v3.7.8 (Build 71): Production-Hardened Security & Impeccable Craft.\n• Security Hardening: Hardware-backed KeyStore PIN protection & HTTP security headers.\n• Material 3 Touch Targets: 48x48dp standard on all navigation and controls.\n• System Back Defense: Safe step-back navigation during active study sessions.\n• Screen Reader Isolation: Modal focus trapping active across all emergency and parental dialogs."
 }

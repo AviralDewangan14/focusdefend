@@ -48,16 +48,16 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 71,
-    version_name: '3.7.8',
+    version_code: 72,
+    version_name: '3.7.9',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 96168212,
-    size_bytes: 96168212,
-    sha256: '5e5717f4a53ae601f48695ff6967306e24061158dbec4bb3647305183bcae66f',
+    apk_size_bytes: 96173069,
+    size_bytes: 96173069,
+    sha256: 'b0a6bb2f7f36255db6777a1ab32f7af8833eff39813a3eef704068f633ae704f',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.7.8 (Build 71): Production-Hardened Security & Impeccable Craft.\n• Security Hardening: Hardware-backed KeyStore PIN protection & HTTP security headers.\n• Material 3 Touch Targets: 48x48dp standard on all navigation and controls.\n• System Back Defense: Safe step-back navigation during active study sessions.',
+    release_notes: 'FocusDefend v3.7.9 (Build 72): Legal & Compliance Layout Polish & Production Hardening.\n• Two-Line Legal Hierarchy: Re-architected Terms and Privacy cards with clean spacing and isolated external link pills.\n• Universal Touch Compliance: Minimum 52dp touch targets across all settings rows.\n• Dual Security Verification: Full sign-off under Claude Code & Cloudflare security audit standards.',
     created_at: new Date().toISOString(),
   };
 

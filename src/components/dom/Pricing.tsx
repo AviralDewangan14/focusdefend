@@ -114,33 +114,25 @@ export default function Pricing() {
             </div>
 
             {/* Concentric Skeuomorphic Button */}
-            {tier.highlight ? (
-              <a
-                href="/checkout?plan=pro_annual"
-                className="w-full py-4 rounded-2xl font-bold text-center text-sm md:text-base tracking-wide transition-colors cursor-pointer flex items-center justify-center gap-2 skeuo-btn-primary text-white"
-              >
-                Upgrade to Focus Pro
-              </a>
-            ) : (
-              <a
-                href="/FocusDefend.apk"
-                download="FocusDefend.apk"
-                className="w-full py-4 rounded-2xl font-bold text-center text-sm md:text-base tracking-wide transition-colors cursor-pointer flex items-center justify-center gap-2 skeuo-btn-secondary text-white"
-              >
-                {tier.cta}
-              </a>
-            )}
+            <a
+              href="/FocusDefend.apk"
+              download="FocusDefend.apk"
+              className={`w-full py-4 rounded-2xl font-bold text-center text-sm md:text-base tracking-wide transition-colors cursor-pointer flex items-center justify-center gap-2 ${
+                tier.highlight
+                  ? "skeuo-btn-primary text-white"
+                  : "skeuo-btn-secondary text-white"
+              }`}
+            >
+              {tier.cta}
+            </a>
 
             {tier.highlight && (
-              <div className="mt-3 text-center flex flex-col gap-1 items-center">
-                <span className="text-[10px] text-emerald-400 font-mono">
-                  Instant activation via UPI, GPay & Cards
-                </span>
+              <div className="mt-3 text-center">
                 <button
                   onClick={() => setOtaModalOpen(true)}
-                  className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-mono cursor-pointer mt-1"
+                  className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-mono cursor-pointer"
                 >
-                  Or check OTA build updates (v3.7.5)
+                  Or check OTA build updates (v3.7.7)
                 </button>
               </div>
             )}

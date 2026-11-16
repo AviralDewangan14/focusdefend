@@ -1,9 +1,9 @@
 {
-  "version_code": 69,
-  "version_name": "3.7.6",
+  "version_code": 70,
+  "version_name": "3.7.7",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96187851,
-  "sha256": "4caebfac7801d513a92026c9cec09b34616ce8cd398dde6bf2ac5a3d2e5be587",
+  "apk_size_bytes": 96165891,
+  "sha256": "05a0c28e4a789818ba5e0095fbc522a029c905c7f9dff41b7b91c4e3cf00bf71",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.6 (Build 69): UI Layout Polish, Cloudflare Security Audit Hardening & Autonomous OTA Integrity Verification.\n• Refined Legal & Compliance Layout: Fixed squished text on Terms of Service and Privacy Policy cards with clean vertical hierarchy and elegant spacing.\n• Native PIN Brute-Force Defense: Progressive lockout (5 failed attempts = 5 min cooldown; 10 failed attempts = 30 min lockout + immediate parent push alert).\n• Autonomous OTA Integrity Verification: Cryptographic SHA-256 verification and origin restriction before triggering APK install.\n• Security Hardening: Closed unlinked profile exposure, hardened app restriction RLS, secured invite pairing RPC, and removed unverified optimistic Pro deep links.\n• Secure System Config: Disabled ADB backups (android:allowBackup=false) and decommissioned legacy biometric permissions."
+  "release_notes": "FocusDefend v3.7.7 (Build 70): All Features 100% Free, Decommissioned Payment Gateway & Subscription Systems.\n• 100% Free Rollout: All focus protection, parental controls, and study modules are completely unlocked with zero subscription paywalls.\n• Decommissioned Payment Gateways: Removed in-app checkout, payment verification APIs, and webhook processors.\n• Polished Settings & Profile: Cleaned menu hierarchies and removed subscription pass cards.\n• Enhanced Security: Preserves Master PIN brute-force lockout, SHA-256 package integrity checks, and hardened Supabase RLS policies."
 }

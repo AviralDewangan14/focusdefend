@@ -26,8 +26,8 @@ const faqs = [
     answer: "FocusDefend connects directly to our secure edge CDN distribution network. When an update or patch is published, the app verifies package SHA-256 integrity and applies the update with zero loss of saved student progress."
   },
   {
-    question: "How do I cancel my subscription?",
-    answer: "You can cancel your subscription at any time directly from the Parent Dashboard. There are no hidden fees or long-term contracts."
+    question: "Is FocusDefend free to use?",
+    answer: "Yes! All features, parental controls, study modes, and curriculum banks are currently 100% free with no subscription or payment required."
   }
 ];
 

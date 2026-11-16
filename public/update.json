@@ -1,9 +1,9 @@
 {
-  "version_code": 70,
-  "version_name": "3.7.7",
+  "version_code": 71,
+  "version_name": "3.7.8",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 96165891,
-  "sha256": "05a0c28e4a789818ba5e0095fbc522a029c905c7f9dff41b7b91c4e3cf00bf71",
+  "apk_size_bytes": 96172203,
+  "sha256": "e9192399fc5bccdcff48ee68cdd6e87747d96b6079680640d1a57dea146aaee1",
   "mandatory": true,
-  "release_notes": "FocusDefend v3.7.7 (Build 70): All Features 100% Free, Decommissioned Payment Gateway & Subscription Systems.\n• 100% Free Rollout: All focus protection, parental controls, and study modules are completely unlocked with zero subscription paywalls.\n• Decommissioned Payment Gateways: Removed in-app checkout, payment verification APIs, and webhook processors.\n• Polished Settings & Profile: Cleaned menu hierarchies and removed subscription pass cards.\n• Enhanced Security: Preserves Master PIN brute-force lockout, SHA-256 package integrity checks, and hardened Supabase RLS policies."
+  "release_notes": "FocusDefend v3.7.8 (Build 71): Impeccable Craft & Frontend Polish Update.\n• Legal & Compliance Polish: Resolved text collision between label and web links with clean stacked hierarchy and external link icons.\n• Material 3 Touch Targets: Expanded all header icons, back buttons, and auth visibility toggles to the 48x48dp accessibility standard.\n• Android System Back Defense: Hardware back button now gracefully prompts or steps back to topic selection during active exams instead of abruptly exiting the app.\n• Focus Trapping: Enabled accessibilityViewIsModal on Master PIN, Emergency Vault, and Guardian Disconnect dialogs to isolate screen reader focus.\n• Performance Polish: Added tabular numerals across timer counters and score badges to eliminate live ticking jitter."
 }

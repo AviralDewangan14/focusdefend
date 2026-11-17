@@ -48,16 +48,20 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 73,
-    version_name: '3.8.0',
+    version_code: 74,
+    version_name: '3.8.1',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 96176684,
-    size_bytes: 96176684,
-    sha256: '8fa2e2683c7299c737da182b607715b6e1341a49dd4adcb10c9b964b2bf8e27a',
+    apk_size_bytes: 95394602,
+    size_bytes: 95394602,
+    sha256: '69343bcc97777e34e4d4ba299800475f91e933f7b9d5bbc207aed7345845c9e3',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.8.0 (Build 73): CodeRabbit Review Hardening & Dual Security Sign-Off.\n• Query Sanitization: UUID regex gating on profile link queries preventing Postgres 22P02 syntax errors.\n• Live Native Sync: Realtime Supabase restriction changes stream directly into the Android native engine.\n• Sensory Centralization: Challenge vibration encapsulated in shared global haptic preferences.\n• Touch Accessibility: Back button hitSlop expanded to exceed 44x44dp Material 3 standards.',
+    release_notes: 'FocusDefend v3.8.1 (Build 74): 100% NCERT 2024–2026 Rationalized Curriculum Alignment.
+• Rationalized Syllabus Alignment: All subjects, chapters, and topics updated to match official NCERT 2024-2026 textbooks (Curiosity, Ganita Prakash, Exploring Society, and Class 7-12 Rationalized Editions).
+• Verified Question Bank: 28,014 authentic multiple-choice curriculum questions with zero synthetic/placeholder slop.
+• Subject Normalization: Seamless multi-part subject mapping across Physics, Chemistry, and Mathematics.
+• Descriptive AI Practice: High-yield descriptive conceptual questions with grading rubrics.',
     created_at: new Date().toISOString(),
   };
 

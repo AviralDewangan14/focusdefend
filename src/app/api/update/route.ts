@@ -48,20 +48,20 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 74,
-    version_name: '3.8.1',
+    version_code: 75,
+    version_name: '3.8.2',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 95394602,
-    size_bytes: 95394602,
-    sha256: '69343bcc97777e34e4d4ba299800475f91e933f7b9d5bbc207aed7345845c9e3',
+    apk_size_bytes: 95598146,
+    size_bytes: 95598146,
+    sha256: '77498bf84d8f780d9beb522d0863511e2bf34af94e770fd5a4e404fd494121ac',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.8.1 (Build 74): 100% NCERT 2024–2026 Rationalized Curriculum Alignment.
-• Rationalized Syllabus Alignment: All subjects, chapters, and topics updated to match official NCERT 2024-2026 textbooks (Curiosity, Ganita Prakash, Exploring Society, and Class 7-12 Rationalized Editions).
-• Verified Question Bank: 28,014 authentic multiple-choice curriculum questions with zero synthetic/placeholder slop.
-• Subject Normalization: Seamless multi-part subject mapping across Physics, Chemistry, and Mathematics.
-• Descriptive AI Practice: High-yield descriptive conceptual questions with grading rubrics.',
+    release_notes: 'FocusDefend v3.8.2 (Build 75): 100% NCERT 2024–2026 Rationalized Edition Chapter & Topic Alignment.
+• Zero Old/Dropped Syllabus: All deleted NCERT chapters (Periodic Table, Solid State, Metallurgy, Surface Chemistry, Constructions) strictly removed.
+• 100% Direct Chapter Matching: All 372 official rationalized textbook chapters across Classes 5 to 12 now have direct, verified question sets in the local question bank.
+• Clean Academic Question Bank: 28,179 authentic multiple-choice curriculum questions with zero synthetic/placeholder slop.
+• New NCERT Textbooks: Full integration of Class 6 \'Curiosity\' (Science), \'Ganita Prakash\' (Mathematics), and \'Exploring Society\' (Social Science).',
     created_at: new Date().toISOString(),
   };
 

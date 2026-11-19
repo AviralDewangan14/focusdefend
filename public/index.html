@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FocusDefend v3.4.0 — Official Production Release</title>
+  <title>FocusDefend v3.8.2 — Official Production Release</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -19,7 +19,7 @@
       -webkit-font-smoothing: antialiased;
     }
     .card {
-      max-width: 440px;
+      max-width: 480px;
       width: 100%;
       background: #0d131f;
       border: 1.5px solid rgba(255, 255, 255, 0.12);
@@ -94,9 +94,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
-      padding: 17px 24px;
+      padding: 18px 24px;
       border-radius: 20px;
       background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
       color: #ffffff;
@@ -106,23 +106,48 @@
       box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
       border: 1.5px solid rgba(255, 255, 255, 0.35);
       border-bottom-color: rgba(0, 0, 0, 0.5);
-      margin-bottom: 24px;
+      margin-bottom: 12px;
       transition: transform 0.1s ease, box-shadow 0.1s ease;
       position: relative;
-    }
-    .btn-download::before {
-      content: "";
-      position: absolute;
-      top: 1px;
-      left: 16px;
-      right: 16px;
-      height: 1.5px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 1px;
+      cursor: pointer;
     }
     .btn-download:active {
       transform: translateY(2px);
       box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+    }
+    .btn-cloud {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 24px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .btn-cloud:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+    }
+    .status-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     .meta-grid {
       display: grid;
@@ -166,7 +191,7 @@
     .checklist li {
       list-style: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
     }
     .dot {
@@ -176,59 +201,84 @@
       background-color: #38bdf8;
       display: inline-block;
       flex-shrink: 0;
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="badge">Official Production Release</div>
+    <div class="badge">Official Production Release • Build 75</div>
     
     <div class="logo-frame">
       <img src="/logo.png" alt="FocusDefend Official Shield" class="logo-img" />
     </div>
 
     <h1>Focus<span>Defend</span></h1>
-    <p class="subtitle">AI Study Guardian & Focus Ecosystem<br>Version 3.4.0 (Build 34 • Study Mode DND & Notification Architecture)</p>
+    <p class="subtitle">AI Study Guardian & Focus Ecosystem<br>Version 3.8.2 (Build 75 • 100% NCERT 2024–2026 Curriculum)</p>
 
-    <a href="/FocusDefend.apk" class="btn-download" download>
-      Download APK v3.4.0 (Official Build)
+    <div class="status-box" id="statusMessage">
+      <span>&#10003;</span> Ready to download (91.2 MB APK)
+    </div>
+
+    <!-- Primary WiFi Direct Download Button -->
+    <a href="/FocusDefend.apk" class="btn-download" id="downloadBtn" download="FocusDefend-v3.8.2.apk">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download APK (High-Speed WiFi)
+    </a>
+
+    <!-- Cloud Mirror Backup Button -->
+    <a href="https://focusdefend.vercel.app/FocusDefend.apk" class="btn-cloud" target="_blank" download="FocusDefend-v3.8.2.apk">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+      </svg>
+      Download via Cloud Mirror (Vercel)
     </a>
 
     <div style="background: #060911; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 18px; margin-bottom: 24px; text-align: center;">
-      <p style="color: #94a3b8; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scan with Camera to Install</p>
+      <p style="color: #94a3b8; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scan with Phone Camera to Install</p>
       <div style="display: inline-block; padding: 10px; background: #ffffff; border-radius: 16px;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.29.239:8000/FocusDefend.apk" alt="Scan QR Code" style="width: 160px; height: 160px; display: block;" />
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.29.239:8080/FocusDefend.apk" alt="Scan QR Code" style="width: 160px; height: 160px; display: block;" />
       </div>
-      <p style="color: #38bdf8; font-size: 12px; margin-top: 10px; font-weight: 600;">http://192.168.29.239:8000/FocusDefend.apk</p>
+      <p style="color: #38bdf8; font-size: 12px; margin-top: 10px; font-weight: 600;">http://192.168.29.239:8080/FocusDefend.apk</p>
     </div>
 
     <div class="meta-grid">
       <div class="meta-box">
         <div class="label">Version</div>
-        <div class="value">v3.4.0 (Build 34)</div>
+        <div class="value">v3.8.2 (Build 75)</div>
       </div>
       <div class="meta-box">
-        <div class="label">Study Mode</div>
-        <div class="value" style="color: #38bdf8;">Calls & SMS Only</div>
+        <div class="label">NCERT Coverage</div>
+        <div class="value" style="color: #34d399;">372 / 372 (100%)</div>
       </div>
       <div class="meta-box">
-        <div class="label">Notifications</div>
-        <div class="value" style="color: #34d399;">Dedicated Center</div>
+        <div class="label">Question Bank</div>
+        <div class="value" style="color: #38bdf8;">28,179 Clean MCQs</div>
       </div>
       <div class="meta-box">
-        <div class="label">Nav Bar</div>
-        <div class="value" style="color: #fbbf24;">Zero Overlap</div>
+        <div class="label">Old Syllabus</div>
+        <div class="value" style="color: #fbbf24;">0 Dropped Topics</div>
       </div>
     </div>
 
     <ul class="checklist">
-      <li><span class="dot"></span> Dedicated Notification Center: Complete student notification system with category filters (Study, Rewards, Guardian) and unread count badge.</li>
-      <li><span class="dot"></span> Distraction-Free Study Mode: Automatic Do Not Disturb (DND) integration mutes distracting app notifications at OS level, preserving only emergency Phone Calls and SMS.</li>
-      <li><span class="dot"></span> Deep Study App Lockdown: All non-essential apps are blocked during study sprints with an immediate return-to-study overlay.</li>
-      <li><span class="dot"></span> Fixed Floating Nav Overlaps: Sub-screens automatically suppress the floating tab bar, and scroll views feature safe 140px bottom padding.</li>
-      <li><span class="dot"></span> Real Student Name Display: Replaced generic "Hello, Student" with authentic student name (Hello, Aviral) synced from profile and email.</li>
-      <li><span class="dot"></span> Real Data & Curriculum Sync: Live synchronization with Supabase and syllabus-accurate NCERT curriculum tasks.</li>
+      <li><span class="dot"></span> <b>100% NCERT 2024–2026 Alignment:</b> Complete integration of the rationalized curriculum with zero obsolete topics (Periodic Table, Solid State, Metallurgy, Surface Chemistry, Constructions all purged).</li>
+      <li><span class="dot"></span> <b>New Class 6 NEP Textbooks:</b> Full chapter and question support for <i>Curiosity</i> (Science), <i>Ganita Prakash</i> (Math), and <i>Exploring Society</i> (Social Science).</li>
+      <li><span class="dot"></span> <b>Instant Hash Lookups:</b> Sub-millisecond O(1) in-memory question indexing for instant quiz loading.</li>
+      <li><span class="dot"></span> <b>Distraction-Free App Guardian:</b> System-level app blocking and study mode enforcement.</li>
     </ul>
   </div>
+
+  <script>
+    // Auto trigger download if ?auto=1 or prompt user
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('auto') === '1') {
+      window.location.href = '/FocusDefend.apk';
+    }
+  </script>
 </body>
 </html>

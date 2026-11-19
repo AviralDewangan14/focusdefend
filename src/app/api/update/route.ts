@@ -48,13 +48,13 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 75,
-    version_name: '3.8.2',
+    version_code: 76,
+    version_name: '3.8.3',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 95598146,
-    size_bytes: 95598146,
-    sha256: '77498bf84d8f780d9beb522d0863511e2bf34af94e770fd5a4e404fd494121ac',
+    apk_size_bytes: 95608335,
+    size_bytes: 95608335,
+    sha256: 'c2479809989f4086c8ee2c582ca912acadc35eb43a064f556ff0a797cb2bf751',
     mandatory: true,
     is_mandatory: true,
     release_notes: 'FocusDefend v3.8.2 (Build 75): 100% NCERT 2024–2026 Rationalized Edition Chapter & Topic Alignment.

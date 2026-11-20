@@ -1,13 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 import { 
   Home, 
   BookOpen,
   Trophy,
-  Pencil, 
-  ShieldAlert, 
   BarChart3, 
   User, 
   Play, 
@@ -18,31 +18,25 @@ import {
   Flame, 
   CheckCircle2, 
   Clock,
-  RotateCcw,
-  Star,
+  Star, 
   AlertTriangle,
-  Cpu,
-  Terminal,
-  RefreshCw,
-  Key,
-  Shield,
-  DownloadCloud,
-  X,
-  Settings,
-  LogOut,
-  Sun,
-  Moon,
-  Check,
-  Send,
-  Calendar,
-  Zap,
-  MessageSquare,
-  TrendingUp,
-  ArrowUpRight,
+  Terminal, 
+  RefreshCw, 
+  Key, 
+  DownloadCloud, 
+  X, 
+  Settings, 
+  LogOut, 
+  Sun, 
+  Moon, 
+  Check, 
+  Send, 
+  Calendar, 
+  Zap, 
   Sliders
 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useStore } from "@/store/useStore";
+import { useStore, type StudySuggestion } from "@/store/useStore";
 
 const InstagramIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -297,7 +291,8 @@ const RestrictedAppScreen = ({
   mode?: "instagram" | "shorts" | "channel";
   onModeChange?: (mode: "instagram" | "shorts" | "channel") => void;
 }) => {
-  const [currentMode, setCurrentMode] = useState<"instagram" | "shorts" | "channel">(mode);
+  const [selectedMode, setSelectedMode] = useState<"instagram" | "shorts" | "channel" | null>(null);
+  const currentMode = selectedMode ?? mode;
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [requestMinutes, setRequestMinutes] = useState(15);
   const [requestReason, setRequestReason] = useState("Need to check physics class project group notes with classmate");
@@ -305,12 +300,8 @@ const RestrictedAppScreen = ({
 
   const { activeGrants, requestParentAccess, revokeGrant } = useStore();
 
-  useEffect(() => {
-    setCurrentMode(mode);
-  }, [mode]);
-
   const handleSelectMode = (newMode: "instagram" | "shorts" | "channel") => {
-    setCurrentMode(newMode);
+    setSelectedMode(newMode);
     if (onModeChange) onModeChange(newMode);
   };
 
@@ -860,7 +851,6 @@ const QuizScreen = ({
           "Angry and aggressive"
         ].map((option, idx) => {
           const isSelected = selected === idx;
-          const isCorrect = idx === 1;
 
           return (
             <div 
@@ -940,7 +930,7 @@ const QuizScreen = ({
 };
 
 /* SCREEN 4: PROGRESS & ANALYTICS */
-const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => void }) => (
+const ProgressScreen = ({ onNavigate }: { onNavigate?: (screen: MobileScreen) => void }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.98 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -1029,6 +1019,16 @@ const ProgressScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => 
         </div>
       </div>
     </div>
+
+    {/* Study Schedule Quick Action */}
+    <div className="mt-3">
+      <button
+        onClick={() => onNavigate?.("study")}
+        className="w-full skeuo-btn-primary py-2.5 rounded-xl text-xs font-semibold text-white inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-md transition-all active:scale-95"
+      >
+        <BookOpen size={13} /> Open Study Optimizer
+      </button>
+    </div>
   </motion.div>
 );
 
@@ -1049,7 +1049,7 @@ const StudyScreen = ({ onNavigate }: { onNavigate: (screen: MobileScreen) => voi
     resetStudySuggestions
   } = useStore();
 
-  const handleOpenEdit = (sug: any) => {
+  const handleOpenEdit = (sug: StudySuggestion) => {
     setEditingId(sug.id);
     setEditSubject(sug.subject);
   };
@@ -1923,19 +1923,14 @@ const SettingsScreen = ({
   onNavigate: (screen: MobileScreen) => void;
 }) => {
   const { theme, setTheme } = useTheme();
-  const [localTheme, setLocalTheme] = useState<"dark" | "light">("dark");
+  const [overrideTheme, setOverrideTheme] = useState<"dark" | "light" | null>(null);
+  const localTheme = overrideTheme ?? (theme === "light" ? "light" : "dark");
   const [showSignOutConfirm, setShowSignOutConfirm] = useState(false);
   const [signedOut, setSignedOut] = useState(false);
   const { setOtaModalOpen } = useStore();
 
-  useEffect(() => {
-    if (theme === "light" || theme === "dark") {
-      setLocalTheme(theme);
-    }
-  }, [theme]);
-
   const handleToggleTheme = (mode: "dark" | "light") => {
-    setLocalTheme(mode);
+    setOverrideTheme(mode);
     if (setTheme) setTheme(mode);
   };
 
@@ -2164,7 +2159,7 @@ export default function CSSPhoneModel() {
   const [screen, setScreen] = useState<MobileScreen>("dashboard");
   const [interceptMode, setInterceptMode] = useState<"instagram" | "shorts" | "channel">("instagram");
   const [credits, setCredits] = useState<number>(5);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   const { 
     hasOtaNotification, 
@@ -2189,7 +2184,6 @@ export default function CSSPhoneModel() {
   };
 
   useEffect(() => {
-    setMounted(true);
     // Cycle through screens every 9 seconds if idle
     const screens: MobileScreen[] = ["dashboard", "intercept", "youtube", "quiz", "progress", "study", "wallet", "protection", "parent", "settings"];
     let idx = 0;

@@ -57,11 +57,12 @@ export async function GET() {
     sha256: 'c2479809989f4086c8ee2c582ca912acadc35eb43a064f556ff0a797cb2bf751',
     mandatory: true,
     is_mandatory: true,
-    release_notes: 'FocusDefend v3.8.2 (Build 75): 100% NCERT 2024–2026 Rationalized Edition Chapter & Topic Alignment.
-• Zero Old/Dropped Syllabus: All deleted NCERT chapters (Periodic Table, Solid State, Metallurgy, Surface Chemistry, Constructions) strictly removed.
-• 100% Direct Chapter Matching: All 372 official rationalized textbook chapters across Classes 5 to 12 now have direct, verified question sets in the local question bank.
-• Clean Academic Question Bank: 28,179 authentic multiple-choice curriculum questions with zero synthetic/placeholder slop.
-• New NCERT Textbooks: Full integration of Class 6 \'Curiosity\' (Science), \'Ganita Prakash\' (Mathematics), and \'Exploring Society\' (Social Science).',
+    release_notes:
+      'FocusDefend v3.8.3 (Build 76): Native Heads-Up Push Notification Engine & React Hook Stability.\n' +
+      '• React Hook Rule Resolution: Completely resolved "Rendered fewer hooks than expected" crash caused by premature early return in floating navigation.\n' +
+      '• Native Heads-Up Push Engine: Redesigned Android notification architecture with high-priority heads-up banners, dedicated sound, vibration patterns, and action buttons.\n' +
+      '• Interactive Push Composer: Added built-in notification composer form with custom titles, messages, category channels, and delivery timing.\n' +
+      '• Android 14 Compatibility: Safe channel creation and removal of restricted fullScreenIntent barriers for seamless system-tray push delivery.',
     created_at: new Date().toISOString(),
   };
 

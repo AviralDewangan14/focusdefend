@@ -1,18 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Moon, Sun, Download, Sparkles } from "lucide-react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { Moon, Sun, Download } from "lucide-react";
 import { useStore } from "@/store/useStore";
 
+const emptySubscribe = () => () => {};
+
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const { setOtaModalOpen, hasOtaNotification, otaVersion } = useStore();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@/store/useStore";
-import { Download, RefreshCw, Shield, Sparkles } from "lucide-react";
+import { Download, RefreshCw } from "lucide-react";
 
 export default function Footer() {
   const { setOtaModalOpen } = useStore();

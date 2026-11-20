@@ -37,11 +37,9 @@ export default function OTAUpdateModal() {
     setOtaChannel,
     otaDownloadProgress,
     setOtaDownloadProgress,
-    isOtaDownloading,
     setIsOtaDownloading,
     setHasOtaNotification,
     triggerOtaNotification,
-    otaVersion
   } = useStore();
 
   const [activeTab, setActiveTab] = useState<"update" | "changelog" | "adb">("update");

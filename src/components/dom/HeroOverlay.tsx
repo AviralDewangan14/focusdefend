@@ -1,4 +1,4 @@
-import { Download, Sparkles, Smartphone } from "lucide-react";
+import { Download } from "lucide-react";
 
 export default function HeroOverlay() {
   return (
@@ -19,8 +19,8 @@ export default function HeroOverlay() {
         
         <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
           <a 
-            href="/FocusDefend-Release.apk" 
-            download="FocusDefend-Release.apk" 
+            href="/FocusDefend.apk" 
+            download="FocusDefend.apk" 
             className="skeuo-btn-primary px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base text-white inline-flex items-center gap-2.5 shadow-xl cursor-pointer"
           >
             <Download size={18} />

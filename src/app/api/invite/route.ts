@@ -105,7 +105,7 @@ function setCachedLookup(code: string, lookup: { senderName: string; studentGrad
 // ─────────────────────────────────────────────────────────────────────────────
 // Timeout-Bounded Downstream Fetch (3500ms AbortController Deadline)
 // ─────────────────────────────────────────────────────────────────────────────
-async function fetchWithDeadline(url: string, headers: Record<string, string>, timeoutMs = 3500): Promise<any | null> {
+async function fetchWithDeadline(url: string, headers: Record<string, string>, timeoutMs = 3500): Promise<unknown | null> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -119,8 +119,8 @@ async function fetchWithDeadline(url: string, headers: Record<string, string>, t
       return await res.json();
     }
     return null;
-  } catch (err: any) {
-    if (err?.name === 'AbortError') {
+  } catch (err: unknown) {
+    if (err instanceof Error && err.name === 'AbortError') {
       console.warn(`[Invite API] Downstream query timed out after ${timeoutMs}ms for ${url.split('?')[0]}`);
     }
     return null;
@@ -162,7 +162,7 @@ export async function GET(request: NextRequest) {
   const recipientRole: 'student' | 'parent' = isParentSender ? 'student' : 'parent';
 
   let senderName = rawFrom || (isParentSender ? 'Parent Guardian' : 'Student');
-  let recipientName = rawTo || (isParentSender ? 'Student' : 'Parent Guardian');
+  const recipientName = rawTo || (isParentSender ? 'Student' : 'Parent Guardian');
   let studentGrade: string | undefined = undefined;
 
   // 2. Micro-cache Check
@@ -322,9 +322,10 @@ export async function POST(request: NextRequest) {
       deepLink: `focusdefend://invite?code=${encodeURIComponent(code)}&from=${encodeURIComponent(senderName)}&to=${encodeURIComponent(recipientName)}`,
       downloadUrl: `https://focusdefend.vercel.app/FocusDefend.apk`,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Internal server error';
     return NextResponse.json(
-      { success: false, error: error?.message || 'Internal server error' },
+      { success: false, error: message },
       { status: 500 }
     );
   }

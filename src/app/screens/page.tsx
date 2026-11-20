@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import CSSPhoneModel, { MobileScreen } from "@/components/dom/CSSPhoneModel";
+import Link from "next/link";
+import { type MobileScreen } from "@/components/dom/CSSPhoneModel";
 import { 
   Sparkles, 
   Smartphone, 
   ShieldCheck, 
   Flame, 
-  Download,
   Home, 
   Pencil, 
   ShieldAlert, 
@@ -17,13 +17,12 @@ import {
   ArrowRight, 
   Lock, 
   Clock, 
-  Star,
-  CheckCircle2,
-  Settings,
-  LogOut,
-  Sun,
-  Moon,
-  AlertTriangle
+  Star, 
+  CheckCircle2, 
+  Settings, 
+  LogOut, 
+  Sun, 
+  Moon
 } from "lucide-react";
 
 export default function MobileScreensShowcase() {
@@ -262,12 +261,12 @@ export default function MobileScreensShowcase() {
 
       {/* Navigation Return */}
       <div className="mt-16 text-center">
-        <a 
+        <Link 
           href="/" 
           className="skeuo-btn-secondary px-6 py-2.5 rounded-full text-xs font-mono text-gray-300 hover:text-white inline-flex items-center gap-2 cursor-pointer"
         >
           ← Return to Main Web Landing
-        </a>
+        </Link>
       </div>
     </div>
   );

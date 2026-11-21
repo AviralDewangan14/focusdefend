@@ -48,21 +48,21 @@ export async function GET() {
 
   // 3. Fallback to cached manifest or default release constants
   const fallbackPayload = cachedManifest || {
-    version_code: 76,
-    version_name: '3.8.3',
+    version_code: 77,
+    version_name: '3.8.4',
     apk_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
     download_url: 'https://focusdefend.vercel.app/FocusDefend.apk',
-    apk_size_bytes: 95608335,
-    size_bytes: 95608335,
-    sha256: 'c2479809989f4086c8ee2c582ca912acadc35eb43a064f556ff0a797cb2bf751',
+    apk_size_bytes: 95608330,
+    size_bytes: 95608330,
+    sha256: 'f78a94ebcd151c435f3581b18499d991d9ff46a625de1d26c2d7a45b317b28d8',
     mandatory: true,
     is_mandatory: true,
     release_notes:
-      'FocusDefend v3.8.3 (Build 76): Native Heads-Up Push Notification Engine & React Hook Stability.\n' +
-      '• React Hook Rule Resolution: Completely resolved "Rendered fewer hooks than expected" crash caused by premature early return in floating navigation.\n' +
-      '• Native Heads-Up Push Engine: Redesigned Android notification architecture with high-priority heads-up banners, dedicated sound, vibration patterns, and action buttons.\n' +
-      '• Interactive Push Composer: Added built-in notification composer form with custom titles, messages, category channels, and delivery timing.\n' +
-      '• Android 14 Compatibility: Safe channel creation and removal of restricted fullScreenIntent barriers for seamless system-tray push delivery.',
+      'FocusDefend v3.8.4 (Build 77): Production Engine Hardening & Autonomous OTA Release.\n' +
+      '• Production Runtime Hardening: Eliminated Turbopack compilation syntax issues and refactored React 19 hydration state using useSyncExternalStore to eliminate cascading re-render warnings.\n' +
+      '• High-Priority Heads-Up Push Notifications: Full native Android 14/15 system tray push integration with custom alert tones, vibration sequences, and action triggers.\n' +
+      '• Interactive Notification Testing Console: Live in-app composer to dispatch academic, reminder, and emergency alerts directly.\n' +
+      '• 100% NCERT 2024–2026 Question Database: Complete curriculum coverage with zero dropped syllabus topics across Classes 5 to 12.',
     created_at: new Date().toISOString(),
   };
 

@@ -1,9 +1,9 @@
 {
-  "version_code": 77,
-  "version_name": "3.8.4",
-  "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 95608330,
-  "sha256": "f78a94ebcd151c435f3581b18499d991d9ff46a625de1d26c2d7a45b317b28d8",
-  "mandatory": true,
-  "release_notes": "FocusDefend v3.8.4 (Build 77): Production Engine Hardening & Autonomous OTA Release.\n\u2022 Production Runtime Hardening: Eliminated Turbopack compilation syntax issues and refactored React 19 hydration state using useSyncExternalStore to eliminate cascading re-render warnings.\n\u2022 High-Priority Heads-Up Push Notifications: Full native Android 14/15 system tray push integration with custom alert tones, vibration sequences, and action triggers.\n\u2022 Interactive Notification Testing Console: Live in-app composer to dispatch academic, reminder, and emergency alerts directly.\n\u2022 100% NCERT 2024\u20132026 Question Database: Complete curriculum coverage with zero dropped syllabus topics across Classes 5 to 12."
+  "version_code": 79,
+  "version_name": "3.8.6",
+  "download_url": "/FocusDefend.apk",
+  "sha256": "E5569A605731260AEF4C8FF5D8CDFF0B17ACB5074C08B47A1160C227006CCF6F",
+  "size_bytes": 94618391,
+  "release_notes": "FocusDefend v3.8.6 (Build 79) \u2014 Complete NCERT 2024\u20132026 Question Bank Hardening:\n\u2022 Full Class 9 Social Studies Regeneration: 1,100 authentic questions across all 20 NCERT chapters (History 5, Geography 6, Democratic Politics 5, Economics 4).\n\u2022 100% Chapter Alignment across all classes (5-12) with zero deleted/obsolete syllabus topics.\n\u2022 Zero duplicate distractors and perfectly calibrated answer keys across the entire 27,798-question curriculum.",
+  "is_mandatory": false
 }

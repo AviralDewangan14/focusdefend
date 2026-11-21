@@ -1,9 +1,9 @@
 {
-  "version_code": 79,
-  "version_name": "3.8.6",
+  "version_code": 80,
+  "version_name": "3.8.7",
   "download_url": "/FocusDefend.apk",
-  "sha256": "E5569A605731260AEF4C8FF5D8CDFF0B17ACB5074C08B47A1160C227006CCF6F",
-  "size_bytes": 94618391,
-  "release_notes": "FocusDefend v3.8.6 (Build 79) \u2014 Complete NCERT 2024\u20132026 Question Bank Hardening:\n\u2022 Full Class 9 Social Studies Regeneration: 1,100 authentic questions across all 20 NCERT chapters (History 5, Geography 6, Democratic Politics 5, Economics 4).\n\u2022 100% Chapter Alignment across all classes (5-12) with zero deleted/obsolete syllabus topics.\n\u2022 Zero duplicate distractors and perfectly calibrated answer keys across the entire 27,798-question curriculum.",
+  "sha256": "65883E0FCC01882A76FAB8F5D458882AD025A1F1B009763654C08125C4E72F65",
+  "size_bytes": 94577998,
+  "release_notes": "FocusDefend v3.8.7 (Build 80) \u2014 Official NCF-SE Class 9 Social Science Curriculum Upgrade:\n\u2022 Upgraded to the new official NCERT textbook 'Understanding Society: India and Beyond' across all 15 integrated chapters.\n\u2022 900 authentic, pedagogically rigorous questions covering ancient/medieval resistance, geomorphology, climate systems, financial literacy, and startup innovation.\n\u2022 100% verified option calibration, zero duplicates, and complete curriculum synchronization.",
   "is_mandatory": false
 }

@@ -1,11 +1,9 @@
 {
-  "version_code": 80,
-  "version_name": "3.8.7",
-  "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "apk_size_bytes": 94640306,
-  "sha256": "b57c92c86d42e766ac5e63f7674ebcd448c28f518cf772dd3c7f5b2d85ff4b6d",
+  "version": "3.9.2",
+  "buildNumber": 82,
   "mandatory": true,
-  "release_notes": "FocusDefend v3.8.7 (Build 80) \u2014 Official NCF-SE Class 9 Social Science Curriculum Upgrade & CodeRabbit Review Hardening:\n\u2022 Upgraded to the new official NCERT textbook 'Understanding Society: India and Beyond' across all 15 integrated chapters.\n\u2022 900 authentic, pedagogically rigorous questions covering ancient/medieval resistance, geomorphology, climate systems, financial literacy, and startup innovation.\n\u2022 100% verified option calibration, zero duplicates, and complete curriculum synchronization.",
-  "size": 94640306,
-  "local_wifi_apk_url": "http://192.168.29.239:8080/FocusDefend.apk"
+  "releaseNotes": "CodeRabbit verified 100% bug-free build: resolved displayName crash, redundant vibrations, and reinforced native engine.",
+  "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "sha256": "66CB003565823BFC055EDEF07C0882DD5C2CDA916DACA7FF98EB2EFF284DC8C5",
+  "size": 94668040
 }

@@ -1,9 +1,17 @@
 {
   "version": "3.9.2",
+  "version_name": "3.9.2",
   "buildNumber": 82,
+  "version_code": 82,
   "mandatory": true,
+  "is_mandatory": true,
   "releaseNotes": "CodeRabbit verified 100% bug-free build: resolved displayName crash, redundant vibrations, and reinforced native engine.",
+  "release_notes": "CodeRabbit verified 100% bug-free build: resolved displayName crash, redundant vibrations, and reinforced native engine.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "66CB003565823BFC055EDEF07C0882DD5C2CDA916DACA7FF98EB2EFF284DC8C5",
-  "size": 94668040
+  "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "sha256": "8D62FCA205AE4B651CF621B677235ABF6700E4D86C0456BFC85727AC71CC3381",
+  "size": 94682930,
+  "size_bytes": 94682930,
+  "apk_size_bytes": 94682930
 }

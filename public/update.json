@@ -10,12 +10,12 @@
   "downloadUrl": "http://127.0.0.1:8080/FocusDefend-v3.9.4.apk",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "2249dc20e7aead93bc5f6b8978b17e803b550ba677ed8b7ef60226b888fdfc0f",
-  "size": 94779637,
-  "size_bytes": 94765993,
-  "apk_size_bytes": 94765993,
-  "sizeBytes": 94765993,
+  "sha256": "2292355ee7c5623ad9efda54b8cdff122a4541df3060f57fe131651892feff6a",
+  "size": 94792478,
+  "size_bytes": 94792478,
+  "apk_size_bytes": 94792478,
+  "sizeBytes": 94792478,
   "build": 40,
-  "file_size": 94783495,
+  "file_size": 94792478,
   "url": "http://127.0.0.1:8080/FocusDefend-v3.9.4.apk"
 }

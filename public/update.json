@@ -7,15 +7,15 @@
   "is_mandatory": true,
   "releaseNotes": "FocusDefend v3.9.4: Hardened multi-channel silent notification routing, guardian-scoped child isolation, authenticated push dispatch, and telemetry fault tolerance.",
   "release_notes": "FocusDefend v3.9.4: Hardened multi-channel silent notification routing, guardian-scoped child isolation, authenticated push dispatch, and telemetry fault tolerance.",
-  "downloadUrl": "http://127.0.0.1:8080/FocusDefend-v3.9.4.apk",
+  "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
   "download_url": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "2292355ee7c5623ad9efda54b8cdff122a4541df3060f57fe131651892feff6a",
-  "size": 94792478,
-  "size_bytes": 94792478,
-  "apk_size_bytes": 94792478,
-  "sizeBytes": 94792478,
+  "sha256": "98cc243c4e71c73b58c453ec4800ba070885ae0841f9f6c3503d9bb847f28cb7",
+  "size": 94797344,
+  "size_bytes": 94797344,
+  "apk_size_bytes": 94797344,
+  "sizeBytes": 94797344,
   "build": 40,
-  "file_size": 94792478,
-  "url": "http://127.0.0.1:8080/FocusDefend-v3.9.4.apk"
+  "file_size": 94797344,
+  "url": "https://focusdefend.vercel.app/FocusDefend.apk"
 }

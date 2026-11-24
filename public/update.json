@@ -1,8 +1,10 @@
 {
   "version": "3.9.4",
-  "buildCode": 84,
-  "url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "sha256": "76d2284368946fbfc12cc42986ead115f922868d758ab1e5065c39d2ace093d3",
-  "size": 94810539,
-  "releaseDate": "2026-11-24T18:03:25.066Z"
+  "versionCode": 84,
+  "buildNumber": 84,
+  "releaseNotes": "FocusDefend v3.9.4: CodeRabbit review pass hardening, durable permission revocation lifecycle, and UI haptics integration.",
+  "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "fileSize": 94812914,
+  "sha256": "68e4e14afe3614651fbba8e1d8112f50319aae7b483368442bcdba91b4e41620",
+  "releaseDate": "2026-11-24T18:32:55.038Z"
 }

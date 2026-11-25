@@ -1,10 +1,12 @@
 {
   "version": "3.9.4",
   "versionCode": 84,
+  "version_code": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Resolved 8c9834e findings, CWE-319 OTA URL validation, serialized permission audits, and SQL ledger hardening.",
+  "releaseNotes": "FocusDefend v3.9.4: Resolved all 48 CodeRabbit findings across Android, Supabase RLS/RPCs, auth/sync concurrency, OTA metadata, and UI accessibility.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94834912,
-  "sha256": "4f132f113344721da1a28012fba60a3771d40f735b05d325a2aa55dadfc0e462",
-  "releaseDate": "2026-11-25T14:43:52.464Z"
+  "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
+  "fileSize": 94841999,
+  "sha256": "613f9e0455b4ce50fc47012da378fb0c60c876204f64f88ac8568c9c7855b7e3",
+  "releaseDate": "2026-11-25T15:58:04.583Z"
 }

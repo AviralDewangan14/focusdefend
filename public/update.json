@@ -2,9 +2,9 @@
   "version": "3.9.4",
   "versionCode": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Role-level authorization locks, atomic PIN lockout, durable permission revocation lifecycle, and forward SQL reconciliation.",
+  "releaseNotes": "FocusDefend v3.9.4: STABLE atomic credit snapshot, linked-student delete RLS lock, gemini-2.5-flash, and full CodeRabbit hardening.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94822646,
-  "sha256": "41ca2f7d7cb24fdb78b99bc5a2dc9fb8a8d0f352725fbdd3273be0bf065a8e39",
-  "releaseDate": "2026-11-25T01:49:21.016Z"
+  "fileSize": 94825266,
+  "sha256": "fd630e398d74d6fefb4b43d6625bb191b39943ef4a1ca0fd3ea89a3a2db8d12d",
+  "releaseDate": "2026-11-25T02:47:03.818Z"
 }

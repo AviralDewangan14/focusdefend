@@ -3,10 +3,10 @@
   "versionCode": 84,
   "version_code": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Hardened PIN/auth/outbox/telemetry concurrency, SQL row-level locks, native notification opt-out preservation, and UI accessibility.",
+  "releaseNotes": "FocusDefend v3.9.4: Hardened PIN lockout, ledger outbox settlement, channel opt-out migration, and UI safety/accessibility.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94843682,
-  "sha256": "bd114facaf26fdc09c3630e9f2d9af43771147c4e462840eb20c7f2cd62cea66",
-  "releaseDate": "2026-11-25T17:34:54.733Z"
+  "fileSize": 94846699,
+  "sha256": "a844dd8b5475dbf79c7983e62899bcc60701bf63355bfc6844020a473416effb",
+  "releaseDate": "2026-11-25T18:42:59.563Z"
 }

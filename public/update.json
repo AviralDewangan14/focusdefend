@@ -3,11 +3,11 @@
   "versionCode": 84,
   "version_code": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Preserved v3->v4 channel importance, verified unlock request payloads, onboarding gate after email sign-in, and permission monitor isolation.",
-  "release_notes": "FocusDefend v3.9.4: Preserved v3->v4 channel importance, verified unlock request payloads, onboarding gate after email sign-in, and permission monitor isolation.",
+  "releaseNotes": "FocusDefend v3.9.4: Hardened push unregister verification, outbox debit settlement, signup/permission-monitor race guards, and unified guardian snapshot checks.",
+  "release_notes": "FocusDefend v3.9.4: Hardened push unregister verification, outbox debit settlement, signup/permission-monitor race guards, and unified guardian snapshot checks.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94850955,
-  "sha256": "20f2260d5b290b6fac0e18de0a71c2c85a0187ac594569c5d1bafb3ac2bb2aeb",
-  "releaseDate": "2026-11-25T20:57:23.699Z"
+  "fileSize": 94852910,
+  "sha256": "d9e6b9584778bce5a35404e83033b773103fee5f635d28cbb37556973b6116ff",
+  "releaseDate": "2026-11-25T21:39:02.528Z"
 }

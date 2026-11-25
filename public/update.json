@@ -2,9 +2,9 @@
   "version": "3.9.4",
   "versionCode": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: STABLE atomic credit snapshot, linked-student delete RLS lock, gemini-2.5-flash, and full CodeRabbit hardening.",
+  "releaseNotes": "FocusDefend v3.9.4: Removed one-click demo login and Educational Mode permission bypass, plus CWE-488/CWE-862/CWE-863 hardening.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94825266,
-  "sha256": "fd630e398d74d6fefb4b43d6625bb191b39943ef4a1ca0fd3ea89a3a2db8d12d",
-  "releaseDate": "2026-11-25T02:47:03.818Z"
+  "fileSize": 94825316,
+  "sha256": "991006e4d9bed9a27fce001339d3a17a9df3f13bebccea4904b70c35e09f5367",
+  "releaseDate": "2026-11-25T12:11:18.518Z"
 }

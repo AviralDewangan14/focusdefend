@@ -3,10 +3,11 @@
   "versionCode": 84,
   "version_code": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Hardened admin deletion locks, v3->v4 channel opt-out preservation, permission monitor per-student isolation, and outbox recovery.",
+  "releaseNotes": "FocusDefend v3.9.4: Preserved v3->v4 channel importance, verified unlock request payloads, onboarding gate after email sign-in, and permission monitor isolation.",
+  "release_notes": "FocusDefend v3.9.4: Preserved v3->v4 channel importance, verified unlock request payloads, onboarding gate after email sign-in, and permission monitor isolation.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94849940,
-  "sha256": "6ebc38be96aaec35d65cad9c883ada50cf14cb04c170df9b2cfec1ae862e6ddc",
-  "releaseDate": "2026-11-25T20:20:21.615Z"
+  "fileSize": 94850955,
+  "sha256": "20f2260d5b290b6fac0e18de0a71c2c85a0187ac594569c5d1bafb3ac2bb2aeb",
+  "releaseDate": "2026-11-25T20:57:23.699Z"
 }

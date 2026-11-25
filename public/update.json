@@ -2,9 +2,9 @@
   "version": "3.9.4",
   "versionCode": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Removed one-click demo login and Educational Mode permission bypass, plus CWE-488/CWE-862/CWE-863 hardening.",
+  "releaseNotes": "FocusDefend v3.9.4: Hardened authentication, atomic PIN/SQL guards, SecureStore backup exclusions, and aligned release manifests.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94825316,
-  "sha256": "991006e4d9bed9a27fce001339d3a17a9df3f13bebccea4904b70c35e09f5367",
-  "releaseDate": "2026-11-25T12:11:18.518Z"
+  "fileSize": 94827317,
+  "sha256": "ce473356fc11be1ac68e460a672121e09f869c86acbf605239f9db0c55e70d50",
+  "releaseDate": "2026-11-25T14:01:14.939Z"
 }

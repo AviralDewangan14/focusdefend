@@ -3,10 +3,10 @@
   "versionCode": 84,
   "version_code": 84,
   "buildNumber": 84,
-  "releaseNotes": "FocusDefend v3.9.4: Hardened PIN lockout, ledger outbox settlement, channel opt-out migration, and UI safety/accessibility.",
+  "releaseNotes": "FocusDefend v3.9.4: Final CodeRabbit hardening across quiz completion, PIN lockout state, rejected debit balance restoration, and standalone schema parity.",
   "downloadUrl": "https://focusdefend.vercel.app/FocusDefend.apk",
   "apk_url": "https://focusdefend.vercel.app/FocusDefend.apk",
-  "fileSize": 94846699,
-  "sha256": "a844dd8b5475dbf79c7983e62899bcc60701bf63355bfc6844020a473416effb",
-  "releaseDate": "2026-11-25T18:42:59.563Z"
+  "fileSize": 94847213,
+  "sha256": "998873f9af17c919c741bc6ce4466c0e1c0860f14eb53ec9629527f91ed1d515",
+  "releaseDate": "2026-11-25T19:25:29.219Z"
 }

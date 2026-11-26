@@ -7,7 +7,8 @@
     "release_notes":  "FocusDefend v3.9.4: Hardened push unregister verification, outbox debit settlement, signup/permission-monitor race guards, and unified guardian snapshot checks.",
     "downloadUrl":  "https://focusdefend.vercel.app/FocusDefend.apk",
     "apk_url":  "https://focusdefend.vercel.app/FocusDefend.apk",
-    "fileSize":  94879359,
-    "sha256":  "55ec1a0e8a0e21ba83842495b4d005dd2106d52763731cfe279bfec1d4f43de8",
-    "releaseDate":  "2026-11-26T01:34:22.759Z"
+    "fileSize":  94882397,
+    "sha256":  "0d8b912f94498c78fcb91d161bb78bd3821910b3c94f6216a5e9f57127be3dff",
+    "releaseDate":  "2026-11-26T02:17:23.395Z",
+    "version_name":  "3.9.4"
 }

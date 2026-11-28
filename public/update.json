@@ -3,15 +3,15 @@
     "versionCode":  84,
     "version_code":  84,
     "buildNumber":  84,
-    "releaseNotes":  "FocusDefend v3.9.4: Hardened push unregister verification, outbox debit settlement, signup/permission-monitor race guards, and unified guardian snapshot checks.",
-    "release_notes":  "FocusDefend v3.9.4: Hardened push unregister verification, outbox debit settlement, signup/permission-monitor race guards, and unified guardian snapshot checks.",
+    "releaseNotes":  "FocusDefend v3.9.4: Clean verified build addressing all 68 CodeRabbit review findings across Kotlin engine, SQL migrations, outbox reconciliation, and screen lifecycle guards.",
+    "release_notes":  "FocusDefend v3.9.4: Clean verified build addressing all 68 CodeRabbit review findings across Kotlin engine, SQL migrations, outbox reconciliation, and screen lifecycle guards.",
     "downloadUrl":  "https://focusdefend.vercel.app/FocusDefend.apk",
     "apk_url":  "https://focusdefend.vercel.app/FocusDefend.apk",
-    "fileSize":  95020382,
-    "sha256":  "3d0cac732e2a4e2b64d9a5c53e8af79073ca0dc0b72ffcc17f9b1c7268aea6e3",
-    "releaseDate":  "2026-11-26T02:17:23.395Z",
+    "fileSize":  95039496,
+    "sha256":  "1cce98ebc15a534a06e658db037ab30e74c529f3f7f7f6049bba9f02a96345ca",
+    "releaseDate":  "2026-11-28T16:50:00.000Z",
     "version_name":  "3.9.4",
-    "apk_sha256":  "3d0cac732e2a4e2b64d9a5c53e8af79073ca0dc0b72ffcc17f9b1c7268aea6e3",
-    "file_size":  95020382,
-    "size":  95020382
+    "apk_sha256":  "1cce98ebc15a534a06e658db037ab30e74c529f3f7f7f6049bba9f02a96345ca",
+    "file_size":  95039496,
+    "size":  95039496
 }
